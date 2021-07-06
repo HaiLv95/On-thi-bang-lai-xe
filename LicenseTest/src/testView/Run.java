@@ -10,4 +10,5 @@ public class Run {
         home = new frHome();
         home.setVisible(true);
     }
+    //dovancuongadhp test
 }
