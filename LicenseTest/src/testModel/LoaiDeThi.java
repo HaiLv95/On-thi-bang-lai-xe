@@ -1,21 +1,19 @@
-package testController;
-
-import java.net.IDN;
+package testModel;
 
 /**
  *
  * @author hai95
  */
-public class LoaiCauHoi {
-    private int ID;
+public class LoaiDeThi {
+    private int loaiDe_ID;
     private String tenLoai;
 
-    public int getID() {
-        return ID;
+    public int getLoaiDe_ID() {
+        return loaiDe_ID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setLoaiDe_ID(int loaiDe_ID) {
+        this.loaiDe_ID = loaiDe_ID;
     }
 
     public String getTenLoai() {
@@ -25,5 +23,4 @@ public class LoaiCauHoi {
     public void setTenLoai(String tenLoai) {
         this.tenLoai = tenLoai;
     }
-    
 }

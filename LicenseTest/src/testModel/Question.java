@@ -1,4 +1,4 @@
-package testController;
+package testModel;
 
 /**
  *
