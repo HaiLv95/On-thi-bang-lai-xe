@@ -38,7 +38,7 @@ public class ConnectSQL {
         }
     }
 
-    public static Connection Connect() {
+    public static Connection Connect() throws UnknownHostException, Exception {
         try {
             ConnectSQL.driverTest();
             InetAddress host = InetAddress.getLocalHost();
@@ -46,11 +46,32 @@ public class ConnectSQL {
             con = DriverManager.getConnection("jdbc:sqlserver://" + localhost + ":1433;databaseName=QLYLAIXE", user, pass);
 
         } catch (UnknownHostException ex) {
-            JOptionPane.showMessageDialog(null, "Failed: Not foud localhost");
+            throw new UnknownHostException("Failed: Not foud localhost" + ex);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Failed: Lỗi kết nối CSDL: " + e);
+            throw new Exception("Failed: Lỗi kết nối CSDL: " + e);
         }
         return con;
+    }
+    public static Object insertObj(String sql) throws Exception{
+        Connection con = null;
+        PreparedStatement pst = null;
+        try {
+            con = Connect();
+            pst = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            int row = pst.executeUpdate();
+            if (row == 0) {
+                throw new SQLException("Failed to insert, no row inserted");
+            }
+            try (ResultSet rs = pst.getGeneratedKeys()){
+                while (rs.next()) {                    
+                    Object generatedKey = rs.getObject(1);
+                    return generatedKey;
+                }
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Failed insert: " + e);
+        }
+        return null;
     }
 
     public static int prepareUpdate(String sql, Object... args) {
