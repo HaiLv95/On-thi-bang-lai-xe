@@ -47,13 +47,14 @@ public class dgStudy extends java.awt.Dialog {
         });
         setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(218, 235, 235));
+        jPanel1.setBackground(new java.awt.Color(248, 248, 251));
         jPanel1.setLayout(null);
 
         btnMenu.setBackground(new java.awt.Color(78, 180, 84));
         btnMenu.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnMenu.setText("Menu");
+        btnMenu.setBorderPainted(false);
         jPanel1.add(btnMenu);
         btnMenu.setBounds(30, 60, 120, 30);
 
