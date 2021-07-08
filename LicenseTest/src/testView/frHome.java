@@ -5,7 +5,9 @@ import javax.swing.JRootPane;
 /**
  *
  * @author hai95
+ * thêm icon
  */
+
 public class frHome extends javax.swing.JFrame {
 
     /**
