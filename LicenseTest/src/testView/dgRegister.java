@@ -63,10 +63,12 @@ public class dgRegister extends java.awt.Dialog {
 
         txtConfirmCode.setBackground(new java.awt.Color(231, 243, 231));
         txtConfirmCode.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtConfirmCode.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 243, 231), 4));
         jPanel1.add(txtConfirmCode);
         txtConfirmCode.setBounds(90, 390, 260, 40);
 
         pwPass.setBackground(new java.awt.Color(231, 243, 231));
+        pwPass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 243, 231), 4));
         jPanel1.add(pwPass);
         pwPass.setBounds(90, 200, 420, 40);
 
@@ -81,6 +83,7 @@ public class dgRegister extends java.awt.Dialog {
         jLabel4.setBounds(90, 270, 150, 22);
 
         pwPassCF.setBackground(new java.awt.Color(231, 243, 231));
+        pwPassCF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 243, 231), 4));
         jPanel1.add(pwPassCF);
         pwPassCF.setBounds(90, 300, 420, 40);
 
@@ -89,6 +92,7 @@ public class dgRegister extends java.awt.Dialog {
         btnRegister.setForeground(new java.awt.Color(255, 255, 255));
         btnRegister.setText("Nhận mã");
         btnRegister.setActionCommand("Đăng kí");
+        btnRegister.setBorderPainted(false);
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
@@ -112,10 +116,10 @@ public class dgRegister extends java.awt.Dialog {
         jLabel5.setText("Mã kích hoạt");
         jPanel1.add(jLabel5);
         jLabel5.setBounds(90, 360, 150, 22);
-        jLabel5.getAccessibleContext().setAccessibleName("Mã kích hoạt");
 
         txtEmail1.setBackground(new java.awt.Color(231, 243, 231));
         txtEmail1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtEmail1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 243, 231), 4));
         jPanel1.add(txtEmail1);
         txtEmail1.setBounds(90, 110, 420, 40);
 
@@ -124,6 +128,7 @@ public class dgRegister extends java.awt.Dialog {
         btnRegister1.setForeground(new java.awt.Color(255, 255, 255));
         btnRegister1.setText("Đăng ký");
         btnRegister1.setActionCommand("Đăng kí");
+        btnRegister1.setBorderPainted(false);
         btnRegister1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegister1ActionPerformed(evt);

@@ -71,6 +71,7 @@ public class dgLogin extends java.awt.Dialog {
         lblRegisster.setBounds(90, 330, 70, 17);
 
         pwPass.setBackground(new java.awt.Color(231, 243, 231));
+        pwPass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 243, 231), 4));
         pnlLogin.add(pwPass);
         pwPass.setBounds(90, 200, 420, 40);
 
@@ -78,6 +79,7 @@ public class dgLogin extends java.awt.Dialog {
         btnLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("Đăng nhập");
+        btnLogin.setBorderPainted(false);
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
@@ -109,6 +111,7 @@ public class dgLogin extends java.awt.Dialog {
 
         txtEmail.setBackground(new java.awt.Color(231, 243, 231));
         txtEmail.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 243, 231), 4));
         pnlLogin.add(txtEmail);
         txtEmail.setBounds(90, 110, 420, 40);
 

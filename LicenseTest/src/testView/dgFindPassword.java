@@ -54,6 +54,7 @@ public class dgFindPassword extends java.awt.Dialog {
 
         txtEmail.setBackground(new java.awt.Color(231, 243, 231));
         txtEmail.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 243, 231), 4));
         jPanel1.add(txtEmail);
         txtEmail.setBounds(90, 110, 420, 40);
 
@@ -61,6 +62,7 @@ public class dgFindPassword extends java.awt.Dialog {
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Gửi mật khẩu");
+        jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
