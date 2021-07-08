@@ -47,7 +47,7 @@ public class frHome extends javax.swing.JFrame {
         btnCauHoi.setBackground(new java.awt.Color(255, 118, 89));
         btnCauHoi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnCauHoi.setForeground(new java.awt.Color(255, 255, 255));
-        btnCauHoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/testImage/Images/Question_fill.png"))); // NOI18N
+        btnCauHoi.setIcon(new javax.swing.ImageIcon("E:\\5.Fork\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\Question_fill.png")); // NOI18N
         btnCauHoi.setText("Bộ câu hỏi");
         btnCauHoi.setBorderPainted(false);
         btnCauHoi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -63,7 +63,7 @@ public class frHome extends javax.swing.JFrame {
         btnLyThuyet.setBackground(new java.awt.Color(0, 182, 222));
         btnLyThuyet.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnLyThuyet.setForeground(new java.awt.Color(255, 255, 255));
-        btnLyThuyet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/testImage/Images/Desk_alt_fill.png"))); // NOI18N
+        btnLyThuyet.setIcon(new javax.swing.ImageIcon("E:\\5.Fork\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\Desk_alt_fill.png")); // NOI18N
         btnLyThuyet.setText("Học lý thuyết");
         btnLyThuyet.setBorderPainted(false);
         btnLyThuyet.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -79,7 +79,7 @@ public class frHome extends javax.swing.JFrame {
         btnThi.setBackground(new java.awt.Color(86, 222, 167));
         btnThi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnThi.setForeground(new java.awt.Color(255, 255, 255));
-        btnThi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/testImage/Images/File_dock_fill.png"))); // NOI18N
+        btnThi.setIcon(new javax.swing.ImageIcon("E:\\5.Fork\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\File_dock_fill.png")); // NOI18N
         btnThi.setText("Thi thử");
         btnThi.setBorderPainted(false);
         btnThi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -95,7 +95,7 @@ public class frHome extends javax.swing.JFrame {
         btnThongKe.setBackground(new java.awt.Color(158, 122, 194));
         btnThongKe.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnThongKe.setForeground(new java.awt.Color(255, 255, 255));
-        btnThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/testImage/Images/Chart_alt_fill.png"))); // NOI18N
+        btnThongKe.setIcon(new javax.swing.ImageIcon("E:\\5.Fork\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\Chart_alt_fill.png")); // NOI18N
         btnThongKe.setText("Thống kê");
         btnThongKe.setBorderPainted(false);
         btnThongKe.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -111,7 +111,7 @@ public class frHome extends javax.swing.JFrame {
         btnTaiKhoan.setBackground(new java.awt.Color(248, 205, 54));
         btnTaiKhoan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
-        btnTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/testImage/Images/User_fill.png"))); // NOI18N
+        btnTaiKhoan.setIcon(new javax.swing.ImageIcon("E:\\5.Fork\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\User_fill.png")); // NOI18N
         btnTaiKhoan.setText("Tài khoản");
         btnTaiKhoan.setBorderPainted(false);
         btnTaiKhoan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

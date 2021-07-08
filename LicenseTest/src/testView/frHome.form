@@ -61,7 +61,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/testImage/Images/Question_fill.png"/>
+              <Image iconType="2" name="E:\5.Fork\On-thi-bang-lai-xe\LicenseTest\src\Images\Question_fill.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="B&#x1ed9; c&#xe2;u h&#x1ecf;i"/>
             <Property name="borderPainted" type="boolean" value="false"/>
@@ -89,7 +89,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/testImage/Images/Desk_alt_fill.png"/>
+              <Image iconType="2" name="E:\5.Fork\On-thi-bang-lai-xe\LicenseTest\src\Images\Desk_alt_fill.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="H&#x1ecd;c l&#xfd; thuy&#x1ebf;t"/>
             <Property name="borderPainted" type="boolean" value="false"/>
@@ -117,7 +117,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/testImage/Images/File_dock_fill.png"/>
+              <Image iconType="2" name="E:\5.Fork\On-thi-bang-lai-xe\LicenseTest\src\Images\File_dock_fill.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Thi th&#x1eed;"/>
             <Property name="borderPainted" type="boolean" value="false"/>
@@ -145,7 +145,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/testImage/Images/Chart_alt_fill.png"/>
+              <Image iconType="2" name="E:\5.Fork\On-thi-bang-lai-xe\LicenseTest\src\Images\Chart_alt_fill.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea;"/>
             <Property name="borderPainted" type="boolean" value="false"/>
@@ -173,7 +173,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/testImage/Images/User_fill.png"/>
+              <Image iconType="2" name="E:\5.Fork\On-thi-bang-lai-xe\LicenseTest\src\Images\User_fill.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="T&#xe0;i kho&#x1ea3;n"/>
             <Property name="borderPainted" type="boolean" value="false"/>
