@@ -9,7 +9,7 @@ import javax.swing.JRootPane;
 
 /**
  *
- * @author cuong_kun
+ * @author dovancuong
  */
 public class dgLogin extends java.awt.Dialog {
 
