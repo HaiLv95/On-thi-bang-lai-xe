@@ -1,6 +1,7 @@
 package testView;
 
 import java.awt.Image;
+import java.util.Random;
 import javax.swing.ImageIcon;
 
 /**
@@ -19,6 +20,8 @@ public class dgExam extends java.awt.Dialog {
         setLocationRelativeTo(null);
         ImageIcon icon = new ImageIcon(getClass().getResource("/Images/cau166.png"));
         lblHinh.setIcon(icon);
+        timeExam();
+        
     }
 
     /**
@@ -32,10 +35,6 @@ public class dgExam extends java.awt.Dialog {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         lblMaDe = new javax.swing.JLabel();
-        jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JToolBar.Separator();
-        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         lblCauHoi = new javax.swing.JLabel();
@@ -51,31 +50,12 @@ public class dgExam extends java.awt.Dialog {
         jScrollPane5 = new javax.swing.JScrollPane();
         txpB = new javax.swing.JTextPane();
         rdoB = new javax.swing.JRadioButton();
-        btn25 = new javax.swing.JButton();
-        btn1 = new javax.swing.JButton();
-        btn2 = new javax.swing.JButton();
-        btn3 = new javax.swing.JButton();
-        btn4 = new javax.swing.JButton();
-        btn5 = new javax.swing.JButton();
-        btn6 = new javax.swing.JButton();
-        btn7 = new javax.swing.JButton();
-        btn8 = new javax.swing.JButton();
-        btn9 = new javax.swing.JButton();
-        btn10 = new javax.swing.JButton();
-        btn11 = new javax.swing.JButton();
-        btn12 = new javax.swing.JButton();
-        btn13 = new javax.swing.JButton();
-        btn14 = new javax.swing.JButton();
-        btn15 = new javax.swing.JButton();
-        btn16 = new javax.swing.JButton();
-        btn17 = new javax.swing.JButton();
-        btn18 = new javax.swing.JButton();
-        btn19 = new javax.swing.JButton();
-        btn20 = new javax.swing.JButton();
-        btn21 = new javax.swing.JButton();
-        btn22 = new javax.swing.JButton();
-        btn23 = new javax.swing.JButton();
-        btn24 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        btnMenu = new javax.swing.JButton();
+        btnMenu1 = new javax.swing.JButton();
+        lblTimer = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        pnlMenuCauHoi = new javax.swing.JPanel();
 
         setTitle("Question");
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -91,43 +71,7 @@ public class dgExam extends java.awt.Dialog {
         lblMaDe.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblMaDe.setText("Đề thi số 1");
         jPanel1.add(lblMaDe);
-        lblMaDe.setBounds(50, 30, 440, 30);
-
-        jToolBar1.setBackground(new java.awt.Color(78, 180, 84));
-        jToolBar1.setRollover(true);
-
-        jButton1.setBackground(new java.awt.Color(78, 180, 84));
-        jButton1.setBorder(null);
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setMaximumSize(new java.awt.Dimension(40, 40));
-        jButton1.setMinimumSize(new java.awt.Dimension(40, 40));
-        jButton1.setPreferredSize(new java.awt.Dimension(40, 40));
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton1);
-
-        jSeparator1.setSeparatorSize(new java.awt.Dimension(10, 40));
-        jToolBar1.add(jSeparator1);
-
-        jButton2.setBackground(new java.awt.Color(78, 180, 84));
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Menu");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setMaximumSize(new java.awt.Dimension(80, 35));
-        jButton2.setPreferredSize(new java.awt.Dimension(70, 40));
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton2);
-
-        jPanel1.add(jToolBar1);
-        jToolBar1.setBounds(0, 60, 1200, 50);
+        lblMaDe.setBounds(30, 20, 210, 30);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
@@ -199,157 +143,55 @@ public class dgExam extends java.awt.Dialog {
         rdoB.setBounds(20, 280, 20, 21);
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(100, 130, 1000, 580);
+        jPanel2.setBounds(100, 170, 1000, 510);
 
-        btn25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn25.setText("25");
-        btn25.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn25);
-        btn25.setBounds(1060, 740, 30, 23);
+        jPanel4.setBackground(new java.awt.Color(78, 180, 84));
+        jPanel4.setLayout(null);
 
-        btn1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn1.setText("1");
-        btn1.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn1);
-        btn1.setBounds(100, 740, 30, 23);
+        btnMenu.setBackground(new java.awt.Color(255, 118, 89));
+        btnMenu.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnMenu.setForeground(new java.awt.Color(255, 255, 255));
+        btnMenu.setText("Kết thúc");
+        btnMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 118, 89)));
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnMenu);
+        btnMenu.setBounds(1070, 10, 100, 30);
 
-        btn2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn2.setText("2");
-        btn2.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn2);
-        btn2.setBounds(140, 740, 30, 23);
+        btnMenu1.setBackground(new java.awt.Color(78, 227, 145));
+        btnMenu1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnMenu1.setForeground(new java.awt.Color(255, 255, 255));
+        btnMenu1.setText("Menu");
+        btnMenu1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(78, 227, 145)));
+        btnMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenu1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnMenu1);
+        btnMenu1.setBounds(20, 10, 80, 30);
 
-        btn3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn3.setText("3");
-        btn3.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn3);
-        btn3.setBounds(180, 740, 30, 23);
+        jPanel1.add(jPanel4);
+        jPanel4.setBounds(0, 60, 1200, 50);
 
-        btn4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn4.setText("4");
-        btn4.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn4);
-        btn4.setBounds(220, 740, 30, 23);
+        lblTimer.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        lblTimer.setForeground(new java.awt.Color(255, 51, 51));
+        lblTimer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTimer.setText("12:35");
+        jPanel1.add(lblTimer);
+        lblTimer.setBounds(610, 120, 130, 30);
 
-        btn5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn5.setText("5");
-        btn5.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn5);
-        btn5.setBounds(260, 740, 30, 23);
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel2.setText("Thời gian còn lại:");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(460, 120, 130, 30);
 
-        btn6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn6.setText("6");
-        btn6.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn6);
-        btn6.setBounds(300, 740, 30, 23);
-
-        btn7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn7.setText("7");
-        btn7.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn7);
-        btn7.setBounds(340, 740, 30, 23);
-
-        btn8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn8.setText("8");
-        btn8.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn8);
-        btn8.setBounds(380, 740, 30, 23);
-
-        btn9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn9.setText("9");
-        btn9.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn9);
-        btn9.setBounds(420, 740, 30, 23);
-
-        btn10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn10.setText("10");
-        btn10.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn10);
-        btn10.setBounds(460, 740, 30, 23);
-
-        btn11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn11.setText("11");
-        btn11.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn11);
-        btn11.setBounds(500, 740, 30, 23);
-
-        btn12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn12.setText("12");
-        btn12.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn12);
-        btn12.setBounds(540, 740, 30, 23);
-
-        btn13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn13.setText("13");
-        btn13.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn13);
-        btn13.setBounds(580, 740, 30, 23);
-
-        btn14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn14.setText("14");
-        btn14.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn14);
-        btn14.setBounds(620, 740, 30, 23);
-
-        btn15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn15.setText("15");
-        btn15.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn15);
-        btn15.setBounds(660, 740, 30, 23);
-
-        btn16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn16.setText("16");
-        btn16.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn16);
-        btn16.setBounds(700, 740, 30, 23);
-
-        btn17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn17.setText("17");
-        btn17.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn17);
-        btn17.setBounds(740, 740, 30, 23);
-
-        btn18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn18.setText("18");
-        btn18.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn18);
-        btn18.setBounds(780, 740, 30, 23);
-
-        btn19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn19.setText("19");
-        btn19.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn19);
-        btn19.setBounds(820, 740, 30, 23);
-
-        btn20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn20.setText("20");
-        btn20.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn20);
-        btn20.setBounds(860, 740, 30, 23);
-
-        btn21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn21.setText("21");
-        btn21.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn21);
-        btn21.setBounds(900, 740, 30, 23);
-
-        btn22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn22.setText("22");
-        btn22.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn22);
-        btn22.setBounds(940, 740, 30, 23);
-
-        btn23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn23.setText("23");
-        btn23.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn23);
-        btn23.setBounds(980, 740, 30, 23);
-
-        btn24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn24.setText("24");
-        btn24.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jPanel1.add(btn24);
-        btn24.setBounds(1020, 740, 30, 23);
+        pnlMenuCauHoi.setBackground(new java.awt.Color(235, 235, 235));
+        jPanel1.add(pnlMenuCauHoi);
+        pnlMenuCauHoi.setBounds(100, 690, 1000, 70);
 
         add(jPanel1);
         jPanel1.setBounds(0, 0, 1200, 800);
@@ -365,9 +207,38 @@ public class dgExam extends java.awt.Dialog {
         dispose();
     }//GEN-LAST:event_closeDialog
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenu1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnMenu1ActionPerformed
+
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMenuActionPerformed
+    public void timeExam() {
+        Thread timeEx = new Thread() {
+            int time = 900;
+
+            @Override
+            public void run() {
+                while (true) {
+                    time--;
+                    if (time == 0) {
+                        
+                    }
+                    int ss = time % 60;
+                    int m = time / 60;
+                    lblTimer.setText(m + " : " + ss);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        };
+        timeEx.start();
+    }
 
     /**
      * @param args the command line arguments
@@ -388,46 +259,23 @@ public class dgExam extends java.awt.Dialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn1;
-    private javax.swing.JButton btn10;
-    private javax.swing.JButton btn11;
-    private javax.swing.JButton btn12;
-    private javax.swing.JButton btn13;
-    private javax.swing.JButton btn14;
-    private javax.swing.JButton btn15;
-    private javax.swing.JButton btn16;
-    private javax.swing.JButton btn17;
-    private javax.swing.JButton btn18;
-    private javax.swing.JButton btn19;
-    private javax.swing.JButton btn2;
-    private javax.swing.JButton btn20;
-    private javax.swing.JButton btn21;
-    private javax.swing.JButton btn22;
-    private javax.swing.JButton btn23;
-    private javax.swing.JButton btn24;
-    private javax.swing.JButton btn25;
-    private javax.swing.JButton btn3;
-    private javax.swing.JButton btn4;
-    private javax.swing.JButton btn5;
-    private javax.swing.JButton btn6;
-    private javax.swing.JButton btn7;
-    private javax.swing.JButton btn8;
-    private javax.swing.JButton btn9;
+    private javax.swing.JButton btnMenu;
+    private javax.swing.JButton btnMenu1;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JToolBar.Separator jSeparator1;
-    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblCauHoi;
     private javax.swing.JLabel lblHinh;
     private javax.swing.JLabel lblMaDe;
+    private javax.swing.JLabel lblTimer;
+    private javax.swing.JPanel pnlMenuCauHoi;
     private javax.swing.JRadioButton rdoA;
     private javax.swing.JRadioButton rdoB;
     private javax.swing.JRadioButton rdoC;

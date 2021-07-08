@@ -6,7 +6,7 @@ package testModel;
  */
 public class CauHoi_DeThi {
     private int cauHoi_id, deThi_id, cauTraLoi;
-    private String trangThai;
+    private boolean trangThai;
 
     public int getCauHoi_id() {
         return cauHoi_id;
@@ -32,14 +32,11 @@ public class CauHoi_DeThi {
         this.cauTraLoi = cauTraLoi;
     }
 
-    public String getTrangThai() {
+    public boolean isTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(String trangThai) {
+    public void setTrangThai(boolean trangThai) {
         this.trangThai = trangThai;
     }
-
-    
-    
 }

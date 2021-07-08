@@ -52,12 +52,15 @@ public class ConnectSQL {
         }
         return con;
     }
-    public static Object insertObj(String sql) throws Exception{
+    public static Object insertObj(String sql, Object...args) throws Exception{
         Connection con = null;
         PreparedStatement pst = null;
         try {
             con = Connect();
             pst = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            for (int i = 0; i < args.length; i++) {
+                pst.setObject(i + 1, args[i]);
+            }
             int row = pst.executeUpdate();
             if (row == 0) {
                 throw new SQLException("Failed to insert, no row inserted");
