@@ -5,7 +5,16 @@ package testModel;
  * @author hai95
  */
 public class Dethi {
-    private int id, trangThai, loaide_id;
+    private int id,  timer, loaide_id;
+    private String trangThai;
+
+    public int getTimer() {
+        return timer;
+    }
+
+    public void setTimer(int timer) {
+        this.timer = timer;
+    }
     private String email;
 
     public int getId() {
@@ -16,13 +25,15 @@ public class Dethi {
         this.id = id;
     }
 
-    public int getTrangThai() {
+    public String getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(int trangThai) {
+    public void setTrangThai(String trangThai) {
         this.trangThai = trangThai;
     }
+
+    
 
     public int getLoaide_id() {
         return loaide_id;
