@@ -80,7 +80,7 @@ public class dgFindPassword extends java.awt.Dialog {
             }
         });
         jPanel1.add(lblText);
-        lblText.setBounds(170, 250, 250, 17);
+        lblText.setBounds(170, 250, 270, 17);
 
         add(jPanel1);
         jPanel1.setBounds(0, 0, 600, 300);

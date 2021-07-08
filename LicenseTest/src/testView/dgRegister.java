@@ -2,7 +2,7 @@ package testView;
 
 /**
  *
- * @author hai95
+ * @author cuongd_kun
  */
 public class dgRegister extends java.awt.Dialog {
 
