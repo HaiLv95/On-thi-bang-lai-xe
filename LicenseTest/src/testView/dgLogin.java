@@ -1,5 +1,12 @@
 package testView;
 
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
+import testController.LoginController;
+import testModel.User;
+import javax.swing.JRootPane;
+
 /**
  *
  * @author hai95
@@ -9,11 +16,18 @@ public class dgLogin extends java.awt.Dialog {
     /**
      * Creates new form Login
      */
+    LoginController loginController = new LoginController();
+
     public dgLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setSize(600,400);
+        settingStart();
+    }
+    public void settingStart(){
+        setSize(600, 400);
         setLocationRelativeTo(null);
+        txtEmail.requestFocus();
+    
     }
 
     /**
@@ -24,14 +38,15 @@ public class dgLogin extends java.awt.Dialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
+        pnlLogin = new javax.swing.JPanel();
+        lblRegisster = new javax.swing.JLabel();
         pwPass = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         lblFindPw = new javax.swing.JLabel();
-        lblRegisster = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setTitle("Login");
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -41,28 +56,22 @@ public class dgLogin extends java.awt.Dialog {
         });
         setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-        jLabel1.setText("Đăng nhập");
-        add(jLabel1);
-        jLabel1.setBounds(220, 30, 150, 40);
+        pnlLogin.setBackground(new java.awt.Color(255, 255, 255));
+        pnlLogin.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Mật khẩu");
-        add(jLabel2);
-        jLabel2.setBounds(90, 170, 90, 22);
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Email");
-        add(jLabel3);
-        jLabel3.setBounds(90, 80, 50, 22);
-
-        txtEmail.setBackground(new java.awt.Color(231, 243, 231));
-        txtEmail.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        add(txtEmail);
-        txtEmail.setBounds(90, 110, 420, 40);
+        lblRegisster.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblRegisster.setForeground(new java.awt.Color(78, 180, 84));
+        lblRegisster.setText("Đăng ký");
+        lblRegisster.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRegissterMouseClicked(evt);
+            }
+        });
+        pnlLogin.add(lblRegisster);
+        lblRegisster.setBounds(90, 330, 70, 17);
 
         pwPass.setBackground(new java.awt.Color(231, 243, 231));
-        add(pwPass);
+        pnlLogin.add(pwPass);
         pwPass.setBounds(90, 200, 420, 40);
 
         btnLogin.setBackground(new java.awt.Color(78, 180, 84));
@@ -74,8 +83,18 @@ public class dgLogin extends java.awt.Dialog {
                 btnLoginActionPerformed(evt);
             }
         });
-        add(btnLogin);
+        pnlLogin.add(btnLogin);
         btnLogin.setBounds(90, 270, 420, 40);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        jLabel1.setText("Đăng nhập");
+        pnlLogin.add(jLabel1);
+        jLabel1.setBounds(220, 30, 150, 40);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("Email");
+        pnlLogin.add(jLabel3);
+        jLabel3.setBounds(90, 80, 50, 22);
 
         lblFindPw.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblFindPw.setForeground(new java.awt.Color(78, 180, 84));
@@ -85,19 +104,21 @@ public class dgLogin extends java.awt.Dialog {
                 lblFindPwMouseClicked(evt);
             }
         });
-        add(lblFindPw);
+        pnlLogin.add(lblFindPw);
         lblFindPw.setBounds(410, 330, 100, 17);
 
-        lblRegisster.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblRegisster.setForeground(new java.awt.Color(78, 180, 84));
-        lblRegisster.setText("Đăng ký");
-        lblRegisster.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblRegissterMouseClicked(evt);
-            }
-        });
-        add(lblRegisster);
-        lblRegisster.setBounds(90, 330, 70, 17);
+        txtEmail.setBackground(new java.awt.Color(231, 243, 231));
+        txtEmail.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        pnlLogin.add(txtEmail);
+        txtEmail.setBounds(90, 110, 420, 40);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Mật khẩu");
+        pnlLogin.add(jLabel2);
+        jLabel2.setBounds(90, 170, 90, 22);
+
+        add(pnlLogin);
+        pnlLogin.setBounds(0, 0, 600, 400);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -112,15 +133,36 @@ public class dgLogin extends java.awt.Dialog {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        mathchesUser();
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void lblRegissterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegissterMouseClicked
         // TODO add your handling code here:
+        dgRegister register = new dgRegister(Run.home, true);
+        register.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_lblRegissterMouseClicked
 
     private void lblFindPwMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFindPwMouseClicked
         // TODO add your handling code here:
+        dgFindPassword findPassword = new dgFindPassword(Run.home, true);
+        findPassword.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_lblFindPwMouseClicked
+    public void mathchesUser() {
+        try {
+            String email = txtEmail.getText();
+            String pass = pwPass.getText();
+            Run.user = loginController.getUserbyEmail(email);
+            if (pass.equals(Run.user.getPass())) {
+                JOptionPane.showMessageDialog(this, "Login success");
+                Run.frHome();
+                this.dispose();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Login failed: " + e);
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -147,6 +189,7 @@ public class dgLogin extends java.awt.Dialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblFindPw;
     private javax.swing.JLabel lblRegisster;
+    private javax.swing.JPanel pnlLogin;
     private javax.swing.JPasswordField pwPass;
     private javax.swing.JTextField txtEmail;
     // End of variables declaration//GEN-END:variables

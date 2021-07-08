@@ -23,7 +23,7 @@ public class LoginController {
         }
         return getUser;
     }
-    public User checkUser(String email) throws Exception{
+    public User getUserbyEmail(String email) throws Exception{
         User user = new User();
         try {
             String sql = "select * from users where email = ?";
