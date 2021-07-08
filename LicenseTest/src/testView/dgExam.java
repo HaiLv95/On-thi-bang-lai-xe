@@ -95,7 +95,6 @@ public class dgExam extends java.awt.Dialog {
         jPanel2.add(rdoC);
         rdoC.setBounds(20, 350, 20, 21);
 
-        txpC.setBackground(new java.awt.Color(255, 255, 255));
         txpC.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txpC.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txpC.setEnabled(false);
@@ -104,7 +103,6 @@ public class dgExam extends java.awt.Dialog {
         jPanel2.add(jScrollPane2);
         jScrollPane2.setBounds(50, 340, 460, 50);
 
-        txpCauHoi.setBackground(new java.awt.Color(255, 255, 255));
         txpCauHoi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txpCauHoi.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txpCauHoi.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -119,7 +117,6 @@ public class dgExam extends java.awt.Dialog {
         jPanel2.add(rdoA);
         rdoA.setBounds(20, 210, 20, 21);
 
-        txpA.setBackground(new java.awt.Color(255, 255, 255));
         txpA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txpA.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txpA.setEnabled(false);
@@ -128,7 +125,6 @@ public class dgExam extends java.awt.Dialog {
         jPanel2.add(jScrollPane4);
         jScrollPane4.setBounds(50, 200, 460, 50);
 
-        txpB.setBackground(new java.awt.Color(255, 255, 255));
         txpB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txpB.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txpB.setEnabled(false);
@@ -149,10 +145,11 @@ public class dgExam extends java.awt.Dialog {
         jPanel4.setLayout(null);
 
         btnMenu.setBackground(new java.awt.Color(255, 118, 89));
-        btnMenu.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnMenu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnMenu.setText("Kết thúc");
         btnMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 118, 89)));
+        btnMenu.setBorderPainted(false);
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
@@ -161,11 +158,12 @@ public class dgExam extends java.awt.Dialog {
         jPanel4.add(btnMenu);
         btnMenu.setBounds(1070, 10, 100, 30);
 
-        btnMenu1.setBackground(new java.awt.Color(78, 227, 145));
-        btnMenu1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnMenu1.setForeground(new java.awt.Color(255, 255, 255));
+        btnMenu1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMenu1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnMenu1.setForeground(new java.awt.Color(78, 180, 84));
         btnMenu1.setText("Menu");
         btnMenu1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(78, 227, 145)));
+        btnMenu1.setBorderPainted(false);
         btnMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenu1ActionPerformed(evt);
