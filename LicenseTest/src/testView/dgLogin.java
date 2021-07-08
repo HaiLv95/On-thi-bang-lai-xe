@@ -9,7 +9,7 @@ import javax.swing.JRootPane;
 
 /**
  *
- * @author hai95
+ * @author dovancuong
  */
 public class dgLogin extends java.awt.Dialog {
 
@@ -68,7 +68,7 @@ public class dgLogin extends java.awt.Dialog {
             }
         });
         pnlLogin.add(lblRegisster);
-        lblRegisster.setBounds(90, 330, 70, 17);
+        lblRegisster.setBounds(90, 330, 80, 17);
 
         pwPass.setBackground(new java.awt.Color(231, 243, 231));
         pwPass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 243, 231), 4));
