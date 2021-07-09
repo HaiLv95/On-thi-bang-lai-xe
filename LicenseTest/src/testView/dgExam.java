@@ -13,7 +13,8 @@ public class dgExam extends java.awt.Dialog {
     /**
      * Creates new form dgQuestion
      */
-    public dgExam(java.awt.Frame parent, boolean modal) {
+    public int deThi_ID;
+    public dgExam(java.awt.Frame parent, boolean modal, int deThi_ID) {
         super(parent, modal);
         initComponents();
         setSize(1200, 800);
@@ -95,6 +96,7 @@ public class dgExam extends java.awt.Dialog {
         jPanel2.add(rdoC);
         rdoC.setBounds(20, 350, 20, 21);
 
+        txpC.setBackground(new java.awt.Color(255, 255, 255));
         txpC.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txpC.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txpC.setEnabled(false);
@@ -103,6 +105,7 @@ public class dgExam extends java.awt.Dialog {
         jPanel2.add(jScrollPane2);
         jScrollPane2.setBounds(50, 340, 460, 50);
 
+        txpCauHoi.setBackground(new java.awt.Color(255, 255, 255));
         txpCauHoi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txpCauHoi.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txpCauHoi.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -117,6 +120,7 @@ public class dgExam extends java.awt.Dialog {
         jPanel2.add(rdoA);
         rdoA.setBounds(20, 210, 20, 21);
 
+        txpA.setBackground(new java.awt.Color(255, 255, 255));
         txpA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txpA.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txpA.setEnabled(false);
@@ -125,6 +129,7 @@ public class dgExam extends java.awt.Dialog {
         jPanel2.add(jScrollPane4);
         jScrollPane4.setBounds(50, 200, 460, 50);
 
+        txpB.setBackground(new java.awt.Color(255, 255, 255));
         txpB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txpB.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txpB.setEnabled(false);
@@ -241,19 +246,6 @@ public class dgExam extends java.awt.Dialog {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                dgExam dialog = new dgExam(new java.awt.Frame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

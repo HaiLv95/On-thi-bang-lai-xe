@@ -146,6 +146,8 @@ public class frHome extends javax.swing.JFrame {
 
     private void btnThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThiActionPerformed
         // TODO add your handling code here:
+        dgMenuDT deThi = new dgMenuDT(Run.home, true);
+        deThi.setVisible(true);
     }//GEN-LAST:event_btnThiActionPerformed
 
     private void btnCauHoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCauHoiActionPerformed
