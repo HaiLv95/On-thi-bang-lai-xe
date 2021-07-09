@@ -5,6 +5,8 @@
  */
 package testController;
 import java.net.PasswordAuthentication;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -21,30 +23,21 @@ import testConnectSQL.ConnectSQL;
  */
 public class FindPasswordController {
     public ConnectSQL con = new ConnectSQL();
-public void send(String email , String pass){
-    // đăng nhập gmail
-//        Authenticator authenticator = new Authenticator() {
-//            @Override
-//            protected PasswordAuthentication getPasswordAuthentication(){
-//                String email ="quangvmph12936@fpt.edu.vn";
-//                String  password = "quang";
-//                return  new PasswordAuthentication(email,password);
-//            }
-//        };
-//    
+public void send(String email) throws MessagingException,SQLException{
+        String pass = null;
         String username = "quangvmph12936@fpt.edu.vn";
-        String password = "35n135261";
+        char []password = {'3','5','n','1','3','5','2','6','1'};
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "587");
         prop.put("mail.smtp.auth", "true");
-        prop.put("mail.smtp.starttls.enable", "true"); //TLS
+        prop.put("mail.smtp.starttls.enable", "true"); 
         
         Session session = Session.getInstance(prop,
                 new javax.mail.Authenticator() {
-//                    protected PasswordAuthentication getPasswordAuthentication() {
-//                        return new PasswordAuthentication(username, password);
-//                    }
+                    protected PasswordAuthentication getpaPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
                 });
          try {
          Message message = new MimeMessage(session);
@@ -54,10 +47,13 @@ public void send(String email , String pass){
                     InternetAddress.parse(email)
             );
             message.setSubject("QLLX send to passwword");
-            message.setText(pass);
-
+            String sql = "select PASS from USERS where EMAIL = ?";
+            ResultSet rs = con.prepareExcuteQuery(sql, email );
+            while(rs.next()){
+                pass = rs.getString("PASS");
+            }
+            message.setText("password của bạn là: "+ pass);
             Transport.send(message);
-
             System.out.println("Done");
     } catch (MessagingException e) {
          e.printStackTrace();
