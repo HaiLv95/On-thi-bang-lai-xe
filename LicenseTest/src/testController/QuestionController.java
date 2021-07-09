@@ -31,7 +31,7 @@ public class QuestionController {
             }
 
         } catch (Exception e) {
-            throw new Exception("Failed get list Question");
+            throw new Exception("Failed 1: get list Question");
         }
         return lstQuesstion;
     }
@@ -44,7 +44,7 @@ public class QuestionController {
             getQuestion.setHinh(rs.getString(3));
             getQuestion.setLoaiCauHoi_id(rs.getInt(4));
         } catch (Exception e) {
-            throw new Exception("get Question failed");
+            throw new Exception("Failed 2: get Question failed ");
         }
         return getQuestion;
     }
@@ -58,7 +58,7 @@ public class QuestionController {
             getAnswer.setGiaiThich(rs.getString(4));
             getAnswer.setCauhoi_id(rs.getInt(5));
         } catch (Exception e) {
-            throw new Exception("failed get answers");
+            throw new Exception("Failed 3: get answers failed ");
         }
         return getAnswer;
     }
@@ -72,7 +72,7 @@ public class QuestionController {
                 lstAnswers.add(getAnswer(rs));
             }
         } catch (Exception e) {
-            throw new Exception("failed get list answer");
+            throw new Exception("Failed 4:  get list answer failed ");
         }
         return lstAnswers;
     }
@@ -107,15 +107,17 @@ public class QuestionController {
         return lstSaHinh;
     }
 
-    public List<CauHoi_DeThi> createCauHoiDethi() {
+    public List<CauHoi_DeThi> createExam() throws Exception {
         List<CauHoi_DeThi> lstCauHoi_DeThi = new ArrayList<>();
         try {
+            String sql = "insert into dethi(trangthai, email, timer, id_loaide) values(?,?,?,?)";
+            int idDeThi = (int) con.insertObj(sql, "do not", Run.user.getUser(), 900, 1);
             List<Question> lstLiet = getCauLiet(getListQuestion());
             List<Question> lstSaHinh = getSaHinh(getListQuestion());
             List<Question> lstKn = getKhaiNiem(getListQuestion());
             CauHoi_DeThi cauHoi_DT = new CauHoi_DeThi();
             cauHoi_DT.setCauTraLoi(0);
-            cauHoi_DT.setDeThi_id(createDethi());
+            cauHoi_DT.setDeThi_id(idDeThi);
             Random r = new Random();
             int a = 0, b = 0, c = 0;
             while (lstCauHoi_DeThi.size() < 25) {
@@ -166,12 +168,13 @@ public class QuestionController {
             }
 
         } catch (Exception ex) {
-            Logger.getLogger(QuestionController.class.getName()).log(Level.SEVERE, null, ex);
+            throw new Exception("Failed 5: create Question_Exam failed");
         }
         return lstCauHoi_DeThi;
     }
-    public Dethi getDeThi(ResultSet rs) throws Exception{
-        
+
+    public Dethi getDeThi(ResultSet rs) throws Exception {
+
         Dethi dethi = new Dethi();
         try {
             dethi.setId(rs.getInt(1));
@@ -180,32 +183,37 @@ public class QuestionController {
             dethi.setTimer(rs.getInt(4));
             dethi.setLoaide_id(rs.getInt(5));
         } catch (Exception e) {
-            throw new Exception("failed get Exam");
+            throw new Exception("Failed 6: get Exam failed");
         }
         return dethi;
     }
-    public List<Dethi> getListDT() throws Exception{
+
+    public List<Dethi> getListDTbyEmail() throws Exception {
         String sql = "select * from dethi where email=?";
         List<Dethi> lstDethi = new ArrayList<>();
         try {
             ResultSet rs = con.prepareExcuteQuery(sql, Run.user.getUser());
-            lstDethi.add(getDeThi(rs));
+            while (rs.next()) {
+                lstDethi.add(getDeThi(rs));
+            }
         } catch (Exception e) {
-            throw new Exception("Failed get list Đề Thi");
+            throw new Exception("Failed 7: get list Exam failed ");
         }
         return lstDethi;
     }
-    public void getCauHoibyIdDT(int id) throws Exception{
+
+    public void getCauHoibyIdDT(int id) throws Exception {
         String sql = "select * from CAUHOI_DETHI where id_dethi=?";
         List<CauHoi_DeThi> lstCauHoi_DeThi = new ArrayList<>();
         try {
             ResultSet rs = con.prepareExcuteQuery(sql, id);
             lstCauHoi_DeThi.add(getcaCauHoi_DeThi(rs));
         } catch (Exception e) {
-            throw new Exception("Failed get list Question_Exam");
+            throw new Exception("Failed 8: get list Question_Exam failed");
         }
     }
-    public CauHoi_DeThi getcaCauHoi_DeThi(ResultSet rs) throws Exception{
+
+    public CauHoi_DeThi getcaCauHoi_DeThi(ResultSet rs) throws Exception {
         CauHoi_DeThi cauHoi = new CauHoi_DeThi();
         try {
             cauHoi.setCauHoi_id(rs.getInt(1));
@@ -213,14 +221,8 @@ public class QuestionController {
             cauHoi.setCauTraLoi(rs.getInt(3));
             cauHoi.setTrangThai(rs.getBoolean(4));
         } catch (Exception e) {
-            throw new Exception("Failed get Question_Exam");
+            throw new Exception("Failed 9:  get Question_Exam ");
         }
         return cauHoi;
-    }
-
-    public int createDethi() throws Exception {
-        String sql = "insert into dethi(trangthai, email, timer, id_loaide) values(?,?,?,?)";
-        int idDeThi = (int) con.insertObj(sql, "do not", "hailvph13040@fpt.edu.vn", 900, 1);
-        return idDeThi;
     }
 }
