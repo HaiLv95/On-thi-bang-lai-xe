@@ -1,11 +1,15 @@
 package testView;
-
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import  testController.FindPasswordController;
+import testConnectSQL.ConnectSQL;
 /**
  *
  * @author hai95
  */
 public class dgFindPassword extends java.awt.Dialog {
-
+static ConnectSQL con = new ConnectSQL();
+FindPasswordController co ;
     /**
      * Creates new form FindPassword
      */
@@ -97,13 +101,41 @@ public class dgFindPassword extends java.awt.Dialog {
     }//GEN-LAST:event_closeDialog
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+       findpass();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void lblTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTextMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_lblTextMouseClicked
-
+public void findpass(){
+    try {
+        check();
+        String mail = txtEmail.getText();
+        co = new FindPasswordController();
+        co.send(mail);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "send to");
+    }
+}
+public void check(){
+    String eay =null;
+    if(txtEmail.getText().isEmpty()){
+        JOptionPane.showMessageDialog(this, " vui lòng nhập email trước");
+        txtEmail.requestFocus();
+        return;
+    }
+    try {
+        String sql = "select EMAIL from USERS";
+        ResultSet rs =con.createStatement(sql);
+        while(rs.next()){
+         eay = rs.getString("EMAIL");
+        }
+        if(txtEmail.getText().contains(eay)){
+            JOptionPane.showMessageDialog(this ,"email của bạn không tồn tại");
+        }
+    } catch (Exception e) {
+    }
+}
     /**
      * @param args the command line arguments
      */
