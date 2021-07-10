@@ -1,6 +1,7 @@
 package testView;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -131,7 +132,7 @@ public class dgMenuDT extends java.awt.Dialog {
                 btnDeThi[i] = new JButton();
                 btnDeThi[i].setName(i + "");
                 btnDeThi[i].setText("Đề thi " + (i + 1));
-                btnDeThi[i].setSize(90, 90);
+                btnDeThi[i].setPreferredSize(new Dimension(110, 90));
                 btnDeThi[i].setFont(new java.awt.Font("Tahoma", 0, 16));
                 if (lstDeThi.get(i).getTrangThai().equalsIgnoreCase("donot")) {
                     btnDeThi[i].setBackground(Color.GREEN);

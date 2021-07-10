@@ -1,7 +1,10 @@
 package testView;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -9,6 +12,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -32,6 +36,7 @@ public class dgExam extends java.awt.Dialog {
     List<CauHoi_DeThi> lstcCauHoi_DeThi = new ArrayList<>();
     List<Question> lsQuestions = new ArrayList<>();
     List<Answer> lstAnswers = new ArrayList<>();
+    int index;
 
     public dgExam(java.awt.Frame parent, boolean modal, Dethi dethi) {
         super(parent, modal);
@@ -39,8 +44,14 @@ public class dgExam extends java.awt.Dialog {
         setSize(1200, 800);
         setLocationRelativeTo(null);
         this.dethi = dethi;
-        timeExam();
-        setQuesstion_Exam(dethi.getId());
+        try {
+            lstcCauHoi_DeThi = questionController.getCauHoiDTbyDeThiID(dethi.getId());
+            lsQuestions = questionController.getListQuestion();
+            timeExam();
+            setQuesstion_Exam();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Failed dgExam 1: get list question exam or get list question");
+        }
 
     }
 
@@ -79,6 +90,9 @@ public class dgExam extends java.awt.Dialog {
 
         setTitle("Question");
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closeDialog(evt);
             }
@@ -110,7 +124,6 @@ public class dgExam extends java.awt.Dialog {
         jPanel2.add(lblHinh);
         lblHinh.setBounds(530, 200, 450, 250);
 
-        txpA.setBackground(new java.awt.Color(255, 255, 255));
         txpA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txpA.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txpA.setEnabled(false);
@@ -120,11 +133,14 @@ public class dgExam extends java.awt.Dialog {
         jScrollPane4.setBounds(50, 200, 460, 50);
 
         rdoA.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(rdoA);
+        rdoA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoAActionPerformed(evt);
+            }
+        });
         jPanel2.add(rdoA);
         rdoA.setBounds(20, 210, 20, 21);
 
-        txpB.setBackground(new java.awt.Color(255, 255, 255));
         txpB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txpB.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txpB.setEnabled(false);
@@ -134,11 +150,14 @@ public class dgExam extends java.awt.Dialog {
         jScrollPane5.setBounds(50, 270, 460, 50);
 
         rdoB.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(rdoB);
+        rdoB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoBActionPerformed1(evt);
+            }
+        });
         jPanel2.add(rdoB);
         rdoB.setBounds(20, 280, 20, 21);
 
-        txpCauHoi.setBackground(new java.awt.Color(255, 255, 255));
         txpCauHoi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txpCauHoi.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txpCauHoi.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -148,7 +167,6 @@ public class dgExam extends java.awt.Dialog {
         jPanel2.add(jScrollPane3);
         jScrollPane3.setBounds(10, 60, 970, 100);
 
-        txpC.setBackground(new java.awt.Color(255, 255, 255));
         txpC.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txpC.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txpC.setEnabled(false);
@@ -158,7 +176,11 @@ public class dgExam extends java.awt.Dialog {
         jScrollPane2.setBounds(50, 340, 460, 50);
 
         rdoC.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(rdoC);
+        rdoC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoCActionPerformed(evt);
+            }
+        });
         jPanel2.add(rdoC);
         rdoC.setBounds(20, 350, 20, 21);
 
@@ -225,8 +247,7 @@ public class dgExam extends java.awt.Dialog {
      * Closes the dialog
      */
     private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
-        setVisible(false);
-        dispose();
+        setVisible(true);
     }//GEN-LAST:event_closeDialog
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
@@ -235,10 +256,54 @@ public class dgExam extends java.awt.Dialog {
 
     private void btnEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnEndActionPerformed
+
+    private void rdoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoCActionPerformed
+        rdoA.setSelected(false);
+        rdoB.setSelected(false);
+        if (rdoA.isSelected()) {
+            lstcCauHoi_DeThi.get(index).setCauTraLoi(lstAnswers.get(2).getId());
+            lstcCauHoi_DeThi.get(index).setTrangThai(lstAnswers.get(2).isTrangThai());
+        } else {
+            lstcCauHoi_DeThi.get(index).setCauTraLoi(-1);
+            lstcCauHoi_DeThi.get(index).setTrangThai(false);
+        }
+    }//GEN-LAST:event_rdoCActionPerformed
+
+    private void rdoBActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoBActionPerformed1
+        // TODO add your handling code here:
+        rdoA.setSelected(false);
+        rdoC.setSelected(false);
+        if (rdoA.isSelected()) {
+            lstcCauHoi_DeThi.get(index).setCauTraLoi(lstAnswers.get(1).getId());
+            lstcCauHoi_DeThi.get(index).setTrangThai(lstAnswers.get(1).isTrangThai());
+        } else {
+            lstcCauHoi_DeThi.get(index).setCauTraLoi(-1);
+            lstcCauHoi_DeThi.get(index).setTrangThai(false);
+        }
+    }//GEN-LAST:event_rdoBActionPerformed1
+
+    private void rdoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoAActionPerformed
+        // TODO add your handling code here:
+        rdoC.setSelected(false);
+        rdoB.setSelected(false);
+        if (rdoA.isSelected()) {
+            lstcCauHoi_DeThi.get(index).setCauTraLoi(lstAnswers.get(0).getId());
+            lstcCauHoi_DeThi.get(index).setTrangThai(lstAnswers.get(0).isTrangThai());
+        } else {
+            lstcCauHoi_DeThi.get(index).setCauTraLoi(-1);
+            lstcCauHoi_DeThi.get(index).setTrangThai(false);
+        }
+    }//GEN-LAST:event_rdoAActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
     public void timeExam() {
         Thread timeEx = new Thread() {
-            int time = 10;
+            int time = dethi.getTimer();
 
             @Override
             public void run() {
@@ -246,7 +311,7 @@ public class dgExam extends java.awt.Dialog {
                     time--;
                     int ss = time % 60;
                     int m = time / 60;
-                    lblTimer.setText(m + " : " + ss);
+                    lblTimer.setText(m + ":" + ss);
                     if (time == 0) {
                         break;
                     }
@@ -262,28 +327,32 @@ public class dgExam extends java.awt.Dialog {
         timeEx.start();
     }
 
-    public void setQuesstion_Exam(int Exam_ID) {
+    public void setQuesstion_Exam() {
         try {
-            lstcCauHoi_DeThi = questionController.getCauHoiDTbyDeThiID(Exam_ID);
-            lsQuestions = questionController.getListQuestion();
+
             JButton[] btnQuesstion = new JButton[lstcCauHoi_DeThi.size()];
             for (int i = 0; i < lstcCauHoi_DeThi.size(); i++) {
                 btnQuesstion[i] = new JButton();
                 btnQuesstion[i].setName(i + "");
                 btnQuesstion[i].setText((i + 1) + "");
-                btnQuesstion[i].setSize(30, 25);
                 btnQuesstion[i].setFont(new java.awt.Font("Tahoma", 0, 14));
-                if (lstcCauHoi_DeThi.get(i).getCauTraLoi() != 0) {
-                    btnQuesstion[i].setBackground(Color.GREEN);
-                }
+                btnQuesstion[i].setBackground(Color.white);
+
                 btnQuesstion[i].addMouseListener(new MouseAdapter() {
                     @Override
                     public void mousePressed(MouseEvent e) {
+
                         try {
-                            int index = Integer.parseInt(e.getComponent().getName());
+                            pnlMenuCauHoi.updateUI();
+                            rdoA.setSelected(false);
+                            rdoB.setSelected(false);
+                            rdoC.setSelected(false);
+                            index = Integer.parseInt(e.getComponent().getName());
                             Question question = new Question();
+
                             for (Question lsQuestion : lsQuestions) {
                                 if (lstcCauHoi_DeThi.get(index).getCauHoi_id() == lsQuestion.getId()) {
+
                                     txpCauHoi.setText("Câu " + (index + 1) + ": " + lsQuestion.getNoiDung());
                                     if (lsQuestion.getHinh().length() > 0) {
                                         lblHinh.setVisible(true);
@@ -306,19 +375,9 @@ public class dgExam extends java.awt.Dialog {
                                         jScrollPane2.setVisible(true);
                                         txpC.setText(lstAnswers.get(2).getNoiDung());
                                     }
-                                    if (rdoA.isSelected()) {
-                                        JOptionPane.showMessageDialog(null, "A");     
-                                       
-                                    } else if (rdoB.isSelected()) {
-                                        JOptionPane.showMessageDialog(null, "B");
-                                       
-                                    } else if (rdoC.isSelected()) {
-                                        JOptionPane.showMessageDialog(null, "C");
-                                        
-                                    }
-                                    
                                 }
                             }
+
                         } catch (Exception ex) {
                             JOptionPane.showMessageDialog(null, "Failed get Answers by QuestionID" + ex);
                         }
@@ -329,7 +388,7 @@ public class dgExam extends java.awt.Dialog {
                 pnlMenuCauHoi.updateUI();
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Failed get list question exam");
+            JOptionPane.showMessageDialog(this, "Failed get list question exam" + ex);
         }
     }
 
@@ -337,6 +396,7 @@ public class dgExam extends java.awt.Dialog {
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/Images/" + nameIcon + ".png"));
         lblHinh.setIcon(imageIcon);
     }
+
     /**
      * @param args the command line arguments
      */
