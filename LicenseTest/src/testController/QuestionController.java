@@ -135,7 +135,7 @@ public class QuestionController {
                         lst.add(x);
                         CauHoi_DeThi cauHoi_DT = new CauHoi_DeThi();
                         cauHoi_DT.setCauHoi_id(lstLiet.get(x).getId());
-                        cauHoi_DT.setCauTraLoi(0);
+                        cauHoi_DT.setCauTraLoi(-1);
                         cauHoi_DT.setDeThi_id(idDeThi);
                         cauHoi_DT.setTrangThai(false);
                         lstCauHoi_DeThi.add(cauHoi_DT);
@@ -154,7 +154,7 @@ public class QuestionController {
                         lst.add(x);
                         CauHoi_DeThi cauHoi_DT = new CauHoi_DeThi();
                         cauHoi_DT.setCauHoi_id(lstKn.get(x).getId());
-                        cauHoi_DT.setCauTraLoi(0);
+                        cauHoi_DT.setCauTraLoi(-1);
                         cauHoi_DT.setDeThi_id(idDeThi);
                         cauHoi_DT.setTrangThai(false);
                         lstCauHoi_DeThi.add(cauHoi_DT);
@@ -173,7 +173,7 @@ public class QuestionController {
                         lst.add(x);
                         CauHoi_DeThi cauHoi_DT = new CauHoi_DeThi();
                         cauHoi_DT.setCauHoi_id(lstSaHinh.get(x).getId());
-                        cauHoi_DT.setCauTraLoi(0);
+                        cauHoi_DT.setCauTraLoi(-1);
                         cauHoi_DT.setDeThi_id(idDeThi);
                         cauHoi_DT.setTrangThai(false);
                         lstCauHoi_DeThi.add(cauHoi_DT);
