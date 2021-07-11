@@ -8,7 +8,6 @@ public class Answer {
     private int id, cauhoi_id;
     private String noiDung, giaiThich;
     private boolean trangThai;
-
     public int getId() {
         return id;
     }
