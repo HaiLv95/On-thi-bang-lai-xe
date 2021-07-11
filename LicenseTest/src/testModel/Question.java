@@ -8,10 +8,6 @@ public class Question {
     private int id, loaiCauHoi_id;
     private String noiDung, hinh;
 
-    public Question(String noiDung) {
-        this.noiDung = noiDung;
-    }
-    
     public int getId() {
         return id;
     }

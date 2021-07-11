@@ -85,9 +85,20 @@ public class QuestionController {
                 lstLiet.add(lstQ);
             }
         }
+        
         return lstLiet;
     }
-
+    
+    public List<Answer> getAnswerCauLiet(int id_cauHoi,List<Answer> listAnswers) {
+        List<Answer> lstA = new ArrayList<>();    
+        for(Answer lst : listAnswers){
+            if(lst.getCauhoi_id() == id_cauHoi){
+                lstA.add(lst);
+            }
+        }
+        
+        return lstA;
+    }
     public List<Question> getKhaiNiem(List<Question> listQuestions) {
         List<Question> lstKn = new ArrayList<>();
         for (Question lstQ : listQuestions) {
