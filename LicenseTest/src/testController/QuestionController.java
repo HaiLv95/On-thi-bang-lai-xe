@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import testModel.Question;
 import testModel.Answer;
 import testModel.CauHoi_DeThi;
@@ -63,11 +64,11 @@ public class QuestionController {
         return getAnswer;
     }
 
-    public List<Answer> getListAnswers() throws Exception {
+    public List<Answer> getListAnswersbyQuestionID(int questionID) throws Exception {
         List<Answer> lstAnswers = new ArrayList<>();
         try {
-            String sql = "select * from dapan";
-            ResultSet rs = con.createStatement(sql);
+            String sql = "select * from dapan where  id_cauhoi=?";
+            ResultSet rs = con.prepareExcuteQuery(sql, questionID);
             while (rs.next()) {
                 lstAnswers.add(getAnswer(rs));
             }
@@ -100,30 +101,30 @@ public class QuestionController {
     public List<Question> getSaHinh(List<Question> listQuestions) {
         List<Question> lstSaHinh = new ArrayList<>();
         for (Question lstQ : listQuestions) {
-            if (lstQ.getLoaiCauHoi_id() == 3) {
+            if (lstQ.getLoaiCauHoi_id() == 2) {
                 lstSaHinh.add(lstQ);
             }
         }
         return lstSaHinh;
     }
 
-    public List<CauHoi_DeThi> createExam() throws Exception {
+    public void createExam() throws Exception {
         List<CauHoi_DeThi> lstCauHoi_DeThi = new ArrayList<>();
         try {
             String sql = "insert into dethi(trangthai, email, timer, id_loaide) values(?,?,?,?)";
-            int idDeThi = (int) con.insertObj(sql, "do not", Run.user.getUser(), 900, 1);
+            int idDeThi = con.insertObj(sql, "donot", Run.user.getUser(), 900, 1);
+            String sqlInsertQuestion = "insert into CAUHOI_DETHI(id_cauhoi, id_dethi, id_cautraloi,  trangthai) values(?,?,?,?)";
+            int row = 0;
             List<Question> lstLiet = getCauLiet(getListQuestion());
             List<Question> lstSaHinh = getSaHinh(getListQuestion());
             List<Question> lstKn = getKhaiNiem(getListQuestion());
-            CauHoi_DeThi cauHoi_DT = new CauHoi_DeThi();
-            cauHoi_DT.setCauTraLoi(0);
-            cauHoi_DT.setDeThi_id(idDeThi);
             Random r = new Random();
             int a = 0, b = 0, c = 0;
+            List<Integer> lst = new ArrayList<>();
             while (lstCauHoi_DeThi.size() < 25) {
+
                 while (a < 2) {
                     boolean kq = true;
-                    List<Integer> lst = new ArrayList<>();
                     int x = r.nextInt(lstLiet.size());
                     for (Integer integer : lst) {
                         if (x == integer) {
@@ -131,14 +132,18 @@ public class QuestionController {
                         }
                     }
                     if (kq) {
+                        lst.add(x);
+                        CauHoi_DeThi cauHoi_DT = new CauHoi_DeThi();
                         cauHoi_DT.setCauHoi_id(lstLiet.get(x).getId());
+                        cauHoi_DT.setCauTraLoi(-1);
+                        cauHoi_DT.setDeThi_id(idDeThi);
+                        cauHoi_DT.setTrangThai(false);
                         lstCauHoi_DeThi.add(cauHoi_DT);
+                        a++;
                     }
-                    a++;
                 }
                 while (b < 12) {
                     boolean kq = true;
-                    List<Integer> lst = new ArrayList<>();
                     int x = r.nextInt(lstKn.size());
                     for (Integer integer : lst) {
                         if (x == integer) {
@@ -146,14 +151,18 @@ public class QuestionController {
                         }
                     }
                     if (kq) {
+                        lst.add(x);
+                        CauHoi_DeThi cauHoi_DT = new CauHoi_DeThi();
                         cauHoi_DT.setCauHoi_id(lstKn.get(x).getId());
+                        cauHoi_DT.setCauTraLoi(-1);
+                        cauHoi_DT.setDeThi_id(idDeThi);
+                        cauHoi_DT.setTrangThai(false);
                         lstCauHoi_DeThi.add(cauHoi_DT);
+                        b++;
                     }
-                    b++;
                 }
                 while (c < 11) {
                     boolean kq = true;
-                    List<Integer> lst = new ArrayList<>();
                     int x = r.nextInt(lstSaHinh.size());
                     for (Integer integer : lst) {
                         if (x == integer) {
@@ -161,16 +170,24 @@ public class QuestionController {
                         }
                     }
                     if (kq) {
+                        lst.add(x);
+                        CauHoi_DeThi cauHoi_DT = new CauHoi_DeThi();
                         cauHoi_DT.setCauHoi_id(lstSaHinh.get(x).getId());
+                        cauHoi_DT.setCauTraLoi(-1);
+                        cauHoi_DT.setDeThi_id(idDeThi);
+                        cauHoi_DT.setTrangThai(false);
                         lstCauHoi_DeThi.add(cauHoi_DT);
+                        c++;
                     }
                 }
-            }
 
+            }
+            for (CauHoi_DeThi cauHoi_DeThi : lstCauHoi_DeThi) {
+                row += con.prepareUpdate(sqlInsertQuestion, cauHoi_DeThi.getCauHoi_id(), cauHoi_DeThi.getDeThi_id(), cauHoi_DeThi.getCauTraLoi(), cauHoi_DeThi.isTrangThai());
+            }
         } catch (Exception ex) {
-            throw new Exception("Failed 5: create Question_Exam failed");
+            throw new Exception("Failed 5: create Question_Exam failed" + ex);
         }
-        return lstCauHoi_DeThi;
     }
 
     public Dethi getDeThi(ResultSet rs) throws Exception {
@@ -189,7 +206,7 @@ public class QuestionController {
     }
 
     public List<Dethi> getListDTbyEmail() throws Exception {
-        String sql = "select * from dethi where email=?";
+        String sql = "select * from dethi where email=? and id_loaide=1";
         List<Dethi> lstDethi = new ArrayList<>();
         try {
             ResultSet rs = con.prepareExcuteQuery(sql, Run.user.getUser());
@@ -207,13 +224,13 @@ public class QuestionController {
         List<CauHoi_DeThi> lstCauHoi_DeThi = new ArrayList<>();
         try {
             ResultSet rs = con.prepareExcuteQuery(sql, id);
-            lstCauHoi_DeThi.add(getcaCauHoi_DeThi(rs));
+            lstCauHoi_DeThi.add(getCauHoi_DeThi(rs));
         } catch (Exception e) {
             throw new Exception("Failed 8: get list Question_Exam failed");
         }
     }
 
-    public CauHoi_DeThi getcaCauHoi_DeThi(ResultSet rs) throws Exception {
+    public CauHoi_DeThi getCauHoi_DeThi(ResultSet rs) throws Exception {
         CauHoi_DeThi cauHoi = new CauHoi_DeThi();
         try {
             cauHoi.setCauHoi_id(rs.getInt(1));
@@ -224,5 +241,18 @@ public class QuestionController {
             throw new Exception("Failed 9:  get Question_Exam ");
         }
         return cauHoi;
+    }
+    public List<CauHoi_DeThi> getCauHoiDTbyDeThiID(int deThi_ID) throws Exception{
+        String sqlCauHoi_DeThi = "select * from CAUHOI_DETHI where id_dethi=?";
+        List<CauHoi_DeThi> lstCauHoi_DeThi = new ArrayList<>();
+        try {
+            ResultSet rs = con.prepareExcuteQuery(sqlCauHoi_DeThi, deThi_ID);
+            while (rs.next()) {                
+                lstCauHoi_DeThi.add(getCauHoi_DeThi(rs));
+            }
+        } catch (Exception e) {
+            throw new Exception("Failed get list Question exam by Exam_id");
+        }
+        return lstCauHoi_DeThi;
     }
 }

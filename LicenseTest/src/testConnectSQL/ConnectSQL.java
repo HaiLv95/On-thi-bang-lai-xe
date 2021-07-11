@@ -52,9 +52,10 @@ public class ConnectSQL {
         }
         return con;
     }
-    public static Object insertObj(String sql, Object...args) throws Exception{
+    public static int insertObj(String sql, Object...args) throws Exception{
         Connection con = null;
         PreparedStatement pst = null;
+        int generatedID = -1;
         try {
             con = Connect();
             pst = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -67,14 +68,13 @@ public class ConnectSQL {
             }
             try (ResultSet rs = pst.getGeneratedKeys()){
                 while (rs.next()) {                    
-                    Object generatedKey = rs.getObject(1);
-                    return generatedKey;
+                     generatedID = rs.getInt(1);
                 }
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Failed insert: " + e);
         }
-        return null;
+        return generatedID;
     }
 
     public static int prepareUpdate(String sql, Object... args) {
