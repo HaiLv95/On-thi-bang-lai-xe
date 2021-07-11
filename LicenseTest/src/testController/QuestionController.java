@@ -64,11 +64,24 @@ public class QuestionController {
         return getAnswer;
     }
 
-    public List<Answer> getListAnswersbyQuestionID(int questionID) throws Exception {
+    public List<Answer> getListAnswers() throws Exception {
         List<Answer> lstAnswers = new ArrayList<>();
         try {
-            String sql = "select * from dapan where  id_cauhoi=?";
-            ResultSet rs = con.prepareExcuteQuery(sql, questionID);
+            String sql = "select * from dapan";
+            ResultSet rs = con.prepareExcuteQuery(sql);
+            while (rs.next()) {
+                lstAnswers.add(getAnswer(rs));
+            }
+        } catch (Exception e) {
+            throw new Exception("Failed 4:  get list answer failed ");
+        }
+        return lstAnswers;
+    }
+    public List<Answer> getListAnswersbyQuesstionID(int id) throws Exception {
+        List<Answer> lstAnswers = new ArrayList<>();
+        try {
+            String sql = "select * from dapan where id_cauhoi=?";
+            ResultSet rs = con.prepareExcuteQuery(sql,id);
             while (rs.next()) {
                 lstAnswers.add(getAnswer(rs));
             }
@@ -254,5 +267,25 @@ public class QuestionController {
             throw new Exception("Failed get list Question exam by Exam_id");
         }
         return lstCauHoi_DeThi;
+    }
+    public int updateExambyID(Dethi dethi) throws Exception{
+        String sql = "update dethi set trangthai=?, email=?, timer=?, id_loaide=? where id_dethi=?";
+        int row = 0;
+        try {
+           row  = con.prepareUpdate(sql, dethi.getTrangThai(), Run.user.getUser(), dethi.getTimer(), dethi.getLoaide_id(),dethi.getId());
+        } catch (Exception e) {
+            throw new Exception("Failed update Exam");
+        }
+        return row; 
+    }
+    public int updateQuestionExam(CauHoi_DeThi questionExam) throws Exception{
+        String sql = "update CAUHOI_DETHI set id_cautraloi=?, trangthai=? where id_cauhoi=? and id_dethi=?";
+        int row = 0;
+        try {
+           row = con.prepareUpdate(sql, questionExam.getCauTraLoi(), questionExam.isTrangThai(), questionExam.getCauHoi_id(), questionExam.getDeThi_id());
+        } catch (Exception e) {
+            throw new Exception("Failed update Question Exam");
+        }
+        return row;
     }
 }
