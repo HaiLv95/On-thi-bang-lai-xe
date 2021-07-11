@@ -36,7 +36,9 @@ public class dgExam extends java.awt.Dialog {
     List<CauHoi_DeThi> lstcCauHoi_DeThi = new ArrayList<>();
     List<Question> lsQuestions = new ArrayList<>();
     List<Answer> lstAnswers = new ArrayList<>();
+    List<Answer> lsAnswersQuestion = new ArrayList<>();
     int index;
+    public Thread timeEx;
 
     public dgExam(java.awt.Frame parent, boolean modal, Dethi dethi) {
         super(parent, modal);
@@ -47,13 +49,16 @@ public class dgExam extends java.awt.Dialog {
         try {
             lstcCauHoi_DeThi = questionController.getCauHoiDTbyDeThiID(dethi.getId());
             lsQuestions = questionController.getListQuestion();
+            lstAnswers = questionController.getListAnswers();
             timeExam();
+            timeEx.start();
             setQuesstion_Exam();
+            loadQuestionbyIndex(0);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Failed dgExam 1: get list question exam or get list question");
+            JOptionPane.showMessageDialog(this, "Failed dgExam 1: get list question exam or get list question" + ex);
         }
-
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,7 +88,6 @@ public class dgExam extends java.awt.Dialog {
         rdoC = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         btnEnd = new javax.swing.JButton();
-        btnMenu = new javax.swing.JButton();
         lblTimer = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         pnlMenuCauHoi = new javax.swing.JPanel();
@@ -204,20 +208,6 @@ public class dgExam extends java.awt.Dialog {
         jPanel4.add(btnEnd);
         btnEnd.setBounds(1070, 10, 100, 30);
 
-        btnMenu.setBackground(new java.awt.Color(255, 255, 255));
-        btnMenu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnMenu.setForeground(new java.awt.Color(78, 180, 84));
-        btnMenu.setText("Menu");
-        btnMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(78, 227, 145)));
-        btnMenu.setBorderPainted(false);
-        btnMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMenuActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnMenu);
-        btnMenu.setBounds(20, 10, 80, 30);
-
         jPanel1.add(jPanel4);
         jPanel4.setBounds(0, 60, 1200, 50);
 
@@ -250,12 +240,9 @@ public class dgExam extends java.awt.Dialog {
         setVisible(true);
     }//GEN-LAST:event_closeDialog
 
-    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMenuActionPerformed
-
     private void btnEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndActionPerformed
         // TODO add your handling code here:
+        resultExam();
         setVisible(false);
         dispose();
     }//GEN-LAST:event_btnEndActionPerformed
@@ -263,9 +250,10 @@ public class dgExam extends java.awt.Dialog {
     private void rdoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoCActionPerformed
         rdoA.setSelected(false);
         rdoB.setSelected(false);
-        if (rdoA.isSelected()) {
-            lstcCauHoi_DeThi.get(index).setCauTraLoi(lstAnswers.get(2).getId());
-            lstcCauHoi_DeThi.get(index).setTrangThai(lstAnswers.get(2).isTrangThai());
+        rdoC.setSelected(true);
+        if (rdoC.isSelected()) {
+            lstcCauHoi_DeThi.get(index).setCauTraLoi(lsAnswersQuestion.get(2).getId());
+            lstcCauHoi_DeThi.get(index).setTrangThai(lsAnswersQuestion.get(2).isTrangThai());
         } else {
             lstcCauHoi_DeThi.get(index).setCauTraLoi(-1);
             lstcCauHoi_DeThi.get(index).setTrangThai(false);
@@ -276,9 +264,10 @@ public class dgExam extends java.awt.Dialog {
         // TODO add your handling code here:
         rdoA.setSelected(false);
         rdoC.setSelected(false);
-        if (rdoA.isSelected()) {
-            lstcCauHoi_DeThi.get(index).setCauTraLoi(lstAnswers.get(1).getId());
-            lstcCauHoi_DeThi.get(index).setTrangThai(lstAnswers.get(1).isTrangThai());
+        rdoB.setSelected(true);
+        if (rdoB.isSelected()) {
+            lstcCauHoi_DeThi.get(index).setCauTraLoi(lsAnswersQuestion.get(1).getId());
+            lstcCauHoi_DeThi.get(index).setTrangThai(lsAnswersQuestion.get(1).isTrangThai());
         } else {
             lstcCauHoi_DeThi.get(index).setCauTraLoi(-1);
             lstcCauHoi_DeThi.get(index).setTrangThai(false);
@@ -289,9 +278,10 @@ public class dgExam extends java.awt.Dialog {
         // TODO add your handling code here:
         rdoC.setSelected(false);
         rdoB.setSelected(false);
+        rdoA.setSelected(true);
         if (rdoA.isSelected()) {
-            lstcCauHoi_DeThi.get(index).setCauTraLoi(lstAnswers.get(0).getId());
-            lstcCauHoi_DeThi.get(index).setTrangThai(lstAnswers.get(0).isTrangThai());
+            lstcCauHoi_DeThi.get(index).setCauTraLoi(lsAnswersQuestion.get(0).getId());
+            lstcCauHoi_DeThi.get(index).setTrangThai(lsAnswersQuestion.get(0).isTrangThai());
         } else {
             lstcCauHoi_DeThi.get(index).setCauTraLoi(-1);
             lstcCauHoi_DeThi.get(index).setTrangThai(false);
@@ -302,7 +292,7 @@ public class dgExam extends java.awt.Dialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosed
     public void timeExam() {
-        Thread timeEx = new Thread() {
+        timeEx = new Thread() {
             int time = dethi.getTimer();
 
             @Override
@@ -321,66 +311,32 @@ public class dgExam extends java.awt.Dialog {
                         e.printStackTrace();
                     }
                 }
-
             }
         };
-        timeEx.start();
+
     }
 
     public void setQuesstion_Exam() {
         try {
-
+            pnlMenuCauHoi.removeAll();
             JButton[] btnQuesstion = new JButton[lstcCauHoi_DeThi.size()];
             for (int i = 0; i < lstcCauHoi_DeThi.size(); i++) {
                 btnQuesstion[i] = new JButton();
                 btnQuesstion[i].setName(i + "");
                 btnQuesstion[i].setText((i + 1) + "");
                 btnQuesstion[i].setFont(new java.awt.Font("Tahoma", 0, 14));
-                btnQuesstion[i].setBackground(Color.white);
 
+                if (lstcCauHoi_DeThi.get(i).getCauTraLoi() > -1) {
+                    btnQuesstion[i].setBackground(Color.GREEN);
+                } else {
+                    btnQuesstion[i].setBackground(Color.white);
+                }
                 btnQuesstion[i].addMouseListener(new MouseAdapter() {
                     @Override
                     public void mousePressed(MouseEvent e) {
-
-                        try {
-                            pnlMenuCauHoi.updateUI();
-                            rdoA.setSelected(false);
-                            rdoB.setSelected(false);
-                            rdoC.setSelected(false);
-                            index = Integer.parseInt(e.getComponent().getName());
-                            Question question = new Question();
-
-                            for (Question lsQuestion : lsQuestions) {
-                                if (lstcCauHoi_DeThi.get(index).getCauHoi_id() == lsQuestion.getId()) {
-
-                                    txpCauHoi.setText("Câu " + (index + 1) + ": " + lsQuestion.getNoiDung());
-                                    if (lsQuestion.getHinh().length() > 0) {
-                                        lblHinh.setVisible(true);
-                                        setIcon(lsQuestion.getHinh());
-                                    } else {
-                                        lblHinh.setVisible(false);
-                                    }
-                                    lstAnswers = questionController.getListAnswersbyQuestionID(lsQuestion.getId());
-                                    if (lstAnswers.size() == 2) {
-                                        txpA.setText(lstAnswers.get(0).getNoiDung());
-                                        txpB.setText(lstAnswers.get(1).getNoiDung());
-                                        rdoC.setVisible(false);
-                                        txpC.setVisible(false);
-                                        jScrollPane2.setVisible(false);
-                                    } else {
-                                        txpA.setText(lstAnswers.get(0).getNoiDung());
-                                        txpB.setText(lstAnswers.get(1).getNoiDung());
-                                        rdoC.setVisible(true);
-                                        txpC.setVisible(true);
-                                        jScrollPane2.setVisible(true);
-                                        txpC.setText(lstAnswers.get(2).getNoiDung());
-                                    }
-                                }
-                            }
-
-                        } catch (Exception ex) {
-                            JOptionPane.showMessageDialog(null, "Failed get Answers by QuestionID" + ex);
-                        }
+                        index = Integer.parseInt(e.getComponent().getName());
+                        loadQuestionbyIndex(index);
+                        setQuesstion_Exam();
                     }
 
                 });
@@ -397,6 +353,91 @@ public class dgExam extends java.awt.Dialog {
         lblHinh.setIcon(imageIcon);
     }
 
+    public void loadQuestionbyIndex(int index) {
+        try {
+            rdoA.setSelected(false);
+            rdoB.setSelected(false);
+            rdoC.setSelected(false);
+            for (Question lsQuestion : lsQuestions) {
+                if (lstcCauHoi_DeThi.get(index).getCauHoi_id() == lsQuestion.getId()) {
+
+                    txpCauHoi.setText("Câu " + (index + 1) + ": " + lsQuestion.getNoiDung());
+                    if (lsQuestion.getHinh().length() > 0) {
+                        lblHinh.setVisible(true);
+                        setIcon(lsQuestion.getHinh());
+                    } else {
+                        lblHinh.setVisible(false);
+                    }
+                    lsAnswersQuestion = questionController.getListAnswersbyQuesstionID(lstcCauHoi_DeThi.get(index).getCauHoi_id());
+                    if (lsAnswersQuestion.size() == 2) {
+                        txpA.setText(lsAnswersQuestion.get(0).getNoiDung());
+                        txpB.setText(lsAnswersQuestion.get(1).getNoiDung());
+                        if (lstcCauHoi_DeThi.get(index).getCauTraLoi() == lsAnswersQuestion.get(0).getId()) {
+                            rdoA.setSelected(true);
+                            rdoB.setSelected(false);
+                        } else if (lstcCauHoi_DeThi.get(index).getCauTraLoi() == lsAnswersQuestion.get(1).getId()) {
+                            rdoB.setSelected(true);
+                            rdoA.setSelected(false);
+                        }
+                        rdoC.setVisible(false);
+                        txpC.setVisible(false);
+                        jScrollPane2.setVisible(false);
+                    } else if(lsAnswersQuestion.size() == 3){
+                        rdoC.setVisible(true);
+                        txpC.setVisible(true);
+                        jScrollPane2.setVisible(true);
+                        txpA.setText(lsAnswersQuestion.get(0).getNoiDung());
+                        txpB.setText(lsAnswersQuestion.get(1).getNoiDung());
+                        txpC.setText(lsAnswersQuestion.get(2).getNoiDung());
+                        if (lstcCauHoi_DeThi.get(index).getCauTraLoi() == lsAnswersQuestion.get(0).getId()) {
+                            rdoA.setSelected(true);
+                            rdoB.setSelected(false);
+                            rdoC.setSelected(false);
+                        } else if (lstcCauHoi_DeThi.get(index).getCauTraLoi() == lsAnswersQuestion.get(1).getId()) {
+                            rdoB.setSelected(true);
+                            rdoA.setSelected(false);
+                            rdoC.setSelected(false);
+                        } else if (lstcCauHoi_DeThi.get(index).getCauTraLoi() == lsAnswersQuestion.get(2).getId()) {
+                            rdoC.setSelected(true);
+                            rdoA.setSelected(false);
+                            rdoB.setSelected(false);
+                        }
+                    }
+                }
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Failed get Answers by QuestionID" + ex);
+        }
+    }
+
+    public void resultExam() {
+        timeEx.stop();
+        String[] resultTime = lblTimer.getText().split(":");
+        int timeLeft = Integer.parseInt(resultTime[0]) * 60 + Integer.parseInt(resultTime[1]);
+        int resultAnsswer = 0;
+        boolean result= true;
+        List<Question> lst_CauLiet = questionController.getCauLiet(lsQuestions);
+        for (CauHoi_DeThi cauHoi_DeThi : lstcCauHoi_DeThi) {
+            for (Question cauLiet : lst_CauLiet) {
+                if (cauHoi_DeThi.getCauHoi_id() == cauLiet.getId()) {
+                    if (!cauHoi_DeThi.isTrangThai()) {
+                        result = false;
+                        break;
+                    }
+                    resultAnsswer ++;
+                }
+            }
+            if (cauHoi_DeThi.isTrangThai()) {
+                resultAnsswer ++;
+            }
+        }
+        if (result && resultAnsswer >= 15) {
+            JOptionPane.showMessageDialog(this, "Pass : " + resultAnsswer + "/25");
+            
+        }
+
+    }
     /**
      * @param args the command line arguments
      */
@@ -404,7 +445,6 @@ public class dgExam extends java.awt.Dialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnd;
-    private javax.swing.JButton btnMenu;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
