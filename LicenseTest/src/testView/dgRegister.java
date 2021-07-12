@@ -1,11 +1,17 @@
 package testView;
 
+import com.sun.mail.util.MailConnectException;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import  testConnectSQL.ConnectSQL;
+import testController.AddController;
 /**
  *
  * @author cuongd_kun
  */
 public class dgRegister extends java.awt.Dialog {
-
+public ConnectSQL con  = new ConnectSQL();
+public AddController us = new AddController();
     /**
      * Creates new form Register
      */
@@ -162,7 +168,47 @@ public class dgRegister extends java.awt.Dialog {
     private void btnRegister1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegister1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegister1ActionPerformed
-
+public void check(){
+    if(txtEmail1.getText().isEmpty()){
+        JOptionPane.showMessageDialog(this, "vui lòng nhập EMAIL");
+        txtEmail1.requestFocus();
+        return;
+    }
+    if(pwPass.getText().isEmpty()){
+        JOptionPane.showMessageDialog(this, "vui lòng nhập Mật Khẩu");
+        pwPass.requestFocus();
+        return;
+    }
+    if(pwPassCF.getText().isEmpty()){
+        JOptionPane.showMessageDialog(this, "vui lòng nhập lại Mật Khẩu");
+        pwPassCF.requestFocus();
+        return;
+    }
+    if(txtConfirmCode.getText().isEmpty()){
+        JOptionPane.showMessageDialog(this, "vui lòng nhập Mã Xác Nhận");
+        txtConfirmCode.requestFocus();
+        return;
+    }
+    try {
+        String sql = "select EMAIL from USERS";
+         ResultSet st =con.createStatement(sql);
+         while(st.next()){
+             if(txtEmail1.getText().contains(st.getString("EMAIL"))){
+                 JOptionPane.showMessageDialog(this, "EMAIL đã được sử dụng");
+                 break;
+             }
+         }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, e);
+    }
+}
+public void addUSER() throws MailConnectException{
+    String EMAIL =txtEmail1.getText();
+    us.sendMail(EMAIL);
+    check();
+    String PASS = pwPass.getText();
+    us.addUser(EMAIL, PASS);
+}
     /**
      * @param args the command line arguments
      */
