@@ -1,4 +1,7 @@
 package testView;
+import java.awt.Color;
+import java.awt.Event;
+import java.awt.event.KeyEvent;
 import java.security.interfaces.RSAKey;
 import testConnectSQL.ConnectSQL;
 import java.sql.*;
@@ -31,7 +34,7 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
 
         
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,20 +52,26 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
             //load đáp án
             Question ques = listCauLietQuestions.get(index);
             List<Answer> listCauLietAnswer = quesController.getAnswerCauLiet(ques.getId(), listAnswers);
+            //thêm đáp án vào text
             txpA.setText("");
             txpB.setText("");
             txpC.setText("");
             txpA.setText(listCauLietAnswer.get(0).getNoiDung());
             txpB.setText(listCauLietAnswer.get(1).getNoiDung());
             txpC.setText(listCauLietAnswer.get(2).getNoiDung());
+            //đáp án đúng
+           
+            
+            listCauLietAnswer.get(0).isTrangThai();
+            
+          
             
            
         } catch (Exception e) {
+            System.out.println(e);
         }
     }
-    public void showQuestion(){
-        
-    }
+
     
 
     @SuppressWarnings("unchecked")
@@ -86,19 +95,15 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         txpB = new javax.swing.JTextPane();
         rdoB = new javax.swing.JRadioButton();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        txpD = new javax.swing.JTextPane();
-        rdoD = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         btnMenu1 = new javax.swing.JButton();
         pnlMenuCauHoi = new javax.swing.JPanel();
         btnNext = new javax.swing.JButton();
-        btnPrev1 = new javax.swing.JButton();
+        btnPrev = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(235, 235, 235));
-        jPanel1.setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
@@ -154,6 +159,11 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
 
         rdoA.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(rdoA);
+        rdoA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoAActionPerformed(evt);
+            }
+        });
         jPanel2.add(rdoA);
         rdoA.setBounds(20, 210, 20, 21);
 
@@ -188,27 +198,6 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
         jPanel2.add(rdoB);
         rdoB.setBounds(20, 280, 20, 21);
 
-        txpD.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txpD.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txpD.setEnabled(false);
-        txpD.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txpDMouseClicked(evt);
-            }
-        });
-        jScrollPane6.setViewportView(txpD);
-
-        jPanel2.add(jScrollPane6);
-        jScrollPane6.setBounds(50, 410, 460, 50);
-
-        rdoD.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(rdoD);
-        jPanel2.add(rdoD);
-        rdoD.setBounds(20, 420, 20, 21);
-
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(100, 90, 1000, 510);
-
         jPanel4.setBackground(new java.awt.Color(78, 180, 84));
         jPanel4.setLayout(null);
 
@@ -226,30 +215,68 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
         jPanel4.add(btnMenu1);
         btnMenu1.setBounds(20, 10, 80, 30);
 
-        jPanel1.add(jPanel4);
-        jPanel4.setBounds(0, 0, 1200, 50);
-
         pnlMenuCauHoi.setBackground(new java.awt.Color(235, 235, 235));
-        jPanel1.add(pnlMenuCauHoi);
-        pnlMenuCauHoi.setBounds(100, 690, 1000, 70);
 
+        btnNext.setBackground(new java.awt.Color(78, 180, 84));
+        btnNext.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnNext.setForeground(new java.awt.Color(255, 255, 255));
         btnNext.setText("Câu tiếp theo");
+        btnNext.setBorderPainted(false);
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNextActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNext);
-        btnNext.setBounds(280, 650, 150, 40);
-
-        btnPrev1.setText("Câu trước");
-        btnPrev1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrev1ActionPerformed(evt);
+        btnNext.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnNextKeyPressed(evt);
             }
         });
-        jPanel1.add(btnPrev1);
-        btnPrev1.setBounds(110, 651, 150, 40);
+
+        btnPrev.setBackground(new java.awt.Color(78, 180, 84));
+        btnPrev.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnPrev.setForeground(new java.awt.Color(255, 255, 255));
+        btnPrev.setText("Câu trước");
+        btnPrev.setBorderPainted(false);
+        btnPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrevActionPerformed(evt);
+            }
+        });
+        btnPrev.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnPrevKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1200, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnPrev, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlMenuCauHoi, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPrev, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(pnlMenuCauHoi, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -259,7 +286,7 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -282,16 +309,22 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
       index++;
+      if(index > 18){
+          index--;
+      }
       loadData();
       lblCauHoi.setText("Câu hỏi " + index);
     }//GEN-LAST:event_btnNextActionPerformed
 
-    private void btnPrev1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrev1ActionPerformed
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
         // TODO add your handling code here:
        index--;
+       if(index < 0){
+          index++;
+      }
        loadData();
        lblCauHoi.setText("Câu hỏi " + index);
-    }//GEN-LAST:event_btnPrev1ActionPerformed
+    }//GEN-LAST:event_btnPrevActionPerformed
 
     private void lblCauHoiAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblCauHoiAncestorAdded
         // TODO add your handling code here:
@@ -313,10 +346,20 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
         rdoC.setSelected(true);
     }//GEN-LAST:event_txpCMouseClicked
 
-    private void txpDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txpDMouseClicked
+    private void btnPrevKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPrevKeyPressed
         // TODO add your handling code here:
-        rdoD.setSelected(true);
-    }//GEN-LAST:event_txpDMouseClicked
+      
+    }//GEN-LAST:event_btnPrevKeyPressed
+
+    private void btnNextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnNextKeyPressed
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_btnNextKeyPressed
+
+    private void rdoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoAActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_rdoAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -356,7 +399,7 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMenu1;
     private javax.swing.JButton btnNext;
-    private javax.swing.JButton btnPrev1;
+    private javax.swing.JButton btnPrev;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -366,18 +409,15 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JLabel lblCauHoi;
     private javax.swing.JLabel lblHinh;
     private javax.swing.JPanel pnlMenuCauHoi;
     private javax.swing.JRadioButton rdoA;
     private javax.swing.JRadioButton rdoB;
     private javax.swing.JRadioButton rdoC;
-    private javax.swing.JRadioButton rdoD;
     private javax.swing.JTextPane txpA;
     private javax.swing.JTextPane txpB;
     private javax.swing.JTextPane txpC;
     private javax.swing.JTextPane txpCauHoi;
-    private javax.swing.JTextPane txpD;
     // End of variables declaration//GEN-END:variables
 }
