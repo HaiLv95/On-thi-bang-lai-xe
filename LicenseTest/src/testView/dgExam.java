@@ -51,14 +51,17 @@ public class dgExam extends java.awt.Dialog {
             lsQuestions = questionController.getListQuestion();
             lstAnswers = questionController.getListAnswers();
             timeExam();
-            timeEx.start();
+            if (dethi.getTrangThai().equalsIgnoreCase("donot")) {
+                timeEx.start();
+            } else {
+                timeEx.stop();
+            }
             setQuesstion_Exam();
             loadQuestionbyIndex(0);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Failed dgExam 1: get list question exam or get list question" + ex);
         }
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -125,6 +128,9 @@ public class dgExam extends java.awt.Dialog {
 
         jPanel2.add(jPanel3);
         jPanel3.setBounds(0, 0, 1000, 50);
+
+        lblHinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHinh.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel2.add(lblHinh);
         lblHinh.setBounds(530, 200, 450, 250);
 
@@ -243,8 +249,7 @@ public class dgExam extends java.awt.Dialog {
     private void btnEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndActionPerformed
         // TODO add your handling code here:
         resultExam();
-        setVisible(false);
-        dispose();
+
     }//GEN-LAST:event_btnEndActionPerformed
 
     private void rdoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoCActionPerformed
@@ -335,6 +340,9 @@ public class dgExam extends java.awt.Dialog {
                     @Override
                     public void mousePressed(MouseEvent e) {
                         index = Integer.parseInt(e.getComponent().getName());
+                        rdoA.setSelected(false);
+                        rdoB.setSelected(false);
+                        rdoC.setSelected(false);
                         loadQuestionbyIndex(index);
                         setQuesstion_Exam();
                     }
@@ -355,9 +363,6 @@ public class dgExam extends java.awt.Dialog {
 
     public void loadQuestionbyIndex(int index) {
         try {
-            rdoA.setSelected(false);
-            rdoB.setSelected(false);
-            rdoC.setSelected(false);
             for (Question lsQuestion : lsQuestions) {
                 if (lstcCauHoi_DeThi.get(index).getCauHoi_id() == lsQuestion.getId()) {
 
@@ -369,6 +374,7 @@ public class dgExam extends java.awt.Dialog {
                         lblHinh.setVisible(false);
                     }
                     lsAnswersQuestion = questionController.getListAnswersbyQuesstionID(lstcCauHoi_DeThi.get(index).getCauHoi_id());
+                    setTrangThai(lsAnswersQuestion);
                     if (lsAnswersQuestion.size() == 2) {
                         txpA.setText(lsAnswersQuestion.get(0).getNoiDung());
                         txpB.setText(lsAnswersQuestion.get(1).getNoiDung());
@@ -382,7 +388,7 @@ public class dgExam extends java.awt.Dialog {
                         rdoC.setVisible(false);
                         txpC.setVisible(false);
                         jScrollPane2.setVisible(false);
-                    } else if(lsAnswersQuestion.size() == 3){
+                    } else if (lsAnswersQuestion.size() == 3) {
                         rdoC.setVisible(true);
                         txpC.setVisible(true);
                         jScrollPane2.setVisible(true);
@@ -411,30 +417,101 @@ public class dgExam extends java.awt.Dialog {
         }
     }
 
-    public void resultExam() {
-        timeEx.stop();
-        String[] resultTime = lblTimer.getText().split(":");
-        int timeLeft = Integer.parseInt(resultTime[0]) * 60 + Integer.parseInt(resultTime[1]);
-        int resultAnsswer = 0;
-        boolean result= true;
-        List<Question> lst_CauLiet = questionController.getCauLiet(lsQuestions);
-        for (CauHoi_DeThi cauHoi_DeThi : lstcCauHoi_DeThi) {
-            for (Question cauLiet : lst_CauLiet) {
-                if (cauHoi_DeThi.getCauHoi_id() == cauLiet.getId()) {
-                    if (!cauHoi_DeThi.isTrangThai()) {
-                        result = false;
-                        break;
-                    }
-                    resultAnsswer ++;
+    public void setTrangThai(List<Answer> lsAnswersQuestionTT) {
+        if (dethi.getTrangThai().equalsIgnoreCase("donot")) {
+            txpA.setDisabledTextColor(Color.black);
+            txpB.setDisabledTextColor(Color.black);
+            txpC.setDisabledTextColor(Color.black);
+            rdoA.setEnabled(true);
+            rdoB.setEnabled(true);
+            rdoC.setEnabled(true);
+        } else {
+            rdoA.setEnabled(false);
+            rdoB.setEnabled(false);
+            rdoC.setEnabled(false);
+            if (lsAnswersQuestionTT.size() == 2) {
+                if (lsAnswersQuestionTT.get(0).isTrangThai()) {
+                    txpA.setDisabledTextColor(Color.BLUE);
+                    txpB.setDisabledTextColor(Color.red);
+                } else if (lsAnswersQuestionTT.get(1).isTrangThai()) {
+                    txpB.setDisabledTextColor(Color.BLUE);
+                    txpA.setDisabledTextColor(Color.red);
                 }
             }
-            if (cauHoi_DeThi.isTrangThai()) {
-                resultAnsswer ++;
+            if (lsAnswersQuestionTT.size() == 3) {
+                if (lsAnswersQuestionTT.get(0).isTrangThai()) {
+                    txpA.setDisabledTextColor(Color.BLUE);
+                    txpB.setDisabledTextColor(Color.red);
+                    txpC.setDisabledTextColor(Color.red);
+                } else if (lsAnswersQuestionTT.get(1).isTrangThai()) {
+                    txpB.setDisabledTextColor(Color.BLUE);
+                    txpA.setDisabledTextColor(Color.red);
+                    txpC.setDisabledTextColor(Color.red);
+                } else if (lsAnswersQuestionTT.get(2).isTrangThai()) {
+                    txpC.setDisabledTextColor(Color.BLUE);
+                    txpB.setDisabledTextColor(Color.red);
+                    txpA.setDisabledTextColor(Color.red);
+                }
             }
         }
-        if (result && resultAnsswer >= 15) {
-            JOptionPane.showMessageDialog(this, "Pass : " + resultAnsswer + "/25");
-            
+    }
+
+    public void resultExam() {
+        try {
+            String optionString[] = {"Yes", "No",};
+            int type = JOptionPane.QUESTION_MESSAGE;
+            int option = JOptionPane.showOptionDialog(this, "Bạn muốn kết thúc bài thi?", "Yes", 0, type, null, optionString, "Yes");
+            if (option != 0) {
+                return;
+            }
+            timeEx.stop();
+            String[] resultTime = lblTimer.getText().split(":");
+            int timeLeft = Integer.parseInt(resultTime[0]) * 60 + Integer.parseInt(resultTime[1]);
+            int resultAnsswer = 0;
+            int question = 0;
+            boolean result = true;
+            List<Question> lst_CauLiet = questionController.getCauLiet(lsQuestions);
+            for (CauHoi_DeThi cauHoi_DeThi : lstcCauHoi_DeThi) {
+                question += questionController.updateQuestionExam(cauHoi_DeThi);
+                for (Question cauLiet : lst_CauLiet) {
+                    if (cauHoi_DeThi.getCauHoi_id() == cauLiet.getId()) {
+                        if (!cauHoi_DeThi.isTrangThai()) {
+                            result = false;
+                            break;
+                        }
+                        resultAnsswer++;
+                    }
+                }
+                if (cauHoi_DeThi.isTrangThai()) {
+                    resultAnsswer++;
+                }
+            }
+            if (result && resultAnsswer >= 15) {
+                dethi.setTrangThai("pass");
+                int exam = questionController.updateExambyID(dethi);
+                if (exam > 0) {
+                    JOptionPane.showMessageDialog(this, "Finish exam success: Pass " + resultAnsswer + "/" + question);
+                    setVisible(false);
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Finish exam failed");
+                }
+
+            } else {
+                dethi.setTrangThai("failed");
+                int exam = questionController.updateExambyID(dethi);
+                if (exam > 0) {
+                    JOptionPane.showMessageDialog(this, "Finish exam success: Failed " + resultAnsswer + "/" + question);
+                    setVisible(false);
+                    dispose();
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "Finish exam failed");
+                }
+                dgMenuDT.dgDT.loadDT();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Finish exam failed");
         }
 
     }
