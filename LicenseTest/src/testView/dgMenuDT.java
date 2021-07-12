@@ -22,7 +22,7 @@ public class dgMenuDT extends java.awt.Dialog {
 
     QuestionController questionController = new QuestionController();
     List<Dethi> lstDeThi = new ArrayList<>();
-
+    public static dgMenuDT dgDT;
     /**
      * Creates new form dgMenuDT
      */
@@ -32,6 +32,7 @@ public class dgMenuDT extends java.awt.Dialog {
         this.setSize(1200, 800);
         jPanel1.setSize(1200, 800);
         setLocationRelativeTo(null);
+        dgDT = this;
         loadDT();
     }
 
@@ -136,9 +137,6 @@ public class dgMenuDT extends java.awt.Dialog {
                 btnDeThi[i].setFont(new java.awt.Font("Tahoma", 0, 16));
                 if (lstDeThi.get(i).getTrangThai().equalsIgnoreCase("donot")) {
                     btnDeThi[i].setBackground(Color.GREEN);
-                    btnDeThi[i].setForeground(Color.black);
-                } else if (lstDeThi.get(i).getTrangThai().equalsIgnoreCase("doing")) {
-                    btnDeThi[i].setBackground(Color.YELLOW);
                     btnDeThi[i].setForeground(Color.black);
                 } else if (lstDeThi.get(i).getTrangThai().equalsIgnoreCase("pass")) {
                     btnDeThi[i].setBackground(Color.BLUE);
