@@ -61,7 +61,7 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
             txpA.setText(listKhaiNiemAnswer.get(0).getNoiDung());
             txpB.setText(listKhaiNiemAnswer.get(1).getNoiDung());
             txpC.setText(listKhaiNiemAnswer.get(2).getNoiDung());
-
+            ;
            
         } catch (Exception e) {
             System.out.println(e);
@@ -368,6 +368,7 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
         });
 
         txtMove.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtMove.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtMove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMoveActionPerformed(evt);
