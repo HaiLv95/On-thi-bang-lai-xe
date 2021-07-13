@@ -34,7 +34,7 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
     List<Answer> listKhaiNiemAnswer; // answer câu hỏi khái niệm
     
     public void settingStart(){
-        setTitle("19 câu hỏi liệt");
+        setTitle("75 câu hỏi Khái niệm và quy tắc");
         setLocationRelativeTo(null);
         loadData(); 
         lblCauHoi.setText("Câu hỏi " + count);
