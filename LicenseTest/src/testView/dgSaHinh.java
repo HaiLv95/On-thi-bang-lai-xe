@@ -1,5 +1,6 @@
 package testView;
 
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.util.List;
@@ -7,18 +8,18 @@ import javax.swing.JOptionPane;
 import testController.QuestionController;
 import testModel.Answer;
 import testModel.Question;
-import static testView.dgCauHoiLiet.quesController;
 
 /**
  *
  * @author Mint
  */
-public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
+public class dgSaHinh extends javax.swing.JDialog {
 
     /**
-     * Creates new form dgCauHoiKhaiNiemVaQuyTac
+     * Creates new form dgSaHinh
      */
-    public dgCauHoiKhaiNiemVaQuyTac() {
+    public dgSaHinh(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         settingStart();
     }
@@ -30,11 +31,11 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
     int count = 1;      
     static QuestionController quesController = new QuestionController();
     List<Question> listQuestions;       
-    List<Question> listKhaiNiemQuestions; // question câu hỏi khái niệm
-    List<Answer> listKhaiNiemAnswer; // answer câu hỏi khái niệm
+    List<Question> listSaHinhQuestions; // question câu hỏi sa hình
+    List<Answer> listSaHinhAnswer; // answer câu hỏi sa hình
     
     public void settingStart(){
-        setTitle("75 câu hỏi Khái niệm và quy tắc");
+        setTitle("106 câu hỏi Sa hình");
         setLocationRelativeTo(null);
         loadData(); 
         lblCauHoi.setText("Câu hỏi " + count);
@@ -43,38 +44,41 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
     }
     //Code
     public void loadData(){
+            String imageBytes;
+            Image image;
         try {
             listQuestions = quesController.getListQuestion();
             List<Answer> listAnswers = quesController.getListAnswers();
             
-            listKhaiNiemQuestions = quesController.getKhaiNiem(listQuestions);      
+            listSaHinhQuestions = quesController.getSaHinh(listQuestions);      
             //load câu hỏi
-            txpCauHoi.setText(listKhaiNiemQuestions.get(index).getNoiDung());
+            txpCauHoi.setText(listSaHinhQuestions.get(index).getNoiDung());
             
             //load đáp án
-            Question ques = listKhaiNiemQuestions.get(index);
-            listKhaiNiemAnswer = quesController.getAnswerKhaiNiem(ques.getId(), listAnswers);
+            Question ques = listSaHinhQuestions.get(index);
+            listSaHinhAnswer = quesController.getAnswerSaHinh(ques.getId(), listAnswers);
             //thêm đáp án vào text
             txpA.setText("");
             txpB.setText("");
             txpC.setText("");
-            txpA.setText(listKhaiNiemAnswer.get(0).getNoiDung());
-            txpB.setText(listKhaiNiemAnswer.get(1).getNoiDung());
-            txpC.setText(listKhaiNiemAnswer.get(2).getNoiDung());
-            ;
-           
+            txpA.setText(listSaHinhAnswer.get(0).getNoiDung());
+            txpB.setText(listSaHinhAnswer.get(1).getNoiDung());
+            txpC.setText(listSaHinhAnswer.get(2).getNoiDung());
+            
+            
         } catch (Exception e) {
             System.out.println(e);
         }
         
     }
+    
     // xử lí các button
     public void A(){
         rdoA.setSelected(true);
         rdoB.setSelected(false);
         rdoC.setSelected(false);
-        if(listKhaiNiemAnswer.get(0).isTrangThai()==true){
-            txpGiaiThich.setText(listKhaiNiemAnswer.get(0).getGiaiThich());
+        if(listSaHinhAnswer.get(0).isTrangThai()==true){
+            txpGiaiThich.setText(listSaHinhAnswer.get(0).getGiaiThich());
             txpGiaiThich.setVisible(true);
         }else{
             txpGiaiThich.setVisible(false);
@@ -84,8 +88,8 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
         rdoA.setSelected(false);
         rdoB.setSelected(true);
         rdoC.setSelected(false);
-        if(listKhaiNiemAnswer.get(1).isTrangThai()==true){
-            txpGiaiThich.setText(listKhaiNiemAnswer.get(1).getGiaiThich());
+        if(listSaHinhAnswer.get(1).isTrangThai()==true){
+            txpGiaiThich.setText(listSaHinhAnswer.get(1).getGiaiThich());
             txpGiaiThich.setVisible(true);
         }else{
             txpGiaiThich.setVisible(false);
@@ -95,8 +99,8 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
         rdoA.setSelected(false);
         rdoB.setSelected(false);
         rdoC.setSelected(true);
-        if(listKhaiNiemAnswer.get(2).isTrangThai()==true){
-            txpGiaiThich.setText(listKhaiNiemAnswer.get(2).getGiaiThich());
+        if(listSaHinhAnswer.get(2).isTrangThai()==true){
+            txpGiaiThich.setText(listSaHinhAnswer.get(2).getGiaiThich());
             txpGiaiThich.setVisible(true);
         }else{
             txpGiaiThich.setVisible(false);
@@ -107,7 +111,7 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
         index++;
         count ++;
       
-        if( count > 75){
+        if( count > 106){
           index=0;
           count=1;
         }
@@ -121,8 +125,8 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
         index--;
         count--;
         if(count < 1){
-          index = listKhaiNiemQuestions.size()-1;
-          count = listKhaiNiemQuestions.size();
+          index = listSaHinhQuestions.size()-1;
+          count = listSaHinhQuestions.size();
         }
        loadData();
        txpGiaiThich.setVisible(false);
@@ -136,7 +140,7 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
         txpGiaiThich.setVisible(false);
         //kiểm tra điều kiện
         int numberMove = Integer.parseInt(txtMove.getText());
-        if(numberMove > listKhaiNiemQuestions.size()){
+        if(numberMove > listSaHinhQuestions.size()){
             JOptionPane.showMessageDialog(this,"Không tồn tại câu hỏi này");
             
         }else{
@@ -146,7 +150,6 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
             lblCauHoi.setText("Câu hỏi " + count);
         }
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -177,7 +180,7 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
         txtMove = new javax.swing.JTextField();
         btnPrev = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(229, 229, 229));
 
@@ -216,8 +219,7 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
         jPanel2.add(rdoC);
         rdoC.setBounds(20, 350, 20, 21);
 
-        txpC.setBackground(new java.awt.Color(255, 255, 255));
-        txpC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
+        txpC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 4));
         txpC.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txpC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txpC.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -232,8 +234,7 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
         jPanel2.add(jScrollPane2);
         jScrollPane2.setBounds(50, 340, 460, 50);
 
-        txpCauHoi.setBackground(new java.awt.Color(255, 255, 255));
-        txpCauHoi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
+        txpCauHoi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 4));
         txpCauHoi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txpCauHoi.setForeground(new java.awt.Color(255, 255, 255));
         txpCauHoi.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -253,8 +254,7 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
         jPanel2.add(rdoA);
         rdoA.setBounds(20, 210, 20, 21);
 
-        txpA.setBackground(new java.awt.Color(255, 255, 255));
-        txpA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
+        txpA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 4));
         txpA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txpA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txpA.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -269,8 +269,7 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
         jPanel2.add(jScrollPane4);
         jScrollPane4.setBounds(50, 200, 460, 50);
 
-        txpB.setBackground(new java.awt.Color(255, 255, 255));
-        txpB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
+        txpB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 4));
         txpB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txpB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txpB.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -479,7 +478,7 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
     private void btnMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenu1ActionPerformed
         // mở form câu hỏi liệt và đóng form study
         dispose();
-        dgStudy study = new dgStudy(this, rootPaneCheckingEnabled);
+        dgStudy study = new dgStudy(Run.home,true);
         study.setVisible(true);
     }//GEN-LAST:event_btnMenu1ActionPerformed
 
@@ -529,20 +528,27 @@ public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dgCauHoiKhaiNiemVaQuyTac.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgSaHinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dgCauHoiKhaiNiemVaQuyTac.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgSaHinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dgCauHoiKhaiNiemVaQuyTac.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgSaHinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dgCauHoiKhaiNiemVaQuyTac.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgSaHinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new dgCauHoiKhaiNiemVaQuyTac().setVisible(true);
+                dgSaHinh dialog = new dgSaHinh(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

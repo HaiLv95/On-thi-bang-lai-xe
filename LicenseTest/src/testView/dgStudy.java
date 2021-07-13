@@ -202,22 +202,22 @@ public class dgStudy extends java.awt.Dialog {
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
         // mở form câu hỏi liệt và đóng form study
         dispose();
-        dgCauHoiLiet cauHoiLiet = new dgCauHoiLiet();
-        cauHoiLiet.setVisible(true);    
+        dgCauHoiLiets cauHoiLiets = new dgCauHoiLiets(Run.home,true);
+        cauHoiLiets.setVisible(true);    
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
         // mở form câu hỏi khái niệm & quy tắc và đóng form study
         dispose();
-        dgCauHoiKhaiNiemVaQuyTac khaiNiemVaQuyTac = new dgCauHoiKhaiNiemVaQuyTac();
-        khaiNiemVaQuyTac.setVisible(true); 
+        dgKhaiNiemvaQuyTac khaiNiemvaQuyTac = new dgKhaiNiemvaQuyTac(Run.home,true);
+        khaiNiemvaQuyTac.setVisible(true); 
     }//GEN-LAST:event_jPanel3MouseClicked
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
         // TODO add your handling code here:
         dispose();
-        dgCauHoiSaHinh cauHoiSaHinh = new dgCauHoiSaHinh();
-        cauHoiSaHinh.setVisible(true);
+        dgSaHinh sahinh = new dgSaHinh(Run.home,true);
+        sahinh.setVisible(true); 
     }//GEN-LAST:event_jPanel4MouseClicked
 
     private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
@@ -267,13 +267,13 @@ public class dgStudy extends java.awt.Dialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dgCauHoiSaHinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgStudy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dgCauHoiSaHinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgStudy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dgCauHoiSaHinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgStudy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dgCauHoiSaHinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgStudy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
