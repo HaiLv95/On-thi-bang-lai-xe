@@ -107,7 +107,16 @@ public class QuestionController {
         }
         return lstKn;
     }
-
+    public List<Answer> getAnswerKhaiNiem(int id_cauHoi,List<Answer> listAnswers) {
+        List<Answer> lstA = new ArrayList<>();    
+        for(Answer lst : listAnswers){
+            if(lst.getCauhoi_id() == id_cauHoi){
+                lstA.add(lst);
+            }
+        }
+        
+        return lstA;
+    }
     public List<Question> getSaHinh(List<Question> listQuestions) {
         List<Question> lstSaHinh = new ArrayList<>();
         for (Question lstQ : listQuestions) {

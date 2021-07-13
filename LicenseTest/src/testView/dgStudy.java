@@ -55,10 +55,20 @@ public class dgStudy extends java.awt.Dialog {
         btnMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnMenu.setText("Menu");
         btnMenu.setBorderPainted(false);
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnMenu);
         btnMenu.setBounds(30, 60, 120, 30);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel4MouseClicked(evt);
+            }
+        });
         jPanel4.setLayout(null);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -81,6 +91,11 @@ public class dgStudy extends java.awt.Dialog {
         jPanel4.setBounds(30, 460, 1140, 150);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+        });
         jPanel3.setLayout(null);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -104,6 +119,11 @@ public class dgStudy extends java.awt.Dialog {
         jPanel3.setBounds(30, 290, 1140, 150);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
         jPanel2.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
@@ -138,6 +158,32 @@ public class dgStudy extends java.awt.Dialog {
         setVisible(false);
         dispose();
     }//GEN-LAST:event_closeDialog
+
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_btnMenuActionPerformed
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        // mở form câu hỏi liệt và đóng form study
+        dispose();
+        dgCauHoiLiet cauHoiLiet = new dgCauHoiLiet();
+        cauHoiLiet.setVisible(true);    
+    }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        // mở form câu hỏi khái niệm & quy tắc và đóng form study
+        dispose();
+        dgCauHoiKhaiNiemVaQuyTac khaiNiemVaQuyTac = new dgCauHoiKhaiNiemVaQuyTac();
+        khaiNiemVaQuyTac.setVisible(true); 
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+        // TODO add your handling code here:
+        dispose();
+        dgCauHoiSaHinh cauHoiSaHinh = new dgCauHoiSaHinh();
+        cauHoiSaHinh.setVisible(true);
+    }//GEN-LAST:event_jPanel4MouseClicked
 
     /**
      * @param args the command line arguments

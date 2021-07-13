@@ -1,37 +1,37 @@
 package testView;
-import java.awt.Event;
+
 import java.awt.event.KeyEvent;
-import java.sql.*;
-import java.util.ArrayList;
+import java.sql.Connection;
 import java.util.List;
 import javax.swing.JOptionPane;
-import testConnectSQL.*;
 import testController.QuestionController;
-import testModel.*;
+import testModel.Answer;
+import testModel.Question;
+import static testView.dgCauHoiLiet.quesController;
+
 /**
  *
  * @author Mint
  */
-public class dgCauHoiLiet extends javax.swing.JFrame {
+public class dgCauHoiKhaiNiemVaQuyTac extends javax.swing.JFrame {
 
     /**
-     * Creates new form dgCauHoiLiet
+     * Creates new form dgCauHoiKhaiNiemVaQuyTac
      */
-    public dgCauHoiLiet() {
+    public dgCauHoiKhaiNiemVaQuyTac() {
         initComponents();
         settingStart();
     }
+
     //Khai báo
     
     Connection con;
     int index = 0;
-    int count = 1;
+    int count = 1;      
     static QuestionController quesController = new QuestionController();
     List<Question> listQuestions;       
-    List<Question> listCauLietQuestions; // question câu hỏi liệt
-    List<Answer> listCauLietAnswer; // answer câu hỏi liệt
-    
-    //Code
+    List<Question> listKhaiNiemQuestions; // question câu hỏi khái niệm
+    List<Answer> listKhaiNiemAnswer; // answer câu hỏi khái niệm
     
     public void settingStart(){
         setTitle("19 câu hỏi liệt");
@@ -41,39 +41,40 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
         txpGiaiThich.setVisible(false); 
         txtMove.setText(null);
     }
+    //Code
     public void loadData(){
         try {
             listQuestions = quesController.getListQuestion();
             List<Answer> listAnswers = quesController.getListAnswers();
             
-            listCauLietQuestions = quesController.getCauLiet(listQuestions);      
+            listKhaiNiemQuestions = quesController.getKhaiNiem(listQuestions);      
             //load câu hỏi
-            txpCauHoi.setText(listCauLietQuestions.get(index).getNoiDung());
+            txpCauHoi.setText(listKhaiNiemQuestions.get(index).getNoiDung());
             
             //load đáp án
-            Question ques = listCauLietQuestions.get(index);
-            listCauLietAnswer = quesController.getAnswerCauLiet(ques.getId(), listAnswers);
+            Question ques = listKhaiNiemQuestions.get(index);
+            listKhaiNiemAnswer = quesController.getAnswerKhaiNiem(ques.getId(), listAnswers);
             //thêm đáp án vào text
             txpA.setText("");
             txpB.setText("");
             txpC.setText("");
-            txpA.setText(listCauLietAnswer.get(0).getNoiDung());
-            txpB.setText(listCauLietAnswer.get(1).getNoiDung());
-            txpC.setText(listCauLietAnswer.get(2).getNoiDung());
+            txpA.setText(listKhaiNiemAnswer.get(0).getNoiDung());
+            txpB.setText(listKhaiNiemAnswer.get(1).getNoiDung());
+            txpC.setText(listKhaiNiemAnswer.get(2).getNoiDung());
 
            
         } catch (Exception e) {
             System.out.println(e);
         }
+        
     }
-    
     // xử lí các button
     public void A(){
         rdoA.setSelected(true);
         rdoB.setSelected(false);
         rdoC.setSelected(false);
-        if(listCauLietAnswer.get(0).isTrangThai()==true){
-            txpGiaiThich.setText(listCauLietAnswer.get(0).getGiaiThich());
+        if(listKhaiNiemAnswer.get(0).isTrangThai()==true){
+            txpGiaiThich.setText(listKhaiNiemAnswer.get(0).getGiaiThich());
             txpGiaiThich.setVisible(true);
         }else{
             txpGiaiThich.setVisible(false);
@@ -83,8 +84,8 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
         rdoA.setSelected(false);
         rdoB.setSelected(true);
         rdoC.setSelected(false);
-        if(listCauLietAnswer.get(1).isTrangThai()==true){
-            txpGiaiThich.setText(listCauLietAnswer.get(1).getGiaiThich());
+        if(listKhaiNiemAnswer.get(1).isTrangThai()==true){
+            txpGiaiThich.setText(listKhaiNiemAnswer.get(1).getGiaiThich());
             txpGiaiThich.setVisible(true);
         }else{
             txpGiaiThich.setVisible(false);
@@ -94,8 +95,8 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
         rdoA.setSelected(false);
         rdoB.setSelected(false);
         rdoC.setSelected(true);
-        if(listCauLietAnswer.get(2).isTrangThai()==true){
-            txpGiaiThich.setText(listCauLietAnswer.get(2).getGiaiThich());
+        if(listKhaiNiemAnswer.get(2).isTrangThai()==true){
+            txpGiaiThich.setText(listKhaiNiemAnswer.get(2).getGiaiThich());
             txpGiaiThich.setVisible(true);
         }else{
             txpGiaiThich.setVisible(false);
@@ -106,7 +107,7 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
         index++;
         count ++;
       
-        if( count > 19){
+        if( count > 75){
           index=0;
           count=1;
         }
@@ -120,8 +121,8 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
         index--;
         count--;
         if(count < 1){
-          index = listCauLietQuestions.size()-1;
-          count = listCauLietQuestions.size();
+          index = listKhaiNiemQuestions.size()-1;
+          count = listKhaiNiemQuestions.size();
         }
        loadData();
        txpGiaiThich.setVisible(false);
@@ -135,7 +136,7 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
         txpGiaiThich.setVisible(false);
         //kiểm tra điều kiện
         int numberMove = Integer.parseInt(txtMove.getText());
-        if(numberMove > listCauLietQuestions.size()){
+        if(numberMove > listKhaiNiemQuestions.size()){
             JOptionPane.showMessageDialog(this,"Không tồn tại câu hỏi này");
             
         }else{
@@ -145,11 +146,11 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
             lblCauHoi.setText("Câu hỏi " + count);
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -203,7 +204,7 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
         jPanel2.add(jPanel3);
         jPanel3.setBounds(0, 0, 1000, 50);
         jPanel2.add(lblHinh);
-        lblHinh.setBounds(530, 200, 450, 250);
+        lblHinh.setBounds(530, 180, 450, 250);
 
         rdoC.setBackground(new java.awt.Color(255, 255, 255));
         rdoC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -441,67 +442,61 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
-        // TODO add your handling code here:
-        buttonPrev();
-    }//GEN-LAST:event_btnPrevActionPerformed
+    private void lblCauHoiAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblCauHoiAncestorAdded
 
-    private void btnMoveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnMoveKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMoveKeyPressed
-
-    private void btnMoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveActionPerformed
-        buttonMove();
-    }//GEN-LAST:event_btnMoveActionPerformed
-
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        // nút tiếp theo
-        buttonNext();
-    }//GEN-LAST:event_btnNextActionPerformed
-
-    private void btnMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenu1ActionPerformed
-        // mở form câu hỏi liệt và đóng form study
-        dispose();
-        dgStudy study = new dgStudy(this, rootPaneCheckingEnabled);
-        study.setVisible(true); 
-    }//GEN-LAST:event_btnMenu1ActionPerformed
-
-    private void rdoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoBActionPerformed
-        // radio button B
-        B();
-    }//GEN-LAST:event_rdoBActionPerformed
-
-    private void txpBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txpBMouseClicked
-        // TODO add your handling code here:
-        B();
-    }//GEN-LAST:event_txpBMouseClicked
-
-    private void txpAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txpAMouseClicked
-        A();
-    }//GEN-LAST:event_txpAMouseClicked
-
-    private void rdoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoAActionPerformed
-        // radio button A
-        A();
-    }//GEN-LAST:event_rdoAActionPerformed
-
-    private void txpCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txpCMouseClicked
-        // TODO add your handling code here:
-        C();
-    }//GEN-LAST:event_txpCMouseClicked
+    }//GEN-LAST:event_lblCauHoiAncestorAdded
 
     private void rdoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoCActionPerformed
         // radio button C
         C();
     }//GEN-LAST:event_rdoCActionPerformed
 
-    private void lblCauHoiAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblCauHoiAncestorAdded
+    private void txpCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txpCMouseClicked
+        // TODO add your handling code here:
+        C();
+    }//GEN-LAST:event_txpCMouseClicked
 
-    }//GEN-LAST:event_lblCauHoiAncestorAdded
+    private void rdoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoAActionPerformed
+        // radio button A
+        A();
+    }//GEN-LAST:event_rdoAActionPerformed
+
+    private void txpAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txpAMouseClicked
+        A();
+    }//GEN-LAST:event_txpAMouseClicked
+
+    private void txpBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txpBMouseClicked
+        // TODO add your handling code here:
+        B();
+    }//GEN-LAST:event_txpBMouseClicked
+
+    private void rdoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoBActionPerformed
+        // radio button B
+        B();
+    }//GEN-LAST:event_rdoBActionPerformed
+
+    private void btnMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenu1ActionPerformed
+        // mở form câu hỏi liệt và đóng form study
+        dispose();
+        dgStudy study = new dgStudy(this, rootPaneCheckingEnabled);
+        study.setVisible(true);
+    }//GEN-LAST:event_btnMenu1ActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        // nút tiếp theo
+        buttonNext();
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnMoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveActionPerformed
+        buttonMove();
+    }//GEN-LAST:event_btnMoveActionPerformed
+
+    private void btnMoveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnMoveKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMoveKeyPressed
 
     private void txtMoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMoveActionPerformed
-        
-       
+
     }//GEN-LAST:event_txtMoveActionPerformed
 
     private void txtMoveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMoveKeyPressed
@@ -510,6 +505,11 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
             buttonMove();
         }
     }//GEN-LAST:event_txtMoveKeyPressed
+
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+        // TODO add your handling code here:
+        buttonPrev();
+    }//GEN-LAST:event_btnPrevActionPerformed
 
     /**
      * @param args the command line arguments
@@ -528,20 +528,20 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dgCauHoiLiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgCauHoiKhaiNiemVaQuyTac.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dgCauHoiLiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgCauHoiKhaiNiemVaQuyTac.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dgCauHoiLiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgCauHoiKhaiNiemVaQuyTac.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dgCauHoiLiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgCauHoiKhaiNiemVaQuyTac.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new dgCauHoiLiet().setVisible(true);
+                new dgCauHoiKhaiNiemVaQuyTac().setVisible(true);
             }
         });
     }
@@ -551,7 +551,6 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
     private javax.swing.JButton btnMove;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrev;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
