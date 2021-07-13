@@ -32,11 +32,11 @@ public class dgCauHoiSaHinh extends javax.swing.JFrame {
     int count = 1;      
     static QuestionController quesController = new QuestionController();
     List<Question> listQuestions;       
-    List<Question> listSaHinhQuestions; // question câu hỏi khái niệm
-    List<Answer> listSaHinhAnswer; // answer câu hỏi khái niệm
+    List<Question> listSaHinhQuestions; // question câu hỏi sa hình
+    List<Answer> listSaHinhAnswer; // answer câu hỏi sa hình
     
     public void settingStart(){
-        setTitle("75 câu hỏi Khái niệm và quy tắc");
+        setTitle("106 câu hỏi Sa hình");
         setLocationRelativeTo(null);
         loadData(); 
         lblCauHoi.setText("Câu hỏi " + count);
