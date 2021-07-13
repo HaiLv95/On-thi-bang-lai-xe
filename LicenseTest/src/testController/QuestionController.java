@@ -90,7 +90,7 @@ public class QuestionController {
         }
         return lstAnswers;
     }
-
+    // câu hỏi liệt
     public List<Question> getCauLiet(List<Question> listQuestions) {
         List<Question> lstLiet = new ArrayList<>();
         for (Question lstQ : listQuestions) {
@@ -112,6 +112,7 @@ public class QuestionController {
         
         return lstA;
     }
+    // câu hỏi khái niệm và quy tắc
     public List<Question> getKhaiNiem(List<Question> listQuestions) {
         List<Question> lstKn = new ArrayList<>();
         for (Question lstQ : listQuestions) {
@@ -131,6 +132,7 @@ public class QuestionController {
         
         return lstA;
     }
+    // câu hỏi sa hình
     public List<Question> getSaHinh(List<Question> listQuestions) {
         List<Question> lstSaHinh = new ArrayList<>();
         for (Question lstQ : listQuestions) {
@@ -139,6 +141,16 @@ public class QuestionController {
             }
         }
         return lstSaHinh;
+    }
+    public List<Answer> getAnswerSaHinh(int id_cauHoi,List<Answer> listAnswers) {
+        List<Answer> lstA = new ArrayList<>();    
+        for(Answer lst : listAnswers){
+            if(lst.getCauhoi_id() == id_cauHoi){
+                lstA.add(lst);
+            }
+        }
+        
+        return lstA;
     }
 
     public void createExam() throws Exception {

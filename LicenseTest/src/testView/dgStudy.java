@@ -1,5 +1,9 @@
 package testView;
 
+import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
  *
  * @author hai95
@@ -27,17 +31,17 @@ public class dgStudy extends java.awt.Dialog {
         jPanel1 = new javax.swing.JPanel();
         btnMenu = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lbl8 = new javax.swing.JLabel();
+        lbl7 = new javax.swing.JLabel();
+        lbl9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lbl6 = new javax.swing.JLabel();
+        lbl5 = new javax.swing.JLabel();
+        lbl4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lbl1 = new javax.swing.JLabel();
+        lbl3 = new javax.swing.JLabel();
+        lbl2 = new javax.swing.JLabel();
 
         setTitle("Học lý thuyết");
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -68,24 +72,30 @@ public class dgStudy extends java.awt.Dialog {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel4MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel4MouseExited(evt);
+            }
         });
         jPanel4.setLayout(null);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel7.setText("Gồm 106 câu hỏi");
-        jPanel4.add(jLabel7);
-        jLabel7.setBounds(30, 70, 120, 20);
+        lbl8.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lbl8.setText("Gồm 106 câu hỏi");
+        jPanel4.add(lbl8);
+        lbl8.setBounds(30, 70, 120, 20);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel8.setText("CÂU SA HÌNH");
-        jPanel4.add(jLabel8);
-        jLabel8.setBounds(30, 20, 260, 30);
+        lbl7.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        lbl7.setText("CÂU SA HÌNH");
+        jPanel4.add(lbl7);
+        lbl7.setBounds(30, 20, 260, 30);
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(80, 199, 135));
-        jLabel9.setText("Đã làm 0/106");
-        jPanel4.add(jLabel9);
-        jLabel9.setBounds(30, 110, 120, 20);
+        lbl9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lbl9.setForeground(new java.awt.Color(80, 199, 135));
+        lbl9.setText("Đã làm 0/106");
+        jPanel4.add(lbl9);
+        lbl9.setBounds(30, 110, 120, 20);
 
         jPanel1.add(jPanel4);
         jPanel4.setBounds(30, 460, 1140, 150);
@@ -95,25 +105,31 @@ public class dgStudy extends java.awt.Dialog {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel3MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel3MouseExited(evt);
+            }
         });
         jPanel3.setLayout(null);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(80, 199, 135));
-        jLabel6.setText("Đã làm 0/75");
-        jPanel3.add(jLabel6);
-        jLabel6.setBounds(30, 110, 120, 20);
+        lbl6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lbl6.setForeground(new java.awt.Color(80, 199, 135));
+        lbl6.setText("Đã làm 0/75");
+        jPanel3.add(lbl6);
+        lbl6.setBounds(30, 110, 120, 20);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel4.setText("Gồm 75 câu hỏi");
-        jLabel4.setToolTipText("");
-        jPanel3.add(jLabel4);
-        jLabel4.setBounds(30, 70, 120, 20);
+        lbl5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lbl5.setText("Gồm 75 câu hỏi");
+        lbl5.setToolTipText("");
+        jPanel3.add(lbl5);
+        lbl5.setBounds(30, 70, 120, 20);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel5.setText("CÂU HỎI KHÁI NIỆM VÀ QUY TẮC");
-        jPanel3.add(jLabel5);
-        jLabel5.setBounds(30, 20, 350, 30);
+        lbl4.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        lbl4.setText("CÂU HỎI KHÁI NIỆM VÀ QUY TẮC");
+        jPanel3.add(lbl4);
+        lbl4.setBounds(30, 20, 350, 30);
 
         jPanel1.add(jPanel3);
         jPanel3.setBounds(30, 290, 1140, 150);
@@ -123,24 +139,30 @@ public class dgStudy extends java.awt.Dialog {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel2MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel2MouseExited(evt);
+            }
         });
         jPanel2.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel1.setText("CÂU HỎI LIỆT");
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(30, 20, 260, 30);
+        lbl1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        lbl1.setText("CÂU HỎI LIỆT");
+        jPanel2.add(lbl1);
+        lbl1.setBounds(30, 20, 260, 30);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(80, 199, 135));
-        jLabel2.setText("Đã làm 0/19");
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(30, 110, 120, 20);
+        lbl3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lbl3.setForeground(new java.awt.Color(80, 199, 135));
+        lbl3.setText("Đã làm 0/19");
+        jPanel2.add(lbl3);
+        lbl3.setBounds(30, 110, 120, 20);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel3.setText("Gồm 19 câu hỏi");
-        jPanel2.add(jLabel3);
-        jLabel3.setBounds(30, 70, 120, 20);
+        lbl2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lbl2.setText("Gồm 19 câu hỏi");
+        jPanel2.add(lbl2);
+        lbl2.setBounds(30, 70, 120, 20);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(30, 120, 1140, 150);
@@ -154,6 +176,19 @@ public class dgStudy extends java.awt.Dialog {
     /**
      * Closes the dialog
      */
+    public void setColor(JPanel p, JLabel lb1, JLabel lb2, JLabel lb3){
+        p.setBackground(new Color(78,180,84));
+        lb1.setForeground(Color.WHITE);
+        lb2.setForeground(Color.WHITE);
+        lb3.setForeground(new Color(255,199,67));
+    }
+    public void resetColor(JPanel p1, JLabel lb1, JLabel lb2, JLabel lb3){
+        p1.setBackground(Color.WHITE);
+        lb1.setForeground(new Color(0,0,0));
+        lb2.setForeground(new Color(0,0,0));
+        lb3.setForeground(new Color(80,199,135));
+        
+    }
     private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
         setVisible(false);
         dispose();
@@ -185,10 +220,64 @@ public class dgStudy extends java.awt.Dialog {
         cauHoiSaHinh.setVisible(true);
     }//GEN-LAST:event_jPanel4MouseClicked
 
+    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
+        // TODO add your handling code here:
+        setColor(jPanel2,lbl1,lbl2,lbl3);
+    }//GEN-LAST:event_jPanel2MouseEntered
+
+    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
+        // TODO add your handling code here:
+        resetColor(jPanel2,lbl1,lbl2,lbl3);
+    }//GEN-LAST:event_jPanel2MouseExited
+
+    private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
+        // TODO add your handling code here:
+        setColor(jPanel3,lbl4,lbl5,lbl6);
+    }//GEN-LAST:event_jPanel3MouseEntered
+
+    private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
+        // TODO add your handling code here:
+        resetColor(jPanel3,lbl4,lbl5,lbl6);
+    }//GEN-LAST:event_jPanel3MouseExited
+
+    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
+        // TODO add your handling code here:
+        setColor(jPanel4,lbl7,lbl8,lbl9);
+    }//GEN-LAST:event_jPanel4MouseEntered
+
+    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
+        // TODO add your handling code here:
+        resetColor(jPanel4,lbl7,lbl8,lbl9);
+    }//GEN-LAST:event_jPanel4MouseExited
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+         try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Windows".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(dgCauHoiSaHinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(dgCauHoiSaHinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(dgCauHoiSaHinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(dgCauHoiSaHinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 dgStudy dialog = new dgStudy(new java.awt.Frame(), true);
@@ -205,18 +294,18 @@ public class dgStudy extends java.awt.Dialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMenu;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel lbl1;
+    private javax.swing.JLabel lbl2;
+    private javax.swing.JLabel lbl3;
+    private javax.swing.JLabel lbl4;
+    private javax.swing.JLabel lbl5;
+    private javax.swing.JLabel lbl6;
+    private javax.swing.JLabel lbl7;
+    private javax.swing.JLabel lbl8;
+    private javax.swing.JLabel lbl9;
     // End of variables declaration//GEN-END:variables
 }

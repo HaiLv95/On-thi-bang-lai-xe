@@ -367,6 +367,7 @@ public class dgCauHoiLiet extends javax.swing.JFrame {
         });
 
         txtMove.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtMove.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtMove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMoveActionPerformed(evt);
