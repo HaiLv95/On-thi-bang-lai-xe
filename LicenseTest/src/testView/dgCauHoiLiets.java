@@ -1,12 +1,9 @@
 package testView;
 
-import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.util.List;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import testController.ImageHelper;
 import testController.QuestionController;
 import testModel.Answer;
 import testModel.Question;
@@ -15,62 +12,60 @@ import testModel.Question;
  *
  * @author Mint
  */
-public class dgCauHoiSaHinh extends javax.swing.JFrame {
+public class dgCauHoiLiets extends javax.swing.JDialog {
 
     /**
-     * Creates new form dgCauHoiSaHinh
+     * Creates new form dgCauHoiLiets
      */
-    public dgCauHoiSaHinh() {
+    public dgCauHoiLiets(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         settingStart();
     }
-
     //Khai báo
     
     Connection con;
     int index = 0;
-    int count = 1;      
+    int count = 1;
     static QuestionController quesController = new QuestionController();
     List<Question> listQuestions;       
-    List<Question> listSaHinhQuestions; // question câu hỏi sa hình
-    List<Answer> listSaHinhAnswer; // answer câu hỏi sa hình
+    List<Question> listCauLietQuestions; // question câu hỏi liệt
+    List<Answer> listCauLietAnswer; // answer câu hỏi liệt
+    
+    //Code
     
     public void settingStart(){
-        setTitle("106 câu hỏi Sa hình");
+        setTitle("19 câu hỏi liệt");
         setLocationRelativeTo(null);
         loadData(); 
         lblCauHoi.setText("Câu hỏi " + count);
         txpGiaiThich.setVisible(false); 
         txtMove.setText(null);
     }
-    //Code
     public void loadData(){
-            String imageBytes;
-            Image image;
         try {
             listQuestions = quesController.getListQuestion();
             List<Answer> listAnswers = quesController.getListAnswers();
             
-            listSaHinhQuestions = quesController.getSaHinh(listQuestions);      
+            listCauLietQuestions = quesController.getCauLiet(listQuestions);      
             //load câu hỏi
-            txpCauHoi.setText(listSaHinhQuestions.get(index).getNoiDung());
+            txpCauHoi.setText(listCauLietQuestions.get(index).getNoiDung());
             
             //load đáp án
-            Question ques = listSaHinhQuestions.get(index);
-            listSaHinhAnswer = quesController.getAnswerSaHinh(ques.getId(), listAnswers);
+            Question ques = listCauLietQuestions.get(index);
+            listCauLietAnswer = quesController.getAnswerCauLiet(ques.getId(), listAnswers);
             //thêm đáp án vào text
             txpA.setText("");
             txpB.setText("");
             txpC.setText("");
-            txpA.setText(listSaHinhAnswer.get(0).getNoiDung());
-            txpB.setText(listSaHinhAnswer.get(1).getNoiDung());
-            txpC.setText(listSaHinhAnswer.get(2).getNoiDung());
-            
-            
+            txpA.setText(listCauLietAnswer.get(0).getNoiDung());
+            txpB.setText(listCauLietAnswer.get(1).getNoiDung());
+            txpC.setText(listCauLietAnswer.get(2).getNoiDung());
+
+           
         } catch (Exception e) {
             System.out.println(e);
         }
-        
     }
     
     // xử lí các button
@@ -78,8 +73,8 @@ public class dgCauHoiSaHinh extends javax.swing.JFrame {
         rdoA.setSelected(true);
         rdoB.setSelected(false);
         rdoC.setSelected(false);
-        if(listSaHinhAnswer.get(0).isTrangThai()==true){
-            txpGiaiThich.setText(listSaHinhAnswer.get(0).getGiaiThich());
+        if(listCauLietAnswer.get(0).isTrangThai()==true){
+            txpGiaiThich.setText(listCauLietAnswer.get(0).getGiaiThich());
             txpGiaiThich.setVisible(true);
         }else{
             txpGiaiThich.setVisible(false);
@@ -89,8 +84,8 @@ public class dgCauHoiSaHinh extends javax.swing.JFrame {
         rdoA.setSelected(false);
         rdoB.setSelected(true);
         rdoC.setSelected(false);
-        if(listSaHinhAnswer.get(1).isTrangThai()==true){
-            txpGiaiThich.setText(listSaHinhAnswer.get(1).getGiaiThich());
+        if(listCauLietAnswer.get(1).isTrangThai()==true){
+            txpGiaiThich.setText(listCauLietAnswer.get(1).getGiaiThich());
             txpGiaiThich.setVisible(true);
         }else{
             txpGiaiThich.setVisible(false);
@@ -100,8 +95,8 @@ public class dgCauHoiSaHinh extends javax.swing.JFrame {
         rdoA.setSelected(false);
         rdoB.setSelected(false);
         rdoC.setSelected(true);
-        if(listSaHinhAnswer.get(2).isTrangThai()==true){
-            txpGiaiThich.setText(listSaHinhAnswer.get(2).getGiaiThich());
+        if(listCauLietAnswer.get(2).isTrangThai()==true){
+            txpGiaiThich.setText(listCauLietAnswer.get(2).getGiaiThich());
             txpGiaiThich.setVisible(true);
         }else{
             txpGiaiThich.setVisible(false);
@@ -112,7 +107,7 @@ public class dgCauHoiSaHinh extends javax.swing.JFrame {
         index++;
         count ++;
       
-        if( count > 106){
+        if( count > 19){
           index=0;
           count=1;
         }
@@ -126,8 +121,8 @@ public class dgCauHoiSaHinh extends javax.swing.JFrame {
         index--;
         count--;
         if(count < 1){
-          index = listSaHinhQuestions.size()-1;
-          count = listSaHinhQuestions.size();
+          index = listCauLietQuestions.size()-1;
+          count = listCauLietQuestions.size();
         }
        loadData();
        txpGiaiThich.setVisible(false);
@@ -141,7 +136,7 @@ public class dgCauHoiSaHinh extends javax.swing.JFrame {
         txpGiaiThich.setVisible(false);
         //kiểm tra điều kiện
         int numberMove = Integer.parseInt(txtMove.getText());
-        if(numberMove > listSaHinhQuestions.size()){
+        if(numberMove > listCauLietQuestions.size()){
             JOptionPane.showMessageDialog(this,"Không tồn tại câu hỏi này");
             
         }else{
@@ -151,7 +146,7 @@ public class dgCauHoiSaHinh extends javax.swing.JFrame {
             lblCauHoi.setText("Câu hỏi " + count);
         }
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -182,7 +177,7 @@ public class dgCauHoiSaHinh extends javax.swing.JFrame {
         txtMove = new javax.swing.JTextField();
         btnPrev = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(229, 229, 229));
 
@@ -209,7 +204,7 @@ public class dgCauHoiSaHinh extends javax.swing.JFrame {
         jPanel2.add(jPanel3);
         jPanel3.setBounds(0, 0, 1000, 50);
         jPanel2.add(lblHinh);
-        lblHinh.setBounds(530, 180, 450, 250);
+        lblHinh.setBounds(530, 200, 450, 250);
 
         rdoC.setBackground(new java.awt.Color(255, 255, 255));
         rdoC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -221,8 +216,7 @@ public class dgCauHoiSaHinh extends javax.swing.JFrame {
         jPanel2.add(rdoC);
         rdoC.setBounds(20, 350, 20, 21);
 
-        txpC.setBackground(new java.awt.Color(255, 255, 255));
-        txpC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
+        txpC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 4));
         txpC.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txpC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txpC.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -237,8 +231,7 @@ public class dgCauHoiSaHinh extends javax.swing.JFrame {
         jPanel2.add(jScrollPane2);
         jScrollPane2.setBounds(50, 340, 460, 50);
 
-        txpCauHoi.setBackground(new java.awt.Color(255, 255, 255));
-        txpCauHoi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
+        txpCauHoi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 4));
         txpCauHoi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txpCauHoi.setForeground(new java.awt.Color(255, 255, 255));
         txpCauHoi.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -258,8 +251,7 @@ public class dgCauHoiSaHinh extends javax.swing.JFrame {
         jPanel2.add(rdoA);
         rdoA.setBounds(20, 210, 20, 21);
 
-        txpA.setBackground(new java.awt.Color(255, 255, 255));
-        txpA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
+        txpA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 4));
         txpA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txpA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txpA.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -274,8 +266,7 @@ public class dgCauHoiSaHinh extends javax.swing.JFrame {
         jPanel2.add(jScrollPane4);
         jScrollPane4.setBounds(50, 200, 460, 50);
 
-        txpB.setBackground(new java.awt.Color(255, 255, 255));
-        txpB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
+        txpB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 4));
         txpB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txpB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txpB.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -484,7 +475,7 @@ public class dgCauHoiSaHinh extends javax.swing.JFrame {
     private void btnMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenu1ActionPerformed
         // mở form câu hỏi liệt và đóng form study
         dispose();
-        dgStudy study = new dgStudy(this, rootPaneCheckingEnabled);
+        dgStudy study = new dgStudy(Run.home,true);
         study.setVisible(true);
     }//GEN-LAST:event_btnMenu1ActionPerformed
 
@@ -534,20 +525,27 @@ public class dgCauHoiSaHinh extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dgCauHoiSaHinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgCauHoiLiets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dgCauHoiSaHinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgCauHoiLiets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dgCauHoiSaHinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgCauHoiLiets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dgCauHoiSaHinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgCauHoiLiets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new dgCauHoiSaHinh().setVisible(true);
+                dgCauHoiLiets dialog = new dgCauHoiLiets(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
