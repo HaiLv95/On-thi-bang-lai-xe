@@ -1,6 +1,9 @@
 package testView;
 
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -146,7 +149,19 @@ public class dgCauHoiLiets extends javax.swing.JDialog {
             lblCauHoi.setText("Câu hỏi " + count);
         }
     }
-    
+    public void saveFile(int indexSave, int countSave){
+        try {
+            
+            BufferedReader br = new BufferedReader(new FileReader("saveFile.txt"));
+            System.out.println(br.readLine());
+        br.close();
+        } catch (IOException e) {
+            System.exit(2);
+        } finally {
+            System.out.println("Exiting the program");
+        }
+    }
+ 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

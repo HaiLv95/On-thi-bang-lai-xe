@@ -72,6 +72,11 @@ public class dgLogin extends java.awt.Dialog {
 
         pwPass.setBackground(new java.awt.Color(231, 243, 231));
         pwPass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 243, 231), 4));
+        pwPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pwPassActionPerformed(evt);
+            }
+        });
         pnlLogin.add(pwPass);
         pwPass.setBounds(90, 200, 420, 40);
 
@@ -112,6 +117,11 @@ public class dgLogin extends java.awt.Dialog {
         txtEmail.setBackground(new java.awt.Color(231, 243, 231));
         txtEmail.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 243, 231), 4));
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
         pnlLogin.add(txtEmail);
         txtEmail.setBounds(90, 110, 420, 40);
 
@@ -152,6 +162,14 @@ public class dgLogin extends java.awt.Dialog {
         findPassword.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lblFindPwMouseClicked
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void pwPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pwPassActionPerformed
     public void mathchesUser() {
         try {
             String email = txtEmail.getText();
@@ -171,6 +189,22 @@ public class dgLogin extends java.awt.Dialog {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(dgLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(dgLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(dgLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(dgLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 dgLogin dialog = new dgLogin(new java.awt.Frame(), true);
