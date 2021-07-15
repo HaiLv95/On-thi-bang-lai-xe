@@ -1,8 +1,10 @@
 package testView;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +19,10 @@ import testModel.Dethi;
  * @author hai95
  */
 public class dgMenuDT extends java.awt.Dialog {
+
     QuestionController questionController = new QuestionController();
+    List<Dethi> lstDeThi = new ArrayList<>();
+    public static dgMenuDT dgDT;
     /**
      * Creates new form dgMenuDT
      */
@@ -27,6 +32,7 @@ public class dgMenuDT extends java.awt.Dialog {
         this.setSize(1200, 800);
         jPanel1.setSize(1200, 800);
         setLocationRelativeTo(null);
+        dgDT = this;
         loadDT();
     }
 
@@ -118,38 +124,35 @@ public class dgMenuDT extends java.awt.Dialog {
         createExam();
     }//GEN-LAST:event_btnNewExamActionPerformed
 
-    public void loadDT(){
+    public void loadDT() {
         try {
-            List<Dethi> lstDeThi = questionController.getListDTbyEmail();
+            lstDeThi = questionController.getListDTbyEmail();
             pnlDeThi.removeAll();
             JButton[] btnDeThi = new JButton[lstDeThi.size()];
             for (int i = 0; i < lstDeThi.size(); i++) {
                 btnDeThi[i] = new JButton();
-                btnDeThi[i].setName(lstDeThi.get(i).getId() + "");
+                btnDeThi[i].setName(i + "");
                 btnDeThi[i].setText("Đề thi " + (i + 1));
-                btnDeThi[i].setSize(90, 90);
+                btnDeThi[i].setPreferredSize(new Dimension(110, 90));
                 btnDeThi[i].setFont(new java.awt.Font("Tahoma", 0, 16));
                 if (lstDeThi.get(i).getTrangThai().equalsIgnoreCase("donot")) {
                     btnDeThi[i].setBackground(Color.GREEN);
                     btnDeThi[i].setForeground(Color.black);
-                }else if (lstDeThi.get(i).getTrangThai().equalsIgnoreCase("doing")) {
-                    btnDeThi[i].setBackground(Color.YELLOW);
-                    btnDeThi[i].setForeground(Color.black);
-                }else if (lstDeThi.get(i).getTrangThai().equalsIgnoreCase("pass")) {
+                } else if (lstDeThi.get(i).getTrangThai().equalsIgnoreCase("pass")) {
                     btnDeThi[i].setBackground(Color.BLUE);
                     btnDeThi[i].setForeground(Color.white);
-                }else if (lstDeThi.get(i).getTrangThai().equalsIgnoreCase("failed")) {
+                } else if (lstDeThi.get(i).getTrangThai().equalsIgnoreCase("failed")) {
                     btnDeThi[i].setBackground(Color.red);
                     btnDeThi[i].setForeground(Color.white);
                 }
                 btnDeThi[i].addMouseListener(new MouseAdapter() {
                     @Override
                     public void mousePressed(MouseEvent e) {
-                        int deThi_ID = Integer.parseInt(e.getComponent().getName());
-                        dgExam Exam = new dgExam(Run.home, true, deThi_ID);
+                        int index = Integer.parseInt(e.getComponent().getName());
+                        dgExam Exam = new dgExam(Run.home, true, lstDeThi.get(index));
                         Exam.setVisible(true);
                     }
-                 
+
                 });
                 pnlDeThi.add(btnDeThi[i]);
                 pnlDeThi.updateUI();
@@ -158,19 +161,17 @@ public class dgMenuDT extends java.awt.Dialog {
             JOptionPane.showMessageDialog(this, "Failed get Exam by email: " + e);
         }
     }
-    public void createExam(){
+
+    public void createExam() {
         try {
-            List<CauHoi_DeThi> lstQuesstion_Exam = questionController.createExam();
-            if (lstQuesstion_Exam.size() != 25) {
-                return;
-            }else{
-                JOptionPane.showMessageDialog(this, "Create Exam success");
-                loadDT();
-            }
+            questionController.createExam();
+            JOptionPane.showMessageDialog(this, "Create Exam success");
+            loadDT();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Failed 10: Create Question Exam failed");
+            JOptionPane.showMessageDialog(this, "Failed 10: Create Question Exam failed" + ex);
         }
     }
+
     /**
      * @param args the command line arguments
      */
