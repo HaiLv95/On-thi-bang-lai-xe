@@ -16,6 +16,7 @@ public class frHome extends javax.swing.JFrame {
     public frHome() {
         initComponents();
         setsize();
+        
     }
     public void setsize(){
         pnlHome.setSize(1200, 800);
@@ -49,7 +50,6 @@ public class frHome extends javax.swing.JFrame {
         btnCauHoi.setBackground(new java.awt.Color(255, 118, 89));
         btnCauHoi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnCauHoi.setForeground(new java.awt.Color(255, 255, 255));
-        btnCauHoi.setIcon(new javax.swing.ImageIcon("E:\\5.Fork\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\Question_fill.png")); // NOI18N
         btnCauHoi.setText("Bộ câu hỏi");
         btnCauHoi.setBorderPainted(false);
         btnCauHoi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -65,7 +65,6 @@ public class frHome extends javax.swing.JFrame {
         btnLyThuyet.setBackground(new java.awt.Color(0, 182, 222));
         btnLyThuyet.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnLyThuyet.setForeground(new java.awt.Color(255, 255, 255));
-        btnLyThuyet.setIcon(new javax.swing.ImageIcon("E:\\5.Fork\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\Desk_alt_fill.png")); // NOI18N
         btnLyThuyet.setText("Học lý thuyết");
         btnLyThuyet.setBorderPainted(false);
         btnLyThuyet.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -81,7 +80,6 @@ public class frHome extends javax.swing.JFrame {
         btnThi.setBackground(new java.awt.Color(86, 222, 167));
         btnThi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnThi.setForeground(new java.awt.Color(255, 255, 255));
-        btnThi.setIcon(new javax.swing.ImageIcon("E:\\5.Fork\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\File_dock_fill.png")); // NOI18N
         btnThi.setText("Thi thử");
         btnThi.setBorderPainted(false);
         btnThi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -97,7 +95,6 @@ public class frHome extends javax.swing.JFrame {
         btnThongKe.setBackground(new java.awt.Color(158, 122, 194));
         btnThongKe.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnThongKe.setForeground(new java.awt.Color(255, 255, 255));
-        btnThongKe.setIcon(new javax.swing.ImageIcon("E:\\5.Fork\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\Chart_alt_fill.png")); // NOI18N
         btnThongKe.setText("Thống kê");
         btnThongKe.setBorderPainted(false);
         btnThongKe.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -113,7 +110,6 @@ public class frHome extends javax.swing.JFrame {
         btnTaiKhoan.setBackground(new java.awt.Color(248, 205, 54));
         btnTaiKhoan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
-        btnTaiKhoan.setIcon(new javax.swing.ImageIcon("E:\\5.Fork\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\User_fill.png")); // NOI18N
         btnTaiKhoan.setText("Tài khoản");
         btnTaiKhoan.setBorderPainted(false);
         btnTaiKhoan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -165,38 +161,7 @@ public class frHome extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frHome().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCauHoi;

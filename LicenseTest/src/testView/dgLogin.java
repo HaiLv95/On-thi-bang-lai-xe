@@ -72,11 +72,6 @@ public class dgLogin extends java.awt.Dialog {
 
         pwPass.setBackground(new java.awt.Color(231, 243, 231));
         pwPass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 243, 231), 4));
-        pwPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pwPassActionPerformed(evt);
-            }
-        });
         pnlLogin.add(pwPass);
         pwPass.setBounds(90, 200, 420, 40);
 
@@ -117,11 +112,6 @@ public class dgLogin extends java.awt.Dialog {
         txtEmail.setBackground(new java.awt.Color(231, 243, 231));
         txtEmail.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 243, 231), 4));
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
         pnlLogin.add(txtEmail);
         txtEmail.setBounds(90, 110, 420, 40);
 
@@ -162,14 +152,6 @@ public class dgLogin extends java.awt.Dialog {
         findPassword.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lblFindPwMouseClicked
-
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
-
-    private void pwPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwPassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pwPassActionPerformed
     public void mathchesUser() {
         try {
             String email = txtEmail.getText();
@@ -179,6 +161,10 @@ public class dgLogin extends java.awt.Dialog {
                 JOptionPane.showMessageDialog(this, "Login success");
                 Run.frHome();
                 this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "Tài khoản hoặc mật khẩu không đúng");
+                txtEmail.requestFocus();
+                return;
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Login failed: " + e);
