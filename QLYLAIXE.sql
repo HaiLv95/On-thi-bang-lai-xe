@@ -125,9 +125,9 @@ INSERT INTO DBO.LOAIDE (TENLOAI) VALUES
 -- CHÈN DỮ LIỆU VÀO BẢNG LOAICAUHOI
 DELETE FROM LOAICAUHOI
 INSERT INTO DBO.LOAICAUHOI (TENLOAI) VALUES
-(N'CÂU HỎI KHÁI NIỆM , QUY TẮC'),
-(N'CÂU HỎI SA HÌNH'),
-(N'CÂU HỎI LIỆT')
+(N'Câu hỏi khái niệm, quy tắc'),
+(N'Câu hỏi sa hình'),
+(N'Câu hỏi liệt')
 
 --CHÈN DỮ LIỆU BẢNG CAUHOI
 DELETE FROM CAUHOI
@@ -154,7 +154,7 @@ INSERT INTO  DBO.CAUHOI (NOIDUNG,HINH,ID_LOAICAUHOI) VALUES
 (N'Khi lái xe trong khu đô thị và đông dân cư trừ các khu vực có biển cấm sử dụng còi, người lái xe được sử dụng còi như thế nào trong các trường hợp dưới đây?','',1),
 (N'“Người lái xe sử dụng đèn như thế nào khi lái xe trong khu đô thị và đông dân cư vào ban đêm?','',1),
 (N'Trong trường hợp đặc biệt, để được lắp đặt, sử dụng còi, đèn không đúng với thiết kế của nhà sản xuất đối với từng loại xe cơ giới bạn phải đảm bảo yêu cầu nào dưới đây?','',1),
-(N'Ở phần đường dành cho người đi bộ qua đường, trên cầu, đầu cầu, đường cao tốc, đường hẹp, đường dốc,tại nơi đường bộ giao nhau cùng mức với đường sắt có được quay đầu xe hay không?','',3),
+(N'(Câu hỏi liệt) Ở phần đường dành cho người đi bộ qua đường, trên cầu, đầu cầu, đường cao tốc, đường hẹp, đường dốc,tại nơi đường bộ giao nhau cùng mức với đường sắt có được quay đầu xe hay không?','',3),
 (N'Bạn đang lái xe phía trước có một xe cảnh sát giao thông không phát tín hiệu ưu tiên bạn có được phép vượt hay không?','',1),
 (N'Bạn đang lái xe phía trước có một xe cứu thương đang phát tín hiệu ưu tiên bạn có được phép vượt hay không?','',1),
 (N'(Câu hỏi liệt) Người điều khiển xe mô tô hai bánh, ba bánh, xe gắn máy có được phép sử dụng xe để kéo hoặcđẩy các phương tiện khác khi tham gia giao thông không?','',3),

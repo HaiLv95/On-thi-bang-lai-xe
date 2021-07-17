@@ -12,6 +12,7 @@ import testModel.Question;
 import testModel.Answer;
 import testModel.CauHoi_DeThi;
 import testModel.Dethi;
+import testModel.LoaiCauHoi;
 import testView.Run;
 
 /**
@@ -319,5 +320,28 @@ public class QuestionController {
             throw new Exception("Failed update Question Exam");
         }
         return row;
+    }
+    public List<LoaiCauHoi> getlistLoaiCauHoi() throws Exception{
+        String sql = "select * from loaicauhoi";
+        List<LoaiCauHoi> lst_loaiCauHoi = new ArrayList<>();
+        try {
+           ResultSet rs = con.createStatement(sql);
+           while(rs.next()){
+               lst_loaiCauHoi.add(getQuesstionType(rs));
+           }
+        } catch (Exception e) {
+            throw new Exception("Failed get list question type");
+        }
+        return lst_loaiCauHoi;
+    }
+    public LoaiCauHoi getQuesstionType(ResultSet rs) throws Exception{
+        LoaiCauHoi questionType = new LoaiCauHoi();
+        try {
+            questionType.setID(rs.getInt(1));
+            questionType.setTenLoai(rs.getString(2));
+        } catch (Exception e) {
+            throw new Exception("Failed get question type");
+        }
+        return questionType;
     }
 }

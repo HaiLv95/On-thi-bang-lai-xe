@@ -1,5 +1,16 @@
 package testView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import testController.QuestionController;
+import testModel.LoaiCauHoi;
+import testModel.LoaiDeThi;
+import testModel.Question;
+
 /**
  *
  * @author hai95
@@ -9,11 +20,28 @@ public class dgQuestionList extends java.awt.Dialog {
     /**
      * Creates new form dgQuestionList
      */
+    QuestionController questionController = new QuestionController();
+    List<Question> lst_Questions;
+    List<LoaiCauHoi> lst_Questiontype;
+    DefaultTableModel model;
     public dgQuestionList(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        model = (DefaultTableModel) tblQuesstion.getModel();
+        setstart();
     }
-
+    //set các thuộc tính khi run start
+    public void setstart(){
+        setSize(1200, 800);
+        setLocationRelativeTo(null);
+        loadQuestionTypetoCbo();
+        try {  
+           String type = cboQuesstionTypes.getSelectedItem().toString();
+            fillTablebyType(type);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Get list question failed");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -22,11 +50,117 @@ public class dgQuestionList extends java.awt.Dialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        btnSearch = new javax.swing.JButton();
+        lblQuesstionTypes = new javax.swing.JLabel();
+        cboQuesstionTypes = new javax.swing.JComboBox<>();
+        txtSearch = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblQuesstion = new javax.swing.JTable();
+        lblMess = new javax.swing.JLabel();
+
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closeDialog(evt);
             }
         });
+        setLayout(null);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(null);
+
+        jPanel4.setBackground(new java.awt.Color(78, 180, 84));
+        jPanel4.setLayout(null);
+
+        btnSearch.setBackground(new java.awt.Color(255, 118, 89));
+        btnSearch.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearch.setText("Tìm kiếm");
+        btnSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 118, 89)));
+        btnSearch.setBorderPainted(false);
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnSearch);
+        btnSearch.setBounds(1070, 10, 100, 30);
+
+        lblQuesstionTypes.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblQuesstionTypes.setForeground(new java.awt.Color(255, 255, 255));
+        lblQuesstionTypes.setText("Loại câu hỏi");
+        jPanel4.add(lblQuesstionTypes);
+        lblQuesstionTypes.setBounds(20, 10, 140, 30);
+
+        cboQuesstionTypes.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        cboQuesstionTypes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboQuesstionTypesActionPerformed(evt);
+            }
+        });
+        jPanel4.add(cboQuesstionTypes);
+        cboQuesstionTypes.setBounds(180, 10, 250, 30);
+
+        txtSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSearchKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSearchKeyTyped(evt);
+            }
+        });
+        jPanel4.add(txtSearch);
+        txtSearch.setBounds(800, 10, 250, 30);
+
+        jPanel1.add(jPanel4);
+        jPanel4.setBounds(0, 30, 1200, 50);
+
+        tblQuesstion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nội dung", "Hình", "Loại"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblQuesstion.setRowHeight(20);
+        jScrollPane1.setViewportView(tblQuesstion);
+        if (tblQuesstion.getColumnModel().getColumnCount() > 0) {
+            tblQuesstion.getColumnModel().getColumn(0).setMinWidth(80);
+            tblQuesstion.getColumnModel().getColumn(0).setPreferredWidth(80);
+            tblQuesstion.getColumnModel().getColumn(0).setMaxWidth(80);
+            tblQuesstion.getColumnModel().getColumn(2).setMinWidth(80);
+            tblQuesstion.getColumnModel().getColumn(2).setPreferredWidth(80);
+            tblQuesstion.getColumnModel().getColumn(2).setMaxWidth(80);
+            tblQuesstion.getColumnModel().getColumn(3).setMinWidth(180);
+            tblQuesstion.getColumnModel().getColumn(3).setPreferredWidth(180);
+            tblQuesstion.getColumnModel().getColumn(3).setMaxWidth(180);
+        }
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(30, 130, 1130, 650);
+
+        lblMess.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblMess.setForeground(new java.awt.Color(255, 0, 0));
+        lblMess.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblMess);
+        lblMess.setBounds(800, 90, 250, 14);
+
+        add(jPanel1);
+        jPanel1.setBounds(0, 0, 1200, 800);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -39,6 +173,85 @@ public class dgQuestionList extends java.awt.Dialog {
         dispose();
     }//GEN-LAST:event_closeDialog
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void cboQuesstionTypesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboQuesstionTypesActionPerformed
+        // TODO add your handling code here:
+        fillTablebyType(cboQuesstionTypes.getSelectedItem().toString());
+    }//GEN-LAST:event_cboQuesstionTypesActionPerformed
+
+    private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
+        // TODO add your handling code here:
+//        char text = evt.getKeyChar();
+//        if (Character.isLetter(text)) {
+//            //Thông báo chỉ được nhập số
+//            lblMessage.setText("Bạn chỉ có thể nhập mã câu hỏi là số để tìm kiếm");
+//            //khóa nhập khi người dùng nhập ký tự k phải số
+//            txtSearch.setEditable(false);
+//        }else{
+//            lblMessage.setText("");
+//            txtSearch.setEditable(true);  
+//        }
+    }//GEN-LAST:event_txtSearchKeyPressed
+
+    private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped
+        // TODO add your handling code here:
+        char text = evt.getKeyChar();
+        if (!Character.isDigit(text)) {
+             lblMess.setText("Bạn chỉ có thể nhập mã câu hỏi là số để tìm kiếm");
+            evt.consume();
+        }else{
+            lblMess.setText("");
+        }
+    }//GEN-LAST:event_txtSearchKeyTyped
+    // load list loại câu hỏi lên combobox
+    public void loadQuestionTypetoCbo(){
+        try {
+           lst_Questiontype  = questionController.getlistLoaiCauHoi();
+           cboQuesstionTypes.removeAll();
+           cboQuesstionTypes.addItem("All");
+            for (LoaiCauHoi loaiCauHoi : lst_Questiontype) {
+                cboQuesstionTypes.addItem(loaiCauHoi.getTenLoai());
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Failed get question type to dialog");
+        }
+    }
+    public void fillQuestionToTable(List<Question> lstQuestions){
+            String tenLoai ="";
+            model.setRowCount(0);
+        for (Question lstQT : lstQuestions) {
+            for (LoaiCauHoi loaiCauHoi : lst_Questiontype) {
+                if (lstQT.getLoaiCauHoi_id() == loaiCauHoi.getID()) {
+                    tenLoai = loaiCauHoi.getTenLoai();
+                }
+            }
+            model.addRow(new Object[]{lstQT.getId(), lstQT.getNoiDung(), lstQT.getHinh(), tenLoai});
+        }
+    }
+    public void fillTablebyType(String type){
+        try {
+            txtSearch.setText("");
+            List<Question> lstListQ = new ArrayList<>();
+            lst_Questions = questionController.getListQuestion();
+            if (type.equalsIgnoreCase("All")) {
+                fillQuestionToTable(lst_Questions);
+            } else if (type.equalsIgnoreCase("Câu hỏi sa hình")) {
+                lstListQ = questionController.getSaHinh(lst_Questions);
+                fillQuestionToTable(lstListQ);
+            }else if (type.equalsIgnoreCase("Câu hỏi khái niệm, quy tắc")) {
+                lstListQ = questionController.getKhaiNiem(lst_Questions);
+                fillQuestionToTable(lstListQ);
+            }else if (type.equalsIgnoreCase("Câu hỏi liệt")) {
+                lstListQ = questionController.getCauLiet(lst_Questions);
+                fillQuestionToTable(lstListQ);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Failed fill question by type to table" + ex);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -58,5 +271,14 @@ public class dgQuestionList extends java.awt.Dialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JComboBox<String> cboQuesstionTypes;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblMess;
+    private javax.swing.JLabel lblQuesstionTypes;
+    private javax.swing.JTable tblQuesstion;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
