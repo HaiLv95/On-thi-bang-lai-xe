@@ -962,23 +962,11 @@ Biển báo phía trước là đường ưu tiên và biển phụ báo hướn
 (N'Vượt về phía bên phải để đi tiếp.',0,N'',200),
 (N'Giảm tốc độ chờ xe container rẽ xong rồi tiếp tục đi.',1,N'iải thích: Giảm tốc độc chờ xe đầu kéo rẽ phải rồi mới tiếp tục đi.',200),
 (N'Vượt về phía bên trái để đi tiếp.',0,N'',200)
-delete from DETHI
-insert into DETHI(TRANGTHAI, EMAIL,Timer,ID_LOAIDE) values('donot','hailvph13040@fpt.edu.vn', 900,3)
-declare @index int = 1;
-declare @row int = 0;
-select row = COUNT(*) from CAUHOI where ID_LOAICAUHOI = 3
-while @index < 20
-begin
-insert into CAUHOI_DETHI(ID_CAUHOI, ID_DETHI, ID_CAUTRALOI, TRANGTHAI) values (@index, 1, -1,0)
-set @index = @index + 1;
-end;
-select CAUHOI.ID_CAUHOI, CAUHOI.NOIDUNG, HINH, ID_LOAICAUHOI, DAPAN.ID_DAPAN, DAPAN.NOIDUNG, DAPAN.TRANGTHAI, DAPAN.GIAITHICH  from CAUHOI join DAPAN on CAUHOI.ID_CAUHOI = DAPAN.ID_CAUHOI
-where CAUHOI.ID_CAUHOI = 1
 
 select * from USERS
 select * from LOAICAUHOI
-select * from CAUHOI where ID_CAUHOI = 111
+select * from CAUHOI
 select * from LOAIDE
 select * from DETHI
-select * from CAUHOI_DETHI where id_deThi =1
-select * from DAPAN	where ID_CAUHOI = 11
+select * from CAUHOI_DETHI
+select * from DAPAN

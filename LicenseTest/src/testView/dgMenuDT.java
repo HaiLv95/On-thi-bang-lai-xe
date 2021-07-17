@@ -23,6 +23,7 @@ public class dgMenuDT extends java.awt.Dialog {
     QuestionController questionController = new QuestionController();
     List<Dethi> lstDeThi = new ArrayList<>();
     public static dgMenuDT dgDT;
+
     /**
      * Creates new form dgMenuDT
      */
@@ -51,6 +52,9 @@ public class dgMenuDT extends java.awt.Dialog {
         pnlDeThi = new javax.swing.JPanel();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closeDialog(evt);
             }
@@ -123,6 +127,13 @@ public class dgMenuDT extends java.awt.Dialog {
         // TODO add your handling code here:
         createExam();
     }//GEN-LAST:event_btnNewExamActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        setVisible(false);
+        dispose();
+        Run.home.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
     public void loadDT() {
         try {
