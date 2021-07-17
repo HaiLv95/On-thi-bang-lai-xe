@@ -59,6 +59,9 @@ public class dgQuestionList extends java.awt.Dialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblQuesstion = new javax.swing.JTable();
         lblMess = new javax.swing.JLabel();
+        btnThem = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -151,13 +154,40 @@ public class dgQuestionList extends java.awt.Dialog {
         }
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(30, 130, 1130, 650);
+        jScrollPane1.setBounds(30, 160, 1130, 610);
 
         lblMess.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblMess.setForeground(new java.awt.Color(255, 0, 0));
         lblMess.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(lblMess);
         lblMess.setBounds(800, 90, 250, 14);
+
+        btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnThem);
+        btnThem.setBounds(860, 100, 61, 23);
+
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSua);
+        btnSua.setBounds(980, 100, 51, 23);
+
+        btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnXoa);
+        btnXoa.setBounds(1090, 100, 51, 23);
 
         add(jPanel1);
         jPanel1.setBounds(0, 0, 1200, 800);
@@ -206,6 +236,18 @@ public class dgQuestionList extends java.awt.Dialog {
             lblMess.setText("");
         }
     }//GEN-LAST:event_txtSearchKeyTyped
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXoaActionPerformed
     // load list loại câu hỏi lên combobox
     public void loadQuestionTypetoCbo(){
         try {
@@ -272,6 +314,9 @@ public class dgQuestionList extends java.awt.Dialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox<String> cboQuesstionTypes;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
