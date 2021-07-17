@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import testController.QuestionController;
 import testModel.Answer;
@@ -66,9 +67,13 @@ public class dgSaHinh extends javax.swing.JDialog {
             txpB.setText(listSaHinhAnswer.get(1).getNoiDung());
             txpC.setText(listSaHinhAnswer.get(2).getNoiDung());
             // thêm hình ảnh
-            
-            
-            
+            if (ques.getHinh().length() > 0) {
+                lblHinh.setVisible(true);
+                setIcon(ques.getHinh());
+            }
+            else{
+                 lblHinh.setVisible(false);
+            }    
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -123,6 +128,7 @@ public class dgSaHinh extends javax.swing.JDialog {
       rdoA.setSelected(false);rdoB.setSelected(false);rdoC.setSelected(false);
       lblCauHoi.setText("Câu hỏi " + count);
       txtMove.setText(null);
+        
     }
     public void buttonPrev(){
         index--;
@@ -152,6 +158,10 @@ public class dgSaHinh extends javax.swing.JDialog {
             loadData();
             lblCauHoi.setText("Câu hỏi " + count);
         }
+    }
+     public void setIcon(String nameIcon) {
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/Images/" + nameIcon + ".png"));
+        lblHinh.setIcon(imageIcon);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -209,6 +219,8 @@ public class dgSaHinh extends javax.swing.JDialog {
 
         jPanel2.add(jPanel3);
         jPanel3.setBounds(0, 0, 1000, 50);
+
+        lblHinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel2.add(lblHinh);
         lblHinh.setBounds(530, 180, 450, 250);
 

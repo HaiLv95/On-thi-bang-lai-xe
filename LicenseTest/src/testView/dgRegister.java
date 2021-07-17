@@ -202,13 +202,13 @@ public void check(){
         JOptionPane.showMessageDialog(this, e);
     }
 }
-public void addUSER() throws MailConnectException{
-    String EMAIL =txtEmail1.getText();
-    us.sendMail(EMAIL);
-    check();
-    String PASS = pwPass.getText();
-    us.addUser(EMAIL, PASS);
-}
+//public void addUSER() throws MailConnectException{
+//    String EMAIL =txtEmail1.getText();
+//    us.sendMail(EMAIL);
+//    check();
+//    String PASS = pwPass.getText();
+//    us.addUser(EMAIL, PASS);
+//}
     /**
      * @param args the command line arguments
      */
