@@ -24,24 +24,27 @@ public class dgQuestionList extends java.awt.Dialog {
     List<Question> lst_Questions;
     List<LoaiCauHoi> lst_Questiontype;
     DefaultTableModel model;
+
     public dgQuestionList(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         model = (DefaultTableModel) tblQuesstion.getModel();
         setstart();
     }
+
     //set các thuộc tính khi run start
-    public void setstart(){
+    public void setstart() {
         setSize(1200, 800);
         setLocationRelativeTo(null);
         loadQuestionTypetoCbo();
-        try {  
-           String type = cboQuesstionTypes.getSelectedItem().toString();
+        try {
+            int type = cboQuesstionTypes.getSelectedIndex();
             fillTablebyType(type);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Get list question failed");
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -109,6 +112,9 @@ public class dgQuestionList extends java.awt.Dialog {
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSearchKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtSearchKeyTyped(evt);
@@ -204,35 +210,22 @@ public class dgQuestionList extends java.awt.Dialog {
     }//GEN-LAST:event_closeDialog
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-
+        int id = Integer.parseInt(txtSearch.getText().trim());
+        searchByID(id);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void cboQuesstionTypesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboQuesstionTypesActionPerformed
         // TODO add your handling code here:
-        fillTablebyType(cboQuesstionTypes.getSelectedItem().toString());
+        fillTablebyType(cboQuesstionTypes.getSelectedIndex());
     }//GEN-LAST:event_cboQuesstionTypesActionPerformed
-
-    private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
-        // TODO add your handling code here:
-//        char text = evt.getKeyChar();
-//        if (Character.isLetter(text)) {
-//            //Thông báo chỉ được nhập số
-//            lblMessage.setText("Bạn chỉ có thể nhập mã câu hỏi là số để tìm kiếm");
-//            //khóa nhập khi người dùng nhập ký tự k phải số
-//            txtSearch.setEditable(false);
-//        }else{
-//            lblMessage.setText("");
-//            txtSearch.setEditable(true);  
-//        }
-    }//GEN-LAST:event_txtSearchKeyPressed
 
     private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped
         // TODO add your handling code here:
         char text = evt.getKeyChar();
         if (!Character.isDigit(text)) {
-             lblMess.setText("Bạn chỉ có thể nhập mã câu hỏi là số để tìm kiếm");
+            lblMess.setText("Bạn chỉ có thể nhập mã câu hỏi là số để tìm kiếm");
             evt.consume();
-        }else{
+        } else {
             lblMess.setText("");
         }
     }//GEN-LAST:event_txtSearchKeyTyped
@@ -248,12 +241,23 @@ public class dgQuestionList extends java.awt.Dialog {
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_txtSearchKeyPressed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        int id = Integer.parseInt(txtSearch.getText().trim());
+        searchByID(id);
+    }//GEN-LAST:event_txtSearchKeyReleased
     // load list loại câu hỏi lên combobox
-    public void loadQuestionTypetoCbo(){
+    public void loadQuestionTypetoCbo() {
         try {
-           lst_Questiontype  = questionController.getlistLoaiCauHoi();
-           cboQuesstionTypes.removeAll();
-           cboQuesstionTypes.addItem("All");
+            lst_Questiontype = questionController.getlistLoaiCauHoi();
+            cboQuesstionTypes.removeAll();
+            cboQuesstionTypes.addItem("All");
             for (LoaiCauHoi loaiCauHoi : lst_Questiontype) {
                 cboQuesstionTypes.addItem(loaiCauHoi.getTenLoai());
             }
@@ -261,39 +265,62 @@ public class dgQuestionList extends java.awt.Dialog {
             JOptionPane.showMessageDialog(this, "Failed get question type to dialog");
         }
     }
-    public void fillQuestionToTable(List<Question> lstQuestions){
-            String tenLoai ="";
-            model.setRowCount(0);
-        for (Question lstQT : lstQuestions) {
-            for (LoaiCauHoi loaiCauHoi : lst_Questiontype) {
-                if (lstQT.getLoaiCauHoi_id() == loaiCauHoi.getID()) {
-                    tenLoai = loaiCauHoi.getTenLoai();
-                }
+
+    public void fillQuestionToTable(Question questions) {
+        String tenLoai = "";
+        for (LoaiCauHoi loaiCauHoi : lst_Questiontype) {
+            if (questions.getLoaiCauHoi_id() == loaiCauHoi.getID()) {
+                tenLoai = loaiCauHoi.getTenLoai();
+                model.addRow(new Object[]{questions.getId(), questions.getNoiDung(), questions.getHinh(), tenLoai});
             }
-            model.addRow(new Object[]{lstQT.getId(), lstQT.getNoiDung(), lstQT.getHinh(), tenLoai});
         }
     }
-    public void fillTablebyType(String type){
+
+    public void fillTablebyType(int type) {
         try {
             txtSearch.setText("");
+            model.setRowCount(0);
             List<Question> lstListQ = new ArrayList<>();
             lst_Questions = questionController.getListQuestion();
-            if (type.equalsIgnoreCase("All")) {
-                fillQuestionToTable(lst_Questions);
-            } else if (type.equalsIgnoreCase("Câu hỏi sa hình")) {
+            if (type == 0) {
+                for (Question lst_Question : lst_Questions) {
+                    fillQuestionToTable(lst_Question);
+                }
+            } else if (type == 2) {
                 lstListQ = questionController.getSaHinh(lst_Questions);
-                fillQuestionToTable(lstListQ);
-            }else if (type.equalsIgnoreCase("Câu hỏi khái niệm, quy tắc")) {
+                for (Question question : lstListQ) {
+                    fillQuestionToTable(question);
+                }
+            } else if (type == 1) {
                 lstListQ = questionController.getKhaiNiem(lst_Questions);
-                fillQuestionToTable(lstListQ);
-            }else if (type.equalsIgnoreCase("Câu hỏi liệt")) {
+                for (Question question : lstListQ) {
+                    fillQuestionToTable(question);
+                }
+            } else if (type == 3) {
                 lstListQ = questionController.getCauLiet(lst_Questions);
-                fillQuestionToTable(lstListQ);
+                for (Question question : lstListQ) {
+                    fillQuestionToTable(question);
+                }
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Failed fill question by type to table" + ex);
         }
     }
+
+    public void searchByID(int id) {
+        model.setRowCount(0);
+        if (txtSearch.getText().trim().isEmpty()) {
+            fillTablebyType(0);
+        } else {
+            List<Question> lstQT = new ArrayList<>();
+            for (Question lst_Question : lst_Questions) {
+                if (lst_Question.getId() == id) {
+                    fillQuestionToTable(lst_Question);
+                }
+            }
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
