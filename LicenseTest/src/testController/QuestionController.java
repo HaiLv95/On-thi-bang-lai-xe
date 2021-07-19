@@ -7,6 +7,8 @@ import java.sql.*;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import testModel.Question;
 import testModel.Answer;
@@ -26,7 +28,7 @@ public class QuestionController {
     public List<Question> getListQuestion() throws Exception {
         List<Question> lstQuesstion = new ArrayList<>();
         try {
-            String sql = "select * from cauhoi";
+            String sql = "select * from cauhoi where trangthai=1";
             ResultSet rs = con.createStatement(sql);
             while (rs.next()) {
                 lstQuesstion.add(getQuestion(rs));
@@ -45,6 +47,7 @@ public class QuestionController {
             getQuestion.setNoiDung(rs.getString(2));
             getQuestion.setHinh(rs.getString(3));
             getQuestion.setLoaiCauHoi_id(rs.getInt(4));
+            getQuestion.setTrangThai(rs.getBoolean(5));
         } catch (Exception e) {
             throw new Exception("Failed 2: get Question failed ");
         }
@@ -78,11 +81,12 @@ public class QuestionController {
         }
         return lstAnswers;
     }
+
     public List<Answer> getListAnswersbyQuesstionID(int id) throws Exception {
         List<Answer> lstAnswers = new ArrayList<>();
         try {
             String sql = "select * from dapan where id_cauhoi=?";
-            ResultSet rs = con.prepareExcuteQuery(sql,id);
+            ResultSet rs = con.prepareExcuteQuery(sql, id);
             while (rs.next()) {
                 lstAnswers.add(getAnswer(rs));
             }
@@ -91,6 +95,7 @@ public class QuestionController {
         }
         return lstAnswers;
     }
+
     // câu hỏi liệt
     public List<Question> getCauLiet(List<Question> listQuestions) {
         List<Question> lstLiet = new ArrayList<>();
@@ -99,20 +104,21 @@ public class QuestionController {
                 lstLiet.add(lstQ);
             }
         }
-        
+
         return lstLiet;
     }
-    
-    public List<Answer> getAnswerCauLiet(int id_cauHoi,List<Answer> listAnswers) {
-        List<Answer> lstA = new ArrayList<>();    
-        for(Answer lst : listAnswers){
-            if(lst.getCauhoi_id() == id_cauHoi){
+
+    public List<Answer> getAnswerCauLiet(int id_cauHoi, List<Answer> listAnswers) {
+        List<Answer> lstA = new ArrayList<>();
+        for (Answer lst : listAnswers) {
+            if (lst.getCauhoi_id() == id_cauHoi) {
                 lstA.add(lst);
             }
         }
-        
+
         return lstA;
     }
+
     // câu hỏi khái niệm và quy tắc
     public List<Question> getKhaiNiem(List<Question> listQuestions) {
         List<Question> lstKn = new ArrayList<>();
@@ -123,16 +129,18 @@ public class QuestionController {
         }
         return lstKn;
     }
-    public List<Answer> getAnswerKhaiNiem(int id_cauHoi,List<Answer> listAnswers) {
-        List<Answer> lstA = new ArrayList<>();    
-        for(Answer lst : listAnswers){
-            if(lst.getCauhoi_id() == id_cauHoi){
+
+    public List<Answer> getAnswerKhaiNiem(int id_cauHoi, List<Answer> listAnswers) {
+        List<Answer> lstA = new ArrayList<>();
+        for (Answer lst : listAnswers) {
+            if (lst.getCauhoi_id() == id_cauHoi) {
                 lstA.add(lst);
             }
         }
-        
+
         return lstA;
     }
+
     // câu hỏi sa hình
     public List<Question> getSaHinh(List<Question> listQuestions) {
         List<Question> lstSaHinh = new ArrayList<>();
@@ -143,14 +151,15 @@ public class QuestionController {
         }
         return lstSaHinh;
     }
-    public List<Answer> getAnswerSaHinh(int id_cauHoi,List<Answer> listAnswers) {
-        List<Answer> lstA = new ArrayList<>();    
-        for(Answer lst : listAnswers){
-            if(lst.getCauhoi_id() == id_cauHoi){
+
+    public List<Answer> getAnswerSaHinh(int id_cauHoi, List<Answer> listAnswers) {
+        List<Answer> lstA = new ArrayList<>();
+        for (Answer lst : listAnswers) {
+            if (lst.getCauhoi_id() == id_cauHoi) {
                 lstA.add(lst);
             }
         }
-        
+
         return lstA;
     }
 
@@ -288,12 +297,13 @@ public class QuestionController {
         }
         return cauHoi;
     }
-    public List<CauHoi_DeThi> getCauHoiDTbyDeThiID(int deThi_ID) throws Exception{
+
+    public List<CauHoi_DeThi> getCauHoiDTbyDeThiID(int deThi_ID) throws Exception {
         String sqlCauHoi_DeThi = "select * from CAUHOI_DETHI where id_dethi=?";
         List<CauHoi_DeThi> lstCauHoi_DeThi = new ArrayList<>();
         try {
             ResultSet rs = con.prepareExcuteQuery(sqlCauHoi_DeThi, deThi_ID);
-            while (rs.next()) {                
+            while (rs.next()) {
                 lstCauHoi_DeThi.add(getCauHoi_DeThi(rs));
             }
         } catch (Exception e) {
@@ -301,40 +311,44 @@ public class QuestionController {
         }
         return lstCauHoi_DeThi;
     }
-    public int updateExambyID(Dethi dethi) throws Exception{
+
+    public int updateExambyID(Dethi dethi) throws Exception {
         String sql = "update dethi set trangthai=?, email=?, timer=?, id_loaide=? where id_dethi=?";
         int row = 0;
         try {
-           row  = con.prepareUpdate(sql, dethi.getTrangThai(), Run.user.getUser(), dethi.getTimer(), dethi.getLoaide_id(),dethi.getId());
+            row = con.prepareUpdate(sql, dethi.getTrangThai(), Run.user.getUser(), dethi.getTimer(), dethi.getLoaide_id(), dethi.getId());
         } catch (Exception e) {
             throw new Exception("Failed update Exam");
         }
-        return row; 
+        return row;
     }
-    public int updateQuestionExam(CauHoi_DeThi questionExam) throws Exception{
+
+    public int updateQuestionExam(CauHoi_DeThi questionExam) throws Exception {
         String sql = "update CAUHOI_DETHI set id_cautraloi=?, trangthai=? where id_cauhoi=? and id_dethi=?";
         int row = 0;
         try {
-           row = con.prepareUpdate(sql, questionExam.getCauTraLoi(), questionExam.isTrangThai(), questionExam.getCauHoi_id(), questionExam.getDeThi_id());
+            row = con.prepareUpdate(sql, questionExam.getCauTraLoi(), questionExam.isTrangThai(), questionExam.getCauHoi_id(), questionExam.getDeThi_id());
         } catch (Exception e) {
             throw new Exception("Failed update Question Exam");
         }
         return row;
     }
-    public List<LoaiCauHoi> getlistLoaiCauHoi() throws Exception{
+
+    public List<LoaiCauHoi> getlistLoaiCauHoi() throws Exception {
         String sql = "select * from loaicauhoi";
         List<LoaiCauHoi> lst_loaiCauHoi = new ArrayList<>();
         try {
-           ResultSet rs = con.createStatement(sql);
-           while(rs.next()){
-               lst_loaiCauHoi.add(getQuesstionType(rs));
-           }
+            ResultSet rs = con.createStatement(sql);
+            while (rs.next()) {
+                lst_loaiCauHoi.add(getQuesstionType(rs));
+            }
         } catch (Exception e) {
             throw new Exception("Failed get list question type");
         }
         return lst_loaiCauHoi;
     }
-    public LoaiCauHoi getQuesstionType(ResultSet rs) throws Exception{
+
+    public LoaiCauHoi getQuesstionType(ResultSet rs) throws Exception {
         LoaiCauHoi questionType = new LoaiCauHoi();
         try {
             questionType.setID(rs.getInt(1));
@@ -343,5 +357,66 @@ public class QuestionController {
             throw new Exception("Failed get question type");
         }
         return questionType;
+    }
+
+    public int deleteQuestion(int id) {
+        int row = 0;
+        String sql = "update cauhoi set trangthai = 0 where id_cauhoi=?";
+        try {
+            row = con.prepareUpdate(sql, id);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Delete question failed");
+        }
+        return row;
+    }
+
+    public int updateQuesstion(Question question) {
+        int row = 0;
+        String sql = "update cauhoi set noidung=?, hinh=?, id_loaicauhoi=? where id_cauhoi=?";
+        try {
+            row = con.prepareUpdate(sql, question.getNoiDung(), question.getHinh(), question.getLoaiCauHoi_id(), question.getId());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Update question failed");
+        }
+        return row;
+    }
+
+    public Question insertQuestion(Question question) {
+        int row = 0;
+        String sql = "insert into cauhoi(noidung, hinh, id_loaicauhoi,trangthai) values(?,?,?,1)";
+        Question qs = new Question();
+        try {
+            int questionid = con.insertObj(sql, question.getNoiDung(), question.getHinh(), question.getLoaiCauHoi_id(), question.getId());
+            String sqlselect = "select * from cauhoi where id_cauhoi =?";
+            ResultSet rs = con.prepareExcuteQuery(sql, questionid);
+            while (rs.next()) {
+                qs = getQuestion(rs);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Insert question failed " + e);
+        }
+        return qs;
+    }
+
+    public int insertDapAn(Answer answer) {
+        int row = 0;
+        String sql = "insert into dapan(noidung, trangthai, giaithich, id_cauhoi) values(?,?,?,?)";
+        try {
+            row += con.prepareUpdate(sql, answer.getNoiDung(), answer.isTrangThai(), answer.getGiaiThich(), answer.getCauhoi_id());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "insert Answer to Sql failed");
+        }
+        return row;
+    }
+
+    public void setIcon(JLabel label, String nameIcon) {
+        if (nameIcon.length() > 0) {
+            ImageIcon imageIcon = new ImageIcon(getClass().getResource("/Images/" + nameIcon + ".png"));
+            label.setIcon(imageIcon);
+            label.setName(nameIcon);
+        }else{
+            label.removeAll();
+            label.setName(null);
+        }
     }
 }

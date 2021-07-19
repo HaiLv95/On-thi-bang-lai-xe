@@ -17,7 +17,6 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Action;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import testController.QuestionController;
@@ -360,10 +359,6 @@ public class dgExam extends java.awt.Dialog {
         }
     }
 
-    public void setIcon(String nameIcon) {
-        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/Images/" + nameIcon + ".png"));
-        lblHinh.setIcon(imageIcon);
-    }
 
     public void loadQuestionbyIndex(int index) {
         try {
@@ -373,7 +368,7 @@ public class dgExam extends java.awt.Dialog {
                     txpCauHoi.setText("Câu " + (index + 1) + ": " + lsQuestion.getNoiDung());
                     if (lsQuestion.getHinh().length() > 0) {
                         lblHinh.setVisible(true);
-                        setIcon(lsQuestion.getHinh());
+                        questionController.setIcon(lblHinh, lsQuestion.getHinh());
                     } else {
                         lblHinh.setVisible(false);
                     }
