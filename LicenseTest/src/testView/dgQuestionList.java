@@ -24,10 +24,13 @@ public class dgQuestionList extends java.awt.Dialog {
     List<Question> lst_Questions;
     List<LoaiCauHoi> lst_Questiontype;
     DefaultTableModel model;
+    int index;
+    public static dgQuestionList dgQsList;
 
     public dgQuestionList(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        dgQsList = this;
         model = (DefaultTableModel) tblQuesstion.getModel();
         setstart();
     }
@@ -40,6 +43,12 @@ public class dgQuestionList extends java.awt.Dialog {
         try {
             int type = cboQuesstionTypes.getSelectedIndex();
             fillTablebyType(type);
+            if (tblQuesstion.getRowCount() > 0) {
+                index = 0;
+            } else {
+                index = -1;
+            }
+            tblQuesstion.setRowSelectionInterval(index, index);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Get list question failed");
         }
@@ -55,10 +64,10 @@ public class dgQuestionList extends java.awt.Dialog {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        btnSearch = new javax.swing.JButton();
         lblQuesstionTypes = new javax.swing.JLabel();
         cboQuesstionTypes = new javax.swing.JComboBox<>();
         txtSearch = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblQuesstion = new javax.swing.JTable();
         lblMess = new javax.swing.JLabel();
@@ -79,20 +88,6 @@ public class dgQuestionList extends java.awt.Dialog {
         jPanel4.setBackground(new java.awt.Color(78, 180, 84));
         jPanel4.setLayout(null);
 
-        btnSearch.setBackground(new java.awt.Color(255, 118, 89));
-        btnSearch.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearch.setText("Tìm kiếm");
-        btnSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 118, 89)));
-        btnSearch.setBorderPainted(false);
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnSearch);
-        btnSearch.setBounds(1070, 10, 100, 30);
-
         lblQuesstionTypes.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblQuesstionTypes.setForeground(new java.awt.Color(255, 255, 255));
         lblQuesstionTypes.setText("Loại câu hỏi");
@@ -110,9 +105,6 @@ public class dgQuestionList extends java.awt.Dialog {
 
         txtSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtSearchKeyPressed(evt);
-            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSearchKeyReleased(evt);
             }
@@ -121,7 +113,13 @@ public class dgQuestionList extends java.awt.Dialog {
             }
         });
         jPanel4.add(txtSearch);
-        txtSearch.setBounds(800, 10, 250, 30);
+        txtSearch.setBounds(930, 10, 250, 30);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Tìm Kiếm");
+        jPanel4.add(jLabel1);
+        jLabel1.setBounds(820, 10, 100, 30);
 
         jPanel1.add(jPanel4);
         jPanel4.setBounds(0, 30, 1200, 50);
@@ -146,6 +144,11 @@ public class dgQuestionList extends java.awt.Dialog {
             }
         });
         tblQuesstion.setRowHeight(20);
+        tblQuesstion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblQuesstionMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblQuesstion);
         if (tblQuesstion.getColumnModel().getColumnCount() > 0) {
             tblQuesstion.getColumnModel().getColumn(0).setMinWidth(80);
@@ -175,7 +178,7 @@ public class dgQuestionList extends java.awt.Dialog {
             }
         });
         jPanel1.add(btnThem);
-        btnThem.setBounds(860, 100, 61, 23);
+        btnThem.setBounds(849, 100, 70, 23);
 
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +187,7 @@ public class dgQuestionList extends java.awt.Dialog {
             }
         });
         jPanel1.add(btnSua);
-        btnSua.setBounds(980, 100, 51, 23);
+        btnSua.setBounds(961, 100, 70, 23);
 
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
@@ -193,7 +196,7 @@ public class dgQuestionList extends java.awt.Dialog {
             }
         });
         jPanel1.add(btnXoa);
-        btnXoa.setBounds(1090, 100, 51, 23);
+        btnXoa.setBounds(1071, 100, 70, 23);
 
         add(jPanel1);
         jPanel1.setBounds(0, 0, 1200, 800);
@@ -208,11 +211,6 @@ public class dgQuestionList extends java.awt.Dialog {
         setVisible(false);
         dispose();
     }//GEN-LAST:event_closeDialog
-
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        int id = Integer.parseInt(txtSearch.getText().trim());
-        searchByID(id);
-    }//GEN-LAST:event_btnSearchActionPerformed
 
     private void cboQuesstionTypesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboQuesstionTypesActionPerformed
         // TODO add your handling code here:
@@ -232,26 +230,32 @@ public class dgQuestionList extends java.awt.Dialog {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+        addQuestion();
     }//GEN-LAST:event_btnThemActionPerformed
-
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSuaActionPerformed
-
-    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnXoaActionPerformed
-
-    private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_txtSearchKeyPressed
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
         // TODO add your handling code here:
         int id = Integer.parseInt(txtSearch.getText().trim());
         searchByID(id);
     }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        updateQs();
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void tblQuesstionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQuesstionMouseClicked
+        // TODO add your handling code here:
+        if (tblQuesstion.getRowCount() > 0) {
+            index = tblQuesstion.getSelectedRow();
+        } else {
+            index = -1;
+        }
+    }//GEN-LAST:event_tblQuesstionMouseClicked
     // load list loại câu hỏi lên combobox
     public void loadQuestionTypetoCbo() {
         try {
@@ -312,13 +316,38 @@ public class dgQuestionList extends java.awt.Dialog {
         if (txtSearch.getText().trim().isEmpty()) {
             fillTablebyType(0);
         } else {
-            List<Question> lstQT = new ArrayList<>();
             for (Question lst_Question : lst_Questions) {
                 if (lst_Question.getId() == id) {
                     fillQuestionToTable(lst_Question);
                 }
             }
         }
+    }
+
+    public void addQuestion() {
+        Question question = new Question();
+        dgAddQuestion addQuestion = new dgAddQuestion(Run.home, true, question, 0);
+        addQuestion.setVisible(true);
+        this.dispose();
+    }
+
+    public void updateQs() {
+        Question question = new Question();
+        String id = tblQuesstion.getValueAt(index, 0).toString();
+        question.setId(Integer.parseInt(id));
+        question.setNoiDung(model.getValueAt(index, 1).toString());
+        question.setHinh(model.getValueAt(index, 2).toString());
+        String loai =  model.getValueAt(index, 3).toString();
+        for (LoaiCauHoi loaiCauHoi : lst_Questiontype) {
+            if (loai.equalsIgnoreCase(loaiCauHoi.getTenLoai())) {
+                question.setLoaiCauHoi_id(loaiCauHoi.getID());
+                break;
+            }
+        }
+        question.setTrangThai(true);
+        dgAddQuestion addQuestion = new dgAddQuestion(Run.home, true, question, 1);
+        addQuestion.setVisible(true);
+        this.dispose();
     }
 
     /**
@@ -340,11 +369,11 @@ public class dgQuestionList extends java.awt.Dialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox<String> cboQuesstionTypes;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;

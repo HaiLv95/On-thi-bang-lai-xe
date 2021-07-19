@@ -1,5 +1,17 @@
 package testView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import testController.QuestionController;
+import testModel.Answer;
+import testModel.LoaiCauHoi;
+import testModel.Question;
+
 /**
  *
  * @author hai95
@@ -9,11 +21,86 @@ public class dgAddQuestion extends java.awt.Dialog {
     /**
      * Creates new form dgAddQuestion
      */
-    public dgAddQuestion(java.awt.Frame parent, boolean modal) {
+    Question question = new Question();
+    int index;
+    QuestionController questionController = new QuestionController();
+    List<Answer> lst_As = new ArrayList<>();
+    List<LoaiCauHoi> lst_loai = new ArrayList<>();
+    String image = null;
+
+    public dgAddQuestion(java.awt.Frame parent, boolean modal, Question question, int index) {
         super(parent, modal);
         initComponents();
-        setSize(710, 730);
+        setSize(1090, 800);
         setLocationRelativeTo(null);
+        this.question = question;
+        this.index = index;
+        setStart();
+    }
+
+    public void setStart() {
+        getTypetoCBO();
+        txtID.setEnabled(false);
+        if (index == 0) {
+            lblTitle.setText("Thêm Câu Hỏi");
+            txtNoiDung.setText("");
+            txtDapAn1.setText("");
+            txtDapAn2.setText("");
+            txtDapAn3.setText("");
+            txtGiaiThich.setText("");
+            txtID.setText("");
+            cboLoai.setSelectedIndex(0);
+            lblHinh.removeAll();
+
+        } else {
+            try {
+                lst_As = questionController.getListAnswersbyQuesstionID(question.getId());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Failed  dgAddQuestion: get list answer by question id failed");
+            }
+            lblTitle.setText("Cập nhật thông tin câu hỏi");
+            txtID.setText(question.getId() + "");
+            txtNoiDung.setText(question.getNoiDung());
+            questionController.setIcon(lblHinh, question.getHinh());
+
+            if (lst_As.size() == 2) {
+                txtDapAn1.setText(lst_As.get(0).getNoiDung());
+                txtDapAn2.setText(lst_As.get(1).getNoiDung());
+                if (lst_As.get(0).isTrangThai()) {
+                    rdoA.setSelected(true);
+                    txtGiaiThich.setText(lst_As.get(0).getGiaiThich());
+                } else {
+                    rdoB.setSelected(true);
+                    txtGiaiThich.setText(lst_As.get(1).getGiaiThich());
+                }
+            } else {
+                txtDapAn1.setText(lst_As.get(0).getNoiDung());
+                txtDapAn2.setText(lst_As.get(1).getNoiDung());
+                txtDapAn3.setText(lst_As.get(2).getNoiDung());
+                if (lst_As.get(0).isTrangThai()) {
+                    rdoA.setSelected(true);
+                    txtGiaiThich.setText(lst_As.get(0).getGiaiThich());
+                } else if (lst_As.get(1).isTrangThai()) {
+                    rdoB.setSelected(true);
+                    txtGiaiThich.setText(lst_As.get(1).getGiaiThich());
+                } else {
+                    rdoC.setSelected(true);
+                    txtGiaiThich.setText(lst_As.get(2).getGiaiThich());
+                }
+            }
+        }
+    }
+
+    public void getTypetoCBO() {
+        try {
+            lst_loai = questionController.getlistLoaiCauHoi();
+            cboLoai.removeAll();
+            for (LoaiCauHoi loaiCauHoi : lst_loai) {
+                cboLoai.addItem(loaiCauHoi.getTenLoai());
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Failed  dgAddQuestion: get list question type failed");
+        }
     }
 
     /**
@@ -24,6 +111,7 @@ public class dgAddQuestion extends java.awt.Dialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -40,6 +128,18 @@ public class dgAddQuestion extends java.awt.Dialog {
         txtDapAn2 = new javax.swing.JTextArea();
         btnXacNhan = new javax.swing.JButton();
         btnHuy = new javax.swing.JButton();
+        rdoA = new javax.swing.JRadioButton();
+        rdoB = new javax.swing.JRadioButton();
+        rdoC = new javax.swing.JRadioButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtGiaiThich = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+        lblHinh = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        cboLoai = new javax.swing.JComboBox<>();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -54,66 +154,139 @@ public class dgAddQuestion extends java.awt.Dialog {
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Thêm câu hỏi");
         jPanel1.add(lblTitle);
-        lblTitle.setBounds(120, 30, 420, 30);
+        lblTitle.setBounds(120, 30, 850, 30);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel1.setText("Đáp án 3");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(30, 530, 70, 20);
+        jLabel1.setBounds(30, 500, 70, 20);
 
         txtNoiDung.setColumns(20);
+        txtNoiDung.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNoiDung.setRows(5);
+        txtNoiDung.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jScrollPane1.setViewportView(txtNoiDung);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 120, 660, 150);
+        jScrollPane1.setBounds(30, 170, 1040, 100);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel2.setText("Nội dung");
+        jLabel2.setText("ID Loại câu hỏi");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(20, 90, 70, 20);
+        jLabel2.setBounds(500, 90, 120, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel3.setText("Đáp án 1");
+        jLabel3.setText("Hình");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(30, 290, 70, 20);
+        jLabel3.setBounds(620, 280, 70, 20);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel4.setText("Đáp án 2");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(30, 410, 70, 20);
+        jLabel4.setBounds(30, 390, 70, 20);
 
         txtDapAn3.setColumns(20);
+        txtDapAn3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtDapAn3.setRows(5);
+        txtDapAn3.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jScrollPane2.setViewportView(txtDapAn3);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(30, 560, 650, 76);
+        jScrollPane2.setBounds(30, 530, 570, 70);
 
         txtDapAn1.setColumns(20);
+        txtDapAn1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtDapAn1.setRows(5);
+        txtDapAn1.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jScrollPane3.setViewportView(txtDapAn1);
 
         jPanel1.add(jScrollPane3);
-        jScrollPane3.setBounds(30, 320, 650, 76);
+        jScrollPane3.setBounds(30, 310, 570, 70);
 
         txtDapAn2.setColumns(20);
+        txtDapAn2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtDapAn2.setRows(5);
+        txtDapAn2.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jScrollPane4.setViewportView(txtDapAn2);
 
         jPanel1.add(jScrollPane4);
-        jScrollPane4.setBounds(30, 440, 650, 76);
+        jScrollPane4.setBounds(30, 420, 570, 70);
 
         btnXacNhan.setText("Xác nhận");
         jPanel1.add(btnXacNhan);
-        btnXacNhan.setBounds(133, 670, 90, 23);
+        btnXacNhan.setBounds(350, 740, 90, 23);
 
         btnHuy.setText("Hủy");
         jPanel1.add(btnHuy);
-        btnHuy.setBounds(410, 670, 90, 23);
+        btnHuy.setBounds(610, 740, 90, 23);
+
+        buttonGroup1.add(rdoA);
+        rdoA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(rdoA);
+        rdoA.setBounds(120, 280, 93, 21);
+
+        buttonGroup1.add(rdoB);
+        rdoB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(rdoB);
+        rdoB.setBounds(120, 390, 93, 21);
+
+        buttonGroup1.add(rdoC);
+        rdoC.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(rdoC);
+        rdoC.setBounds(120, 500, 93, 21);
+
+        txtGiaiThich.setColumns(20);
+        txtGiaiThich.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtGiaiThich.setRows(5);
+        txtGiaiThich.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jScrollPane5.setViewportView(txtGiaiThich);
+
+        jPanel1.add(jScrollPane5);
+        jScrollPane5.setBounds(30, 640, 1040, 70);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel5.setText("Giải thích");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(30, 610, 70, 20);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel6.setText("Nội dung");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(30, 140, 70, 20);
+
+        txtID.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtID.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jPanel1.add(txtID);
+        txtID.setBounds(130, 90, 180, 30);
+
+        lblHinh.setBackground(new java.awt.Color(255, 255, 255));
+        lblHinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHinh.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblHinh.setOpaque(true);
+        lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHinhMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lblHinh);
+        lblHinh.setBounds(620, 310, 450, 250);
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel7.setText("Đáp án 1");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(30, 280, 70, 20);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel8.setText("ID");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(30, 90, 70, 30);
+
+        cboLoai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(cboLoai);
+        cboLoai.setBounds(650, 90, 290, 30);
 
         add(jPanel1);
-        jPanel1.setBounds(0, 0, 710, 730);
+        jPanel1.setBounds(0, 0, 1100, 800);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -126,40 +299,107 @@ public class dgAddQuestion extends java.awt.Dialog {
         dispose();
     }//GEN-LAST:event_closeDialog
 
+    private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
+        // TODO add your handling code here:
+        chooseImage();
+    }//GEN-LAST:event_lblHinhMouseClicked
+
+    public void chooseImage() {
+        try {
+            JFileChooser jfc = new JFileChooser();
+            // thiết lập các file xuất hiện theo các loại file được lọc
+            jfc.setAcceptAllFileFilterUsed(true);
+            //thiết lập chuỗi các loại file ảnh có thể chọn
+            String[] filefilter = {"png"};
+            String desciption = "Các loại file được hỗ trợ : " + Arrays.toString(filefilter).replace('[', '(').replace(']', ')'); // đưa các loại đuôi file trong mảng filefilter sang chuỗi.
+            jfc.setFileFilter(new FileNameExtensionFilter(desciption, filefilter));
+            int chon = jfc.showOpenDialog(this);
+
+            if (chon == JFileChooser.APPROVE_OPTION) {
+                String[] hinh = jfc.getSelectedFile().getName().split("\\.");
+                image = hinh[0];
+                questionController.setIcon(lblHinh, image);
+            } else {
+                image = null;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Failed choose Image" + e);
+        }
+    }
+
+    public boolean check() {
+        if (txtNoiDung.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập nội dung câu hỏi");
+            txtNoiDung.requestFocus();
+            return false;
+        }
+        if (txtDapAn1.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đáp án 1");
+            txtDapAn1.requestFocus();
+            return false;
+        }
+        if (txtDapAn2.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đáp án 2");
+            txtDapAn2.requestFocus();
+            return false;
+        }
+        if (txtDapAn3.getText().trim().isEmpty() && rdoC.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đáp án 3 nên không thể chọn đáp án này là đáp án đúng");
+            txtDapAn3.requestFocus();
+            return false;
+        }
+        return true;
+    }
+    public void confirmAdd(){
+        if (!check()) {
+           return;
+        }
+        question.setId(Integer.parseInt(txtID.getText()));
+        question.setNoiDung(txtNoiDung.getText());
+        question.setHinh(lblHinh.getName());
+        question.setTrangThai(true);
+        for (LoaiCauHoi loaiCauHoi : lst_loai) {
+            if (cboLoai.getSelectedItem().toString().equalsIgnoreCase(loaiCauHoi.getTenLoai())) {
+                question.setLoaiCauHoi_id(loaiCauHoi.getID());
+            }
+        }
+        if (lst_As.size() == 2 && !txtDapAn3.getText().isEmpty()) {
+            
+        }
+    }
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                dgAddQuestion dialog = new dgAddQuestion(new java.awt.Frame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnXacNhan;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cboLoai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JLabel lblHinh;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JRadioButton rdoA;
+    private javax.swing.JRadioButton rdoB;
+    private javax.swing.JRadioButton rdoC;
     private javax.swing.JTextArea txtDapAn1;
     private javax.swing.JTextArea txtDapAn2;
     private javax.swing.JTextArea txtDapAn3;
+    private javax.swing.JTextArea txtGiaiThich;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextArea txtNoiDung;
     // End of variables declaration//GEN-END:variables
 }
