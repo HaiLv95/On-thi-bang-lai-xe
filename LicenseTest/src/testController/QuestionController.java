@@ -33,7 +33,8 @@ public class QuestionController {
             }
 
         } catch (Exception e) {
-            throw new Exception("Failed 1: get list Question");
+            throw new Exception("Failed 1: get list Question"+e);
+            
         }
         return lstQuesstion;
     }
