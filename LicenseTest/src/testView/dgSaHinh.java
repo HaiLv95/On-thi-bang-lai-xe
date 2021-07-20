@@ -2,8 +2,6 @@ package testView;
 
 import java.awt.Image;
 import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -47,7 +45,6 @@ public class dgSaHinh extends javax.swing.JDialog {
     }
     //Code
     public void loadData(){
-            FileInputStream imageInputStream = null;
         try {
             listQuestions = quesController.getListQuestion();
             List<Answer> listAnswers = quesController.getListAnswers();
@@ -67,15 +64,16 @@ public class dgSaHinh extends javax.swing.JDialog {
             txpB.setText(listSaHinhAnswer.get(1).getNoiDung());
             txpC.setText(listSaHinhAnswer.get(2).getNoiDung());
             // thêm hình ảnh
+        
             if (ques.getHinh().length() > 0) {
                 lblHinh.setVisible(true);
                 setIcon(ques.getHinh());
-            }
+                }
             else{
                  lblHinh.setVisible(false);
-            }    
-        } catch (Exception e) {
-            System.out.println(e);
+                }             
+            } catch (Exception e) {
+                System.out.println(e);
         }
         
     }
