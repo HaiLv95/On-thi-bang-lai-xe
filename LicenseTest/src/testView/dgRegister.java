@@ -1,6 +1,6 @@
 package testView;
 
-import com.sun.mail.util.MailConnectException;
+//import com.sun.mail.util.MailConnectException;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import  testConnectSQL.ConnectSQL;
@@ -12,6 +12,8 @@ import testController.AddController;
 public class dgRegister extends java.awt.Dialog {
 public ConnectSQL con  = new ConnectSQL();
 public AddController us = new AddController();
+public static dgLogin login ; 
+String code ="";
     /**
      * Creates new form Register
      */
@@ -20,6 +22,7 @@ public AddController us = new AddController();
         initComponents();
         setSize(600, 580);
         setLocationRelativeTo(null);
+       
     }
 
     /**
@@ -158,57 +161,75 @@ public AddController us = new AddController();
     }//GEN-LAST:event_closeDialog
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        // TODO add your handling code here:
+        code =us.getcode();
+        us.sendmail(txtEmail1.getText(),code);
+       JOptionPane.showMessageDialog(this, "vui lòng check mail");
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void lblLinkLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLinkLoginMouseClicked
-        // TODO add your handling code here:
+
+        login.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_lblLinkLoginMouseClicked
 
     private void btnRegister1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegister1ActionPerformed
-        // TODO add your handling code here:
+        addUSER();
     }//GEN-LAST:event_btnRegister1ActionPerformed
-public void check(){
-    if(txtEmail1.getText().isEmpty()){
+public boolean check(){
+    if(txtEmail1.getText().trim().isEmpty()){
         JOptionPane.showMessageDialog(this, "vui lòng nhập EMAIL");
         txtEmail1.requestFocus();
-        return;
+        return false;
     }
-    if(pwPass.getText().isEmpty()){
+    if(pwPass.getText().trim().isEmpty()){//trim xử lý khoảng trắng
         JOptionPane.showMessageDialog(this, "vui lòng nhập Mật Khẩu");
         pwPass.requestFocus();
-        return;
+        return false;
     }
-    if(pwPassCF.getText().isEmpty()){
+    if(pwPassCF.getText().trim().isEmpty()){
         JOptionPane.showMessageDialog(this, "vui lòng nhập lại Mật Khẩu");
         pwPassCF.requestFocus();
-        return;
+        return false;
     }
-    if(txtConfirmCode.getText().isEmpty()){
+    if(!pwPass.getText().equalsIgnoreCase(pwPassCF.getText())){
+        JOptionPane.showMessageDialog(this, "vui lòng nhập lại đúng password");
+        return false;
+    }
+    if(txtConfirmCode.getText().trim().isEmpty()){
         JOptionPane.showMessageDialog(this, "vui lòng nhập Mã Xác Nhận");
         txtConfirmCode.requestFocus();
-        return;
+        return false;
+    }
+     if(!code.equalsIgnoreCase(txtConfirmCode.getText())){
+        JOptionPane.showMessageDialog(this, "mã của bạn không đúng");
+        return false;
     }
     try {
         String sql = "select EMAIL from USERS";
          ResultSet st =con.createStatement(sql);
          while(st.next()){
-             if(txtEmail1.getText().contains(st.getString("EMAIL"))){
+             if(txtEmail1.getText().equalsIgnoreCase(st.getString("EMAIL"))){
                  JOptionPane.showMessageDialog(this, "EMAIL đã được sử dụng");
-                 break;
+                 return  false;
              }
          }
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, e);
     }
+    return  true;
 }
-//public void addUSER() throws MailConnectException{
-//    String EMAIL =txtEmail1.getText();
-//    us.sendMail(EMAIL);
-//    check();
-//    String PASS = pwPass.getText();
-//    us.addUser(EMAIL, PASS);
-//}
+
+public void addUSER() {
+   if(check()==false){
+       return;
+   }else{
+       String EMAIL = txtEmail1.getText();
+       String PASS =pwPass.getText();
+       us.adduser(EMAIL, PASS);
+     JOptionPane.showMessageDialog(this, "đăng ký tài khoản thành công");
+   }
+}
+
     /**
      * @param args the command line arguments
      */
