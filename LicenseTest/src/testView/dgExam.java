@@ -1,19 +1,22 @@
 package testView;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Action;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import testController.QuestionController;
@@ -73,7 +76,6 @@ public class dgExam extends java.awt.Dialog {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        lblMaDe = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         lblCauHoi = new javax.swing.JLabel();
@@ -91,6 +93,7 @@ public class dgExam extends java.awt.Dialog {
         rdoC = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         btnEnd = new javax.swing.JButton();
+        lblMaDe = new javax.swing.JLabel();
         lblTimer = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         pnlMenuCauHoi = new javax.swing.JPanel();
@@ -108,11 +111,6 @@ public class dgExam extends java.awt.Dialog {
 
         jPanel1.setBackground(new java.awt.Color(235, 235, 235));
         jPanel1.setLayout(null);
-
-        lblMaDe.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblMaDe.setText("Đề thi số 1");
-        jPanel1.add(lblMaDe);
-        lblMaDe.setBounds(30, 20, 210, 30);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
@@ -214,20 +212,25 @@ public class dgExam extends java.awt.Dialog {
         jPanel4.add(btnEnd);
         btnEnd.setBounds(1070, 10, 100, 30);
 
+        lblMaDe.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblMaDe.setText("Đề thi số 1");
+        jPanel4.add(lblMaDe);
+        lblMaDe.setBounds(20, 10, 210, 30);
+
         jPanel1.add(jPanel4);
-        jPanel4.setBounds(0, 60, 1200, 50);
+        jPanel4.setBounds(0, 30, 1200, 50);
 
         lblTimer.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         lblTimer.setForeground(new java.awt.Color(255, 51, 51));
         lblTimer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTimer.setText("12:35");
         jPanel1.add(lblTimer);
-        lblTimer.setBounds(610, 120, 130, 30);
+        lblTimer.setBounds(610, 100, 130, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel2.setText("Thời gian còn lại:");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(460, 120, 130, 30);
+        jLabel2.setBounds(460, 100, 130, 30);
 
         pnlMenuCauHoi.setBackground(new java.awt.Color(235, 235, 235));
         jPanel1.add(pnlMenuCauHoi);
@@ -356,10 +359,6 @@ public class dgExam extends java.awt.Dialog {
         }
     }
 
-    public void setIcon(String nameIcon) {
-        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/Images/" + nameIcon + ".png"));
-        lblHinh.setIcon(imageIcon);
-    }
 
     public void loadQuestionbyIndex(int index) {
         try {
@@ -369,7 +368,7 @@ public class dgExam extends java.awt.Dialog {
                     txpCauHoi.setText("Câu " + (index + 1) + ": " + lsQuestion.getNoiDung());
                     if (lsQuestion.getHinh().length() > 0) {
                         lblHinh.setVisible(true);
-                        setIcon(lsQuestion.getHinh());
+                        questionController.setIcon(lblHinh, lsQuestion.getHinh());
                     } else {
                         lblHinh.setVisible(false);
                     }
@@ -457,7 +456,11 @@ public class dgExam extends java.awt.Dialog {
     }
 
     public void resultExam() {
+        /**
+         * @param args the command line arguments
+         */
         try {
+            Desktop desktop = Desktop.getDesktop();
             String optionString[] = {"Yes", "No",};
             int type = JOptionPane.QUESTION_MESSAGE;
             int option = JOptionPane.showOptionDialog(this, "Bạn muốn kết thúc bài thi?", "Yes", 0, type, null, optionString, "Yes");
@@ -469,24 +472,24 @@ public class dgExam extends java.awt.Dialog {
             int timeLeft = Integer.parseInt(resultTime[0]) * 60 + Integer.parseInt(resultTime[1]);
             int resultAnsswer = 0;
             int question = 0;
-            boolean result = true;
-            List<Question> lst_CauLiet = questionController.getCauLiet(lsQuestions);
+            boolean resultLiet = true;
+            int resultSaHinhFailed = 0;
+            int resultLyThuyetFailed = 0;
+            List<Question> lst_Questions = questionController.getListQuestion();
             for (CauHoi_DeThi cauHoi_DeThi : lstcCauHoi_DeThi) {
                 question += questionController.updateQuestionExam(cauHoi_DeThi);
-                for (Question cauLiet : lst_CauLiet) {
-                    if (cauHoi_DeThi.getCauHoi_id() == cauLiet.getId()) {
+                for (Question questions : lst_Questions) {
+                    if (cauHoi_DeThi.getCauHoi_id() == questions.getId() && questions.getLoaiCauHoi_id() == 3) {
                         if (!cauHoi_DeThi.isTrangThai()) {
-                            result = false;
+                            resultLiet = false;
                             break;
                         }
                         resultAnsswer++;
+
                     }
                 }
-                if (cauHoi_DeThi.isTrangThai()) {
-                    resultAnsswer++;
-                }
             }
-            if (result && resultAnsswer >= 15) {
+            if (resultLiet && resultAnsswer >= 15) {
                 dethi.setTrangThai("pass");
                 int exam = questionController.updateExambyID(dethi);
                 if (exam > 0) {
@@ -501,25 +504,27 @@ public class dgExam extends java.awt.Dialog {
                 dethi.setTrangThai("failed");
                 int exam = questionController.updateExambyID(dethi);
                 if (exam > 0) {
-                    JOptionPane.showMessageDialog(this, "Finish exam success: Failed " + resultAnsswer + "/" + question);
+                    int choose1 = JOptionPane.showConfirmDialog(this, "Finish exam success: Failed " + resultAnsswer + "/" + question + "\nCó vẻ kiến thức về luật giao thông của bạn chưa tốt. Bạn có muốn tham khảo 1 số mẹo làm bài thi không?", "Mẹo", JOptionPane.YES_NO_OPTION);
+                    if (choose1 == JOptionPane.YES_OPTION) {
+                        desktop.browse(new URI("https://thibanglaixe24h.net/meo-thi-bang-lai-xe-may-a1/"));
+                    }
                     setVisible(false);
                     dispose();
-
                 } else {
                     JOptionPane.showMessageDialog(this, "Finish exam failed");
                 }
+                dgMenuDT.dgDT.setVisible(true);
                 dgMenuDT.dgDT.loadDT();
             }
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (URISyntaxException ex) {
+            ex.printStackTrace();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Finish exam failed");
         }
-
     }
-    /**
-     * @param args the command line arguments
-     */
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnd;
     private javax.swing.ButtonGroup buttonGroup1;

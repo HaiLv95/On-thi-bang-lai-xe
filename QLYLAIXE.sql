@@ -65,6 +65,7 @@ CREATE TABLE CAUHOI
 	NOIDUNG			NVARCHAR(500) NOT NULL ,
 	HINH			VARCHAR(30) NULL ,
 	ID_LOAICAUHOI	INT NOT NULL ,
+	trangthai		bit null,
 	CONSTRAINT PK_CAUHOI PRIMARY KEY(ID_CAUHOI),
 	CONSTRAINT FK_LOAICAUHOI_CAUHOI FOREIGN KEY(ID_LOAICAUHOI) REFERENCES DBO.LOAICAUHOI 
 )
@@ -94,9 +95,10 @@ CREATE TABLE DAPAN
 (
 	ID_DAPAN	INT NOT NULL IDENTITY(1,1) ,
 	NOIDUNG		NVARCHAR(500) NOT NULL ,
-	TRANGTHAI	BIT NOT NULL ,
+	TRANGTHAI	BIT NOT NULL,
 	GIAITHICH	NVARCHAR(500)  NULL ,
 	ID_CAUHOI	INT NOT NULL ,
+	flag		bit null,
 	CONSTRAINT PK_DAPAN PRIMARY KEY(ID_DAPAN),
 	CONSTRAINT FK_DAPAN FOREIGN KEY(ID_CAUHOI) REFERENCES DBO.CAUHOI 
 )
@@ -125,9 +127,9 @@ INSERT INTO DBO.LOAIDE (TENLOAI) VALUES
 -- CHÈN DỮ LIỆU VÀO BẢNG LOAICAUHOI
 DELETE FROM LOAICAUHOI
 INSERT INTO DBO.LOAICAUHOI (TENLOAI) VALUES
-(N'CÂU HỎI KHÁI NIỆM , QUY TẮC'),
-(N'CÂU HỎI SA HÌNH'),
-(N'CÂU HỎI LIỆT')
+(N'Câu hỏi khái niệm, quy tắc'),
+(N'Câu hỏi sa hình'),
+(N'Câu hỏi liệt')
 
 --CHÈN DỮ LIỆU BẢNG CAUHOI
 DELETE FROM CAUHOI
@@ -154,7 +156,7 @@ INSERT INTO  DBO.CAUHOI (NOIDUNG,HINH,ID_LOAICAUHOI) VALUES
 (N'Khi lái xe trong khu đô thị và đông dân cư trừ các khu vực có biển cấm sử dụng còi, người lái xe được sử dụng còi như thế nào trong các trường hợp dưới đây?','',1),
 (N'“Người lái xe sử dụng đèn như thế nào khi lái xe trong khu đô thị và đông dân cư vào ban đêm?','',1),
 (N'Trong trường hợp đặc biệt, để được lắp đặt, sử dụng còi, đèn không đúng với thiết kế của nhà sản xuất đối với từng loại xe cơ giới bạn phải đảm bảo yêu cầu nào dưới đây?','',1),
-(N'Ở phần đường dành cho người đi bộ qua đường, trên cầu, đầu cầu, đường cao tốc, đường hẹp, đường dốc,tại nơi đường bộ giao nhau cùng mức với đường sắt có được quay đầu xe hay không?','',3),
+(N'(Câu hỏi liệt) Ở phần đường dành cho người đi bộ qua đường, trên cầu, đầu cầu, đường cao tốc, đường hẹp, đường dốc,tại nơi đường bộ giao nhau cùng mức với đường sắt có được quay đầu xe hay không?','',3),
 (N'Bạn đang lái xe phía trước có một xe cảnh sát giao thông không phát tín hiệu ưu tiên bạn có được phép vượt hay không?','',1),
 (N'Bạn đang lái xe phía trước có một xe cứu thương đang phát tín hiệu ưu tiên bạn có được phép vượt hay không?','',1),
 (N'(Câu hỏi liệt) Người điều khiển xe mô tô hai bánh, ba bánh, xe gắn máy có được phép sử dụng xe để kéo hoặcđẩy các phương tiện khác khi tham gia giao thông không?','',3),
@@ -962,23 +964,13 @@ Biển báo phía trước là đường ưu tiên và biển phụ báo hướn
 (N'Vượt về phía bên phải để đi tiếp.',0,N'',200),
 (N'Giảm tốc độ chờ xe container rẽ xong rồi tiếp tục đi.',1,N'iải thích: Giảm tốc độc chờ xe đầu kéo rẽ phải rồi mới tiếp tục đi.',200),
 (N'Vượt về phía bên trái để đi tiếp.',0,N'',200)
-delete from DETHI
-insert into DETHI(TRANGTHAI, EMAIL,Timer,ID_LOAIDE) values('donot','hailvph13040@fpt.edu.vn', 900,3)
-declare @index int = 1;
-declare @row int = 0;
-select row = COUNT(*) from CAUHOI where ID_LOAICAUHOI = 3
-while @index < 20
-begin
-insert into CAUHOI_DETHI(ID_CAUHOI, ID_DETHI, ID_CAUTRALOI, TRANGTHAI) values (@index, 1, -1,0)
-set @index = @index + 1;
-end;
-select CAUHOI.ID_CAUHOI, CAUHOI.NOIDUNG, HINH, ID_LOAICAUHOI, DAPAN.ID_DAPAN, DAPAN.NOIDUNG, DAPAN.TRANGTHAI, DAPAN.GIAITHICH  from CAUHOI join DAPAN on CAUHOI.ID_CAUHOI = DAPAN.ID_CAUHOI
-where CAUHOI.ID_CAUHOI = 1
-
+update cauhoi set trangthai=1
+update DAPAN set flag=1
 select * from USERS
 select * from LOAICAUHOI
-select * from CAUHOI where ID_CAUHOI = 111
+select * from CAUHOI
 select * from LOAIDE
 select * from DETHI
-select * from CAUHOI_DETHI where id_deThi =1
-select * from DAPAN	where ID_CAUHOI = 11
+select * from CAUHOI_DETHI
+select * from DAPAN
+update CAUHOI set id_loaicauhoi =2 where ID_CAUHOI = 1

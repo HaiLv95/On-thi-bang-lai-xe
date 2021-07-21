@@ -7,6 +7,15 @@ package testModel;
 public class Question {
     private int id, loaiCauHoi_id;
     private String noiDung, hinh;
+    private boolean trangThai;
+
+    public boolean isTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(boolean trangThai) {
+        this.trangThai = trangThai;
+    }
 
     public int getId() {
         return id;

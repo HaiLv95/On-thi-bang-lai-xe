@@ -218,6 +218,7 @@ public boolean check(){
     }
     return  true;
 }
+
 public void addUSER() {
    if(check()==false){
        return;
@@ -228,6 +229,7 @@ public void addUSER() {
      JOptionPane.showMessageDialog(this, "đăng ký tài khoản thành công");
    }
 }
+
     /**
      * @param args the command line arguments
      */
