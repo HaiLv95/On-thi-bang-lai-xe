@@ -98,6 +98,7 @@ CREATE TABLE DAPAN
 	TRANGTHAI	BIT NOT NULL,
 	GIAITHICH	NVARCHAR(500)  NULL ,
 	ID_CAUHOI	INT NOT NULL ,
+	flag		bit null,
 	CONSTRAINT PK_DAPAN PRIMARY KEY(ID_DAPAN),
 	CONSTRAINT FK_DAPAN FOREIGN KEY(ID_CAUHOI) REFERENCES DBO.CAUHOI 
 )
@@ -964,6 +965,7 @@ Biển báo phía trước là đường ưu tiên và biển phụ báo hướn
 (N'Giảm tốc độ chờ xe container rẽ xong rồi tiếp tục đi.',1,N'iải thích: Giảm tốc độc chờ xe đầu kéo rẽ phải rồi mới tiếp tục đi.',200),
 (N'Vượt về phía bên trái để đi tiếp.',0,N'',200)
 update cauhoi set trangthai=1
+update DAPAN set flag=1
 select * from USERS
 select * from LOAICAUHOI
 select * from CAUHOI
@@ -971,3 +973,4 @@ select * from LOAIDE
 select * from DETHI
 select * from CAUHOI_DETHI
 select * from DAPAN
+update CAUHOI set id_loaicauhoi =2 where ID_CAUHOI = 1

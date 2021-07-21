@@ -7,13 +7,21 @@ package testModel;
 public class Answer {
     private int id, cauhoi_id;
     private String noiDung, giaiThich;
-    private boolean trangThai;
+    private boolean trangThai, flag;
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 
     public int getCauhoi_id() {

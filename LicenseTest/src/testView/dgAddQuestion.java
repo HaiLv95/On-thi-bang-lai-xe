@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.event.AncestorEvent;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import testController.QuestionController;
 import testModel.Answer;
@@ -49,9 +50,10 @@ public class dgAddQuestion extends java.awt.Dialog {
             txtDapAn3.setText("");
             txtGiaiThich.setText("");
             txtID.setText("");
+            rdo1.setSelected(true);
             cboLoai.setSelectedIndex(0);
             lblHinh.removeAll();
-
+            btnXacNhan.setText("Thêm");
         } else {
             try {
                 lst_As = questionController.getListAnswersbyQuesstionID(question.getId());
@@ -59,18 +61,20 @@ public class dgAddQuestion extends java.awt.Dialog {
                 JOptionPane.showMessageDialog(this, "Failed  dgAddQuestion: get list answer by question id failed");
             }
             lblTitle.setText("Cập nhật thông tin câu hỏi");
+            btnXacNhan.setText("Cập nhật");
             txtID.setText(question.getId() + "");
             txtNoiDung.setText(question.getNoiDung());
+            cboLoai.setSelectedIndex(question.getLoaiCauHoi_id() -1);
             questionController.setIcon(lblHinh, question.getHinh());
 
             if (lst_As.size() == 2) {
                 txtDapAn1.setText(lst_As.get(0).getNoiDung());
                 txtDapAn2.setText(lst_As.get(1).getNoiDung());
                 if (lst_As.get(0).isTrangThai()) {
-                    rdoA.setSelected(true);
+                    rdo1.setSelected(true);
                     txtGiaiThich.setText(lst_As.get(0).getGiaiThich());
                 } else {
-                    rdoB.setSelected(true);
+                    rdo2.setSelected(true);
                     txtGiaiThich.setText(lst_As.get(1).getGiaiThich());
                 }
             } else {
@@ -78,13 +82,13 @@ public class dgAddQuestion extends java.awt.Dialog {
                 txtDapAn2.setText(lst_As.get(1).getNoiDung());
                 txtDapAn3.setText(lst_As.get(2).getNoiDung());
                 if (lst_As.get(0).isTrangThai()) {
-                    rdoA.setSelected(true);
+                    rdo1.setSelected(true);
                     txtGiaiThich.setText(lst_As.get(0).getGiaiThich());
                 } else if (lst_As.get(1).isTrangThai()) {
-                    rdoB.setSelected(true);
+                    rdo2.setSelected(true);
                     txtGiaiThich.setText(lst_As.get(1).getGiaiThich());
                 } else {
-                    rdoC.setSelected(true);
+                    rdo3.setSelected(true);
                     txtGiaiThich.setText(lst_As.get(2).getGiaiThich());
                 }
             }
@@ -118,7 +122,6 @@ public class dgAddQuestion extends java.awt.Dialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtNoiDung = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDapAn3 = new javax.swing.JTextArea();
@@ -128,9 +131,9 @@ public class dgAddQuestion extends java.awt.Dialog {
         txtDapAn2 = new javax.swing.JTextArea();
         btnXacNhan = new javax.swing.JButton();
         btnHuy = new javax.swing.JButton();
-        rdoA = new javax.swing.JRadioButton();
-        rdoB = new javax.swing.JRadioButton();
-        rdoC = new javax.swing.JRadioButton();
+        rdo1 = new javax.swing.JRadioButton();
+        rdo2 = new javax.swing.JRadioButton();
+        rdo3 = new javax.swing.JRadioButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         txtGiaiThich = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
@@ -140,8 +143,12 @@ public class dgAddQuestion extends java.awt.Dialog {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cboLoai = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closeDialog(evt);
             }
@@ -174,11 +181,6 @@ public class dgAddQuestion extends java.awt.Dialog {
         jLabel2.setText("ID Loại câu hỏi");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(500, 90, 120, 30);
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel3.setText("Hình");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(620, 280, 70, 20);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel4.setText("Đáp án 2");
@@ -213,27 +215,37 @@ public class dgAddQuestion extends java.awt.Dialog {
         jScrollPane4.setBounds(30, 420, 570, 70);
 
         btnXacNhan.setText("Xác nhận");
+        btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXacNhanActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnXacNhan);
         btnXacNhan.setBounds(350, 740, 90, 23);
 
         btnHuy.setText("Hủy");
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnHuy);
         btnHuy.setBounds(610, 740, 90, 23);
 
-        buttonGroup1.add(rdoA);
-        rdoA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(rdoA);
-        rdoA.setBounds(120, 280, 93, 21);
+        buttonGroup1.add(rdo1);
+        rdo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(rdo1);
+        rdo1.setBounds(120, 280, 93, 21);
 
-        buttonGroup1.add(rdoB);
-        rdoB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(rdoB);
-        rdoB.setBounds(120, 390, 93, 21);
+        buttonGroup1.add(rdo2);
+        rdo2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(rdo2);
+        rdo2.setBounds(120, 390, 93, 21);
 
-        buttonGroup1.add(rdoC);
-        rdoC.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(rdoC);
-        rdoC.setBounds(120, 500, 93, 21);
+        buttonGroup1.add(rdo3);
+        rdo3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(rdo3);
+        rdo3.setBounds(120, 500, 93, 21);
 
         txtGiaiThich.setColumns(20);
         txtGiaiThich.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -285,6 +297,11 @@ public class dgAddQuestion extends java.awt.Dialog {
         jPanel1.add(cboLoai);
         cboLoai.setBounds(650, 90, 290, 30);
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel9.setText("Hình");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(620, 280, 70, 20);
+
         add(jPanel1);
         jPanel1.setBounds(0, 0, 1100, 800);
 
@@ -297,6 +314,7 @@ public class dgAddQuestion extends java.awt.Dialog {
     private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
         setVisible(false);
         dispose();
+        dgQuestionList.dgQsList.setVisible(true);
     }//GEN-LAST:event_closeDialog
 
     private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
@@ -304,6 +322,30 @@ public class dgAddQuestion extends java.awt.Dialog {
         chooseImage();
     }//GEN-LAST:event_lblHinhMouseClicked
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        setVisible(false);
+        dispose();
+        dgQuestionList.dgQsList.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
+
+    private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
+        // TODO add your handling code here:
+        if (index == 0) {
+            AddQuestion();
+        } else {
+            updateQs();
+        }
+
+    }//GEN-LAST:event_btnXacNhanActionPerformed
+
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        dispose();
+        dgQuestionList.dgQsList.setVisible(true);
+    }//GEN-LAST:event_btnHuyActionPerformed
+    //chọn ảnh
     public void chooseImage() {
         try {
             JFileChooser jfc = new JFileChooser();
@@ -327,6 +369,7 @@ public class dgAddQuestion extends java.awt.Dialog {
         }
     }
 
+    //check điều kiện
     public boolean check() {
         if (txtNoiDung.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập nội dung câu hỏi");
@@ -343,18 +386,19 @@ public class dgAddQuestion extends java.awt.Dialog {
             txtDapAn2.requestFocus();
             return false;
         }
-        if (txtDapAn3.getText().trim().isEmpty() && rdoC.isSelected()) {
-            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đáp án 3 nên không thể chọn đáp án này là đáp án đúng");
+        if (txtDapAn3.getText().trim().isEmpty() && rdo3.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập nội dung đáp án nên không thể chọn đáp án này là đáp án đúng");
             txtDapAn3.requestFocus();
             return false;
         }
         return true;
     }
-    public void confirmAdd(){
+
+    //thêm câu hỏi
+    public void AddQuestion() {
         if (!check()) {
-           return;
+            return;
         }
-        question.setId(Integer.parseInt(txtID.getText()));
         question.setNoiDung(txtNoiDung.getText());
         question.setHinh(lblHinh.getName());
         question.setTrangThai(true);
@@ -363,8 +407,149 @@ public class dgAddQuestion extends java.awt.Dialog {
                 question.setLoaiCauHoi_id(loaiCauHoi.getID());
             }
         }
-        if (lst_As.size() == 2 && !txtDapAn3.getText().isEmpty()) {
-            
+        int questionID = questionController.insertQuestion(question);
+        List<Answer> lst_newAs = readNewAnswers(questionID);
+        int row = 0;
+        for (Answer lst_newA : lst_newAs) {
+            row += questionController.insertDapAn(lst_newA);
+        }
+        if (row == lst_newAs.size()) {
+            JOptionPane.showMessageDialog(this, "Thêm câu hỏi thành công");
+            dgQuestionList.dgQsList.loadbyType();
+            setVisible(false);
+            dispose();
+            dgQuestionList.dgQsList.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Thêm câu hỏi thất bại");
+        }
+    }
+
+    //đọc dữ liệu từ form thêm câu hỏi
+    public List<Answer> readNewAnswers(int QuestionID) {
+        List<Answer> lst_newAs = new ArrayList<>();
+        Answer as1 = new Answer();
+        as1.setNoiDung(txtDapAn1.getText());
+        as1.setCauhoi_id(QuestionID);
+        as1.setTrangThai(rdo1.isSelected());
+        if (rdo1.isSelected()) {
+            as1.setGiaiThich(txtGiaiThich.getText());
+        } else {
+            as1.setGiaiThich("");
+        }
+        as1.setFlag(true);
+        lst_newAs.add(as1);
+        Answer as2 = new Answer();
+        as2.setNoiDung(txtDapAn2.getText());
+        as2.setCauhoi_id(QuestionID);
+        as2.setTrangThai(rdo2.isSelected());
+        if (rdo2.isSelected()) {
+            as2.setGiaiThich(txtGiaiThich.getText());
+        } else {
+            as2.setGiaiThich("");
+        }
+        as2.setFlag(true);
+        lst_newAs.add(as2);
+        if (!txtDapAn3.getText().trim().isEmpty()) {
+            Answer as3 = new Answer();
+            as3.setNoiDung(txtDapAn3.getText());
+            as3.setCauhoi_id(QuestionID);
+            as3.setTrangThai(rdo3.isSelected());
+            if (rdo3.isSelected()) {
+                as3.setGiaiThich(txtGiaiThich.getText());
+            } else {
+                as3.setGiaiThich("");
+            }
+            as3.setFlag(true);
+            lst_newAs.add(as3);
+        }
+        return lst_newAs;
+    }
+
+    //câp nhật câu hỏi
+    public void updateQs() {
+        int rowQs = 0;
+        question.setHinh(lblHinh.getName());
+        question.setNoiDung(txtNoiDung.getText());
+        question.setLoaiCauHoi_id(cboLoai.getSelectedIndex() + 1);
+        JOptionPane.showMessageDialog(this, question.getLoaiCauHoi_id());
+        rowQs = questionController.updateQuesstion(question);
+        readAnswersUpdate();
+        int rowAs = 0;
+        for (Answer lst_A : lst_As) {
+            rowAs += questionController.updateDapAn(lst_A);
+        }
+        if (rowQs > 0 && rowAs == lst_As.size()) {
+            JOptionPane.showMessageDialog(this, "Cập nhật câu hỏi thành công");
+            dgQuestionList.dgQsList.loadbyType();
+            setVisible(false);
+            dispose();
+            dgQuestionList.dgQsList.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Cập nhật câu hỏi thất bại " + rowQs + " Qs & " + rowAs + " As");
+        }
+    }
+
+    //đọc dữ liệu từ form cập nhật câu hỏi
+    public void readAnswersUpdate() {
+        if (lst_As.size() == 2) {
+            Answer as1 = lst_As.get(0);
+            as1.setNoiDung(txtDapAn1.getText());
+            as1.setTrangThai(rdo1.isSelected());
+            if (rdo1.isSelected()) {
+                as1.setGiaiThich(txtGiaiThich.getText());
+            } else {
+                as1.setGiaiThich("");
+            }
+            Answer as2 = lst_As.get(1);
+            as2.setNoiDung(txtDapAn2.getText());
+            as2.setTrangThai(rdo2.isSelected());
+            if (rdo2.isSelected()) {
+                as2.setGiaiThich(txtGiaiThich.getText());
+            } else {
+                as2.setGiaiThich("");
+            }
+            if (!txtDapAn3.getText().trim().isEmpty()) {
+                Answer as3 = new Answer();
+                as3.setNoiDung(txtDapAn3.getText());
+                as3.setCauhoi_id(Integer.parseInt(txtID.getText()));
+                as3.setTrangThai(rdo3.isSelected());
+                if (rdo3.isSelected()) {
+                    as3.setGiaiThich(txtGiaiThich.getText());
+                } else {
+                    as3.setGiaiThich("");
+                }
+                as3.setFlag(true);
+                lst_As.add(as3);
+            }
+        } else {
+            Answer as1 = lst_As.get(0);
+            as1.setNoiDung(txtDapAn1.getText());
+            as1.setTrangThai(rdo1.isSelected());
+            if (rdo1.isSelected()) {
+                as1.setGiaiThich(txtGiaiThich.getText());
+            } else {
+                as1.setGiaiThich("");
+            }
+            Answer as2 = lst_As.get(1);
+            as2.setNoiDung(txtDapAn2.getText());
+            as2.setTrangThai(rdo2.isSelected());
+            if (rdo2.isSelected()) {
+                as2.setGiaiThich(txtGiaiThich.getText());
+            } else {
+                as2.setGiaiThich("");
+            }
+            if (txtDapAn3.getText().trim().isEmpty()) {
+                lst_As.get(2).setFlag(false);
+            } else {
+                Answer as3 = lst_As.get(2);
+                as3.setNoiDung(txtDapAn3.getText());
+                as3.setTrangThai(rdo3.isSelected());
+                if (rdo3.isSelected()) {
+                    as3.setGiaiThich(txtGiaiThich.getText());
+                } else {
+                    as3.setGiaiThich("");
+                }
+            }
         }
     }
     /**
@@ -378,12 +563,12 @@ public class dgAddQuestion extends java.awt.Dialog {
     private javax.swing.JComboBox<String> cboLoai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -392,9 +577,9 @@ public class dgAddQuestion extends java.awt.Dialog {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel lblHinh;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JRadioButton rdoA;
-    private javax.swing.JRadioButton rdoB;
-    private javax.swing.JRadioButton rdoC;
+    private javax.swing.JRadioButton rdo1;
+    private javax.swing.JRadioButton rdo2;
+    private javax.swing.JRadioButton rdo3;
     private javax.swing.JTextArea txtDapAn1;
     private javax.swing.JTextArea txtDapAn2;
     private javax.swing.JTextArea txtDapAn3;
