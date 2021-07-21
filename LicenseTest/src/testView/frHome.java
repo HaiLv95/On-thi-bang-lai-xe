@@ -138,6 +138,7 @@ public class frHome extends javax.swing.JFrame {
 
     private void btnLyThuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLyThuyetActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnLyThuyetActionPerformed
 
     private void btnThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThiActionPerformed
@@ -148,6 +149,8 @@ public class frHome extends javax.swing.JFrame {
 
     private void btnCauHoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCauHoiActionPerformed
         // TODO add your handling code here:
+        dgQuestionList dgList = new dgQuestionList(Run.home, true);
+        dgList.setVisible(true);
     }//GEN-LAST:event_btnCauHoiActionPerformed
 
     private void btnTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaiKhoanActionPerformed

@@ -72,7 +72,7 @@ public class QuestionController {
     public List<Answer> getListAnswers() throws Exception {
         List<Answer> lstAnswers = new ArrayList<>();
         try {
-            String sql = "select * from dapan";
+            String sql = "select * from dapan where flag=1";
             ResultSet rs = con.prepareExcuteQuery(sql);
             while (rs.next()) {
                 lstAnswers.add(getAnswer(rs));
@@ -86,7 +86,7 @@ public class QuestionController {
     public List<Answer> getListAnswersbyQuesstionID(int id) throws Exception {
         List<Answer> lstAnswers = new ArrayList<>();
         try {
-            String sql = "select * from dapan where id_cauhoi=?";
+            String sql = "select * from dapan where id_cauhoi=? and flag=1";
             ResultSet rs = con.prepareExcuteQuery(sql, id);
             while (rs.next()) {
                 lstAnswers.add(getAnswer(rs));
@@ -377,35 +377,41 @@ public class QuestionController {
         try {
             row = con.prepareUpdate(sql, question.getNoiDung(), question.getHinh(), question.getLoaiCauHoi_id(), question.getId());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Update question failed");
+            JOptionPane.showMessageDialog(null, "Update question failed" + e);
         }
         return row;
     }
 
-    public Question insertQuestion(Question question) {
-        int row = 0;
+    public int insertQuestion(Question question) {
+        int questionid = -1;
         String sql = "insert into cauhoi(noidung, hinh, id_loaicauhoi,trangthai) values(?,?,?,1)";
         Question qs = new Question();
         try {
-            int questionid = con.insertObj(sql, question.getNoiDung(), question.getHinh(), question.getLoaiCauHoi_id(), question.getId());
-            String sqlselect = "select * from cauhoi where id_cauhoi =?";
-            ResultSet rs = con.prepareExcuteQuery(sql, questionid);
-            while (rs.next()) {
-                qs = getQuestion(rs);
-            }
+          questionid   = con.insertObj(sql, question.getNoiDung(), question.getHinh(), question.getLoaiCauHoi_id());
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Insert question failed " + e);
         }
-        return qs;
+        return questionid;
     }
 
     public int insertDapAn(Answer answer) {
         int row = 0;
-        String sql = "insert into dapan(noidung, trangthai, giaithich, id_cauhoi) values(?,?,?,?)";
+        String sql = "insert into dapan(noidung, trangthai, giaithich, id_cauhoi, flag) values(?,?,?,?,1)";
         try {
-            row += con.prepareUpdate(sql, answer.getNoiDung(), answer.isTrangThai(), answer.getGiaiThich(), answer.getCauhoi_id());
+            row = con.prepareUpdate(sql, answer.getNoiDung(), answer.isTrangThai(), answer.getGiaiThich(), answer.getCauhoi_id());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "insert Answer to Sql failed");
+        }
+        return row;
+    }
+    public int updateDapAn(Answer answer){
+        int row = 0;
+        String sql= "update dapan set noidung =?, trangthai=?,giaithich=?, flag=? where id_dapan = ?";
+        try {
+            row = con.prepareUpdate(sql, answer.getNoiDung(), answer.isTrangThai(), answer.getGiaiThich(), answer.isFlag(),answer.getId());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "update Answer to Sql failed");
         }
         return row;
     }

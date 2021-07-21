@@ -22,9 +22,10 @@ public class dgQuestionList extends java.awt.Dialog {
      */
     QuestionController questionController = new QuestionController();
     List<Question> lst_Questions;
+    List<Question> lst_Qs = new ArrayList<>();
     List<LoaiCauHoi> lst_Questiontype;
     DefaultTableModel model;
-    int index;
+    int index, type;
     public static dgQuestionList dgQsList;
 
     public dgQuestionList(java.awt.Frame parent, boolean modal) {
@@ -39,10 +40,10 @@ public class dgQuestionList extends java.awt.Dialog {
     public void setstart() {
         setSize(1200, 800);
         setLocationRelativeTo(null);
-        loadQuestionTypetoCbo();
         try {
-            int type = cboQuesstionTypes.getSelectedIndex();
-            fillTablebyType(type);
+
+            loadQuestionTypetoCbo();
+            loadbyType();
             if (tblQuesstion.getRowCount() > 0) {
                 index = 0;
             } else {
@@ -214,7 +215,8 @@ public class dgQuestionList extends java.awt.Dialog {
 
     private void cboQuesstionTypesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboQuesstionTypesActionPerformed
         // TODO add your handling code here:
-        fillTablebyType(cboQuesstionTypes.getSelectedIndex());
+        type = cboQuesstionTypes.getSelectedIndex();
+        loadbyType();
     }//GEN-LAST:event_cboQuesstionTypesActionPerformed
 
     private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped
@@ -230,6 +232,7 @@ public class dgQuestionList extends java.awt.Dialog {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+        cboQuesstionTypes.setSelectedIndex(0);
         addQuestion();
     }//GEN-LAST:event_btnThemActionPerformed
 
@@ -245,6 +248,7 @@ public class dgQuestionList extends java.awt.Dialog {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
+        cboQuesstionTypes.setSelectedIndex(0);
         updateQs();
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -270,103 +274,87 @@ public class dgQuestionList extends java.awt.Dialog {
         }
     }
 
-    public void fillQuestionToTable(Question questions) {
+    // load list câu hỏi lên bảng
+    public void fillQuestionToTable(List<Question> lst_Qs) {
         String tenLoai = "";
-        for (LoaiCauHoi loaiCauHoi : lst_Questiontype) {
-            if (questions.getLoaiCauHoi_id() == loaiCauHoi.getID()) {
-                tenLoai = loaiCauHoi.getTenLoai();
-                model.addRow(new Object[]{questions.getId(), questions.getNoiDung(), questions.getHinh(), tenLoai});
+        for (Question lst_Q : lst_Qs) {
+            for (LoaiCauHoi loaiCauHoi : lst_Questiontype) {
+                if (lst_Q.getLoaiCauHoi_id() == loaiCauHoi.getID()) {
+                    tenLoai = loaiCauHoi.getTenLoai();
+                    model.addRow(new Object[]{lst_Q.getId(), lst_Q.getNoiDung(), lst_Q.getHinh(), tenLoai});
+                }
             }
         }
+
     }
 
-    public void fillTablebyType(int type) {
+    //load câu hỏi theo loại
+    public void loadbyType() {
         try {
+            lst_Questions = questionController.getListQuestion();
             txtSearch.setText("");
             model.setRowCount(0);
-            List<Question> lstListQ = new ArrayList<>();
-            lst_Questions = questionController.getListQuestion();
+            lst_Qs.clear();
             if (type == 0) {
                 for (Question lst_Question : lst_Questions) {
-                    fillQuestionToTable(lst_Question);
+                    lst_Qs.add(lst_Question);
                 }
             } else if (type == 2) {
-                lstListQ = questionController.getSaHinh(lst_Questions);
-                for (Question question : lstListQ) {
-                    fillQuestionToTable(question);
-                }
+                lst_Qs = questionController.getSaHinh(lst_Questions);
             } else if (type == 1) {
-                lstListQ = questionController.getKhaiNiem(lst_Questions);
-                for (Question question : lstListQ) {
-                    fillQuestionToTable(question);
-                }
+                lst_Qs = questionController.getKhaiNiem(lst_Questions);
             } else if (type == 3) {
-                lstListQ = questionController.getCauLiet(lst_Questions);
-                for (Question question : lstListQ) {
-                    fillQuestionToTable(question);
-                }
+                lst_Qs = questionController.getCauLiet(lst_Questions);
             }
+            fillQuestionToTable(lst_Qs);
+            tblQuesstion.setRowSelectionInterval(index, index);
+            jPanel1.updateUI();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Failed fill question by type to table" + ex);
+//            ex.printStackTrace();
+
         }
     }
 
+    //tìm câu hỏi theo id
     public void searchByID(int id) {
         model.setRowCount(0);
+        lst_Qs.clear();
         if (txtSearch.getText().trim().isEmpty()) {
-            fillTablebyType(0);
+            cboQuesstionTypes.setSelectedIndex(0);
+            loadbyType();
         } else {
             for (Question lst_Question : lst_Questions) {
                 if (lst_Question.getId() == id) {
-                    fillQuestionToTable(lst_Question);
+                    lst_Qs.add(lst_Question);
                 }
             }
         }
+        fillQuestionToTable(lst_Qs);
     }
 
+    //thêm câu hoi
     public void addQuestion() {
         Question question = new Question();
         dgAddQuestion addQuestion = new dgAddQuestion(Run.home, true, question, 0);
+        dgQsList.setVisible(false);
+        dgQsList.dispose();
         addQuestion.setVisible(true);
-        this.dispose();
     }
 
+    // cập nhật câu hỏi
     public void updateQs() {
-        Question question = new Question();
-        String id = tblQuesstion.getValueAt(index, 0).toString();
-        question.setId(Integer.parseInt(id));
-        question.setNoiDung(model.getValueAt(index, 1).toString());
-        question.setHinh(model.getValueAt(index, 2).toString());
-        String loai =  model.getValueAt(index, 3).toString();
-        for (LoaiCauHoi loaiCauHoi : lst_Questiontype) {
-            if (loai.equalsIgnoreCase(loaiCauHoi.getTenLoai())) {
-                question.setLoaiCauHoi_id(loaiCauHoi.getID());
-                break;
-            }
-        }
+        Question question = lst_Qs.get(index);
         question.setTrangThai(true);
         dgAddQuestion addQuestion = new dgAddQuestion(Run.home, true, question, 1);
+        dgQsList.setVisible(false);
+        dgQsList.dispose();
         addQuestion.setVisible(true);
-        this.dispose();
     }
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                dgQuestionList dialog = new dgQuestionList(new java.awt.Frame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSua;
