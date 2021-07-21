@@ -109,32 +109,40 @@ FindPasswordController co ;
     }//GEN-LAST:event_lblTextMouseClicked
 public void findpass(){
     try {
-        check();
-        String mail = txtEmail.getText();
+        if(check()==false){
+            return;
+        }else{
+            String mail = txtEmail.getText();
         co = new FindPasswordController();
         co.send(mail);
+        JOptionPane.showMessageDialog(this, "gửi mail thành công !");
+        }
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "send to");
+        JOptionPane.showMessageDialog(this,"lỗi sento"+ e);
     }
 }
-public void check(){
+public boolean check(){
     String eay =null;
     if(txtEmail.getText().isEmpty()){
         JOptionPane.showMessageDialog(this, " vui lòng nhập email trước");
         txtEmail.requestFocus();
-        return;
+        return false;
     }
     try {
-        String sql = "select EMAIL from USERS";
-        ResultSet rs =con.createStatement(sql);
+        String sql = "select EMAIL from USERS where EMAIL = ?";
+        ResultSet rs =con.prepareExcuteQuery(sql , txtEmail.getText());
         while(rs.next()){
          eay = rs.getString("EMAIL");
         }
-        if(txtEmail.getText().contains(eay)){
+        if(!txtEmail.getText().equalsIgnoreCase(eay)){
             JOptionPane.showMessageDialog(this ,"email của bạn không tồn tại");
+            return false;
         }
     } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "lỗi check mail"+e);
+        return false;
     }
+    return true;
 }
     /**
      * @param args the command line arguments
