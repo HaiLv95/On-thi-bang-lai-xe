@@ -164,11 +164,11 @@ public class QuestionController {
         return lstA;
     }
 
-    public void createExam() throws Exception {
+    public void createExam(Dethi dethi) throws Exception {
         List<CauHoi_DeThi> lstCauHoi_DeThi = new ArrayList<>();
         try {
             String sql = "insert into dethi(trangthai, email, timer, id_loaide) values(?,?,?,?)";
-            int idDeThi = con.insertObj(sql, "donot", Run.user.getUser(), 900, 1);
+            int idDeThi = con.insertObj(sql, dethi.getTrangThai(), dethi.getEmail(), dethi.getTimer(), dethi.getLoaide_id());
             String sqlInsertQuestion = "insert into CAUHOI_DETHI(id_cauhoi, id_dethi, id_cautraloi,  trangthai) values(?,?,?,?)";
             int row = 0;
             List<Question> lstLiet = getCauLiet(getListQuestion());
@@ -261,11 +261,11 @@ public class QuestionController {
         return dethi;
     }
 
-    public List<Dethi> getListDTbyEmail() throws Exception {
-        String sql = "select * from dethi where email=? and id_loaide=1";
+    public List<Dethi> getListDTbyEmail(int loaide) throws Exception {
+        String sql = "select * from dethi where email=? and id_loaide=?";
         List<Dethi> lstDethi = new ArrayList<>();
         try {
-            ResultSet rs = con.prepareExcuteQuery(sql, Run.user.getUser());
+            ResultSet rs = con.prepareExcuteQuery(sql, Run.user.getUser(),loaide);
             while (rs.next()) {
                 lstDethi.add(getDeThi(rs));
             }
