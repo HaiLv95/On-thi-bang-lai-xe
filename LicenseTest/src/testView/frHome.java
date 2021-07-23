@@ -145,7 +145,7 @@ public class frHome extends javax.swing.JFrame {
     private void btnChangePwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePwActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnChangePwActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */

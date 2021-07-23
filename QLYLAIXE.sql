@@ -974,3 +974,4 @@ select * from DETHI
 select * from CAUHOI_DETHI
 select * from DAPAN
 update CAUHOI set id_loaicauhoi =2 where ID_CAUHOI = 1
+select * from DETHI where ID_LOAIDE = 2 and EMAIL='hailvph13040@fpt.edu.vn'
