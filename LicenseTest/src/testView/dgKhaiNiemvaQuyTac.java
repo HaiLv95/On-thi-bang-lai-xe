@@ -1,11 +1,13 @@
 package testView;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.util.List;
 import javax.swing.JOptionPane;
 import testController.QuestionController;
 import testModel.Answer;
+import testModel.CauHoi_DeThi;
 import testModel.Question;
 
 /**
@@ -17,135 +19,228 @@ public class dgKhaiNiemvaQuyTac extends javax.swing.JDialog {
     /**
      * Creates new form dgKhaiNiemvaQuyTac
      */
-    public dgKhaiNiemvaQuyTac(java.awt.Frame parent, boolean modal) {
+    int index = 0;
+    int count = 1;
+    static QuestionController quesController = new QuestionController();
+    List<CauHoi_DeThi> lst_CHDTKN;
+    List<Question> lstQuestions; // question câu hỏi khái niệm
+    List<Answer> listKhaiNiemAnswer; // answer câu hỏi khái niệm
+
+    public dgKhaiNiemvaQuyTac(java.awt.Frame parent, boolean modal, List<CauHoi_DeThi> lst_Kn) {
         super(parent, modal);
         initComponents();
+        lst_CHDTKN = lst_Kn;
         settingStart();
     }
 
     //Khai báo
-    
-    Connection con;
-    int index = 0;
-    int count = 1;      
-    static QuestionController quesController = new QuestionController();
-    List<Question> listQuestions;       
-    List<Question> listKhaiNiemQuestions; // question câu hỏi khái niệm
-    List<Answer> listKhaiNiemAnswer; // answer câu hỏi khái niệm
-    
-    public void settingStart(){
-        setTitle("75 câu hỏi Khái niệm và quy tắc");
+    public void settingStart() {
+        setTitle(" câu hỏi Khái niệm và quy tắc");
         setLocationRelativeTo(null);
-        loadData(); 
+        loadQuestionbyIndex(0);
         lblCauHoi.setText("Câu hỏi " + count);
-        txpGiaiThich.setVisible(false); 
+        txpGiaiThich.setVisible(false);
         txtMove.setText(null);
     }
-    //Code
-    public void loadData(){
+
+    //load dữ liệu câu hỏi theo index của list
+    public void loadQuestionbyIndex(int index) {
         try {
-            listQuestions = quesController.getListQuestion();
-            List<Answer> listAnswers = quesController.getListAnswers();
-            
-            listKhaiNiemQuestions = quesController.getKhaiNiem(listQuestions);      
-            //load câu hỏi
-            txpCauHoi.setText(listKhaiNiemQuestions.get(index).getNoiDung());
-            
-            //load đáp án
-            Question ques = listKhaiNiemQuestions.get(index);
-            listKhaiNiemAnswer = quesController.getAnswerKhaiNiem(ques.getId(), listAnswers);
-            //thêm đáp án vào text
-            txpA.setText("");
-            txpB.setText("");
-            txpC.setText("");
-            txpA.setText(listKhaiNiemAnswer.get(0).getNoiDung());
-            txpB.setText(listKhaiNiemAnswer.get(1).getNoiDung());
-            txpC.setText(listKhaiNiemAnswer.get(2).getNoiDung());
-            ;
-           
-        } catch (Exception e) {
-            System.out.println(e);
+            //reset radio khi sang câu hỏi mới
+            rdoA.setSelected(false);
+            rdoB.setSelected(false);
+            rdoC.setSelected(false);
+            txpGiaiThich.setVisible(false);
+            //lấy list câu hỏi khái niệm
+            lstQuestions = quesController.getKhaiNiem(quesController.getListQuestion());
+            for (Question lsQuestion : lstQuestions) {
+                //nếu id câu hỏi ở trong câu hỏi đề thi = id câu hỏi trong list  câu hỏi
+                if (lst_CHDTKN.get(index).getCauHoi_id() == lsQuestion.getId()) {
+                    txpCauHoi.setText("Câu " + (index + 1) + ": " + lsQuestion.getNoiDung());
+                    //set hình
+                    if (lsQuestion.getHinh().length() > 0) {
+                        lblHinh.setVisible(true);
+                        quesController.setIcon(lblHinh, lsQuestion.getHinh());
+                    } else {
+                        lblHinh.setVisible(false);
+                    }
+                    // lấy các đáp án của câu hỏi theo id câu hỏi
+                    listKhaiNiemAnswer = quesController.getListAnswersbyQuesstionID(lst_CHDTKN.get(index).getCauHoi_id());
+                    //xử lý trường hợp câu hỏi có 2 đáp án hoặc 3 đáp án
+                    if (listKhaiNiemAnswer.size() == 2) {
+                        txpA.setText(listKhaiNiemAnswer.get(0).getNoiDung());
+                        txpB.setText(listKhaiNiemAnswer.get(1).getNoiDung());
+                        if (lst_CHDTKN.get(index).getCauTraLoi() == listKhaiNiemAnswer.get(0).getId()) {
+                            rdoA.setSelected(true);
+                            rdoB.setSelected(false);
+                            if (listKhaiNiemAnswer.get(0).isTrangThai()) {
+                                txpGiaiThich.setText(listKhaiNiemAnswer.get(0).getGiaiThich());
+                                txpGiaiThich.setVisible(true);
+                            }
+                        } else if (lst_CHDTKN.get(index).getCauTraLoi() == listKhaiNiemAnswer.get(1).getId()) {
+                            rdoB.setSelected(true);
+                            rdoA.setSelected(false);
+                            if (listKhaiNiemAnswer.get(1).isTrangThai()) {
+                                txpGiaiThich.setText(listKhaiNiemAnswer.get(1).getGiaiThich());
+                                txpGiaiThich.setVisible(true);
+                            }
+                        }
+                        rdoC.setVisible(false);
+                        txpC.setVisible(false);
+                        jScrollPane2.setVisible(false);
+                    } else if (listKhaiNiemAnswer.size() == 3) {
+                        rdoC.setVisible(true);
+                        txpC.setVisible(true);
+                        jScrollPane2.setVisible(true);
+                        txpA.setText(listKhaiNiemAnswer.get(0).getNoiDung());
+                        txpB.setText(listKhaiNiemAnswer.get(1).getNoiDung());
+                        txpC.setText(listKhaiNiemAnswer.get(2).getNoiDung());
+                        if (lst_CHDTKN.get(index).getCauTraLoi() == listKhaiNiemAnswer.get(0).getId()) {
+                            rdoA.setSelected(true);
+                            rdoB.setSelected(false);
+                            rdoC.setSelected(false);
+                            if (listKhaiNiemAnswer.get(0).isTrangThai()) {
+                                txpGiaiThich.setText(listKhaiNiemAnswer.get(0).getGiaiThich());
+                                txpGiaiThich.setVisible(true);
+                            }
+                        } else if (lst_CHDTKN.get(index).getCauTraLoi() == listKhaiNiemAnswer.get(1).getId()) {
+                            rdoB.setSelected(true);
+                            rdoA.setSelected(false);
+                            rdoC.setSelected(false);
+                            if (listKhaiNiemAnswer.get(1).isTrangThai()) {
+                                txpGiaiThich.setText(listKhaiNiemAnswer.get(1).getGiaiThich());
+                                txpGiaiThich.setVisible(true);
+                            }
+                        } else if (lst_CHDTKN.get(index).getCauTraLoi() == listKhaiNiemAnswer.get(2).getId()) {
+                            rdoC.setSelected(true);
+                            rdoA.setSelected(false);
+                            rdoB.setSelected(false);
+                            if (listKhaiNiemAnswer.get(2).isTrangThai()) {
+                                txpGiaiThich.setText(listKhaiNiemAnswer.get(2).getGiaiThich());
+                                txpGiaiThich.setVisible(true);
+                            }
+                        }
+                    }
+                }
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Failed get Answers by QuestionID" + ex);
         }
-        
     }
+
     // xử lí các button
-    public void A(){
+    public void A() {
         rdoA.setSelected(true);
         rdoB.setSelected(false);
         rdoC.setSelected(false);
-        if(listKhaiNiemAnswer.get(0).isTrangThai()==true){
+        //nếu rdo A đang được chọn và đáp án A là đáp án đúng sẽ hiển thị giải thích
+        if (listKhaiNiemAnswer.get(0).isTrangThai() == true) {
             txpGiaiThich.setText(listKhaiNiemAnswer.get(0).getGiaiThich());
             txpGiaiThich.setVisible(true);
-        }else{
+        } else {
             txpGiaiThich.setVisible(false);
         }
+        // nếu đáp án A đang được chọn sẽ set id câu trả lời cho câu hỏi đề thi là id đáp án A. nếu bỏ chọn câu trả lời = -1
+        if (rdoA.isSelected()) {
+            lst_CHDTKN.get(index).setCauTraLoi(listKhaiNiemAnswer.get(0).getId());
+            lst_CHDTKN.get(index).setTrangThai(listKhaiNiemAnswer.get(0).isTrangThai());
+        } else {
+            lst_CHDTKN.get(index).setCauTraLoi(-1);
+            lst_CHDTKN.get(index).setTrangThai(false);
+        }
     }
-    public void B(){
+
+    public void B() {
         rdoA.setSelected(false);
         rdoB.setSelected(true);
         rdoC.setSelected(false);
-        if(listKhaiNiemAnswer.get(1).isTrangThai()==true){
+        if (listKhaiNiemAnswer.get(1).isTrangThai() == true) {
             txpGiaiThich.setText(listKhaiNiemAnswer.get(1).getGiaiThich());
             txpGiaiThich.setVisible(true);
-        }else{
+        } else {
             txpGiaiThich.setVisible(false);
         }
+        if (rdoB.isSelected()) {
+            lst_CHDTKN.get(index).setCauTraLoi(listKhaiNiemAnswer.get(1).getId());
+            lst_CHDTKN.get(index).setTrangThai(listKhaiNiemAnswer.get(1).isTrangThai());
+        } else {
+            lst_CHDTKN.get(index).setCauTraLoi(-1);
+            lst_CHDTKN.get(index).setTrangThai(false);
+        }
     }
-    public void C(){
+
+    public void C() {
         rdoA.setSelected(false);
         rdoB.setSelected(false);
         rdoC.setSelected(true);
-        if(listKhaiNiemAnswer.get(2).isTrangThai()==true){
+        if (listKhaiNiemAnswer.get(2).isTrangThai() == true) {
             txpGiaiThich.setText(listKhaiNiemAnswer.get(2).getGiaiThich());
             txpGiaiThich.setVisible(true);
-        }else{
+        } else {
             txpGiaiThich.setVisible(false);
         }
-        
-    }
-    public void buttonNext(){
-        index++;
-        count ++;
-      
-        if( count > 75){
-          index=0;
-          count=1;
+        if (rdoC.isSelected()) {
+            lst_CHDTKN.get(index).setCauTraLoi(listKhaiNiemAnswer.get(2).getId());
+            lst_CHDTKN.get(index).setTrangThai(listKhaiNiemAnswer.get(2).isTrangThai());
+        } else {
+            lst_CHDTKN.get(index).setCauTraLoi(-1);
+            lst_CHDTKN.get(index).setTrangThai(false);
         }
-      loadData();
-      txpGiaiThich.setVisible(false);
-      rdoA.setSelected(false);rdoB.setSelected(false);rdoC.setSelected(false);
-      lblCauHoi.setText("Câu hỏi " + count);
-      txtMove.setText(null);
     }
-    public void buttonPrev(){
+
+    public void buttonNext() {
+        index++;
+        count++;
+
+        if (count > 75) {
+            index = 0;
+            count = 1;
+        }
+        loadQuestionbyIndex(index);
+//        txpGiaiThich.setVisible(false);
+//        rdoA.setSelected(false);
+//        rdoB.setSelected(false);
+//        rdoC.setSelected(false);
+        lblCauHoi.setText("Câu hỏi " + count);
+        txtMove.setText(null);
+    }
+
+    public void buttonPrev() {
         index--;
         count--;
-        if(count < 1){
-          index = listKhaiNiemQuestions.size()-1;
-          count = listKhaiNiemQuestions.size();
+        if (count < 1) {
+            index = lst_CHDTKN.size() - 1;
+            count = lst_CHDTKN.size();
         }
-       loadData();
-       txpGiaiThich.setVisible(false);
-       rdoA.setSelected(false);rdoB.setSelected(false);rdoC.setSelected(false);
-       lblCauHoi.setText("Câu hỏi " + count);
-       txtMove.setText(null);
+        loadQuestionbyIndex(index);
+//        txpGiaiThich.setVisible(false);
+//        rdoA.setSelected(false);
+//        rdoB.setSelected(false);
+//        rdoC.setSelected(false);
+        lblCauHoi.setText("Câu hỏi " + count);
+        txtMove.setText(null);
     }
-    public void buttonMove(){
+
+    public void buttonMove() {
         //set về null hết
-        rdoA.setSelected(false);rdoB.setSelected(false);rdoC.setSelected(false);
-        txpGiaiThich.setVisible(false);
+//        rdoA.setSelected(false);
+//        rdoB.setSelected(false);
+//        rdoC.setSelected(false);
+//        txpGiaiThich.setVisible(false);
         //kiểm tra điều kiện
         int numberMove = Integer.parseInt(txtMove.getText());
-        if(numberMove > listKhaiNiemQuestions.size()){
-            JOptionPane.showMessageDialog(this,"Không tồn tại câu hỏi này");
-            
-        }else{
-            index = numberMove-1;
+        if (numberMove > lst_CHDTKN.size()) {
+            JOptionPane.showMessageDialog(this, "Không tồn tại câu hỏi này");
+
+        } else {
+            index = numberMove - 1;
             count = numberMove;
-            loadData();
+            loadQuestionbyIndex(index);
             lblCauHoi.setText("Câu hỏi " + count);
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -474,7 +569,7 @@ public class dgKhaiNiemvaQuyTac extends javax.swing.JDialog {
     private void btnMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenu1ActionPerformed
         // mở form câu hỏi liệt và đóng form study
         dispose();
-        dgStudy study = new dgStudy(Run.home,true);
+        dgStudy study = new dgStudy(Run.home, true);
         study.setVisible(true);
     }//GEN-LAST:event_btnMenu1ActionPerformed
 
@@ -497,7 +592,7 @@ public class dgKhaiNiemvaQuyTac extends javax.swing.JDialog {
 
     private void txtMoveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMoveKeyPressed
         // cài đặt nút enter
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             buttonMove();
         }
     }//GEN-LAST:event_txtMoveKeyPressed
@@ -510,44 +605,6 @@ public class dgKhaiNiemvaQuyTac extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dgKhaiNiemvaQuyTac.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dgKhaiNiemvaQuyTac.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dgKhaiNiemvaQuyTac.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dgKhaiNiemvaQuyTac.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                dgKhaiNiemvaQuyTac dialog = new dgKhaiNiemvaQuyTac(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMenu1;
