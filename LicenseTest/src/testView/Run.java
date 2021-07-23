@@ -8,13 +8,13 @@ import testModel.User;
  */
 public class Run {
     public  static frHome home;
-    public static dgLogin login;
+    public static frLogin login;
     public static User user;
     public static void main(String[] args) {
-        dgLogin();
+        frLogin();
     }
-    public static void dgLogin(){
-        login = new dgLogin(Run.home, true);
+    public static void frLogin(){
+        login = new frLogin();
         login.setVisible(true);
     }
     public static void frHome(){

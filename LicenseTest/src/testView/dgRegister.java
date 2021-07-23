@@ -12,7 +12,7 @@ import testController.AddController;
 public class dgRegister extends java.awt.Dialog {
 public ConnectSQL con  = new ConnectSQL();
 public AddController us = new AddController();
-public static dgLogin login ; 
+public static frLogin login ; 
 String code ="";
     /**
      * Creates new form Register
@@ -49,6 +49,9 @@ String code ="";
 
         setTitle("Register");
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closeDialog(evt);
             }
@@ -156,6 +159,7 @@ String code ="";
      * Closes the dialog
      */
     private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
+        Run.frLogin();
         setVisible(false);
         dispose();
     }//GEN-LAST:event_closeDialog
@@ -168,13 +172,18 @@ String code ="";
 
     private void lblLinkLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLinkLoginMouseClicked
 
-        login.setVisible(true);
+        Run.frLogin();
         this.dispose();
     }//GEN-LAST:event_lblLinkLoginMouseClicked
 
     private void btnRegister1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegister1ActionPerformed
         addUSER();
     }//GEN-LAST:event_btnRegister1ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_formWindowClosed
 public boolean check(){
     if(txtEmail1.getText().trim().isEmpty()){
         JOptionPane.showMessageDialog(this, "vui lòng nhập EMAIL");
