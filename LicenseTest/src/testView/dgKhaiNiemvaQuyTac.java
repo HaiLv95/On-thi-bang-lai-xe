@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import testController.QuestionController;
 import testModel.Answer;
 import testModel.CauHoi_DeThi;
+import testModel.Dethi;
 import testModel.Question;
 
 /**
@@ -272,6 +273,11 @@ public class dgKhaiNiemvaQuyTac extends javax.swing.JDialog {
         btnPrev = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(229, 229, 229));
 
@@ -568,6 +574,7 @@ public class dgKhaiNiemvaQuyTac extends javax.swing.JDialog {
 
     private void btnMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenu1ActionPerformed
         // mở form câu hỏi liệt và đóng form study
+        saveQs();
         dispose();
         dgStudy study = new dgStudy(Run.home, true);
         study.setVisible(true);
@@ -602,6 +609,37 @@ public class dgKhaiNiemvaQuyTac extends javax.swing.JDialog {
         buttonPrev();
     }//GEN-LAST:event_btnPrevActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        saveQs();
+        dispose();
+        dgStudy study = new dgStudy(Run.home, true);
+        study.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
+//lưu kết quả vào csdl
+    public void saveQs(){
+        Dethi ex = new Dethi();
+        ex.setLoaide_id(4);
+        ex.setTrangThai("doing");
+        ex.setEmail(Run.user.getUser());
+        ex.setTimer(999999);
+        ex.setId(lst_CHDTKN.get(0).getDeThi_id());
+        int rowEx = 0;
+        int rowQs = 0;
+        try {
+            rowEx = quesController.updateExambyID(ex);
+            for (CauHoi_DeThi QuestionEx : lst_CHDTKN) {
+                rowQs += quesController.updateQuestionExam(QuestionEx);
+            }
+            if (rowEx == 1 && rowQs == lst_CHDTKN.size()) {
+                JOptionPane.showMessageDialog(this, "Lưu kết quả thành công");
+            }else{
+                JOptionPane.showMessageDialog(this, "Có lỗi xảy ra khi lưu kết quả");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Có lỗi xảy ra khi lưu kết quả ôn tập");
+        }
+    }
     /**
      * @param args the command line arguments
      */

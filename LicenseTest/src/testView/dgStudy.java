@@ -275,6 +275,15 @@ public class dgStudy extends java.awt.Dialog {
             lbl2.setText("Gồm " + lst_Liet.size() + " câu hỏi");
             lbl5.setText("Gồm " + lst_Kn.size() + " câu hỏi");
             lbl8.setText("Gồm " + lst_SH.size() + " câu hỏi");
+            int qsKNdone = 0;
+            int qsSHdone = 0;
+            int qsLdone = 0;
+            for (CauHoi_DeThi cauHoi_DeThi : lst_Kn) {
+                if (cauHoi_DeThi.getCauTraLoi() > 0) {
+                    qsKNdone ++;
+                }
+            }
+            lbl6.setText("Đã làm " + qsKNdone + " / " + lst_Kn.size());
         } catch (Exception ex) {
             ex.printStackTrace();
         }

@@ -972,6 +972,6 @@ select * from CAUHOI
 select * from LOAIDE
 select * from DETHI
 select * from CAUHOI_DETHI
-select * from DAPAN
+select * from DAPAN where ID_CAUHOI = 1
 update CAUHOI set id_loaicauhoi =2 where ID_CAUHOI = 1
-select * from DETHI where ID_LOAIDE = 2 and EMAIL='hailvph13040@fpt.edu.vn'
+select * from CAUHOI_DETHI where ID_DETHI = 3
