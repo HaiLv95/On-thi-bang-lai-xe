@@ -183,6 +183,10 @@ String code ="";
     private void btnRegister1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegister1ActionPerformed
         addUSER();
     }//GEN-LAST:event_btnRegister1ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
     public boolean check() {
         if (txtEmail1.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "vui lòng nhập EMAIL");

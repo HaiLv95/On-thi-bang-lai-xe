@@ -19,9 +19,8 @@ public class Dgdoimatkhau extends javax.swing.JDialog {
     /**
      * Creates new form Dgdoimatkhau
      */
-  public  ConnectSQL con = new ConnectSQL();
-  public  changePasswordController change = new changePasswordController() ;
-    public static dgLogin login ;
+    public ConnectSQL con = new ConnectSQL();
+    public changePasswordController change = new changePasswordController();
 
     public Dgdoimatkhau(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -121,9 +120,6 @@ public class Dgdoimatkhau extends javax.swing.JDialog {
 
     private void btndoimkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndoimkActionPerformed
         chanepass();
-        login = new dgLogin(Run.home, true);
-        login.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_btndoimkActionPerformed
     public boolean check() {
         String pb = null;
@@ -149,8 +145,11 @@ public class Dgdoimatkhau extends javax.swing.JDialog {
                 pwcomfimpass.requestFocus();
                 return false;
             }
+            if(pwmkmoi.getText().equalsIgnoreCase(pwmkcu.getText())){
+                JOptionPane.showMessageDialog(this, "mật khẩu mới không được giống mk cũ");
+            }
             if (!pwmkmoi.getText().trim().matches(patern)) {
-                JOptionPane.showMessageDialog(this, "mật khẩu phải chứa chữ hòa chữ thường và số");
+                JOptionPane.showMessageDialog(this, "mật khẩu phải chứa chữ hoa, chữ thường và số");
                 return false;
             }
             if (!pa.equalsIgnoreCase(pwcomfimpass.getText().trim())) {
@@ -187,6 +186,11 @@ public class Dgdoimatkhau extends javax.swing.JDialog {
                 String email = txtemail.getText();
                 change.changePassword(pass, email);
                 JOptionPane.showMessageDialog(this, "đổi mật khẩu thành công");
+                this.dispose();
+                setVisible(false);
+                Run.home.setVisible(false);
+                Run.frLogin();
+
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "lỗi" + e);
