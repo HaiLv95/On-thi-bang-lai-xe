@@ -144,8 +144,16 @@ public class frHome extends javax.swing.JFrame {
 
     private void btnChangePwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePwActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnChangePwActionPerformed
-    
+        Dgdoimatkhau dgdoimk = new Dgdoimatkhau(Run.home, true);
+        dgdoimk.setVisible(true);
+
+    }//GEN-LAST:event_btnTaiKhoanActionPerformed
+
+    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThongKeActionPerformed
+
+
     /**
      * @param args the command line arguments
      */
