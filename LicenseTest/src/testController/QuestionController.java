@@ -35,8 +35,8 @@ public class QuestionController {
             }
 
         } catch (Exception e) {
-            throw new Exception("Failed 1: get list Question"+e);
-            
+            throw new Exception("Failed 1: get list Question" + e);
+
         }
         return lstQuesstion;
     }
@@ -164,11 +164,11 @@ public class QuestionController {
         return lstA;
     }
 
-    public void createExam() throws Exception {
+    public void createExam(Dethi dethi) throws Exception {
         List<CauHoi_DeThi> lstCauHoi_DeThi = new ArrayList<>();
         try {
             String sql = "insert into dethi(trangthai, email, timer, id_loaide) values(?,?,?,?)";
-            int idDeThi = con.insertObj(sql, "donot", Run.user.getUser(), 900, 1);
+            int idDeThi = con.insertObj(sql, dethi.getTrangThai(), dethi.getEmail(), dethi.getTimer(), dethi.getLoaide_id());
             String sqlInsertQuestion = "insert into CAUHOI_DETHI(id_cauhoi, id_dethi, id_cautraloi,  trangthai) values(?,?,?,?)";
             int row = 0;
             List<Question> lstLiet = getCauLiet(getListQuestion());
@@ -261,8 +261,8 @@ public class QuestionController {
         return dethi;
     }
 
-    public List<Dethi> getListDTbyEmail() throws Exception {
-        String sql = "select * from dethi where email=? and id_loaide=1";
+    public List<Dethi> getListAllDTbyEmail() throws Exception {
+        String sql = "select * from dethi where email=?";
         List<Dethi> lstDethi = new ArrayList<>();
         try {
             ResultSet rs = con.prepareExcuteQuery(sql, Run.user.getUser());
@@ -270,9 +270,53 @@ public class QuestionController {
                 lstDethi.add(getDeThi(rs));
             }
         } catch (Exception e) {
-            throw new Exception("Failed 7: get list Exam failed ");
+            throw new Exception("Failed 7: get list All Exam failed ");
         }
         return lstDethi;
+    }
+
+    public List<Dethi> getListDTbyEmail(int loaide) {
+        List<Dethi> lst_DT = new ArrayList<>();
+        try {
+            List<Dethi> lst_AllExam = getListAllDTbyEmail();
+            boolean check = true;
+        for (Dethi dethi : lst_AllExam) {
+            if (dethi.getLoaide_id() == 2 || dethi.getLoaide_id() == 3 || dethi.getLoaide_id() == 4) {
+                check = false;
+                break;
+            }
+        }
+        if (check) {
+            String sql = "insert into dethi(trangthai, email, timer, id_loaide) values(?,?,?,?)";
+
+            String sqlInsertQuestion = "insert into CAUHOI_DETHI(id_cauhoi, id_dethi, id_cautraloi,  trangthai) values(?,?,?,?)";
+            int row = 0;
+            List<Question> lstLiet = getCauLiet(getListQuestion());
+            List<Question> lstSaHinh = getSaHinh(getListQuestion());
+            List<Question> lstKn = getKhaiNiem(getListQuestion());
+            int idDeThiSH = con.insertObj(sql, "donot",Run.user.getUser(), "999999", 2);
+            for (Question question : lstSaHinh) {
+                row += con.prepareUpdate(sqlInsertQuestion, question.getId(), idDeThiSH, -1, false);
+            }
+            int idDeThiL = con.insertObj(sql, "donot",Run.user.getUser(), "999999", 3);
+            for (Question question : lstLiet) {
+                row += con.prepareUpdate(sqlInsertQuestion, question.getId(), idDeThiL, -1, false);
+            }
+            int idDeThiKn = con.insertObj(sql, "donot",Run.user.getUser(), "999999", 4);
+            for (Question question : lstKn) {
+                row += con.prepareUpdate(sqlInsertQuestion, question.getId(), idDeThiKn, -1, false);
+            }
+            lst_AllExam = getListAllDTbyEmail();
+        }
+            for (Dethi dethi : lst_AllExam) {
+                if (dethi.getLoaide_id() == loaide) {
+                    lst_DT.add(dethi);
+                }
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Failed get list Exam");
+        }
+        return lst_DT;
     }
 
     public void getCauHoibyIdDT(int id) throws Exception {
@@ -387,8 +431,8 @@ public class QuestionController {
         String sql = "insert into cauhoi(noidung, hinh, id_loaicauhoi,trangthai) values(?,?,?,1)";
         Question qs = new Question();
         try {
-          questionid   = con.insertObj(sql, question.getNoiDung(), question.getHinh(), question.getLoaiCauHoi_id());
-            
+            questionid = con.insertObj(sql, question.getNoiDung(), question.getHinh(), question.getLoaiCauHoi_id());
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Insert question failed " + e);
         }
@@ -405,11 +449,12 @@ public class QuestionController {
         }
         return row;
     }
-    public int updateDapAn(Answer answer){
+
+    public int updateDapAn(Answer answer) {
         int row = 0;
-        String sql= "update dapan set noidung =?, trangthai=?,giaithich=?, flag=? where id_dapan = ?";
+        String sql = "update dapan set noidung =?, trangthai=?,giaithich=?, flag=? where id_dapan = ?";
         try {
-            row = con.prepareUpdate(sql, answer.getNoiDung(), answer.isTrangThai(), answer.getGiaiThich(), answer.isFlag(),answer.getId());
+            row = con.prepareUpdate(sql, answer.getNoiDung(), answer.isTrangThai(), answer.getGiaiThich(), answer.isFlag(), answer.getId());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "update Answer to Sql failed");
         }
@@ -421,9 +466,10 @@ public class QuestionController {
             ImageIcon imageIcon = new ImageIcon(getClass().getResource("/Images/" + nameIcon + ".png"));
             label.setIcon(imageIcon);
             label.setName(nameIcon);
-        }else{
+        } else {
             label.removeAll();
             label.setName(null);
         }
     }
+
 }

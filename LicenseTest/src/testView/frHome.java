@@ -36,8 +36,7 @@ public class frHome extends javax.swing.JFrame {
         btnCauHoi = new javax.swing.JButton();
         btnLyThuyet = new javax.swing.JButton();
         btnThi = new javax.swing.JButton();
-        btnThongKe = new javax.swing.JButton();
-        btnTaiKhoan = new javax.swing.JButton();
+        btnChangePw = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ôn thi bằng lái xe máy");
@@ -50,6 +49,7 @@ public class frHome extends javax.swing.JFrame {
         btnCauHoi.setBackground(new java.awt.Color(255, 118, 89));
         btnCauHoi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnCauHoi.setForeground(new java.awt.Color(255, 255, 255));
+        btnCauHoi.setIcon(new javax.swing.ImageIcon("E:\\Ky_4\\DU_AN_1\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\Question_fill.png")); // NOI18N
         btnCauHoi.setText("Bộ câu hỏi");
         btnCauHoi.setBorderPainted(false);
         btnCauHoi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -60,11 +60,12 @@ public class frHome extends javax.swing.JFrame {
             }
         });
         pnlHome.add(btnCauHoi);
-        btnCauHoi.setBounds(780, 220, 230, 180);
+        btnCauHoi.setBounds(640, 410, 250, 180);
 
         btnLyThuyet.setBackground(new java.awt.Color(0, 182, 222));
         btnLyThuyet.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnLyThuyet.setForeground(new java.awt.Color(255, 255, 255));
+        btnLyThuyet.setIcon(new javax.swing.ImageIcon("E:\\Ky_4\\DU_AN_1\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\Desk_alt_fill.png")); // NOI18N
         btnLyThuyet.setText("Học lý thuyết");
         btnLyThuyet.setBorderPainted(false);
         btnLyThuyet.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -75,11 +76,12 @@ public class frHome extends javax.swing.JFrame {
             }
         });
         pnlHome.add(btnLyThuyet);
-        btnLyThuyet.setBounds(170, 220, 230, 180);
+        btnLyThuyet.setBounds(280, 230, 230, 180);
 
         btnThi.setBackground(new java.awt.Color(86, 222, 167));
         btnThi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnThi.setForeground(new java.awt.Color(255, 255, 255));
+        btnThi.setIcon(new javax.swing.ImageIcon("E:\\Ky_4\\DU_AN_1\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\File_dock_fill.png")); // NOI18N
         btnThi.setText("Thi thử");
         btnThi.setBorderPainted(false);
         btnThi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -90,37 +92,23 @@ public class frHome extends javax.swing.JFrame {
             }
         });
         pnlHome.add(btnThi);
-        btnThi.setBounds(400, 220, 380, 180);
+        btnThi.setBounds(510, 230, 380, 180);
 
-        btnThongKe.setBackground(new java.awt.Color(158, 122, 194));
-        btnThongKe.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnThongKe.setForeground(new java.awt.Color(255, 255, 255));
-        btnThongKe.setText("Thống kê");
-        btnThongKe.setBorderPainted(false);
-        btnThongKe.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnThongKe.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
+        btnChangePw.setBackground(new java.awt.Color(248, 205, 54));
+        btnChangePw.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnChangePw.setForeground(new java.awt.Color(255, 255, 255));
+        btnChangePw.setIcon(new javax.swing.ImageIcon("E:\\Ky_4\\DU_AN_1\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\User_fill.png")); // NOI18N
+        btnChangePw.setText("Đổi mật khẩu");
+        btnChangePw.setBorderPainted(false);
+        btnChangePw.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnChangePw.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnChangePw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThongKeActionPerformed(evt);
+                btnChangePwActionPerformed(evt);
             }
         });
-        pnlHome.add(btnThongKe);
-        btnThongKe.setBounds(590, 400, 420, 170);
-
-        btnTaiKhoan.setBackground(new java.awt.Color(248, 205, 54));
-        btnTaiKhoan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
-        btnTaiKhoan.setText("Tài khoản");
-        btnTaiKhoan.setBorderPainted(false);
-        btnTaiKhoan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnTaiKhoan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnTaiKhoan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTaiKhoanActionPerformed(evt);
-            }
-        });
-        pnlHome.add(btnTaiKhoan);
-        btnTaiKhoan.setBounds(170, 400, 420, 170);
+        pnlHome.add(btnChangePw);
+        btnChangePw.setBounds(280, 410, 360, 180);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,7 +126,8 @@ public class frHome extends javax.swing.JFrame {
 
     private void btnLyThuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLyThuyetActionPerformed
         // TODO add your handling code here:
-        
+        dgStudy study = new dgStudy(Run.home, true);
+        study.setVisible(true);
     }//GEN-LAST:event_btnLyThuyetActionPerformed
 
     private void btnThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThiActionPerformed
@@ -153,14 +142,10 @@ public class frHome extends javax.swing.JFrame {
         dgList.setVisible(true);
     }//GEN-LAST:event_btnCauHoiActionPerformed
 
-    private void btnTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaiKhoanActionPerformed
+    private void btnChangePwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePwActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnTaiKhoanActionPerformed
-
-    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThongKeActionPerformed
-
+    }//GEN-LAST:event_btnChangePwActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -168,10 +153,9 @@ public class frHome extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCauHoi;
+    private javax.swing.JButton btnChangePw;
     private javax.swing.JButton btnLyThuyet;
-    private javax.swing.JButton btnTaiKhoan;
     private javax.swing.JButton btnThi;
-    private javax.swing.JButton btnThongKe;
     private javax.swing.JPanel pnlHome;
     // End of variables declaration//GEN-END:variables
 }

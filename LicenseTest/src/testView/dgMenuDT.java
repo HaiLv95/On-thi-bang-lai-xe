@@ -137,7 +137,7 @@ public class dgMenuDT extends java.awt.Dialog {
 
     public void loadDT() {
         try {
-            lstDeThi = questionController.getListDTbyEmail();
+            lstDeThi = questionController.getListDTbyEmail(1);
             pnlDeThi.removeAll();
             JButton[] btnDeThi = new JButton[lstDeThi.size()];
             for (int i = 0; i < lstDeThi.size(); i++) {
@@ -175,7 +175,12 @@ public class dgMenuDT extends java.awt.Dialog {
 
     public void createExam() {
         try {
-            questionController.createExam();
+            Dethi exam = new Dethi();
+            exam.setEmail(Run.user.getUser());
+            exam.setLoaide_id(1);
+            exam.setTimer(900);
+            exam.setTrangThai("donot");
+            questionController.createExam(exam);
             JOptionPane.showMessageDialog(this, "Create Exam success");
             loadDT();
         } catch (Exception ex) {
