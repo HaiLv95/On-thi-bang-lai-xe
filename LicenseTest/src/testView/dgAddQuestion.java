@@ -362,7 +362,7 @@ public class dgAddQuestion extends java.awt.Dialog {
                 image = hinh[0];
                 questionController.setIcon(lblHinh, image);
             } else {
-                image = null;
+                image = "";
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Failed choose Image" + e);

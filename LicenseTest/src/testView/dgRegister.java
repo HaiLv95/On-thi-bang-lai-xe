@@ -12,10 +12,11 @@ import testController.AddController;
  */
 public class dgRegister extends java.awt.Dialog {
 
-    public ConnectSQL con = new ConnectSQL();
-    public AddController us = new AddController();
-    public static dgLogin login;
-    String code = "";
+
+public ConnectSQL con  = new ConnectSQL();
+public AddController us = new AddController();
+public static frLogin login ; 
+String code ="";
 
     /**
      * Creates new form Register
@@ -52,6 +53,9 @@ public class dgRegister extends java.awt.Dialog {
 
         setTitle("Register");
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closeDialog(evt);
             }
@@ -159,6 +163,7 @@ public class dgRegister extends java.awt.Dialog {
      * Closes the dialog
      */
     private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
+        Run.frLogin();
         setVisible(false);
         dispose();
     }//GEN-LAST:event_closeDialog
@@ -171,7 +176,7 @@ public class dgRegister extends java.awt.Dialog {
 
     private void lblLinkLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLinkLoginMouseClicked
 
-        login.setVisible(true);
+        Run.frLogin();
         this.dispose();
     }//GEN-LAST:event_lblLinkLoginMouseClicked
 
@@ -213,6 +218,7 @@ public class dgRegister extends java.awt.Dialog {
             return false;
         }
         return true;
+
     }
 
     public void addUSER() {

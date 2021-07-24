@@ -18,6 +18,7 @@ FindPasswordController co ;
         initComponents();
         setSize(600, 300);
         setLocationRelativeTo(null);
+        lblText.setVisible(false);
     }
 
     /**
@@ -32,8 +33,9 @@ FindPasswordController co ;
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnSendpw = new javax.swing.JButton();
         lblText = new javax.swing.JLabel();
+        btnback = new javax.swing.JButton();
 
         setTitle("Find Pasword");
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -62,29 +64,37 @@ FindPasswordController co ;
         jPanel1.add(txtEmail);
         txtEmail.setBounds(90, 110, 420, 40);
 
-        jButton1.setBackground(new java.awt.Color(78, 180, 84));
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Gửi mật khẩu");
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSendpw.setBackground(new java.awt.Color(78, 180, 84));
+        btnSendpw.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnSendpw.setForeground(new java.awt.Color(255, 255, 255));
+        btnSendpw.setText("Gửi mật khẩu");
+        btnSendpw.setBorderPainted(false);
+        btnSendpw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSendpwActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(90, 180, 420, 40);
+        jPanel1.add(btnSendpw);
+        btnSendpw.setBounds(90, 180, 230, 40);
 
         lblText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblText.setForeground(new java.awt.Color(78, 180, 84));
         lblText.setText("Vui lòng check email để nhận mật khẩu");
-        lblText.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblTextMouseClicked(evt);
-            }
-        });
         jPanel1.add(lblText);
         lblText.setBounds(170, 250, 270, 17);
+
+        btnback.setBackground(new java.awt.Color(255, 118, 89));
+        btnback.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnback.setForeground(new java.awt.Color(255, 255, 255));
+        btnback.setText("Trở về");
+        btnback.setBorderPainted(false);
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbackActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnback);
+        btnback.setBounds(380, 180, 130, 40);
 
         add(jPanel1);
         jPanel1.setBounds(0, 0, 600, 300);
@@ -96,17 +106,22 @@ FindPasswordController co ;
      * Closes the dialog
      */
     private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
+        Run.frLogin();
         setVisible(false);
         dispose();
     }//GEN-LAST:event_closeDialog
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       findpass();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnSendpwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendpwActionPerformed
 
-    private void lblTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTextMouseClicked
+        findpass();
+    }//GEN-LAST:event_btnSendpwActionPerformed
+
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblTextMouseClicked
+        Run.frLogin();
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_btnbackActionPerformed
 public void findpass(){
     try {
         if(check()==false){
@@ -115,7 +130,7 @@ public void findpass(){
             String mail = txtEmail.getText();
         co = new FindPasswordController();
         co.send(mail);
-        JOptionPane.showMessageDialog(this, "gửi mail thành công !");
+        lblText.setVisible(true);
         }
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this,"lỗi sento"+ e);
@@ -152,7 +167,8 @@ public boolean check(){
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSendpw;
+    private javax.swing.JButton btnback;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
