@@ -3,17 +3,20 @@ package testView;
 //import com.sun.mail.util.MailConnectException;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import  testConnectSQL.ConnectSQL;
+import testConnectSQL.ConnectSQL;
 import testController.AddController;
+
 /**
  *
  * @author cuongd_kun
  */
 public class dgRegister extends java.awt.Dialog {
-public ConnectSQL con  = new ConnectSQL();
-public AddController us = new AddController();
-public static dgLogin login ; 
-String code ="";
+
+    public ConnectSQL con = new ConnectSQL();
+    public AddController us = new AddController();
+    public static dgLogin login;
+    String code = "";
+
     /**
      * Creates new form Register
      */
@@ -22,7 +25,7 @@ String code ="";
         initComponents();
         setSize(600, 580);
         setLocationRelativeTo(null);
-       
+
     }
 
     /**
@@ -161,9 +164,9 @@ String code ="";
     }//GEN-LAST:event_closeDialog
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        code =us.getcode();
-        us.sendmail(txtEmail1.getText(),code);
-       JOptionPane.showMessageDialog(this, "vui lòng check mail");
+        code = us.getcode();
+        us.sendmail(txtEmail1.getText(), code);
+        JOptionPane.showMessageDialog(this, "vui lòng check mail");
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void lblLinkLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLinkLoginMouseClicked
@@ -175,60 +178,53 @@ String code ="";
     private void btnRegister1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegister1ActionPerformed
         addUSER();
     }//GEN-LAST:event_btnRegister1ActionPerformed
-public boolean check(){
-    if(txtEmail1.getText().trim().isEmpty()){
-        JOptionPane.showMessageDialog(this, "vui lòng nhập EMAIL");
-        txtEmail1.requestFocus();
-        return false;
-    }
-    if(pwPass.getText().trim().isEmpty()){//trim xử lý khoảng trắng
-        JOptionPane.showMessageDialog(this, "vui lòng nhập Mật Khẩu");
-        pwPass.requestFocus();
-        return false;
-    }
-    if(pwPassCF.getText().trim().isEmpty()){
-        JOptionPane.showMessageDialog(this, "vui lòng nhập lại Mật Khẩu");
-        pwPassCF.requestFocus();
-        return false;
-    }
-    if(!pwPass.getText().equalsIgnoreCase(pwPassCF.getText())){
-        JOptionPane.showMessageDialog(this, "vui lòng nhập lại đúng password");
-        return false;
-    }
-    if(txtConfirmCode.getText().trim().isEmpty()){
-        JOptionPane.showMessageDialog(this, "vui lòng nhập Mã Xác Nhận");
-        txtConfirmCode.requestFocus();
-        return false;
-    }
-     if(!code.equalsIgnoreCase(txtConfirmCode.getText())){
-        JOptionPane.showMessageDialog(this, "mã của bạn không đúng");
-        return false;
-    }
-    try {
-        String sql = "select EMAIL from USERS";
-         ResultSet st =con.createStatement(sql);
-         while(st.next()){
-             if(txtEmail1.getText().equalsIgnoreCase(st.getString("EMAIL"))){
-                 JOptionPane.showMessageDialog(this, "EMAIL đã được sử dụng");
-                 return  false;
-             }
-         }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, e);
-    }
-    return  true;
-}
+    public boolean check() {
+        if (txtEmail1.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "vui lòng nhập EMAIL");
+            txtEmail1.requestFocus();
+            return false;
+        }
+        if (pwPass.getText().trim().isEmpty()) {//trim xử lý khoảng trắng
+            JOptionPane.showMessageDialog(this, "vui lòng nhập Mật Khẩu");
+            pwPass.requestFocus();
+            return false;
+        }
+        if (pwPassCF.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "vui lòng nhập lại Mật Khẩu");
+            pwPassCF.requestFocus();
+            return false;
+        }
+        if (!pwPass.getText().equalsIgnoreCase(pwPassCF.getText())) {
+            JOptionPane.showMessageDialog(this, "vui lòng nhập lại đúng password");
+            return false;
+        }
+        if (txtConfirmCode.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "vui lòng nhập Mã Xác Nhận");
+            txtConfirmCode.requestFocus();
+            return false;
+        }
+        if (!code.equalsIgnoreCase(txtConfirmCode.getText())) {
+            JOptionPane.showMessageDialog(this, "mã của bạn không đúng");
+            return false;
+        }
 
-public void addUSER() {
-   if(check()==false){
-       return;
-   }else{
-       String EMAIL = txtEmail1.getText();
-       String PASS =pwPass.getText();
-       us.adduser(EMAIL, PASS);
-     JOptionPane.showMessageDialog(this, "đăng ký tài khoản thành công");
-   }
-}
+        if (txtEmail1.getText().equalsIgnoreCase(Run.user.getUser())) {
+            JOptionPane.showMessageDialog(this, "EMAIL đã được sử dụng");
+            return false;
+        }
+        return true;
+    }
+
+    public void addUSER() {
+        if (check() == false) {
+            return;
+        } else {
+            String EMAIL = txtEmail1.getText();
+            String PASS = pwPass.getText();
+            us.adduser(EMAIL, PASS);
+            JOptionPane.showMessageDialog(this, "đăng ký tài khoản thành công");
+        }
+    }
 
     /**
      * @param args the command line arguments

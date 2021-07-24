@@ -155,6 +155,9 @@ public class frHome extends javax.swing.JFrame {
 
     private void btnTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaiKhoanActionPerformed
         // TODO add your handling code here:
+        Dgdoimatkhau dgdoimk = new Dgdoimatkhau(Run.home, true);
+        dgdoimk.setVisible(true);
+
     }//GEN-LAST:event_btnTaiKhoanActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
