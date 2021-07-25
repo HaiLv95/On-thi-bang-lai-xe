@@ -27,7 +27,7 @@ public class dgStudy extends java.awt.Dialog {
     public dgStudy(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setSize(1200, 800);
+        setSize(1200, 700);
         setLocationRelativeTo(null);
         setstart();
     }
@@ -184,7 +184,7 @@ public class dgStudy extends java.awt.Dialog {
         pnlQustionLiet.setBounds(30, 120, 1140, 150);
 
         add(jPanel1);
-        jPanel1.setBounds(0, 0, 1200, 800);
+        jPanel1.setBounds(0, 0, 1200, 690);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -278,12 +278,24 @@ public class dgStudy extends java.awt.Dialog {
             int qsKNdone = 0;
             int qsSHdone = 0;
             int qsLdone = 0;
+            for (CauHoi_DeThi cauHoi_DeThi : lst_Liet) {
+                if (cauHoi_DeThi.getCauTraLoi() > 0) {
+                    qsLdone ++;
+                }
+            }
+            lbl3.setText("Đã làm " + qsLdone + " / " + lst_Liet.size());
             for (CauHoi_DeThi cauHoi_DeThi : lst_Kn) {
                 if (cauHoi_DeThi.getCauTraLoi() > 0) {
                     qsKNdone ++;
                 }
             }
             lbl6.setText("Đã làm " + qsKNdone + " / " + lst_Kn.size());
+            for (CauHoi_DeThi cauHoi_DeThi : lst_SH) {
+                if (cauHoi_DeThi.getCauTraLoi() > 0) {
+                    qsSHdone ++;
+                }
+            }
+            lbl9.setText("Đã làm " + qsSHdone + " / " + lst_SH.size());
         } catch (Exception ex) {
             ex.printStackTrace();
         }

@@ -49,7 +49,7 @@ public class frHome extends javax.swing.JFrame {
         btnCauHoi.setBackground(new java.awt.Color(255, 118, 89));
         btnCauHoi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnCauHoi.setForeground(new java.awt.Color(255, 255, 255));
-        btnCauHoi.setIcon(new javax.swing.ImageIcon("E:\\Ky_4\\DU_AN_1\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\Question_fill.png")); // NOI18N
+        btnCauHoi.setIcon(new javax.swing.ImageIcon("E:\\5.Fork\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\Question_fill.png")); // NOI18N
         btnCauHoi.setText("Bộ câu hỏi");
         btnCauHoi.setBorderPainted(false);
         btnCauHoi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -60,12 +60,12 @@ public class frHome extends javax.swing.JFrame {
             }
         });
         pnlHome.add(btnCauHoi);
-        btnCauHoi.setBounds(640, 410, 250, 180);
+        btnCauHoi.setBounds(490, 290, 250, 180);
 
         btnLyThuyet.setBackground(new java.awt.Color(0, 182, 222));
         btnLyThuyet.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnLyThuyet.setForeground(new java.awt.Color(255, 255, 255));
-        btnLyThuyet.setIcon(new javax.swing.ImageIcon("E:\\Ky_4\\DU_AN_1\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\Desk_alt_fill.png")); // NOI18N
+        btnLyThuyet.setIcon(new javax.swing.ImageIcon("E:\\5.Fork\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\File_dock_fill.png")); // NOI18N
         btnLyThuyet.setText("Học lý thuyết");
         btnLyThuyet.setBorderPainted(false);
         btnLyThuyet.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -76,12 +76,12 @@ public class frHome extends javax.swing.JFrame {
             }
         });
         pnlHome.add(btnLyThuyet);
-        btnLyThuyet.setBounds(280, 230, 230, 180);
+        btnLyThuyet.setBounds(130, 110, 230, 180);
 
         btnThi.setBackground(new java.awt.Color(86, 222, 167));
         btnThi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnThi.setForeground(new java.awt.Color(255, 255, 255));
-        btnThi.setIcon(new javax.swing.ImageIcon("E:\\Ky_4\\DU_AN_1\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\File_dock_fill.png")); // NOI18N
+        btnThi.setIcon(new javax.swing.ImageIcon("E:\\5.Fork\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\Desk_alt_fill.png")); // NOI18N
         btnThi.setText("Thi thử");
         btnThi.setBorderPainted(false);
         btnThi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -92,12 +92,12 @@ public class frHome extends javax.swing.JFrame {
             }
         });
         pnlHome.add(btnThi);
-        btnThi.setBounds(510, 230, 380, 180);
+        btnThi.setBounds(360, 110, 380, 180);
 
         btnChangePw.setBackground(new java.awt.Color(248, 205, 54));
         btnChangePw.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnChangePw.setForeground(new java.awt.Color(255, 255, 255));
-        btnChangePw.setIcon(new javax.swing.ImageIcon("E:\\Ky_4\\DU_AN_1\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\User_fill.png")); // NOI18N
+        btnChangePw.setIcon(new javax.swing.ImageIcon("E:\\5.Fork\\On-thi-bang-lai-xe\\LicenseTest\\src\\Images\\User_fill.png")); // NOI18N
         btnChangePw.setText("Đổi mật khẩu");
         btnChangePw.setBorderPainted(false);
         btnChangePw.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -108,17 +108,19 @@ public class frHome extends javax.swing.JFrame {
             }
         });
         pnlHome.add(btnChangePw);
-        btnChangePw.setBounds(280, 410, 360, 180);
+        btnChangePw.setBounds(130, 290, 360, 180);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlHome, javax.swing.GroupLayout.PREFERRED_SIZE, 897, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlHome, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlHome, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
