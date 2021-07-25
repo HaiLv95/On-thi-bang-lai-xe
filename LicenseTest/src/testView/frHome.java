@@ -184,6 +184,7 @@ public class frHome extends javax.swing.JFrame {
 
     private void btnChangePwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePwActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_btnChangePwActionPerformed
 
     private void btnLyThuyetMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLyThuyetMouseEntered
@@ -226,6 +227,16 @@ public class frHome extends javax.swing.JFrame {
         btnCauHoi.setBackground(new Color(255,118,89));
     }//GEN-LAST:event_btnCauHoiMouseExited
     
+
+        Dgdoimatkhau dgdoimk = new Dgdoimatkhau(Run.home, true);
+        dgdoimk.setVisible(true);
+
+    }//GEN-LAST:event_btnTaiKhoanActionPerformed
+
+    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThongKeActionPerformed
+
     /**
      * @param args the command line arguments
      */

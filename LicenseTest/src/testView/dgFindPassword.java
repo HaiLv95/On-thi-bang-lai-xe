@@ -137,25 +137,14 @@ public void findpass(){
     }
 }
 public boolean check(){
-    String eay =null;
     if(txtEmail.getText().isEmpty()){
         JOptionPane.showMessageDialog(this, " vui lòng nhập email trước");
         txtEmail.requestFocus();
         return false;
     }
-    try {
-        String sql = "select EMAIL from USERS where EMAIL = ?";
-        ResultSet rs =con.prepareExcuteQuery(sql , txtEmail.getText());
-        while(rs.next()){
-         eay = rs.getString("EMAIL");
-        }
-        if(!txtEmail.getText().equalsIgnoreCase(eay)){
-            JOptionPane.showMessageDialog(this ,"email của bạn không tồn tại");
-            return false;
-        }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "lỗi check mail"+e);
-        return false;
+    if(!txtEmail.getText().equalsIgnoreCase(Run.user.getUser())){
+        JOptionPane.showMessageDialog(this, "email của bạn chưa đăng ký tài khoản");
+        
     }
     return true;
 }
