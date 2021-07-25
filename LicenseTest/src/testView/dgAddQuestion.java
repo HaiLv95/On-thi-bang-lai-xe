@@ -155,15 +155,18 @@ public class dgAddQuestion extends java.awt.Dialog {
         });
         setLayout(null);
 
+        jPanel1.setBackground(new java.awt.Color(231, 243, 231));
         jPanel1.setLayout(null);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(78, 180, 84));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Thêm câu hỏi");
         jPanel1.add(lblTitle);
         lblTitle.setBounds(120, 30, 850, 30);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(78, 180, 84));
         jLabel1.setText("Đáp án 3");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(30, 500, 70, 20);
@@ -178,11 +181,13 @@ public class dgAddQuestion extends java.awt.Dialog {
         jScrollPane1.setBounds(30, 170, 1040, 100);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(78, 180, 84));
         jLabel2.setText("ID Loại câu hỏi");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(500, 90, 120, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(78, 180, 84));
         jLabel4.setText("Đáp án 2");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(30, 390, 70, 20);
@@ -214,34 +219,45 @@ public class dgAddQuestion extends java.awt.Dialog {
         jPanel1.add(jScrollPane4);
         jScrollPane4.setBounds(30, 420, 570, 70);
 
+        btnXacNhan.setBackground(new java.awt.Color(78, 180, 84));
+        btnXacNhan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnXacNhan.setForeground(new java.awt.Color(255, 255, 255));
         btnXacNhan.setText("Xác nhận");
+        btnXacNhan.setBorderPainted(false);
         btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXacNhanActionPerformed(evt);
             }
         });
         jPanel1.add(btnXacNhan);
-        btnXacNhan.setBounds(350, 740, 90, 23);
+        btnXacNhan.setBounds(350, 740, 100, 30);
 
+        btnHuy.setBackground(new java.awt.Color(255, 118, 89));
+        btnHuy.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnHuy.setForeground(new java.awt.Color(255, 255, 255));
         btnHuy.setText("Hủy");
+        btnHuy.setBorderPainted(false);
         btnHuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHuyActionPerformed(evt);
             }
         });
         jPanel1.add(btnHuy);
-        btnHuy.setBounds(610, 740, 90, 23);
+        btnHuy.setBounds(610, 740, 100, 30);
 
+        rdo1.setBackground(new java.awt.Color(231, 243, 231));
         buttonGroup1.add(rdo1);
         rdo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(rdo1);
         rdo1.setBounds(120, 280, 93, 21);
 
+        rdo2.setBackground(new java.awt.Color(231, 243, 231));
         buttonGroup1.add(rdo2);
         rdo2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(rdo2);
         rdo2.setBounds(120, 390, 93, 21);
 
+        rdo3.setBackground(new java.awt.Color(231, 243, 231));
         buttonGroup1.add(rdo3);
         rdo3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(rdo3);
@@ -257,11 +273,13 @@ public class dgAddQuestion extends java.awt.Dialog {
         jScrollPane5.setBounds(30, 640, 1040, 70);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(78, 180, 84));
         jLabel5.setText("Giải thích");
         jPanel1.add(jLabel5);
         jLabel5.setBounds(30, 610, 70, 20);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(78, 180, 84));
         jLabel6.setText("Nội dung");
         jPanel1.add(jLabel6);
         jLabel6.setBounds(30, 140, 70, 20);
@@ -284,11 +302,13 @@ public class dgAddQuestion extends java.awt.Dialog {
         lblHinh.setBounds(620, 310, 450, 250);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(78, 180, 84));
         jLabel7.setText("Đáp án 1");
         jPanel1.add(jLabel7);
         jLabel7.setBounds(30, 280, 70, 20);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(78, 180, 84));
         jLabel8.setText("ID");
         jPanel1.add(jLabel8);
         jLabel8.setBounds(30, 90, 70, 30);
@@ -298,6 +318,7 @@ public class dgAddQuestion extends java.awt.Dialog {
         cboLoai.setBounds(650, 90, 290, 30);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(78, 180, 84));
         jLabel9.setText("Hình");
         jPanel1.add(jLabel9);
         jLabel9.setBounds(620, 280, 70, 20);

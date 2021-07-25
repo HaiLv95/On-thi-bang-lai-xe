@@ -147,13 +147,13 @@ public class dgMenuDT extends java.awt.Dialog {
                 btnDeThi[i].setPreferredSize(new Dimension(110, 90));
                 btnDeThi[i].setFont(new java.awt.Font("Tahoma", 0, 16));
                 if (lstDeThi.get(i).getTrangThai().equalsIgnoreCase("donot")) {
-                    btnDeThi[i].setBackground(Color.GREEN);
-                    btnDeThi[i].setForeground(Color.black);
+                    btnDeThi[i].setBackground(new Color(78,180,84));
+                    btnDeThi[i].setForeground(Color.WHITE);
                 } else if (lstDeThi.get(i).getTrangThai().equalsIgnoreCase("pass")) {
-                    btnDeThi[i].setBackground(Color.BLUE);
+                    btnDeThi[i].setBackground(new Color(0,182,222));
                     btnDeThi[i].setForeground(Color.white);
                 } else if (lstDeThi.get(i).getTrangThai().equalsIgnoreCase("failed")) {
-                    btnDeThi[i].setBackground(Color.red);
+                    btnDeThi[i].setBackground(new Color(255,118,89));
                     btnDeThi[i].setForeground(Color.white);
                 }
                 btnDeThi[i].addMouseListener(new MouseAdapter() {

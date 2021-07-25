@@ -213,6 +213,7 @@ public class dgExam extends java.awt.Dialog {
         btnEnd.setBounds(1070, 10, 100, 30);
 
         lblMaDe.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblMaDe.setForeground(new java.awt.Color(255, 255, 255));
         lblMaDe.setText("Đề thi số 1");
         jPanel4.add(lblMaDe);
         lblMaDe.setBounds(20, 10, 210, 30);
