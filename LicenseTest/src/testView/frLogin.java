@@ -55,12 +55,12 @@ public class frLogin extends javax.swing.JFrame {
             }
         });
         pnlLogin.add(lblRegisster);
-        lblRegisster.setBounds(90, 330, 80, 17);
+        lblRegisster.setBounds(70, 320, 80, 17);
 
         pwPass.setBackground(new java.awt.Color(231, 243, 231));
         pwPass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 243, 231), 4));
         pnlLogin.add(pwPass);
-        pwPass.setBounds(90, 200, 420, 40);
+        pwPass.setBounds(70, 190, 420, 40);
 
         btnLogin.setBackground(new java.awt.Color(78, 180, 84));
         btnLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -73,17 +73,17 @@ public class frLogin extends javax.swing.JFrame {
             }
         });
         pnlLogin.add(btnLogin);
-        btnLogin.setBounds(90, 270, 420, 40);
+        btnLogin.setBounds(70, 260, 420, 40);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jLabel1.setText("Đăng nhập");
         pnlLogin.add(jLabel1);
-        jLabel1.setBounds(220, 30, 150, 40);
+        jLabel1.setBounds(200, 10, 150, 40);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Email");
         pnlLogin.add(jLabel3);
-        jLabel3.setBounds(90, 80, 50, 22);
+        jLabel3.setBounds(70, 70, 50, 22);
 
         lblFindPw.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblFindPw.setForeground(new java.awt.Color(78, 180, 84));
@@ -94,38 +94,28 @@ public class frLogin extends javax.swing.JFrame {
             }
         });
         pnlLogin.add(lblFindPw);
-        lblFindPw.setBounds(410, 330, 100, 17);
+        lblFindPw.setBounds(390, 320, 100, 17);
 
         txtEmail.setBackground(new java.awt.Color(231, 243, 231));
         txtEmail.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 243, 231), 4));
         pnlLogin.add(txtEmail);
-        txtEmail.setBounds(90, 110, 420, 40);
+        txtEmail.setBounds(70, 100, 420, 40);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Mật khẩu");
         pnlLogin.add(jLabel2);
-        jLabel2.setBounds(90, 170, 90, 22);
+        jLabel2.setBounds(70, 160, 90, 22);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(pnlLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(pnlLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(pnlLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(pnlLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -179,7 +169,7 @@ public class frLogin extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("windows".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

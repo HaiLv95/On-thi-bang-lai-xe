@@ -116,7 +116,8 @@ public class dgQuestionList extends java.awt.Dialog {
         jPanel4.add(txtSearch);
         txtSearch.setBounds(930, 10, 250, 30);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Tìm Kiếm");
         jPanel4.add(jLabel1);
@@ -166,38 +167,49 @@ public class dgQuestionList extends java.awt.Dialog {
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(30, 160, 1130, 610);
 
-        lblMess.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblMess.setForeground(new java.awt.Color(255, 0, 0));
         lblMess.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(lblMess);
         lblMess.setBounds(800, 90, 250, 14);
 
+        btnThem.setBackground(new java.awt.Color(0, 182, 222));
+        btnThem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnThem.setForeground(new java.awt.Color(255, 255, 255));
         btnThem.setText("Thêm");
+        btnThem.setBorderPainted(false);
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
             }
         });
         jPanel1.add(btnThem);
-        btnThem.setBounds(849, 100, 70, 23);
+        btnThem.setBounds(830, 100, 100, 30);
 
+        btnSua.setBackground(new java.awt.Color(248, 205, 54));
+        btnSua.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSua.setForeground(new java.awt.Color(255, 255, 255));
         btnSua.setText("Sửa");
+        btnSua.setBorderPainted(false);
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
         jPanel1.add(btnSua);
-        btnSua.setBounds(961, 100, 70, 23);
+        btnSua.setBounds(950, 100, 100, 30);
 
+        btnXoa.setBackground(new java.awt.Color(255, 118, 89));
+        btnXoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnXoa.setForeground(new java.awt.Color(255, 255, 255));
         btnXoa.setText("Xóa");
+        btnXoa.setBorderPainted(false);
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
             }
         });
         jPanel1.add(btnXoa);
-        btnXoa.setBounds(1071, 100, 70, 23);
+        btnXoa.setBounds(1060, 100, 100, 30);
 
         add(jPanel1);
         jPanel1.setBounds(0, 0, 1200, 800);

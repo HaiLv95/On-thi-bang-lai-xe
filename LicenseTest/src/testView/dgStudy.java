@@ -75,6 +75,7 @@ public class dgStudy extends java.awt.Dialog {
         btnMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnMenu.setText("Menu");
         btnMenu.setBorderPainted(false);
+        btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
@@ -213,6 +214,9 @@ public class dgStudy extends java.awt.Dialog {
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         // TODO add your handling code here:
+        dispose();
+        frHome Home = new frHome();
+        Home.setVisible(true);
 
     }//GEN-LAST:event_btnMenuActionPerformed
 
