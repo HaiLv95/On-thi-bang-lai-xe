@@ -29,7 +29,7 @@ public class frHome extends javax.swing.JFrame {
         btn.setBackground(new Color(255,32,104));
     }
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         pnlHome = new javax.swing.JPanel();
@@ -162,91 +162,80 @@ public class frHome extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void btnLyThuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLyThuyetActionPerformed
+    private void btnLyThuyetActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         dgStudy study = new dgStudy(Run.home, true);
         study.setVisible(true);
-    }//GEN-LAST:event_btnLyThuyetActionPerformed
+    }                                           
 
-    private void btnThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThiActionPerformed
+    private void btnThiActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
         dgMenuDT deThi = new dgMenuDT(Run.home, true);
         deThi.setVisible(true);
-    }//GEN-LAST:event_btnThiActionPerformed
+    }                                      
 
-    private void btnCauHoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCauHoiActionPerformed
+    private void btnCauHoiActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
         dgQuestionList dgList = new dgQuestionList(Run.home, true);
         dgList.setVisible(true);
-    }//GEN-LAST:event_btnCauHoiActionPerformed
+    }                                         
 
-    private void btnChangePwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePwActionPerformed
+    private void btnChangePwActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
+    }                                           
 
-    }//GEN-LAST:event_btnChangePwActionPerformed
-
-    private void btnLyThuyetMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLyThuyetMouseEntered
+    private void btnLyThuyetMouseEntered(java.awt.event.MouseEvent evt) {                                         
         // 1
         setColor(btnLyThuyet);
-    }//GEN-LAST:event_btnLyThuyetMouseEntered
+    }                                        
 
-    private void btnLyThuyetMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLyThuyetMouseExited
+    private void btnLyThuyetMouseExited(java.awt.event.MouseEvent evt) {                                        
         // 2
         btnLyThuyet.setBackground(new Color(0,182,222));
-    }//GEN-LAST:event_btnLyThuyetMouseExited
+    }                                       
 
-    private void btnThiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThiMouseEntered
+    private void btnThiMouseEntered(java.awt.event.MouseEvent evt) {                                    
         // 1
         setColor(btnThi);
-    }//GEN-LAST:event_btnThiMouseEntered
+    }                                   
 
-    private void btnThiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThiMouseExited
+    private void btnThiMouseExited(java.awt.event.MouseEvent evt) {                                   
         // 2
         btnThi.setBackground(new Color(86,222,167));
-    }//GEN-LAST:event_btnThiMouseExited
+    }                                  
 
-    private void btnChangePwMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnChangePwMouseEntered
+    private void btnChangePwMouseEntered(java.awt.event.MouseEvent evt) {                                         
         // 1
         setColor(btnChangePw);
-    }//GEN-LAST:event_btnChangePwMouseEntered
+    }                                        
 
-    private void btnChangePwMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnChangePwMouseExited
+    private void btnChangePwMouseExited(java.awt.event.MouseEvent evt) {                                        
         // 2
         btnChangePw.setBackground(new Color(248,205,54));
-    }//GEN-LAST:event_btnChangePwMouseExited
+    }                                       
 
-    private void btnCauHoiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCauHoiMouseEntered
+    private void btnCauHoiMouseEntered(java.awt.event.MouseEvent evt) {                                       
         // 1
         setColor(btnCauHoi);
-    }//GEN-LAST:event_btnCauHoiMouseEntered
+    }                                      
 
-    private void btnCauHoiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCauHoiMouseExited
+    private void btnCauHoiMouseExited(java.awt.event.MouseEvent evt) {                                      
         // 2
         btnCauHoi.setBackground(new Color(255,118,89));
-    }//GEN-LAST:event_btnCauHoiMouseExited
+    }                                     
     
-
-        Dgdoimatkhau dgdoimk = new Dgdoimatkhau(Run.home, true);
-        dgdoimk.setVisible(true);
-
-    }//GEN-LAST:event_btnTaiKhoanActionPerformed
-
-    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThongKeActionPerformed
-
     /**
      * @param args the command line arguments
      */
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton btnCauHoi;
     private javax.swing.JButton btnChangePw;
     private javax.swing.JButton btnLyThuyet;
     private javax.swing.JButton btnThi;
     private javax.swing.JPanel pnlHome;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
