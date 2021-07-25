@@ -199,10 +199,6 @@ public class dgKhaiNiemvaQuyTac extends javax.swing.JDialog {
             count = 1;
         }
         loadQuestionbyIndex(index);
-//        txpGiaiThich.setVisible(false);
-//        rdoA.setSelected(false);
-//        rdoB.setSelected(false);
-//        rdoC.setSelected(false);
         lblCauHoi.setText("Câu hỏi " + count);
         txtMove.setText(null);
     }
@@ -215,21 +211,11 @@ public class dgKhaiNiemvaQuyTac extends javax.swing.JDialog {
             count = lst_CHDTKN.size();
         }
         loadQuestionbyIndex(index);
-//        txpGiaiThich.setVisible(false);
-//        rdoA.setSelected(false);
-//        rdoB.setSelected(false);
-//        rdoC.setSelected(false);
         lblCauHoi.setText("Câu hỏi " + count);
         txtMove.setText(null);
     }
 
     public void buttonMove() {
-        //set về null hết
-//        rdoA.setSelected(false);
-//        rdoB.setSelected(false);
-//        rdoC.setSelected(false);
-//        txpGiaiThich.setVisible(false);
-        //kiểm tra điều kiện
         int numberMove = Integer.parseInt(txtMove.getText());
         if (numberMove > lst_CHDTKN.size()) {
             JOptionPane.showMessageDialog(this, "Không tồn tại câu hỏi này");
