@@ -184,6 +184,8 @@ public class frHome extends javax.swing.JFrame {
 
     private void btnChangePwActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
+        Dgdoimatkhau dgdoimk = new Dgdoimatkhau(Run.home, true);
+        dgdoimk.setVisible(true);
     }                                           
 
     private void btnLyThuyetMouseEntered(java.awt.event.MouseEvent evt) {                                         
