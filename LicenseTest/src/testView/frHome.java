@@ -1,5 +1,8 @@
 package testView;
 
+import java.awt.Color;
+import javax.swing.JButton;
+
 /**
  *
  * @author hai95
@@ -13,7 +16,9 @@ public class frHome extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
-
+    public void setColor(JButton btn){
+        btn.setBackground(new Color(255,32,104));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,6 +48,14 @@ public class frHome extends javax.swing.JFrame {
         btnCauHoi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCauHoi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCauHoi.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCauHoi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCauHoiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCauHoiMouseExited(evt);
+            }
+        });
         btnCauHoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCauHoiActionPerformed(evt);
@@ -60,6 +73,14 @@ public class frHome extends javax.swing.JFrame {
         btnLyThuyet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLyThuyet.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnLyThuyet.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnLyThuyet.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLyThuyetMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLyThuyetMouseExited(evt);
+            }
+        });
         btnLyThuyet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLyThuyetActionPerformed(evt);
@@ -77,6 +98,14 @@ public class frHome extends javax.swing.JFrame {
         btnThi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnThi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnThi.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnThi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnThiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnThiMouseExited(evt);
+            }
+        });
         btnThi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThiActionPerformed(evt);
@@ -94,6 +123,14 @@ public class frHome extends javax.swing.JFrame {
         btnChangePw.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnChangePw.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnChangePw.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnChangePw.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnChangePwMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnChangePwMouseExited(evt);
+            }
+        });
         btnChangePw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChangePwActionPerformed(evt);
@@ -143,6 +180,46 @@ public class frHome extends javax.swing.JFrame {
          Dgdoimatkhau dgdoimk = new Dgdoimatkhau(Run.home, true);
         dgdoimk.setVisible(true);
     }//GEN-LAST:event_btnChangePwActionPerformed
+
+    private void btnLyThuyetMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLyThuyetMouseEntered
+        // TODO add your handling code here:
+        setColor(btnLyThuyet);
+    }//GEN-LAST:event_btnLyThuyetMouseEntered
+
+    private void btnLyThuyetMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLyThuyetMouseExited
+        // TODO add your handling code here:
+         btnLyThuyet.setBackground(new Color(0,182,222));
+    }//GEN-LAST:event_btnLyThuyetMouseExited
+
+    private void btnThiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThiMouseEntered
+        // TODO add your handling code here:
+        setColor(btnThi);
+    }//GEN-LAST:event_btnThiMouseEntered
+
+    private void btnThiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThiMouseExited
+        // TODO add your handling code here:
+         btnThi.setBackground(new Color(86,222,167));
+    }//GEN-LAST:event_btnThiMouseExited
+
+    private void btnChangePwMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnChangePwMouseEntered
+        // TODO add your handling code here:
+         setColor(btnChangePw);
+    }//GEN-LAST:event_btnChangePwMouseEntered
+
+    private void btnChangePwMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnChangePwMouseExited
+        // TODO add your handling code here:
+        btnChangePw.setBackground(new Color(248,205,54));
+    }//GEN-LAST:event_btnChangePwMouseExited
+
+    private void btnCauHoiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCauHoiMouseEntered
+        // TODO add your handling code here:
+        setColor(btnCauHoi);
+    }//GEN-LAST:event_btnCauHoiMouseEntered
+
+    private void btnCauHoiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCauHoiMouseExited
+        // TODO add your handling code here:
+        btnCauHoi.setBackground(new Color(255,118,89));
+    }//GEN-LAST:event_btnCauHoiMouseExited
 
     /**
      * @param args the command line arguments
