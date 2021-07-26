@@ -7,7 +7,7 @@ import testModel.User;
  * @author hai95
  */
 public class Run {
-    public  static frHome home;
+    public  static frHomePage home;
     public static frLogin login;
     public static User user;
     public static void main(String[] args) {
@@ -18,7 +18,7 @@ public class Run {
         login.setVisible(true);
     }
     public static void frHome(){
-        home = new frHome();
+        home = new frHomePage();
         home.setVisible(true);
     }
 }
