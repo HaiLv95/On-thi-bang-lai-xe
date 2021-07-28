@@ -42,6 +42,15 @@ public class dgAddQuestion extends java.awt.Dialog {
     public void setStart() {
         getTypetoCBO();
         txtID.setEnabled(false);
+        if (!Run.user.getRoles().equalsIgnoreCase("admin")) {
+            btnXacNhan.setEnabled(false);
+            txtNoiDung.setEnabled(false);
+            txtDapAn1.setEnabled(false);
+            txtDapAn2.setEnabled(false);
+            txtDapAn3.setEnabled(false);
+            txtGiaiThich.setEnabled(false);
+            cboLoai.setEnabled(false);
+        }
         if (index == 0) {
             lblTitle.setText("Thêm Câu Hỏi");
             txtNoiDung.setText("");
@@ -340,7 +349,9 @@ public class dgAddQuestion extends java.awt.Dialog {
 
     private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
         // TODO add your handling code here:
-        chooseImage();
+        if (Run.user.getRoles().equalsIgnoreCase("admin")) {
+            chooseImage();
+        }
     }//GEN-LAST:event_lblHinhMouseClicked
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

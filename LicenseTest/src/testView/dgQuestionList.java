@@ -44,6 +44,16 @@ public class dgQuestionList extends java.awt.Dialog {
 
             loadQuestionTypetoCbo();
             loadbyType();
+            if (Run.user.getRoles().equalsIgnoreCase("admin")) {
+                btnThem.setEnabled(true);
+                btnXoa.setEnabled(true);
+                btnSua.setText("Sửa");
+            }else{
+                btnSua.setText("Chi tiết");
+                btnThem.setEnabled(false);
+                btnXoa.setEnabled(false);
+                
+            }
             if (tblQuesstion.getRowCount() > 0) {
                 index = 0;
             } else {
@@ -183,12 +193,12 @@ public class dgQuestionList extends java.awt.Dialog {
             }
         });
         jPanel1.add(btnThem);
-        btnThem.setBounds(830, 100, 100, 30);
+        btnThem.setBounds(940, 100, 100, 30);
 
         btnSua.setBackground(new java.awt.Color(248, 205, 54));
         btnSua.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSua.setForeground(new java.awt.Color(255, 255, 255));
-        btnSua.setText("Sửa");
+        btnSua.setText("Chi tiết");
         btnSua.setBorderPainted(false);
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,7 +206,7 @@ public class dgQuestionList extends java.awt.Dialog {
             }
         });
         jPanel1.add(btnSua);
-        btnSua.setBounds(950, 100, 100, 30);
+        btnSua.setBounds(820, 100, 100, 30);
 
         btnXoa.setBackground(new java.awt.Color(255, 118, 89));
         btnXoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
