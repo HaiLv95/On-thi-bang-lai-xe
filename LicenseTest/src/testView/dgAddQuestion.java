@@ -182,7 +182,9 @@ public class dgAddQuestion extends java.awt.Dialog {
 
         txtNoiDung.setColumns(20);
         txtNoiDung.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtNoiDung.setLineWrap(true);
         txtNoiDung.setRows(5);
+        txtNoiDung.setWrapStyleWord(true);
         txtNoiDung.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jScrollPane1.setViewportView(txtNoiDung);
 
@@ -203,7 +205,9 @@ public class dgAddQuestion extends java.awt.Dialog {
 
         txtDapAn3.setColumns(20);
         txtDapAn3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtDapAn3.setLineWrap(true);
         txtDapAn3.setRows(5);
+        txtDapAn3.setWrapStyleWord(true);
         txtDapAn3.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jScrollPane2.setViewportView(txtDapAn3);
 
@@ -212,7 +216,9 @@ public class dgAddQuestion extends java.awt.Dialog {
 
         txtDapAn1.setColumns(20);
         txtDapAn1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtDapAn1.setLineWrap(true);
         txtDapAn1.setRows(5);
+        txtDapAn1.setWrapStyleWord(true);
         txtDapAn1.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jScrollPane3.setViewportView(txtDapAn1);
 
@@ -221,7 +227,9 @@ public class dgAddQuestion extends java.awt.Dialog {
 
         txtDapAn2.setColumns(20);
         txtDapAn2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtDapAn2.setLineWrap(true);
         txtDapAn2.setRows(5);
+        txtDapAn2.setWrapStyleWord(true);
         txtDapAn2.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jScrollPane4.setViewportView(txtDapAn2);
 
@@ -274,7 +282,9 @@ public class dgAddQuestion extends java.awt.Dialog {
 
         txtGiaiThich.setColumns(20);
         txtGiaiThich.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtGiaiThich.setLineWrap(true);
         txtGiaiThich.setRows(5);
+        txtGiaiThich.setWrapStyleWord(true);
         txtGiaiThich.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jScrollPane5.setViewportView(txtGiaiThich);
 

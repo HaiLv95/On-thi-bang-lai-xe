@@ -44,15 +44,10 @@ public class dgQuestionList extends java.awt.Dialog {
 
             loadQuestionTypetoCbo();
             loadbyType();
-            if (Run.user.getRoles().equalsIgnoreCase("admin")) {
-                btnThem.setEnabled(true);
-                btnXoa.setEnabled(true);
-                btnSua.setText("Sửa");
-            }else{
-                btnSua.setText("Chi tiết");
-                btnThem.setEnabled(false);
-                btnXoa.setEnabled(false);
-                
+            if (!Run.user.getRoles().equalsIgnoreCase("admin")) {
+                btnThem.setVisible(false);
+                btnXoa.setVisible(false);
+                btnSua.setVisible(false);
             }
             if (tblQuesstion.getRowCount() > 0) {
                 index = 0;
@@ -193,7 +188,7 @@ public class dgQuestionList extends java.awt.Dialog {
             }
         });
         jPanel1.add(btnThem);
-        btnThem.setBounds(940, 100, 100, 30);
+        btnThem.setBounds(790, 100, 100, 30);
 
         btnSua.setBackground(new java.awt.Color(248, 205, 54));
         btnSua.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -206,7 +201,7 @@ public class dgQuestionList extends java.awt.Dialog {
             }
         });
         jPanel1.add(btnSua);
-        btnSua.setBounds(820, 100, 100, 30);
+        btnSua.setBounds(920, 100, 100, 30);
 
         btnXoa.setBackground(new java.awt.Color(255, 118, 89));
         btnXoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -276,11 +271,7 @@ public class dgQuestionList extends java.awt.Dialog {
 
     private void tblQuesstionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQuesstionMouseClicked
         // TODO add your handling code here:
-        if (tblQuesstion.getRowCount() > 0) {
-            index = tblQuesstion.getSelectedRow();
-        } else {
-            index = -1;
-        }
+        setMouseClickTable();
     }//GEN-LAST:event_tblQuesstionMouseClicked
     // load list loại câu hỏi lên combobox
     public void loadQuestionTypetoCbo() {
@@ -308,6 +299,19 @@ public class dgQuestionList extends java.awt.Dialog {
             }
         }
 
+    }
+
+    //set mouse click table
+    public void setMouseClickTable() {
+        if (tblQuesstion.getRowCount() > 0) {
+            index = tblQuesstion.getSelectedRow();
+        } else {
+            index = -1;
+        }
+        if (!Run.user.getRoles().equalsIgnoreCase("admin")) {
+            cboQuesstionTypes.setSelectedIndex(0);
+            updateQs();
+        }
     }
 
     //load câu hỏi theo loại
