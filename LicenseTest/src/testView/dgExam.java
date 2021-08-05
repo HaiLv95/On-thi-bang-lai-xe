@@ -54,11 +54,6 @@ public class dgExam extends java.awt.Dialog {
             lsQuestions = questionController.getListQuestion();
             lstAnswers = questionController.getListAnswers();
             timeExam();
-            if (dethi.getTrangThai().equalsIgnoreCase("donot")) {
-                timeEx.start();
-            } else {
-                timeEx.stop();
-            }
             setQuesstion_Exam();
             loadQuestionbyIndex(0);
         } catch (Exception ex) {
@@ -247,11 +242,25 @@ public class dgExam extends java.awt.Dialog {
      * Closes the dialog
      */
     private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
-        setVisible(true);
+        String optionString[] = {"Yes", "No",};
+        int type = JOptionPane.QUESTION_MESSAGE;
+        int option = JOptionPane.showOptionDialog(this, "Bạn muốn kết thúc bài thi?", "Yes", 0, type, null, optionString, "Yes");
+        if (option != 0) {
+            return;
+        }
+        timeEx.stop();
+        resultExam();
     }//GEN-LAST:event_closeDialog
 
     private void btnEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndActionPerformed
         // TODO add your handling code here:
+        String optionString[] = {"Yes", "No",};
+        int type = JOptionPane.QUESTION_MESSAGE;
+        int option = JOptionPane.showOptionDialog(this, "Bạn muốn kết thúc bài thi?", "Yes", 0, type, null, optionString, "Yes");
+        if (option != 0) {
+            return;
+        }
+        timeEx.stop();
         resultExam();
 
     }//GEN-LAST:event_btnEndActionPerformed
@@ -307,11 +316,15 @@ public class dgExam extends java.awt.Dialog {
             @Override
             public void run() {
                 while (true) {
-                    time--;
                     int ss = time % 60;
                     int m = time / 60;
                     lblTimer.setText(m + ":" + ss);
+                    if (!dethi.getTrangThai().equalsIgnoreCase("donot")) {
+                        break;
+                    }
+                    time--;
                     if (time == 0) {
+                        resultExam();
                         break;
                     }
                     try {
@@ -322,7 +335,7 @@ public class dgExam extends java.awt.Dialog {
                 }
             }
         };
-
+        timeEx.start();
     }
 
     public void setQuesstion_Exam() {
@@ -359,7 +372,6 @@ public class dgExam extends java.awt.Dialog {
             JOptionPane.showMessageDialog(this, "Failed get list question exam" + ex);
         }
     }
-
 
     public void loadQuestionbyIndex(int index) {
         try {
@@ -462,13 +474,6 @@ public class dgExam extends java.awt.Dialog {
          */
         try {
             Desktop desktop = Desktop.getDesktop();
-            String optionString[] = {"Yes", "No",};
-            int type = JOptionPane.QUESTION_MESSAGE;
-            int option = JOptionPane.showOptionDialog(this, "Bạn muốn kết thúc bài thi?", "Yes", 0, type, null, optionString, "Yes");
-            if (option != 0) {
-                return;
-            }
-            timeEx.stop();
             String[] resultTime = lblTimer.getText().split(":");
             int timeLeft = Integer.parseInt(resultTime[0]) * 60 + Integer.parseInt(resultTime[1]);
             int resultAnsswer = 0;
@@ -490,6 +495,7 @@ public class dgExam extends java.awt.Dialog {
                     }
                 }
             }
+            dethi.setTimer(timeLeft);
             if (resultLiet && resultAnsswer >= 15) {
                 dethi.setTrangThai("pass");
                 int exam = questionController.updateExambyID(dethi);
