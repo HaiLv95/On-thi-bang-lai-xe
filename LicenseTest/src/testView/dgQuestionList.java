@@ -80,6 +80,7 @@ public class dgQuestionList extends java.awt.Dialog {
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
+        lblRow = new javax.swing.JLabel();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -170,7 +171,7 @@ public class dgQuestionList extends java.awt.Dialog {
         }
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(30, 160, 1130, 610);
+        jScrollPane1.setBounds(30, 160, 1130, 600);
 
         lblMess.setForeground(new java.awt.Color(255, 0, 0));
         lblMess.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -216,6 +217,13 @@ public class dgQuestionList extends java.awt.Dialog {
         jPanel1.add(btnXoa);
         btnXoa.setBounds(1060, 100, 100, 30);
 
+        lblRow.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblRow.setForeground(new java.awt.Color(255, 51, 51));
+        lblRow.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblRow.setText("jLabel2");
+        jPanel1.add(lblRow);
+        lblRow.setBounds(1020, 760, 140, 20);
+
         add(jPanel1);
         jPanel1.setBounds(0, 0, 1200, 800);
 
@@ -237,14 +245,14 @@ public class dgQuestionList extends java.awt.Dialog {
     }//GEN-LAST:event_cboQuesstionTypesActionPerformed
 
     private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped
-        // TODO add your handling code here:
-        char text = evt.getKeyChar();
-        if (!Character.isDigit(text)) {
-            lblMess.setText("Bạn chỉ có thể nhập mã câu hỏi là số để tìm kiếm");
-            evt.consume();
-        } else {
-            lblMess.setText("");
-        }
+        // Check ký tự nhập vào bắt buộc là số
+//        char text = evt.getKeyChar();
+//        if (!Character.isDigit(text)) {
+//            lblMess.setText("Bạn chỉ có thể nhập mã câu hỏi là số để tìm kiếm");
+//            evt.consume();
+//        } else {
+//            lblMess.setText("");
+//        }
     }//GEN-LAST:event_txtSearchKeyTyped
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -252,12 +260,6 @@ public class dgQuestionList extends java.awt.Dialog {
         cboQuesstionTypes.setSelectedIndex(0);
         addQuestion();
     }//GEN-LAST:event_btnThemActionPerformed
-
-    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-        // TODO add your handling code here:
-        int id = Integer.parseInt(txtSearch.getText().trim());
-        searchByID(id);
-    }//GEN-LAST:event_txtSearchKeyReleased
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
@@ -273,6 +275,18 @@ public class dgQuestionList extends java.awt.Dialog {
         // TODO add your handling code here:
         setMouseClickTable();
     }//GEN-LAST:event_tblQuesstionMouseClicked
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        try {
+            int id = Integer.parseInt(txtSearch.getText().trim());
+            searchByID(id);
+        } catch (NumberFormatException ex) {
+            searchByContent(txtSearch.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Failed: Lỗi tìm kiếm");
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
     // load list loại câu hỏi lên combobox
     public void loadQuestionTypetoCbo() {
         try {
@@ -298,6 +312,7 @@ public class dgQuestionList extends java.awt.Dialog {
                 }
             }
         }
+        lblRow.setText("Row total: " + model.getRowCount());
 
     }
 
@@ -359,6 +374,23 @@ public class dgQuestionList extends java.awt.Dialog {
         fillQuestionToTable(lst_Qs);
     }
 
+    //tìm câu hỏi theo nội dung
+    public void searchByContent(String conTent) {
+        model.setRowCount(0);
+        lst_Qs.clear();
+        if (txtSearch.getText().trim().isEmpty()) {
+            cboQuesstionTypes.setSelectedIndex(0);
+            loadbyType();
+        } else {
+            for (Question lst_Question : lst_Questions) {
+                if (lst_Question.getNoiDung().toLowerCase().startsWith(conTent.toLowerCase())) {
+                    lst_Qs.add(lst_Question);
+                }
+            }
+        }
+        fillQuestionToTable(lst_Qs);
+    }
+
     //thêm câu hoi
     public void addQuestion() {
         Question question = new Question();
@@ -393,6 +425,7 @@ public class dgQuestionList extends java.awt.Dialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMess;
     private javax.swing.JLabel lblQuesstionTypes;
+    private javax.swing.JLabel lblRow;
     private javax.swing.JTable tblQuesstion;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
