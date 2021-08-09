@@ -1,15 +1,22 @@
 package testView;
+
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
-import  testController.FindPasswordController;
+import testController.FindPasswordController;
 import testConnectSQL.ConnectSQL;
+
 /**
  *
  * @author hai95
  */
 public class dgFindPassword extends java.awt.Dialog {
-static ConnectSQL con = new ConnectSQL();
-FindPasswordController co ;
+
+    static ConnectSQL con = new ConnectSQL();
+    FindPasswordController co;
+    String ss = "";
+
     /**
      * Creates new form FindPassword
      */
@@ -122,32 +129,44 @@ FindPasswordController co ;
         setVisible(false);
         dispose();
     }//GEN-LAST:event_btnbackActionPerformed
-public void findpass(){
-    try {
-        if(check()==false){
-            return;
-        }else{
-            String mail = txtEmail.getText();
-        co = new FindPasswordController();
-        co.send(mail);
-        lblText.setVisible(true);
+    public void findpass() {
+        try {
+            if (check() == false) {
+                return;
+            } else {
+                String mail = txtEmail.getText();
+                co = new FindPasswordController();
+                co.send(mail);
+                lblText.setVisible(true);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "lỗi sento " + e);
         }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this,"lỗi sento"+ e);
     }
-}
-public boolean check(){
-    if(txtEmail.getText().isEmpty()){
-        JOptionPane.showMessageDialog(this, " vui lòng nhập email trước");
-        txtEmail.requestFocus();
-        return false;
+
+    public boolean check() {
+
+        if (txtEmail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, " vui lòng nhập email trước");
+            txtEmail.requestFocus();
+            return false;
+        }
+        try {
+            String sql = "select EMAIL from USERS where EMAIL = ?";
+            ResultSet rs = con.prepareExcuteQuery(sql, txtEmail.getText());
+            while (rs.next()) {
+                ss = rs.getString("EMAIL");
+            }
+            if (!txtEmail.getText().equalsIgnoreCase(ss)) {
+                JOptionPane.showMessageDialog(this, "email của bạn chưa đăng ký tài khoản");
+                return false;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+        return true;
     }
-    if(!txtEmail.getText().equalsIgnoreCase(Run.user.getUser())){
-        JOptionPane.showMessageDialog(this, "email của bạn chưa đăng ký tài khoản");
-        
-    }
-    return true;
-}
+
     /**
      * @param args the command line arguments
      */
