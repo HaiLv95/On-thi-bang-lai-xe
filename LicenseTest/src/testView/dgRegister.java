@@ -12,11 +12,11 @@ import testController.AddController;
  */
 public class dgRegister extends java.awt.Dialog {
 
-
-public ConnectSQL con  = new ConnectSQL();
-public AddController us = new AddController();
-public static frLogin login ; 
-String code ="";
+    public ConnectSQL con = new ConnectSQL();
+    public AddController us = new AddController();
+    public static frLogin login;
+    String code = "";
+    String ss = "";
 
     /**
      * Creates new form Register
@@ -188,38 +188,52 @@ String code ="";
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosed
     public boolean check() {
-        if (txtEmail1.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "vui lòng nhập EMAIL");
-            txtEmail1.requestFocus();
-            return false;
-        }
-        if (pwPass.getText().trim().isEmpty()) {//trim xử lý khoảng trắng
-            JOptionPane.showMessageDialog(this, "vui lòng nhập Mật Khẩu");
-            pwPass.requestFocus();
-            return false;
-        }
-        if (pwPassCF.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "vui lòng nhập lại Mật Khẩu");
-            pwPassCF.requestFocus();
-            return false;
-        }
-        if (!pwPass.getText().equalsIgnoreCase(pwPassCF.getText())) {
-            JOptionPane.showMessageDialog(this, "vui lòng nhập lại đúng password");
-            return false;
-        }
-        if (txtConfirmCode.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "vui lòng nhập Mã Xác Nhận");
-            txtConfirmCode.requestFocus();
-            return false;
-        }
-        if (!code.equalsIgnoreCase(txtConfirmCode.getText())) {
-            JOptionPane.showMessageDialog(this, "mã của bạn không đúng");
-            return false;
-        }
+        try {
+            if (txtEmail1.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "vui lòng nhập EMAIL");
+                txtEmail1.requestFocus();
+                return false;
+            }
+            if (pwPass.getText().trim().isEmpty()) {//trim xử lý khoảng trắng
+                JOptionPane.showMessageDialog(this, "vui lòng nhập Mật Khẩu");
+                pwPass.requestFocus();
+                return false;
+            }
+            if (pwPassCF.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "vui lòng nhập lại Mật Khẩu");
+                pwPassCF.requestFocus();
+                return false;
+            }
+            if (!pwPass.getText().equalsIgnoreCase(pwPassCF.getText())) {
+                JOptionPane.showMessageDialog(this, "vui lòng nhập lại đúng password");
+                return false;
+            }
+            if (txtConfirmCode.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "vui lòng nhập Mã Xác Nhận");
+                txtConfirmCode.requestFocus();
+                return false;
+            }
+            if (!code.equalsIgnoreCase(txtConfirmCode.getText())) {
+                JOptionPane.showMessageDialog(this, "mã của bạn không đúng");
+                return false;
+            }
 
-        if (txtEmail1.getText().equalsIgnoreCase(Run.user.getUser())) {
-            JOptionPane.showMessageDialog(this, "EMAIL đã được sử dụng");
-            return false;
+            try {
+
+                String sql = "select EMAIL from USERS where EMAIL = ?";
+                ResultSet rs = con.prepareExcuteQuery(sql, txtEmail1.getText());
+                while (rs.next()) {
+                    ss = rs.getString("EMAIL");
+                }
+                if (txtEmail1.getText().equalsIgnoreCase(ss)) {
+                    JOptionPane.showMessageDialog(this, "EMAIL đã được sử dụng");
+                    return false;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "lỗi"+e);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "lỗi check" + e);
         }
         return true;
 
