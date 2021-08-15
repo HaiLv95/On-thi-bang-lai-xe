@@ -6,6 +6,8 @@
 package testController;
 
 import java.util.ArrayList;
+import java.util.List;
+import testModel.User;
 import java.util.Properties;
 import java.util.Random;
 import javax.mail.Authenticator;
@@ -17,6 +19,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 import testConnectSQL.ConnectSQL;
+import java.sql.ResultSet;
+
 
 /**
  *
@@ -78,5 +82,24 @@ public class AddController {
         }
         return code;
     }
-
+        public List<User> getlistuser(){
+            User user = new User();
+            List<User> lstUser= new ArrayList<>();
+            try {
+                String sql= "select * from USERS";
+            ResultSet rs = con.createStatement(sql);
+             while(rs.next()){
+                 //lấy thông tin từ csdl gán vào user 
+               user.setUser(rs.getString(1));
+               user.setPass(rs.getString(2));
+               user.setRoles(rs.getString(3));
+               // thêm đối tượng vào list
+               lstUser.add(user);
+             } 
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+           return lstUser;
+        }
 }
+  
