@@ -205,6 +205,7 @@ public class dgRegister extends java.awt.Dialog {
                 txtEmail1.requestFocus();
                 return false;
             }
+
             List<User> Listuser = us.getlistuser();
             for (User user : Listuser) {
                 System.out.println(user.getUser());
@@ -213,6 +214,7 @@ public class dgRegister extends java.awt.Dialog {
                     return false;
                 }
             }
+
             if (pwPass.getText().trim().isEmpty()) {//trim xử lý khoảng trắng
                 JOptionPane.showMessageDialog(this, "vui lòng nhập Mật Khẩu");
                 pwPass.requestFocus();
@@ -228,17 +230,15 @@ public class dgRegister extends java.awt.Dialog {
                 return false;
             }
 
-            if (!code.equalsIgnoreCase(txtConfirmCode.getText())) {
-                JOptionPane.showMessageDialog(this, "mã của bạn không đúng");
-                return false;
-            }
-
             if (txtConfirmCode.getText().trim().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "vui lòng nhập Mã Xác Nhận");
                 txtConfirmCode.requestFocus();
                 return false;
             }
-
+            if (!code.equalsIgnoreCase(txtConfirmCode.getText())) {
+                JOptionPane.showMessageDialog(this, "mã của bạn không đúng");
+                return false;
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "lỗi check" + e);
         }
