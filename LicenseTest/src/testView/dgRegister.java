@@ -2,9 +2,12 @@ package testView;
 
 //import com.sun.mail.util.MailConnectException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import testConnectSQL.ConnectSQL;
 import testController.AddController;
+import testModel.User;
 
 /**
  *
@@ -169,9 +172,14 @@ public class dgRegister extends java.awt.Dialog {
     }//GEN-LAST:event_closeDialog
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        code = us.getcode();
-        us.sendmail(txtEmail1.getText(), code);
-        JOptionPane.showMessageDialog(this, "vui lòng check mail");
+        if (check() == false) {
+            return;
+        } else {
+            code = us.getcode();
+            us.sendmail(txtEmail1.getText(), code);
+            JOptionPane.showMessageDialog(this, "vui lòng check mail");
+        }
+
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void lblLinkLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLinkLoginMouseClicked
@@ -182,6 +190,9 @@ public class dgRegister extends java.awt.Dialog {
 
     private void btnRegister1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegister1ActionPerformed
         addUSER();
+        login = new frLogin();
+        login.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRegister1ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -194,6 +205,16 @@ public class dgRegister extends java.awt.Dialog {
                 txtEmail1.requestFocus();
                 return false;
             }
+
+            List<User> Listuser = us.getlistuser();
+            for (User user : Listuser) {
+                System.out.println(user.getUser());
+                if (txtEmail1.getText().trim().equalsIgnoreCase(user.getUser())) {
+                    JOptionPane.showMessageDialog(this, "email đã được đăng ký");
+                    return false;
+                }
+            }
+
             if (pwPass.getText().trim().isEmpty()) {//trim xử lý khoảng trắng
                 JOptionPane.showMessageDialog(this, "vui lòng nhập Mật Khẩu");
                 pwPass.requestFocus();
@@ -208,6 +229,7 @@ public class dgRegister extends java.awt.Dialog {
                 JOptionPane.showMessageDialog(this, "vui lòng nhập lại đúng password");
                 return false;
             }
+
             if (txtConfirmCode.getText().trim().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "vui lòng nhập Mã Xác Nhận");
                 txtConfirmCode.requestFocus();
@@ -217,21 +239,6 @@ public class dgRegister extends java.awt.Dialog {
                 JOptionPane.showMessageDialog(this, "mã của bạn không đúng");
                 return false;
             }
-
-            try {
-
-                String sql = "select EMAIL from USERS where EMAIL = ?";
-                ResultSet rs = con.prepareExcuteQuery(sql, txtEmail1.getText());
-                while (rs.next()) {
-                    ss = rs.getString("EMAIL");
-                }
-                if (txtEmail1.getText().equalsIgnoreCase(ss)) {
-                    JOptionPane.showMessageDialog(this, "EMAIL đã được sử dụng");
-                    return false;
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "lỗi"+e);
-            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "lỗi check" + e);
         }
@@ -240,7 +247,7 @@ public class dgRegister extends java.awt.Dialog {
     }
 
     public void addUSER() {
-        if (check() == false) {
+        if (!check()) {
             return;
         } else {
             String EMAIL = txtEmail1.getText();
