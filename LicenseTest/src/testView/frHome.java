@@ -35,7 +35,7 @@ public class frHome extends javax.swing.JFrame {
         btnLyThuyet = new javax.swing.JButton();
         btnThi = new javax.swing.JButton();
         btnChangePw = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,18 +142,18 @@ public class frHome extends javax.swing.JFrame {
         pnlHome.add(btnChangePw);
         btnChangePw.setBounds(120, 290, 360, 180);
 
-        jButton1.setBackground(new java.awt.Color(255, 51, 0));
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Đăng xuất");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 153)));
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLogout.setBackground(new java.awt.Color(255, 51, 0));
+        btnLogout.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnLogout.setText("Đăng xuất");
+        btnLogout.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 153)));
+        btnLogout.setBorderPainted(false);
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnLogoutActionPerformed(evt);
             }
         });
-        pnlHome.add(jButton1);
-        jButton1.setBounds(710, 10, 120, 23);
+        pnlHome.add(btnLogout);
+        btnLogout.setBounds(710, 10, 120, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -237,7 +237,7 @@ public class frHome extends javax.swing.JFrame {
         btnCauHoi.setBackground(new Color(255,118,89));
     }//GEN-LAST:event_btnCauHoiMouseExited
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
         int choose = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn đăng xuất chứ?", "Logout", JOptionPane.YES_NO_OPTION);
         if (choose == JOptionPane.YES_OPTION) {
@@ -245,7 +245,7 @@ public class frHome extends javax.swing.JFrame {
             Run.frLogin();
             this.setVisible(false);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,9 +286,9 @@ public class frHome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCauHoi;
     private javax.swing.JButton btnChangePw;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnLyThuyet;
     private javax.swing.JButton btnThi;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel pnlHome;
     // End of variables declaration//GEN-END:variables
 }

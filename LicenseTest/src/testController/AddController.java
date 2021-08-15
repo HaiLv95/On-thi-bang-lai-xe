@@ -21,7 +21,6 @@ import javax.swing.JOptionPane;
 import testConnectSQL.ConnectSQL;
 import java.sql.ResultSet;
 
-
 /**
  *
  * @author PC
@@ -30,10 +29,10 @@ public class AddController {
 
     public ConnectSQL con = new ConnectSQL();
 
-    public void sendmail(String email,String code) {
+    public void sendmail(String email, String code) {
         final String fromemail = "quangvmph12936@fpt.edu.vn";
         final String frompassemail = "vuminhquang";
-     
+
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "587");
@@ -53,7 +52,7 @@ public class AddController {
                     Message.RecipientType.TO,
                     InternetAddress.parse(email)
             );
-            message.setSubject("QLLX send to code");  
+            message.setSubject("QLLX send to code");
             message.setText("code siêu vip: " + code);
             Transport.send(message);
         } catch (Exception e) {
@@ -82,24 +81,24 @@ public class AddController {
         }
         return code;
     }
-        public List<User> getlistuser(){
-            User user = new User();
-            List<User> lstUser= new ArrayList<>();
-            try {
-                String sql= "select * from USERS";
+
+    public List<User> getlistuser() {
+        List<User> lstUser = new ArrayList<>();
+        try {
+            String sql = "select * from USERS";
             ResultSet rs = con.createStatement(sql);
-             while(rs.next()){
-                 //lấy thông tin từ csdl gán vào user 
-               user.setUser(rs.getString(1));
-               user.setPass(rs.getString(2));
-               user.setRoles(rs.getString(3));
-               // thêm đối tượng vào list
-               lstUser.add(user);
-             } 
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
+            while (rs.next()) {
+                //lấy thông tin từ csdl gán vào user 
+                User user = new User();
+                user.setUser(rs.getString(1));
+                user.setPass(rs.getString(2));
+                user.setRoles(rs.getString(3));
+                // thêm đối tượng vào list
+                lstUser.add(user);
             }
-           return lstUser;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
+        return lstUser;
+    }
 }
-  

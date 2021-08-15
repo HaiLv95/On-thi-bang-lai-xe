@@ -61,7 +61,7 @@ public class Dgdoimatkhau extends javax.swing.JDialog {
         lbltitler.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lbltitler.setText("ĐỔI MẬT KHẨU");
         jPanel1.add(lbltitler);
-        lbltitler.setBounds(207, 0, 184, 50);
+        lbltitler.setBounds(207, 0, 186, 50);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);

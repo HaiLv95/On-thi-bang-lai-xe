@@ -190,36 +190,48 @@ public class dgRegister extends java.awt.Dialog {
 
     private void btnRegister1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegister1ActionPerformed
         addUSER();
-        login = new frLogin();
-        login.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_btnRegister1ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosed
     public boolean check() {
+        String patern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{8,}$";
+        String paternEmail = "^[a-zA-Z][\\w_.-]+[a-zA-Z0-9]@\\w+(\\.\\w+){1,2}$";
+            // ^[a-zA-z]chuỗi bắt đầu bằng ký tự a-z hoặc A - Z; => mục đích không cho chuỗi bắt đầu bằng số, ký tự đặc biệt
+            // [\\w_.-]+[a-zA-Z0-9]chứa \w, "_", ".", "-" 1 trong các ký tự xuất hiện ít nhất 1 lần và sau chuỗi [\\w_.-]+phải chứa các ký tự thuộc[a-zA-Z0-9]
+            //@\\w+ chuỗi @ và các ký tự thuộc \w
+            // (\\.\\w+){1,2}$ chuỗi phải kết thúc bởi chuỗi  chứa "." và 1 hoặc nhiều ký tự thuộc \\w. 
+            //cụm (\\.\\w+){1,2} xuất hiện ít nhất 1 lần và nhiều nhất 2 lần
         try {
             if (txtEmail1.getText().trim().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "vui lòng nhập EMAIL");
                 txtEmail1.requestFocus();
                 return false;
             }
-
-            List<User> Listuser = us.getlistuser();
-            for (User user : Listuser) {
+            if (!txtEmail1.getText().trim().matches(paternEmail)) {
+                JOptionPane.showMessageDialog(this, "EMAIL không đúng định dạng");
+                txtEmail1.requestFocus();
+                return false;
+            }
+            for (User user : us.getlistuser()) {
                 System.out.println(user.getUser());
                 if (txtEmail1.getText().trim().equalsIgnoreCase(user.getUser())) {
                     JOptionPane.showMessageDialog(this, "email đã được đăng ký");
                     return false;
                 }
             }
-
             if (pwPass.getText().trim().isEmpty()) {//trim xử lý khoảng trắng
                 JOptionPane.showMessageDialog(this, "vui lòng nhập Mật Khẩu");
                 pwPass.requestFocus();
                 return false;
             }
+            if (!pwPass.getText().trim().matches(patern)) {
+                JOptionPane.showMessageDialog(this, "mật khẩu phải chứa chữ hoa, chữ thường, số và có độ dài ít nhất 8 ký tự ");
+                return false;
+            }
+
             if (pwPassCF.getText().trim().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "vui lòng nhập lại Mật Khẩu");
                 pwPassCF.requestFocus();
@@ -229,12 +241,12 @@ public class dgRegister extends java.awt.Dialog {
                 JOptionPane.showMessageDialog(this, "vui lòng nhập lại đúng password");
                 return false;
             }
-
             if (txtConfirmCode.getText().trim().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "vui lòng nhập Mã Xác Nhận");
                 txtConfirmCode.requestFocus();
                 return false;
             }
+
             if (!code.equalsIgnoreCase(txtConfirmCode.getText())) {
                 JOptionPane.showMessageDialog(this, "mã của bạn không đúng");
                 return false;
@@ -254,6 +266,10 @@ public class dgRegister extends java.awt.Dialog {
             String PASS = pwPass.getText();
             us.adduser(EMAIL, PASS);
             JOptionPane.showMessageDialog(this, "đăng ký tài khoản thành công");
+            login = new frLogin();
+            login.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
         }
     }
 
