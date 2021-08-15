@@ -247,7 +247,7 @@ public class dgExam extends java.awt.Dialog {
 
     private void btnEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndActionPerformed
         // TODO add your handling code here:
-        
+        closeEvent();
 
     }//GEN-LAST:event_btnEndActionPerformed
 
