@@ -242,26 +242,12 @@ public class dgExam extends java.awt.Dialog {
      * Closes the dialog
      */
     private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
-        String optionString[] = {"Yes", "No",};
-        int type = JOptionPane.QUESTION_MESSAGE;
-        int option = JOptionPane.showOptionDialog(this, "Bạn muốn kết thúc bài thi?", "Yes", 0, type, null, optionString, "Yes");
-        if (option != 0) {
-            return;
-        }
-        timeEx.stop();
-        resultExam();
+        closeEvent();
     }//GEN-LAST:event_closeDialog
 
     private void btnEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndActionPerformed
         // TODO add your handling code here:
-        String optionString[] = {"Yes", "No",};
-        int type = JOptionPane.QUESTION_MESSAGE;
-        int option = JOptionPane.showOptionDialog(this, "Bạn muốn kết thúc bài thi?", "Yes", 0, type, null, optionString, "Yes");
-        if (option != 0) {
-            return;
-        }
-        timeEx.stop();
-        resultExam();
+        
 
     }//GEN-LAST:event_btnEndActionPerformed
 
@@ -308,6 +294,7 @@ public class dgExam extends java.awt.Dialog {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
+        closeEvent();
     }//GEN-LAST:event_formWindowClosed
     public void timeExam() {
         timeEx = new Thread() {
@@ -352,6 +339,14 @@ public class dgExam extends java.awt.Dialog {
                     btnQuesstion[i].setBackground(Color.GREEN);
                 } else {
                     btnQuesstion[i].setBackground(Color.white);
+                }
+                if (!dethi.getTrangThai().equalsIgnoreCase("donot")) {
+                    if (lstcCauHoi_DeThi.get(i).isTrangThai()) {
+                        btnQuesstion[i].setBackground(Color.green);
+                    } else {
+
+                        btnQuesstion[i].setBackground(Color.red);
+                    }
                 }
                 btnQuesstion[i].addMouseListener(new MouseAdapter() {
                     @Override
@@ -520,8 +515,7 @@ public class dgExam extends java.awt.Dialog {
                 } else {
                     JOptionPane.showMessageDialog(this, "Finish exam failed");
                 }
-                dgMenuDT.dgDT.setVisible(true);
-                dgMenuDT.dgDT.loadDT();
+
             }
 
         } catch (IOException ex) {
@@ -531,6 +525,23 @@ public class dgExam extends java.awt.Dialog {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Finish exam failed");
         }
+    }
+    public void closeEvent(){
+        if (dethi.getTrangThai().equalsIgnoreCase("donot")) {
+            String optionString[] = {"Yes", "No",};
+            int type = JOptionPane.QUESTION_MESSAGE;
+            int option = JOptionPane.showOptionDialog(this, "Bạn muốn kết thúc bài thi?", "Yes", 0, type, null, optionString, "Yes");
+            if (option != 0) {
+                return;
+            }
+            timeEx.stop();
+            resultExam();
+        } else {
+            this.setVisible(false);
+            this.dispose();
+        }
+        dgMenuDT.dgDT.setVisible(true);
+        dgMenuDT.dgDT.loadDT();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnd;
