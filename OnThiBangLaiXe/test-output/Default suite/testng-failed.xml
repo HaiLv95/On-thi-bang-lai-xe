@@ -3,17 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testController.AddControllerTest_$$_jvstf83_0">
+      <class name="testModel.DethiTest">
         <methods>
-          <include name="beforeClass"/>
-          <include name="adduserTest_TC05_Success"/>
-          <include name="adduserTest_TC01_Failed"/>
-          <include name="adduserTest_TC02_Failed"/>
-          <include name="adduserTest_TC03_Failed"/>
-          <include name="adduserTest_TC04_Failed"/>
-          <include name="afterClass"/>
+          <include name="setIdTest_TC_06"/>
+          <include name="setTimerTest_TC_12"/>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="setLoaide_idTest_TC_09"/>
         </methods>
-      </class> <!-- testController.AddControllerTest_$$_jvstf83_0 -->
+      </class> <!-- testModel.DethiTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -9,6 +9,7 @@
         <methods>
           <include name="afterPowerMockTestMethod"/>
           <include name="getlistuserTest"/>
+          <include name="sendmailTest" invocation-numbers="0"/>
           <include name="beforeClass"/>
           <include name="afterPowerMockTestClass"/>
           <include name="adduserTest_TC01_Failed"/>

@@ -107,12 +107,12 @@ public class AddControllerTest extends PowerMockTestCase{
 		AssertJUnit.assertEquals(1, result.size());
 		
 	}
-//
-//	@Parameters({ "email", "code" })
-//	@Test
-//	public void sendmailTest(String email, String code) {
-//		addCon.sendmail(email, code);
-//	}
+
+	@Parameters("email")
+	@Test
+	public void sendmailTest(String email) {
+		addCon.sendmail(email, "1111");
+	}
 	private MockResultSet initMockResultSet() throws SQLException {
 		mockResultSet.addColumn("user", new String[] {"hai"});
 		mockResultSet.addColumn("pass", new String[] {"1234"});
