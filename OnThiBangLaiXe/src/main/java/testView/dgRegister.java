@@ -264,7 +264,12 @@ public class dgRegister extends java.awt.Dialog {
         } else {
             String EMAIL = txtEmail1.getText();
             String PASS = pwPass.getText();
-            us.adduser(EMAIL, PASS);
+            try {
+				us.adduser(EMAIL, PASS);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
             JOptionPane.showMessageDialog(this, "đăng ký tài khoản thành công");
             login = new frLogin();
             login.setVisible(true);

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]">
+  <test thread-count="5" name="TestAddController(failed)">
+    <parameter name="password" value="1234"/>
+    <parameter name="email" value="hai95.lv@gmail.com"/>
+    <classes>
+      <class name="testController.AddControllerTest">
+        <methods>
+          <include name="afterPowerMockTestMethod"/>
+          <include name="getlistuserTest"/>
+          <include name="beforeClass"/>
+          <include name="afterPowerMockTestClass"/>
+          <include name="adduserTest_TC01_Failed"/>
+          <include name="adduserTest_TC02_Failed" invocation-numbers="0"/>
+          <include name="adduserTest_TC03_Failed" invocation-numbers="0"/>
+          <include name="adduserTest_TC04_Failed"/>
+          <include name="afterClass"/>
+          <include name="beforePowerMockTestClass"/>
+          <include name="beforePowerMockTestMethod"/>
+        </methods>
+      </class> <!-- testController.AddControllerTest -->
+    </classes>
+  </test> <!-- TestAddController(failed) -->
+</suite> <!-- Failed suite [Suite] -->

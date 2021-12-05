@@ -60,13 +60,13 @@ public class AddController {
         }
     }
 
-    public void adduser(String EMAIL, String PASS) {
+    public void adduser(String EMAIL, String PASS) throws Exception {
         try {
             String ROLES = "USER";
             String sql = "insert into users (EMAIL,PASS,ROLES) values(?,?,?)";
             int row = con.prepareUpdate(sql, EMAIL, PASS, ROLES);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            throw new Exception();
         }
     }
 
