@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>TestNG:  TestAddController</title>
+<title>TestNG:  TestLoaiDeThi</title>
 <link href="../testng.css" rel="stylesheet" type="text/css" />
 <link href="../my-testng.css" rel="stylesheet" type="text/css" />
 
@@ -53,13 +53,13 @@ function toggleAllBoxes() {
 
 </head>
 <body>
-<h2 align='center'>TestAddController</h2><table border='1' align="center">
+<h2 align='center'>TestLoaiDeThi</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>5/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>4/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Dec 07 23:32:35 ICT 2021</td>
+<td>Started on:</td><td>Tue Dec 07 14:18:07 ICT 2021</td>
 </tr>
-<tr><td>Total time:</td><td>14 seconds (14152 ms)</td>
+<tr><td>Total time:</td><td>0 seconds (53 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,40 +67,24 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='testController.AddControllerTest.getlistuserTest()'><b>getlistuserTest</b><br>Test class: testController.AddControllerTest</td>
-<td></td>
-<td>0</td>
-<td>testController.AddControllerTest@d62fe5b</td></tr>
-<tr>
-<td title='testController.AddControllerTest.getcodeTest_TC02()'><b>getcodeTest_TC02</b><br>Test class: testController.AddControllerTest</td>
-<td></td>
-<td>0</td>
-<td>testController.AddControllerTest@d62fe5b</td></tr>
-<tr>
-<td title='testController.AddControllerTest.adduserTest_TC01_Success()'><b>adduserTest_TC01_Success</b><br>Test class: testController.AddControllerTest<br>Parameters: hai95.lv@gmail.com, 1234</td>
-<td></td>
-<td>0</td>
-<td>testController.AddControllerTest@d62fe5b</td></tr>
-<tr>
-<td title='testController.AddControllerTest.sendmailTest()'><b>sendmailTest</b><br>Test class: testController.AddControllerTest<br>Parameters: hai95.lv@gmail.com</td>
-<td><div><pre>java.lang.Exception
-	at testController.AddController.sendmail(AddController.java:60)
-	at testController.AddControllerTest.sendmailTest(AddControllerTest.java:88)
+<td title='testModel.LoaiDeThiTest.setLoaiDe_IDTest_TC04()'><b>setLoaiDe_IDTest_TC04</b><br>Test class: testModel.LoaiDeThiTest</td>
+<td><div><pre>org.testng.TestException: 
+Method LoaiDeThiTest.setLoaiDe_IDTest_TC04()[pri:0, instance:testModel.LoaiDeThiTest@247bddad] should have thrown an exception of type class java.lang.Exception
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 23 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace559179052", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace559179052'><pre>java.lang.Exception
-	at testController.AddController.sendmail(AddController.java:60)
-	at testController.AddControllerTest.sendmailTest(AddControllerTest.java:88)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace285133380", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace285133380'><pre>org.testng.TestException: 
+Method LoaiDeThiTest.setLoaiDe_IDTest_TC04()[pri:0, instance:testModel.LoaiDeThiTest@247bddad] should have thrown an exception of type class java.lang.Exception
+	at org.testng.internal.ExpectedExceptionsHolder.noException(ExpectedExceptionsHolder.java:82)
+	at org.testng.internal.TestInvoker.considerExceptions(TestInvoker.java:749)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:634)
 	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
 	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
 	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
@@ -124,13 +108,36 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
-<td>12</td>
-<td>testController.AddControllerTest@d62fe5b</td></tr>
+<td>0</td>
+<td>testModel.LoaiDeThiTest@247bddad</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
 <tr>
-<td title='testController.AddControllerTest.getcodeTest_TC03()'><b>getcodeTest_TC03</b><br>Test class: testController.AddControllerTest</td>
+<td title='testModel.LoaiDeThiTest.setLoaiDe_IDTest_TC03()'><b>setLoaiDe_IDTest_TC03</b><br>Test class: testModel.LoaiDeThiTest</td>
 <td></td>
 <td>0</td>
-<td>testController.AddControllerTest@d62fe5b</td></tr>
+<td>testModel.LoaiDeThiTest@247bddad</td></tr>
+<tr>
+<td title='testModel.LoaiDeThiTest.getLoaiDe_IDTest_TC01()'><b>getLoaiDe_IDTest_TC01</b><br>Test class: testModel.LoaiDeThiTest</td>
+<td></td>
+<td>0</td>
+<td>testModel.LoaiDeThiTest@247bddad</td></tr>
+<tr>
+<td title='testModel.LoaiDeThiTest.setTenLoaiTest()'><b>setTenLoaiTest</b><br>Test class: testModel.LoaiDeThiTest</td>
+<td></td>
+<td>0</td>
+<td>testModel.LoaiDeThiTest@247bddad</td></tr>
+<tr>
+<td title='testModel.LoaiDeThiTest.getTenLoaiTest_TC02()'><b>getTenLoaiTest_TC02</b><br>Test class: testModel.LoaiDeThiTest</td>
+<td></td>
+<td>0</td>
+<td>testModel.LoaiDeThiTest@247bddad</td></tr>
 </table><p>
 </body>
 </html>

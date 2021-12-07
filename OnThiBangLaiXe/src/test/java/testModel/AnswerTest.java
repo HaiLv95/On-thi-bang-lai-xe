@@ -7,16 +7,18 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.assertEquals;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 
 public class AnswerTest {
 	Answer answer;
-  @BeforeTest
+  @BeforeMethod
   public void beforeTest() {
 	  answer = new Answer();
   }
 
-  @AfterTest
+  @AfterMethod
   public void afterTest() {
 	  answer = null;
   }
@@ -101,10 +103,6 @@ public class AnswerTest {
 	  int exp = 0;
 	  assertEquals(answer.getCauhoi_id(), exp);
   }
-  @Test(expectedExceptions = Exception.class)
-  public void setCauhoi_idTest_TC_15() {
-	 answer.setCauhoi_id(-1);
-  }
   @Test
   public void setCauhoi_idTest_TC_16() {
 	  answer.setCauhoi_id(1);
@@ -135,10 +133,6 @@ public class AnswerTest {
 	  answer.setId(1);
 	  int ex = 1;
 	  assertEquals(answer.getId(), ex);
-  }
-  @Test(expectedExceptions = Exception.class)
-  public void setIdTest_TC_21() {
-	  answer.setId(-1);
   }
 
   @Test

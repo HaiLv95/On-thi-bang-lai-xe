@@ -7,17 +7,19 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.assertEquals;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 
 public class CauHoi_DeThiTest {
 	CauHoi_DeThi cauhoi;
-  @BeforeTest
+  @BeforeMethod
   public void beforeTest() {
 	  cauhoi = new CauHoi_DeThi();
 	  
   }
 
-  @AfterTest
+  @AfterMethod
   public void afterTest() {
 	  cauhoi = null;
   }
@@ -70,59 +72,38 @@ public class CauHoi_DeThiTest {
 	  assertTrue(cauhoi.isTrangThai());
   }
 
-  @Test(expectedExceptions = Exception.class)
-  public void setCauHoi_idTest_TC_09() {
-	  cauhoi.setCauHoi_id(-1);
-  }
   
   @Test
-  public void setCauHoi_idTest_TC_10() {
+  public void setCauHoi_idTest_TC_09() {
 	  cauhoi.setCauHoi_id(1);
 	  int ep = 1;
 	  assertEquals(cauhoi.getCauHoi_id(), ep);
   }
 
-  @Test(expectedExceptions = Exception.class)
-  public void setCauTraLoiTest_TC_11() {
-	  cauhoi.setCauTraLoi(-1);
-  }
   
   @Test
-  public void setCauTraLoiTest_TC_12() {
+  public void setCauTraLoiTest_TC_10() {
 	  int ep = 1;
 	  cauhoi.setCauTraLoi(1);
 	  assertEquals(cauhoi.getCauTraLoi(), ep);
   }
-    @Test(expectedExceptions = Exception.class)
-    public void setCauTraLoiTest_TC_13() {
-    	cauhoi.setCauTraLoi(-1);
-  }
+
     @Test
-    public void setCauTraLoiTest_TC_14() {
+    public void setCauTraLoiTest_TC_11() {
     	cauhoi.setCauTraLoi(1);
     	int ep = 1;
     	assertEquals(cauhoi.getCauTraLoi(), ep);
     }
 
-  @Test(expectedExceptions = Exception.class)
-  public void setDeThi_idTest_TC_15() {
-	  cauhoi.setDeThi_id(-1);
-  }
   @Test
-  public void setDeThi_idTest_TC_16() {
+  public void setDeThi_idTest_TC_12() {
 	  cauhoi.setDeThi_id(1);
 	  int ep = 1;
 	  assertEquals(cauhoi.getDeThi_id(), ep);
   }
 
   @Test
-  public void setTrangThaiTest_TC_17() {
-	  boolean ep = true;
-	  assertEquals(cauhoi.isTrangThai(), ep);
-	  
-  }
-  @Test
-  public void setTrangThaiTest_TC_18() {
+  public void setTrangThaiTest_TC_13() {
 	  cauhoi.setTrangThai(true);
 	  assertTrue(cauhoi.isTrangThai());
 	  

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<suite parallel="false" name="Suite">
-  <test name="TestCauHoi_DeThi">
-    <classes>
-      <class name="testModel.CauHoi_DeThiTest"/>
-    </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->

@@ -8,14 +8,9 @@
       <class name="testController.AddControllerTest">
         <methods>
           <include name="afterPowerMockTestMethod"/>
-          <include name="getlistuserTest"/>
           <include name="sendmailTest" invocation-numbers="0"/>
           <include name="beforeClass"/>
           <include name="afterPowerMockTestClass"/>
-          <include name="adduserTest_TC01_Failed"/>
-          <include name="adduserTest_TC02_Failed" invocation-numbers="0"/>
-          <include name="adduserTest_TC03_Failed" invocation-numbers="0"/>
-          <include name="adduserTest_TC04_Failed"/>
           <include name="afterClass"/>
           <include name="beforePowerMockTestClass"/>
           <include name="beforePowerMockTestMethod"/>

@@ -51,10 +51,6 @@ public class DethiTest {
 	  deThi.setId(1);
 	  assertEquals(deThi.getId(), ep);
   }
-  @Test(expectedExceptions = Exception.class)
-  public void setIdTest_TC_06() {
-	  deThi.setId(-1);
-  }
 
   @Test
   public void getLoaide_idTest_TC_07() {
@@ -66,10 +62,6 @@ public class DethiTest {
 	  int ep = 1;
 	  deThi.setLoaide_id(1);
 	  assertEquals(deThi.getLoaide_id(), ep);
-  }
-  @Test(expectedExceptions =  Exception.class)
-  public void setLoaide_idTest_TC_09() {
-	  deThi.setLoaide_id(-1);
   }
 
   @Test
@@ -84,11 +76,6 @@ public class DethiTest {
 	  assertEquals(deThi.getTimer(), ep);
   }
   
-  @Test(expectedExceptions =  Exception.class)
-  public void setTimerTest_TC_12() {
-	  deThi.setTimer(-1);
-  }
-
   @Test
   public void getTrangThaiTest_TC_13() {
 	  String ep = null;

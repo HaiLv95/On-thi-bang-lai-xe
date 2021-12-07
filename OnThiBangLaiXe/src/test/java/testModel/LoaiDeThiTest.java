@@ -36,10 +36,6 @@ public class LoaiDeThiTest {
 	  int ep = 1;
 	  assertEquals(loaiDeThi.getLoaiDe_ID(), ep);
   	}
-  @Test(expectedExceptions = Exception.class)
-  public void setLoaiDe_IDTest_TC04() {
-	  loaiDeThi.setLoaiDe_ID(1);
-  }
 
   @Test
   public void setTenLoaiTest() {

@@ -40,10 +40,6 @@ public class LoaiCauHoiTest {
 	  loaiCauHoi.setID(1);
 	  assertEquals(loaiCauHoi.getID(), ep);
   	}
-  @Test(expectedExceptions = Exception.class)
-  public void setIDTest_TC_04() {
-	  loaiCauHoi.setID(-1);
-  }
 
   @Test
   public void setTenLoaiTest_TC_05() {

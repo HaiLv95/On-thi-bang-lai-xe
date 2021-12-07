@@ -3,8 +3,6 @@
   <test name="TestAddController">
   <parameter name="email" value="hai95.lv@gmail.com"></parameter>
   <parameter name="password" value="1234"></parameter>
-  
-  
     <classes>
       <class name="testController.AddControllerTest"/>
     </classes>

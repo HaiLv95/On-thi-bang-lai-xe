@@ -176,7 +176,12 @@ public class dgRegister extends java.awt.Dialog {
             return;
         } else {
             code = us.getcode();
-            us.sendmail(txtEmail1.getText(), code);
+            try {
+				us.sendmail(txtEmail1.getText(), code);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
             JOptionPane.showMessageDialog(this, "vui lòng check mail");
         }
 
