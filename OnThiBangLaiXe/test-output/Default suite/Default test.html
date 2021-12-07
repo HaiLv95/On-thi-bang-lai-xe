@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>17/3/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>1/7/0</td>
 </tr><tr>
-<td>Started on:</td><td>Sun Dec 05 23:34:41 ICT 2021</td>
+<td>Started on:</td><td>Mon Dec 06 08:54:21 ICT 2021</td>
 </tr>
-<tr><td>Total time:</td><td>0 seconds (77 ms)</td>
+<tr><td>Total time:</td><td>14 seconds (14176 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,15 +75,18 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='testModel.DethiTest.setTimerTest_TC_12()'><b>setTimerTest_TC_12</b><br>Test class: testModel.DethiTest</td>
-<td><div><pre>org.testng.TestException: 
-Method DethiTest.setTimerTest_TC_12()[pri:0, instance:testModel.DethiTest@65d09a04] should have thrown an exception of type class java.lang.Exception
-	at org.testng.internal.ExpectedExceptionsHolder.noException(ExpectedExceptionsHolder.java:82)
-	at org.testng.internal.TestInvoker.considerExceptions(TestInvoker.java:749)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:634)
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+<td title='testController.AddControllerTest.adduserTest_TC02_Failed()'><b>adduserTest_TC02_Failed</b><br>Test class: testController.AddControllerTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;password&apos; is required by @Test on method adduserTest_TC02_Failed but has not been marked @Optional or defined
+in C:\Users\hai95\AppData\Local\Temp\testng-eclipse-149499502\testng-customsuite.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:270)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:358)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:700)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:884)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:740)
+	at org.testng.internal.ParameterHandler.handleParameters(ParameterHandler.java:59)
+	at org.testng.internal.ParameterHandler.createParameters(ParameterHandler.java:38)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:791)
 	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
 	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
 	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
@@ -103,15 +106,18 @@ Method DethiTest.setTimerTest_TC_12()[pri:0, instance:testModel.DethiTest@65d09a
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace997055773", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace997055773'><pre>org.testng.TestException: 
-Method DethiTest.setTimerTest_TC_12()[pri:0, instance:testModel.DethiTest@65d09a04] should have thrown an exception of type class java.lang.Exception
-	at org.testng.internal.ExpectedExceptionsHolder.noException(ExpectedExceptionsHolder.java:82)
-	at org.testng.internal.TestInvoker.considerExceptions(TestInvoker.java:749)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:634)
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+</pre></div><a href='#' onClick='toggleBox("stack-trace931003277", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace931003277'><pre>org.testng.TestNGException: 
+Parameter &apos;password&apos; is required by @Test on method adduserTest_TC02_Failed but has not been marked @Optional or defined
+in C:\Users\hai95\AppData\Local\Temp\testng-eclipse-149499502\testng-customsuite.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:270)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:358)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:700)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:884)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:740)
+	at org.testng.internal.ParameterHandler.handleParameters(ParameterHandler.java:59)
+	at org.testng.internal.ParameterHandler.createParameters(ParameterHandler.java:38)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:791)
 	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
 	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
 	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
@@ -133,17 +139,20 @@ Method DethiTest.setTimerTest_TC_12()[pri:0, instance:testModel.DethiTest@65d09a
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
 <td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
+<td>testController.AddControllerTest@4ed5eb72</td></tr>
 <tr>
-<td title='testModel.DethiTest.setIdTest_TC_06()'><b>setIdTest_TC_06</b><br>Test class: testModel.DethiTest</td>
-<td><div><pre>org.testng.TestException: 
-Method DethiTest.setIdTest_TC_06()[pri:0, instance:testModel.DethiTest@65d09a04] should have thrown an exception of type class java.lang.Exception
-	at org.testng.internal.ExpectedExceptionsHolder.noException(ExpectedExceptionsHolder.java:82)
-	at org.testng.internal.TestInvoker.considerExceptions(TestInvoker.java:749)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:634)
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+<td title='testController.AddControllerTest.sendmailTest()'><b>sendmailTest</b><br>Test class: testController.AddControllerTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;email&apos; is required by @Test on method sendmailTest but has not been marked @Optional or defined
+in C:\Users\hai95\AppData\Local\Temp\testng-eclipse-149499502\testng-customsuite.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:270)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:358)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:700)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:884)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:740)
+	at org.testng.internal.ParameterHandler.handleParameters(ParameterHandler.java:59)
+	at org.testng.internal.ParameterHandler.createParameters(ParameterHandler.java:38)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:791)
 	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
 	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
 	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
@@ -163,15 +172,18 @@ Method DethiTest.setIdTest_TC_06()[pri:0, instance:testModel.DethiTest@65d09a04]
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace379478400", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace379478400'><pre>org.testng.TestException: 
-Method DethiTest.setIdTest_TC_06()[pri:0, instance:testModel.DethiTest@65d09a04] should have thrown an exception of type class java.lang.Exception
-	at org.testng.internal.ExpectedExceptionsHolder.noException(ExpectedExceptionsHolder.java:82)
-	at org.testng.internal.TestInvoker.considerExceptions(TestInvoker.java:749)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:634)
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1907982059", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1907982059'><pre>org.testng.TestNGException: 
+Parameter &apos;email&apos; is required by @Test on method sendmailTest but has not been marked @Optional or defined
+in C:\Users\hai95\AppData\Local\Temp\testng-eclipse-149499502\testng-customsuite.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:270)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:358)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:700)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:884)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:740)
+	at org.testng.internal.ParameterHandler.handleParameters(ParameterHandler.java:59)
+	at org.testng.internal.ParameterHandler.createParameters(ParameterHandler.java:38)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:791)
 	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
 	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
 	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
@@ -193,11 +205,11 @@ Method DethiTest.setIdTest_TC_06()[pri:0, instance:testModel.DethiTest@65d09a04]
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
 <td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
+<td>testController.AddControllerTest@4ed5eb72</td></tr>
 <tr>
-<td title='testModel.DethiTest.setLoaide_idTest_TC_09()'><b>setLoaide_idTest_TC_09</b><br>Test class: testModel.DethiTest</td>
+<td title='testController.AddControllerTest.adduserTest_TC01_Failed()'><b>adduserTest_TC01_Failed</b><br>Test class: testController.AddControllerTest</td>
 <td><div><pre>org.testng.TestException: 
-Method DethiTest.setLoaide_idTest_TC_09()[pri:0, instance:testModel.DethiTest@65d09a04] should have thrown an exception of type class java.lang.Exception
+Method AddControllerTest.adduserTest_TC01_Failed()[pri:0, instance:testController.AddControllerTest@4ed5eb72] should have thrown an exception of type class java.lang.Exception
 	at org.testng.internal.ExpectedExceptionsHolder.noException(ExpectedExceptionsHolder.java:82)
 	at org.testng.internal.TestInvoker.considerExceptions(TestInvoker.java:749)
 	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:634)
@@ -223,9 +235,69 @@ Method DethiTest.setLoaide_idTest_TC_09()[pri:0, instance:testModel.DethiTest@65
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1201173334", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1201173334'><pre>org.testng.TestException: 
-Method DethiTest.setLoaide_idTest_TC_09()[pri:0, instance:testModel.DethiTest@65d09a04] should have thrown an exception of type class java.lang.Exception
+</pre></div><a href='#' onClick='toggleBox("stack-trace307148861", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace307148861'><pre>org.testng.TestException: 
+Method AddControllerTest.adduserTest_TC01_Failed()[pri:0, instance:testController.AddControllerTest@4ed5eb72] should have thrown an exception of type class java.lang.Exception
+	at org.testng.internal.ExpectedExceptionsHolder.noException(ExpectedExceptionsHolder.java:82)
+	at org.testng.internal.TestInvoker.considerExceptions(TestInvoker.java:749)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:634)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>11</td>
+<td>testController.AddControllerTest@4ed5eb72</td></tr>
+<tr>
+<td title='testController.AddControllerTest.adduserTest_TC04_Failed()'><b>adduserTest_TC04_Failed</b><br>Test class: testController.AddControllerTest</td>
+<td><div><pre>org.testng.TestException: 
+Method AddControllerTest.adduserTest_TC04_Failed()[pri:0, instance:testController.AddControllerTest@4ed5eb72] should have thrown an exception of type class java.lang.Exception
+	at org.testng.internal.ExpectedExceptionsHolder.noException(ExpectedExceptionsHolder.java:82)
+	at org.testng.internal.TestInvoker.considerExceptions(TestInvoker.java:749)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:634)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1901272535", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1901272535'><pre>org.testng.TestException: 
+Method AddControllerTest.adduserTest_TC04_Failed()[pri:0, instance:testController.AddControllerTest@4ed5eb72] should have thrown an exception of type class java.lang.Exception
 	at org.testng.internal.ExpectedExceptionsHolder.noException(ExpectedExceptionsHolder.java:82)
 	at org.testng.internal.TestInvoker.considerExceptions(TestInvoker.java:749)
 	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:634)
@@ -253,7 +325,215 @@ Method DethiTest.setLoaide_idTest_TC_09()[pri:0, instance:testModel.DethiTest@65
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
 <td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
+<td>testController.AddControllerTest@4ed5eb72</td></tr>
+<tr>
+<td title='testController.AddControllerTest.adduserTest_TC05_Success()'><b>adduserTest_TC05_Success</b><br>Test class: testController.AddControllerTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;email&apos; is required by @Test on method adduserTest_TC05_Success but has not been marked @Optional or defined
+in C:\Users\hai95\AppData\Local\Temp\testng-eclipse-149499502\testng-customsuite.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:270)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:358)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:700)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:884)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:740)
+	at org.testng.internal.ParameterHandler.handleParameters(ParameterHandler.java:59)
+	at org.testng.internal.ParameterHandler.createParameters(ParameterHandler.java:38)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:791)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div><a href='#' onClick='toggleBox("stack-trace748673892", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace748673892'><pre>org.testng.TestNGException: 
+Parameter &apos;email&apos; is required by @Test on method adduserTest_TC05_Success but has not been marked @Optional or defined
+in C:\Users\hai95\AppData\Local\Temp\testng-eclipse-149499502\testng-customsuite.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:270)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:358)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:700)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:884)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:740)
+	at org.testng.internal.ParameterHandler.handleParameters(ParameterHandler.java:59)
+	at org.testng.internal.ParameterHandler.createParameters(ParameterHandler.java:38)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:791)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.AddControllerTest@4ed5eb72</td></tr>
+<tr>
+<td title='testController.AddControllerTest.getlistuserTest()'><b>getlistuserTest</b><br>Test class: testController.AddControllerTest</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;1&gt; but was:&lt;0&gt;
+	at org.testng.AssertJUnit.fail(AssertJUnit.java:65)
+	at org.testng.AssertJUnit.failNotEquals(AssertJUnit.java:468)
+	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:88)
+	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:318)
+	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:328)
+	at testController.AddControllerTest.getlistuserTest(AddControllerTest.java:107)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1502710927", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1502710927'><pre>java.lang.AssertionError: expected:&lt;1&gt; but was:&lt;0&gt;
+	at org.testng.AssertJUnit.fail(AssertJUnit.java:65)
+	at org.testng.AssertJUnit.failNotEquals(AssertJUnit.java:468)
+	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:88)
+	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:318)
+	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:328)
+	at testController.AddControllerTest.getlistuserTest(AddControllerTest.java:107)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.AddControllerTest@4ed5eb72</td></tr>
+<tr>
+<td title='testController.AddControllerTest.adduserTest_TC03_Failed()'><b>adduserTest_TC03_Failed</b><br>Test class: testController.AddControllerTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;email&apos; is required by @Test on method adduserTest_TC03_Failed but has not been marked @Optional or defined
+in C:\Users\hai95\AppData\Local\Temp\testng-eclipse-149499502\testng-customsuite.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:270)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:358)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:700)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:884)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:740)
+	at org.testng.internal.ParameterHandler.handleParameters(ParameterHandler.java:59)
+	at org.testng.internal.ParameterHandler.createParameters(ParameterHandler.java:38)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:791)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1198859194", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1198859194'><pre>org.testng.TestNGException: 
+Parameter &apos;email&apos; is required by @Test on method adduserTest_TC03_Failed but has not been marked @Optional or defined
+in C:\Users\hai95\AppData\Local\Temp\testng-eclipse-149499502\testng-customsuite.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:270)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:358)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:700)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:884)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:740)
+	at org.testng.internal.ParameterHandler.handleParameters(ParameterHandler.java:59)
+	at org.testng.internal.ParameterHandler.createParameters(ParameterHandler.java:38)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:791)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.AddControllerTest@4ed5eb72</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -263,90 +543,10 @@ Method DethiTest.setLoaide_idTest_TC_09()[pri:0, instance:testModel.DethiTest@65
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='testModel.DethiTest.getLoaide_idTest_TC_07()'><b>getLoaide_idTest_TC_07</b><br>Test class: testModel.DethiTest</td>
+<td title='testController.AddControllerTest.getcodeTest()'><b>getcodeTest</b><br>Test class: testController.AddControllerTest</td>
 <td></td>
 <td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
-<tr>
-<td title='testModel.DethiTest.getTrangThaiTest_TC_14()'><b>getTrangThaiTest_TC_14</b><br>Test class: testModel.DethiTest</td>
-<td></td>
-<td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
-<tr>
-<td title='testModel.DethiTest.setIdTest_TC_17()'><b>setIdTest_TC_17</b><br>Test class: testModel.DethiTest</td>
-<td></td>
-<td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
-<tr>
-<td title='testModel.DethiTest.setLoaide_idTest_TC_18()'><b>setLoaide_idTest_TC_18</b><br>Test class: testModel.DethiTest</td>
-<td></td>
-<td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
-<tr>
-<td title='testModel.DethiTest.setTrangThaiTest()'><b>setTrangThaiTest</b><br>Test class: testModel.DethiTest</td>
-<td></td>
-<td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
-<tr>
-<td title='testModel.DethiTest.getEmailTest_TC_02()'><b>getEmailTest_TC_02</b><br>Test class: testModel.DethiTest</td>
-<td></td>
-<td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
-<tr>
-<td title='testModel.DethiTest.setTimerTest_TC_19()'><b>setTimerTest_TC_19</b><br>Test class: testModel.DethiTest</td>
-<td></td>
-<td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
-<tr>
-<td title='testModel.DethiTest.getEmailTest_TC_01()'><b>getEmailTest_TC_01</b><br>Test class: testModel.DethiTest</td>
-<td></td>
-<td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
-<tr>
-<td title='testModel.DethiTest.getTimerTest_TC_10()'><b>getTimerTest_TC_10</b><br>Test class: testModel.DethiTest</td>
-<td></td>
-<td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
-<tr>
-<td title='testModel.DethiTest.getEmailTest_TC_03()'><b>getEmailTest_TC_03</b><br>Test class: testModel.DethiTest</td>
-<td></td>
-<td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
-<tr>
-<td title='testModel.DethiTest.getTimerTest_TC_11()'><b>getTimerTest_TC_11</b><br>Test class: testModel.DethiTest</td>
-<td></td>
-<td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
-<tr>
-<td title='testModel.DethiTest.setEmailTest_TC_16()'><b>setEmailTest_TC_16</b><br>Test class: testModel.DethiTest</td>
-<td></td>
-<td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
-<tr>
-<td title='testModel.DethiTest.getIdTest_TC_04()'><b>getIdTest_TC_04</b><br>Test class: testModel.DethiTest</td>
-<td></td>
-<td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
-<tr>
-<td title='testModel.DethiTest.getIdTest_TC_05()'><b>getIdTest_TC_05</b><br>Test class: testModel.DethiTest</td>
-<td></td>
-<td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
-<tr>
-<td title='testModel.DethiTest.getTrangThaiTest_TC_15()'><b>getTrangThaiTest_TC_15</b><br>Test class: testModel.DethiTest</td>
-<td></td>
-<td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
-<tr>
-<td title='testModel.DethiTest.getLoaide_idTest_TC_08()'><b>getLoaide_idTest_TC_08</b><br>Test class: testModel.DethiTest</td>
-<td></td>
-<td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
-<tr>
-<td title='testModel.DethiTest.getTrangThaiTest_TC_13()'><b>getTrangThaiTest_TC_13</b><br>Test class: testModel.DethiTest</td>
-<td></td>
-<td>0</td>
-<td>testModel.DethiTest@65d09a04</td></tr>
+<td>testController.AddControllerTest@4ed5eb72</td></tr>
 </table><p>
 </body>
 </html>

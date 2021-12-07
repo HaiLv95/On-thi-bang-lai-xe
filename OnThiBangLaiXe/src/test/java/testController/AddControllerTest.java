@@ -76,11 +76,11 @@ public class AddControllerTest extends PowerMockTestCase{
 		String pass = null;
 		addCon.adduser(email, pass);
 	}
-	@Parameters("email")
+
 	@Test(expectedExceptions = Exception.class)
 	public void adduserTest_TC04_Failed() throws Exception {
-		String pass = "";
-		String email ="";
+		String pass = null;
+		String email = null;
 		addCon.adduser(email, pass);
 	}
 	

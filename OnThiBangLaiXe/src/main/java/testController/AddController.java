@@ -65,6 +65,7 @@ public class AddController {
             String ROLES = "USER";
             String sql = "insert into users (EMAIL,PASS,ROLES) values(?,?,?)";
             int row = con.prepareUpdate(sql, EMAIL, PASS, ROLES);
+            System.out.println(row);
         } catch (Exception e) {
             throw new Exception();
         }

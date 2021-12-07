@@ -8,7 +8,7 @@ public class QuestionTest {
 	Question question;
   @BeforeTest
   public void beforeTest() {
-	  question = new Question()
+	  question = new Question();
   }
 
   @AfterTest

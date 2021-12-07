@@ -3,15 +3,23 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testModel.DethiTest">
+      <class name="testController.AddControllerTest">
         <methods>
-          <include name="setIdTest_TC_06"/>
-          <include name="setTimerTest_TC_12"/>
-          <include name="beforeTest"/>
-          <include name="afterTest"/>
-          <include name="setLoaide_idTest_TC_09"/>
+          <include name="afterPowerMockTestMethod"/>
+          <include name="getlistuserTest"/>
+          <include name="beforeClass"/>
+          <include name="afterPowerMockTestClass"/>
+          <include name="adduserTest_TC05_Success"/>
+          <include name="adduserTest_TC01_Failed"/>
+          <include name="adduserTest_TC02_Failed"/>
+          <include name="adduserTest_TC03_Failed"/>
+          <include name="adduserTest_TC04_Failed"/>
+          <include name="afterClass"/>
+          <include name="sendmailTest"/>
+          <include name="beforePowerMockTestClass"/>
+          <include name="beforePowerMockTestMethod"/>
         </methods>
-      </class> <!-- testModel.DethiTest -->
+      </class> <!-- testController.AddControllerTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
