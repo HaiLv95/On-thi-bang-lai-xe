@@ -3,17 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testController.AddControllerTest">
+      <class name="testController.changePasswordControllerTest">
         <methods>
-          <include name="afterPowerMockTestMethod"/>
-          <include name="sendmailTest"/>
-          <include name="beforeClass"/>
-          <include name="afterPowerMockTestClass"/>
-          <include name="afterClass"/>
-          <include name="beforePowerMockTestClass"/>
-          <include name="beforePowerMockTestMethod"/>
+          <include name="TC01_changePasswordSuccess"/>
         </methods>
-      </class> <!-- testController.AddControllerTest -->
+      </class> <!-- testController.changePasswordControllerTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

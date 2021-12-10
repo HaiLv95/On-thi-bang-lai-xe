@@ -2,20 +2,47 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]">
   <test thread-count="5" name="TestAddController(failed)">
-    <parameter name="password" value="1234"/>
+    <parameter name="pass" value="1234"/>
     <parameter name="email" value="hai95.lv@gmail.com"/>
     <classes>
-      <class name="testController.AddControllerTest">
+      <class name="testController.FindPasswordControllerTest">
         <methods>
-          <include name="afterPowerMockTestMethod"/>
-          <include name="sendmailTest" invocation-numbers="0"/>
-          <include name="beforeClass"/>
-          <include name="afterPowerMockTestClass"/>
-          <include name="afterClass"/>
-          <include name="beforePowerMockTestClass"/>
-          <include name="beforePowerMockTestMethod"/>
+          <include name="TC03_sendEmail_Failed"/>
         </methods>
-      </class> <!-- testController.AddControllerTest -->
+      </class> <!-- testController.FindPasswordControllerTest -->
+      <class name="testController.ConnectionTest">
+        <methods>
+          <include name="CDB_TC001_ConectSuccess"/>
+          <include name="CDB_TC007_ConectFailed"/>
+          <include name="CDB_TC006_ConectFailed"/>
+          <include name="CDB_TC011_ConectFailed"/>
+          <include name="CDB_TC010_ConectFailed"/>
+          <include name="CDB_TC004_ConectFailed"/>
+          <include name="CDB_TC002_ConectFailed"/>
+          <include name="CDB_TC003_ConectFailed"/>
+          <include name="CDB_TC008_ConectFalse"/>
+          <include name="CDB_TC009_ConectFailed"/>
+          <include name="CDB_TC005_ConectFailed"/>
+        </methods>
+      </class> <!-- testController.ConnectionTest -->
+      <class name="testController.changePasswordControllerTest">
+        <methods>
+          <include name="TC02_changePassword_Failed"/>
+          <include name="afterClass"/>
+          <include name="beforeClass"/>
+          <include name="TC01_changePasswordSuccess"/>
+          <include name="TC03_changePassword_Failed"/>
+          <include name="TC05_changePassword_Failed"/>
+          <include name="TC04_changePassword_Failed"/>
+        </methods>
+      </class> <!-- testController.changePasswordControllerTest -->
+      <class name="testController.LoginControllerTest">
+        <methods>
+          <include name="TC02_getUserbyEmail_Failed"/>
+          <include name="init"/>
+          <include name="TC03_getUserbyEmail_Failed"/>
+        </methods>
+      </class> <!-- testController.LoginControllerTest -->
     </classes>
   </test> <!-- TestAddController(failed) -->
 </suite> <!-- Failed suite [Suite] -->

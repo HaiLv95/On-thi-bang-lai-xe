@@ -12,13 +12,14 @@ import testConnectSQL.ConnectSQL;
  */
 public class changePasswordController {
     public ConnectSQL con = new ConnectSQL();
-    public void changePassword(String pass, String email){
-        
+    public int changePassword(String pass, String email){
+    	int row = 0;
         try {
         String sql = "update USERS set PASS = ? WHERE EMAIL =?";
-        int row = con.prepareUpdate(sql,pass,email );
+        row = con.prepareUpdate(sql,pass,email );
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+        return row;
     }
 }

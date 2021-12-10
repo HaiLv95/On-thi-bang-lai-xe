@@ -31,8 +31,8 @@ public class AddController {
     public ConnectSQL con = new ConnectSQL();
 
     public void sendmail(String email, String code) throws Exception {
-        final String fromemail = "hai95.lv@gmail.com";
-        final String frompassemail = "Quangtan2017";
+        final String username = "hai95.lv@gmail.com";
+        final String password = "Quangtan2017";
 
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -43,12 +43,12 @@ public class AddController {
             Authenticator auth = new Authenticator() {
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(fromemail, frompassemail);
+                    return new PasswordAuthentication(email, password);
                 }
             };
             Session s = Session.getDefaultInstance(prop, auth);
             Message message = new MimeMessage(s);
-            message.setFrom(new InternetAddress("hai95.lv@gmail.com"));
+            message.setFrom(new InternetAddress(email));
             message.setRecipients(
                     Message.RecipientType.TO,
                     InternetAddress.parse(email)
@@ -57,7 +57,7 @@ public class AddController {
             message.setText("code siêu vip: " + code);
             Transport.send(message);
         } catch (Exception e) {
-           throw new Exception();
+           throw new Exception(e);
         }
     }
 
