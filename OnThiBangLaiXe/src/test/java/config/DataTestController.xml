@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite parallel="false" name="Suite">
-  <test name="TestAddController">
-  <parameter name="email" value="hai95.lv@gmail.com"></parameter>
+  <test name="TestController">
+  <parameter name="email" value="nhocyeuviai1995@gmail.com"></parameter>
   <parameter name="pass" value="1234"></parameter>
+  <parameter name="tempuser" value="sa"></parameter>
+  <parameter name="temppass" value="1"></parameter>
     <classes>
       <class name="testController.AddControllerTest"/>
-      <class name="testController.FindPasswordControllerTest"/>
-      <class name="testController.changePasswordControllerTest"/>
       <class name="testController.ConnectionTest"/>
+      <class name="testController.QuestionControllerTest"/>
+      <class name="testController.changePasswordControllerTest"/>
+      <class name="testController.FindPasswordControllerTest"/>
       <class name="testController.LoginControllerTest"/>
     </classes>
   </test> <!-- Test -->

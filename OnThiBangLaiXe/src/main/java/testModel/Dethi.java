@@ -7,15 +7,27 @@ package testModel;
 public class Dethi {
     private int id,  timer, loaide_id;
     private String trangThai;
+    private String email;
+    public Dethi() {
+		// TODO Auto-generated constructor stub
+	}
+    
+    public Dethi(int id, int timer, int loaide_id, String trangThai, String email) {
+		super();
+		this.id = id;
+		this.timer = timer;
+		this.loaide_id = loaide_id;
+		this.trangThai = trangThai;
+		this.email = email;
+	}
 
-    public int getTimer() {
+	public int getTimer() {
         return timer;
     }
 
     public void setTimer(int timer) {
         this.timer = timer;
     }
-    private String email;
 
     public int getId() {
         return id;

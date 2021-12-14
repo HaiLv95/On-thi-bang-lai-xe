@@ -8,8 +8,19 @@ public class Question {
     private int id, loaiCauHoi_id;
     private String noiDung, hinh;
     private boolean trangThai;
+    public Question() {
+		// TODO Auto-generated constructor stub
+	}
+    public Question(int id, int loaiCauHoi_id, String noiDung, String hinh, boolean trangThai) {
+		super();
+		this.id = id;
+		this.loaiCauHoi_id = loaiCauHoi_id;
+		this.noiDung = noiDung;
+		this.hinh = hinh;
+		this.trangThai = trangThai;
+	}
 
-    public boolean isTrangThai() {
+	public boolean isTrangThai() {
         return trangThai;
     }
 

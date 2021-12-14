@@ -493,7 +493,7 @@ public class dgExam extends java.awt.Dialog {
             dethi.setTimer(timeLeft);
             if (resultLiet && resultAnsswer >= 15) {
                 dethi.setTrangThai("pass");
-                int exam = questionController.updateExambyID(dethi);
+                int exam = questionController.updateExambyID(dethi,Run.user.getUser());
                 if (exam > 0) {
                     JOptionPane.showMessageDialog(this, "Finish exam success: Pass " + resultAnsswer + "/" + question);
                     setVisible(false);
@@ -504,7 +504,7 @@ public class dgExam extends java.awt.Dialog {
 
             } else {
                 dethi.setTrangThai("failed");
-                int exam = questionController.updateExambyID(dethi);
+                int exam = questionController.updateExambyID(dethi,Run.user.getUser());
                 if (exam > 0) {
                     int choose1 = JOptionPane.showConfirmDialog(this, "Finish exam success: Failed " + resultAnsswer + "/" + question + "\nCó vẻ kiến thức về luật giao thông của bạn chưa tốt. Bạn có muốn tham khảo 1 số mẹo làm bài thi không?", "Mẹo", JOptionPane.YES_NO_OPTION);
                     if (choose1 == JOptionPane.YES_OPTION) {

@@ -16,6 +16,7 @@ import java.util.List;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.testng.PowerMockTestCase;
 import org.testng.Assert;
@@ -24,7 +25,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.ObjectFactory;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-@PrepareForTest({ AddController.class, ConnectSQL.class })
+@PrepareForTest({ AddController.class, ConnectSQL.class})
 public class AddControllerTest extends PowerMockTestCase{
 	AddController addCon;
 	AddController addConSpy;
@@ -91,9 +92,9 @@ public class AddControllerTest extends PowerMockTestCase{
 		assertEquals(result.size(), 1);
 	}
 
-	@Parameters("email")
-	@Test
-	public void sendmailTest_TC06(String email) throws Exception {
-		addCon.sendmail(email, "1111");
-	}
+//	@Parameters("email")
+//	@Test
+//	public void sendmailTest_TC06(String email) throws Exception {
+//		addCon.sendmail(email, "1111");
+//	}
 }

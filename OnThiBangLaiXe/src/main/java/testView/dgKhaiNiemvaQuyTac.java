@@ -613,7 +613,7 @@ public class dgKhaiNiemvaQuyTac extends javax.swing.JDialog {
         int rowEx = 0;
         int rowQs = 0;
         try {
-            rowEx = quesController.updateExambyID(ex);
+            rowEx = quesController.updateExambyID(ex,Run.user.getUser());
             for (CauHoi_DeThi QuestionEx : lst_CHDTKN) {
                 rowQs += quesController.updateQuestionExam(QuestionEx);
             }

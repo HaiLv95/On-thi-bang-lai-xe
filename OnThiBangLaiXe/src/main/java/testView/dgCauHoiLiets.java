@@ -611,7 +611,7 @@ public class dgCauHoiLiets extends javax.swing.JDialog {
         int rowEx = 0;
         int rowQs = 0;
         try {
-            rowEx = quesController.updateExambyID(ex);
+            rowEx = quesController.updateExambyID(ex, Run.user.getUser());
             for (CauHoi_DeThi QuestionEx : lst_CHDTCL) {
                 rowQs += quesController.updateQuestionExam(QuestionEx);
             }

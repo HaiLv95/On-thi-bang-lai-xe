@@ -137,7 +137,7 @@ public class dgMenuDT extends java.awt.Dialog {
 
     public void loadDT() {
         try {
-            lstDeThi = questionController.getListDTbyEmail(1);
+            lstDeThi = questionController.getListDTbyEmail(1, Run.user.getUser());
             pnlDeThi.removeAll();
             JButton[] btnDeThi = new JButton[lstDeThi.size()];
             for (int i = 0; i < lstDeThi.size(); i++) {

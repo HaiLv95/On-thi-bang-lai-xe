@@ -7,8 +7,18 @@ package testModel;
 public class CauHoi_DeThi {
     private int cauHoi_id, deThi_id, cauTraLoi;
     private boolean trangThai;
+    public CauHoi_DeThi() {
+		// TODO Auto-generated constructor stub
+	}
+    public CauHoi_DeThi(int cauHoi_id, int deThi_id, int cauTraLoi, boolean trangThai) {
+		super();
+		this.cauHoi_id = cauHoi_id;
+		this.deThi_id = deThi_id;
+		this.cauTraLoi = cauTraLoi;
+		this.trangThai = trangThai;
+	}
 
-    public int getCauHoi_id() {
+	public int getCauHoi_id() {
         return cauHoi_id;
     }
 

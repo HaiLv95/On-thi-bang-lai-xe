@@ -33,31 +33,26 @@ public class AddController {
     public void sendmail(String email, String code) throws Exception {
         final String username = "hai95.lv@gmail.com";
         final String password = "Quangtan2017";
-
-        Properties prop = new Properties();
-        prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.port", "587");
-        prop.put("mail.smtp.auth", "true");
-        prop.put("mail.smtp.starttls.enable", "true");
         try {
-            Authenticator auth = new Authenticator() {
-                @Override
+            Properties prop = new Properties();
+            prop.put("mail.smtp.host", "smtp.gmail.com");
+            prop.put("mail.smtp.port", "587");
+            prop.put("mail.smtp.auth", "true");
+            prop.put("mail.smtp.starttls.enable", "true");
+            Session session = Session.getInstance(prop, new Authenticator() {
                 protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(email, password);
+                    return new PasswordAuthentication(username, password);
                 }
-            };
-            Session s = Session.getDefaultInstance(prop, auth);
-            Message message = new MimeMessage(s);
-            message.setFrom(new InternetAddress(email));
-            message.setRecipients(
-                    Message.RecipientType.TO,
-                    InternetAddress.parse(email)
-            );
-            message.setSubject("QLLX send to code");
-            message.setText("code siêu vip: " + code);
+            });
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(username));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+            message.setSubject("QLLX send to code","utf-8");
+            message.setText("code siêu vip: " + code, "utf-8", "html");
             Transport.send(message);
         } catch (Exception e) {
-           throw new Exception(e);
+            e.printStackTrace();
+            throw new Exception("Lỗi gửi mail");
         }
     }
 

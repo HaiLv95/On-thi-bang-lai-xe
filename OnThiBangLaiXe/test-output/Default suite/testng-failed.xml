@@ -3,11 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testController.changePasswordControllerTest">
+      <class name="testController.QuestionControllerTest_$$_jvst186_0">
         <methods>
-          <include name="TC01_changePasswordSuccess"/>
+          <include name="updateExambyIDTest_TC59_NullDeThi"/>
+          <include name="afterMethod"/>
+          <include name="beforeMethod"/>
         </methods>
-      </class> <!-- testController.changePasswordControllerTest -->
+      </class> <!-- testController.QuestionControllerTest_$$_jvst186_0 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

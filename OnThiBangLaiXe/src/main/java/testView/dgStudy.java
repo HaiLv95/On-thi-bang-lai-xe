@@ -273,9 +273,9 @@ public class dgStudy extends java.awt.Dialog {
 
     public void loadData() {
         try {
-            lst_Kn = qs.getCauHoiDTbyDeThiID(qs.getListDTbyEmail(4).get(0).getId());
-            lst_SH = qs.getCauHoiDTbyDeThiID(qs.getListDTbyEmail(2).get(0).getId());
-            lst_Liet = qs.getCauHoiDTbyDeThiID(qs.getListDTbyEmail(3).get(0).getId());
+            lst_Kn = qs.getCauHoiDTbyDeThiID(qs.getListDTbyEmail(4, Run.user.getUser()).get(0).getId());
+            lst_SH = qs.getCauHoiDTbyDeThiID(qs.getListDTbyEmail(2, Run.user.getUser()).get(0).getId());
+            lst_Liet = qs.getCauHoiDTbyDeThiID(qs.getListDTbyEmail(3, Run.user.getUser()).get(0).getId());
             lbl2.setText("Gồm " + lst_Liet.size() + " câu hỏi");
             lbl5.setText("Gồm " + lst_Kn.size() + " câu hỏi");
             lbl8.setText("Gồm " + lst_SH.size() + " câu hỏi");

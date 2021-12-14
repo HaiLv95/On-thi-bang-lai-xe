@@ -1,0 +1,1450 @@
+<html>
+<head>
+<title>TestNG:  TestController</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>TestController</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>82/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Tue Dec 14 15:21:58 ICT 2021</td>
+</tr>
+<tr><td>Total time:</td><td>63 seconds (63026 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='testController.ConnectionTest.CDB_TC008_ConectFalse()'><b>CDB_TC008_ConectFalse</b><br>Test class: testController.ConnectionTest<br>Parameters: sa, 1</td>
+<td><div><pre>com.microsoft.sqlserver.jdbc.SQLServerException: The port number  is not valid.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:234)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:1997)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC008_ConectFalse(ConnectionTest.java:116)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1064279279", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1064279279'><pre>com.microsoft.sqlserver.jdbc.SQLServerException: The port number  is not valid.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:234)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:1997)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC008_ConectFalse(ConnectionTest.java:116)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.ConnectionTest@19835e64</td></tr>
+<tr>
+<td title='testController.AddControllerTest.getlistuserTest_TC05()'><b>getlistuserTest_TC05</b><br>Test class: testController.AddControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.AddControllerTest@52c3cb31</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.insertQuestionTest_TC50_EmptyQuestion()'><b>insertQuestionTest_TC50_EmptyQuestion</b><br>Test class: testController.QuestionControllerTest</td>
+<td><div><pre>java.lang.Exception
+	at testController.QuestionController.insertQuestion(QuestionController.java:439)
+	at testController.QuestionControllerTest.insertQuestionTest_TC50_EmptyQuestion(QuestionControllerTest.java:582)
+	at testController.QuestionControllerTest_$$_jvst7c8_0._d54insertQuestionTest_TC50_EmptyQuestion(QuestionControllerTest_$$_jvst7c8_0.java)
+	at org.powermock.modules.testng.internal.PowerMockTestNGMethodHandler.invoke(PowerMockTestNGMethodHandler.java:50)
+	at testController.QuestionControllerTest_$$_jvst7c8_0.insertQuestionTest_TC50_EmptyQuestion(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace635569126", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace635569126'><pre>java.lang.Exception
+	at testController.QuestionController.insertQuestion(QuestionController.java:439)
+	at testController.QuestionControllerTest.insertQuestionTest_TC50_EmptyQuestion(QuestionControllerTest.java:582)
+	at testController.QuestionControllerTest_$$_jvst7c8_0._d54insertQuestionTest_TC50_EmptyQuestion(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.powermock.modules.testng.internal.PowerMockTestNGMethodHandler.invoke(PowerMockTestNGMethodHandler.java:50)
+	at testController.QuestionControllerTest_$$_jvst7c8_0.insertQuestionTest_TC50_EmptyQuestion(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getSaHinhTest_TC41_Success()'><b>getSaHinhTest_TC41_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.updateDapAnTest_TC56_NullID()'><b>updateDapAnTest_TC56_NullID</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.updateExambyIDTest_TC59_NullDeThi()'><b>updateExambyIDTest_TC59_NullDeThi</b><br>Test class: testController.QuestionControllerTest</td>
+<td><div><pre>java.lang.Exception: Failed update Exam
+	at testController.QuestionController.updateExambyID(QuestionController.java:368)
+	at testController.QuestionControllerTest.updateExambyIDTest_TC59_NullDeThi(QuestionControllerTest.java:658)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 23 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace449217864", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace449217864'><pre>java.lang.Exception: Failed update Exam
+	at testController.QuestionController.updateExambyID(QuestionController.java:368)
+	at testController.QuestionControllerTest.updateExambyIDTest_TC59_NullDeThi(QuestionControllerTest.java:658)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.updateExambyIDTest_TC60_Success()'><b>updateExambyIDTest_TC60_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getAnswerCauLietTest_T10_Success()'><b>getAnswerCauLietTest_T10_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.updateQuesstionTest_62_NullQuestion()'><b>updateQuesstionTest_62_NullQuestion</b><br>Test class: testController.QuestionControllerTest</td>
+<td><div><pre>java.lang.Exception
+	at testController.QuestionController.updateQuesstion(QuestionController.java:426)
+	at testController.QuestionControllerTest.updateQuesstionTest_62_NullQuestion(QuestionControllerTest.java:690)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 23 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2085764061", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2085764061'><pre>java.lang.Exception
+	at testController.QuestionController.updateQuesstion(QuestionController.java:426)
+	at testController.QuestionControllerTest.updateQuesstionTest_62_NullQuestion(QuestionControllerTest.java:690)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getListAnswersbyQuesstionIDTest_TC33_Success()'><b>getListAnswersbyQuesstionIDTest_TC33_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.AddControllerTest.getlistuserTest_TC04()'><b>getlistuserTest_TC04</b><br>Test class: testController.AddControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.AddControllerTest@52c3cb31</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getAnswerKhaiNiemTest_TC12_Success()'><b>getAnswerKhaiNiemTest_TC12_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.insertDapAnTest_TC49_Success()'><b>insertDapAnTest_TC49_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getAnswerKhaiNiemTest_TC14_Success()'><b>getAnswerKhaiNiemTest_TC14_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.updateQuestionExamTest_TC64_Null()'><b>updateQuestionExamTest_TC64_Null</b><br>Test class: testController.QuestionControllerTest</td>
+<td><div><pre>java.lang.Exception: Failed update Question Exam
+	at testController.QuestionController.updateQuestionExam(QuestionController.java:379)
+	at testController.QuestionControllerTest.updateQuestionExamTest_TC64_Null(QuestionControllerTest.java:707)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 23 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace98264771", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace98264771'><pre>java.lang.Exception: Failed update Question Exam
+	at testController.QuestionController.updateQuestionExam(QuestionController.java:379)
+	at testController.QuestionControllerTest.updateQuestionExamTest_TC64_Null(QuestionControllerTest.java:707)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.ConnectionTest.CDB_TC003_ConectFailed()'><b>CDB_TC003_ConectFailed</b><br>Test class: testController.ConnectionTest<br>Parameters: 1</td>
+<td><div><pre>com.microsoft.sqlserver.jdbc.SQLServerException: Login failed for user &apos;&apos;. ClientConnectionId:d1a39513-3859-4696-86f6-89a2d048ed9b
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
+	at com.microsoft.sqlserver.jdbc.TDSTokenHandler.onEOF(tdsparser.java:283)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:129)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:37)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.sendLogon(SQLServerConnection.java:5333)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.logon(SQLServerConnection.java:4066)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection$LogonCommand.doExecute(SQLServerConnection.java:4004)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:3272)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:2768)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:2418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2265)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC003_ConectFailed(ConnectionTest.java:51)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace282691904", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace282691904'><pre>com.microsoft.sqlserver.jdbc.SQLServerException: Login failed for user &apos;&apos;. ClientConnectionId:d1a39513-3859-4696-86f6-89a2d048ed9b
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
+	at com.microsoft.sqlserver.jdbc.TDSTokenHandler.onEOF(tdsparser.java:283)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:129)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:37)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.sendLogon(SQLServerConnection.java:5333)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.logon(SQLServerConnection.java:4066)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection$LogonCommand.doExecute(SQLServerConnection.java:4004)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:3272)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:2768)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:2418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2265)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC003_ConectFailed(ConnectionTest.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.ConnectionTest@19835e64</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getCauHoiDTbyDeThiIDTest_TC18_NoResult()'><b>getCauHoiDTbyDeThiIDTest_TC18_NoResult</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getSaHinhTest_TC42_Success()'><b>getSaHinhTest_TC42_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getCauHoiDTbyDeThiIDTest_TC19_Success()'><b>getCauHoiDTbyDeThiIDTest_TC19_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.insertDapAnTest_TC48_NullParam()'><b>insertDapAnTest_TC48_NullParam</b><br>Test class: testController.QuestionControllerTest</td>
+<td><div><pre>java.lang.Exception
+	at testController.QuestionController.insertDapAn(QuestionController.java:450)
+	at testController.QuestionControllerTest.insertDapAnTest_TC48_NullParam(QuestionControllerTest.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 23 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1630007174", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1630007174'><pre>java.lang.Exception
+	at testController.QuestionController.insertDapAn(QuestionController.java:450)
+	at testController.QuestionControllerTest.insertDapAnTest_TC48_NullParam(QuestionControllerTest.java:565)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getAnswerSaHinhTest_TC17_Success()'><b>getAnswerSaHinhTest_TC17_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.updateDapAnTest_TC53_Nullparam()'><b>updateDapAnTest_TC53_Nullparam</b><br>Test class: testController.QuestionControllerTest</td>
+<td><div><pre>java.lang.Exception
+	at testController.QuestionController.updateDapAn(QuestionController.java:461)
+	at testController.QuestionControllerTest.updateDapAnTest_TC53_Nullparam(QuestionControllerTest.java:602)
+	at testController.QuestionControllerTest_$$_jvst7c8_0._d60updateDapAnTest_TC53_Nullparam(QuestionControllerTest_$$_jvst7c8_0.java)
+	at org.powermock.modules.testng.internal.PowerMockTestNGMethodHandler.invoke(PowerMockTestNGMethodHandler.java:50)
+	at testController.QuestionControllerTest_$$_jvst7c8_0.updateDapAnTest_TC53_Nullparam(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace718005357", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace718005357'><pre>java.lang.Exception
+	at testController.QuestionController.updateDapAn(QuestionController.java:461)
+	at testController.QuestionControllerTest.updateDapAnTest_TC53_Nullparam(QuestionControllerTest.java:602)
+	at testController.QuestionControllerTest_$$_jvst7c8_0._d60updateDapAnTest_TC53_Nullparam(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.powermock.modules.testng.internal.PowerMockTestNGMethodHandler.invoke(PowerMockTestNGMethodHandler.java:50)
+	at testController.QuestionControllerTest_$$_jvst7c8_0.updateDapAnTest_TC53_Nullparam(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.ConnectionTest.CDB_TC006_ConectFailed()'><b>CDB_TC006_ConectFailed</b><br>Test class: testController.ConnectionTest<br>Parameters: sa</td>
+<td><div><pre>com.microsoft.sqlserver.jdbc.SQLServerException: Login failed for user &apos;sa&apos;. ClientConnectionId:b802f8f2-0640-47db-a044-9456f66e50b6
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
+	at com.microsoft.sqlserver.jdbc.TDSTokenHandler.onEOF(tdsparser.java:283)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:129)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:37)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.sendLogon(SQLServerConnection.java:5333)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.logon(SQLServerConnection.java:4066)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection$LogonCommand.doExecute(SQLServerConnection.java:4004)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:3272)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:2768)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:2418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2265)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC006_ConectFailed(ConnectionTest.java:90)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace824865677", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace824865677'><pre>com.microsoft.sqlserver.jdbc.SQLServerException: Login failed for user &apos;sa&apos;. ClientConnectionId:b802f8f2-0640-47db-a044-9456f66e50b6
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
+	at com.microsoft.sqlserver.jdbc.TDSTokenHandler.onEOF(tdsparser.java:283)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:129)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:37)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.sendLogon(SQLServerConnection.java:5333)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.logon(SQLServerConnection.java:4066)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection$LogonCommand.doExecute(SQLServerConnection.java:4004)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:3272)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:2768)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:2418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2265)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC006_ConectFailed(ConnectionTest.java:90)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.ConnectionTest@19835e64</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.updateQuesstionTest_62_EmptyQuestion()'><b>updateQuesstionTest_62_EmptyQuestion</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.insertQuestionTest_TC52_Success()'><b>insertQuestionTest_TC52_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.updateExambyIDTest_TC58_NullEmail()'><b>updateExambyIDTest_TC58_NullEmail</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.AddControllerTest.getcodeTest_TC03()'><b>getcodeTest_TC03</b><br>Test class: testController.AddControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.AddControllerTest@52c3cb31</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.updateQuesstionTest_61_Success()'><b>updateQuesstionTest_61_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.FindPasswordControllerTest.TC02_sendEmail_Failed()'><b>TC02_sendEmail_Failed</b><br>Test class: testController.FindPasswordControllerTest</td>
+<td></td>
+<td>13</td>
+<td>testController.FindPasswordControllerTest@278f8425</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.insertDapAnTest_TC48_NullNoiDung()'><b>insertDapAnTest_TC48_NullNoiDung</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.insertQuestionTest_TC51_NullQuestion()'><b>insertQuestionTest_TC51_NullQuestion</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.updateExambyIDTest_TC58_EmptyEmail()'><b>updateExambyIDTest_TC58_EmptyEmail</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.ConnectionTest.CDB_TC004_ConectFailed()'><b>CDB_TC004_ConectFailed</b><br>Test class: testController.ConnectionTest<br>Parameters: 1</td>
+<td><div><pre>com.microsoft.sqlserver.jdbc.SQLServerException: Login failed for user &apos;abc&apos;. ClientConnectionId:ea9c95b0-4cc7-4a28-a60a-b78fb0c15fc8
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
+	at com.microsoft.sqlserver.jdbc.TDSTokenHandler.onEOF(tdsparser.java:283)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:129)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:37)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.sendLogon(SQLServerConnection.java:5333)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.logon(SQLServerConnection.java:4066)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection$LogonCommand.doExecute(SQLServerConnection.java:4004)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:3272)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:2768)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:2418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2265)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC004_ConectFailed(ConnectionTest.java:64)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace30527460", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace30527460'><pre>com.microsoft.sqlserver.jdbc.SQLServerException: Login failed for user &apos;abc&apos;. ClientConnectionId:ea9c95b0-4cc7-4a28-a60a-b78fb0c15fc8
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
+	at com.microsoft.sqlserver.jdbc.TDSTokenHandler.onEOF(tdsparser.java:283)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:129)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:37)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.sendLogon(SQLServerConnection.java:5333)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.logon(SQLServerConnection.java:4066)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection$LogonCommand.doExecute(SQLServerConnection.java:4004)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:3272)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:2768)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:2418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2265)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC004_ConectFailed(ConnectionTest.java:64)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.ConnectionTest@19835e64</td></tr>
+<tr>
+<td title='testController.ConnectionTest.CDB_TC001_ConectSuccess()'><b>CDB_TC001_ConectSuccess</b><br>Test class: testController.ConnectionTest<br>Parameters: sa, 1</td>
+<td></td>
+<td>0</td>
+<td>testController.ConnectionTest@19835e64</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getAnswerSaHinhTest_TC15_Success()'><b>getAnswerSaHinhTest_TC15_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.deleteQuestionTest_TC06_Failed()'><b>deleteQuestionTest_TC06_Failed</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getListAllDTbyEmailTest_TC26_Success()'><b>getListAllDTbyEmailTest_TC26_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getlistLoaiCauHoiTest_TC43_NoResult()'><b>getlistLoaiCauHoiTest_TC43_NoResult</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.updateDapAnTest_TC54_Failed()'><b>updateDapAnTest_TC54_Failed</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.deleteQuestionTest_TC05_Success()'><b>deleteQuestionTest_TC05_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.changePasswordControllerTest.changePasswordController_TC001()'><b>changePasswordController_TC001</b><br>Test class: testController.changePasswordControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.changePasswordControllerTest@5b3f3ba0</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getListAllDTbyEmailTest_TC28_NoResult()'><b>getListAllDTbyEmailTest_TC28_NoResult</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getListAnswersbyQuesstionIDTest_TC32_Success()'><b>getListAnswersbyQuesstionIDTest_TC32_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.ConnectionTest.CDB_TC005_ConectFailed()'><b>CDB_TC005_ConectFailed</b><br>Test class: testController.ConnectionTest<br>Parameters: sa</td>
+<td><div><pre>com.microsoft.sqlserver.jdbc.SQLServerException: Login failed for user &apos;sa&apos;. ClientConnectionId:2413e2be-8946-434d-800e-b2f3f231637c
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
+	at com.microsoft.sqlserver.jdbc.TDSTokenHandler.onEOF(tdsparser.java:283)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:129)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:37)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.sendLogon(SQLServerConnection.java:5333)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.logon(SQLServerConnection.java:4066)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection$LogonCommand.doExecute(SQLServerConnection.java:4004)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:3272)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:2768)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:2418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2265)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC005_ConectFailed(ConnectionTest.java:77)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1300256447", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1300256447'><pre>com.microsoft.sqlserver.jdbc.SQLServerException: Login failed for user &apos;sa&apos;. ClientConnectionId:2413e2be-8946-434d-800e-b2f3f231637c
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
+	at com.microsoft.sqlserver.jdbc.TDSTokenHandler.onEOF(tdsparser.java:283)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:129)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:37)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.sendLogon(SQLServerConnection.java:5333)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.logon(SQLServerConnection.java:4066)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection$LogonCommand.doExecute(SQLServerConnection.java:4004)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:3272)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:2768)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:2418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2265)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC005_ConectFailed(ConnectionTest.java:77)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.ConnectionTest@19835e64</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getListQuestionTest_TC38_Success()'><b>getListQuestionTest_TC38_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.updateExambyIDTest_TC57_EmptyDethi()'><b>updateExambyIDTest_TC57_EmptyDethi</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getKhaiNiemTest_TC24_Success()'><b>getKhaiNiemTest_TC24_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.deleteQuestionTest_TC07_Failed()'><b>deleteQuestionTest_TC07_Failed</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getAnswerSaHinhTest_TC16_Success()'><b>getAnswerSaHinhTest_TC16_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getListQuestionTest_TC40_NoResult()'><b>getListQuestionTest_TC40_NoResult</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.ConnectionTest.CDB_TC009_ConectFailed()'><b>CDB_TC009_ConectFailed</b><br>Test class: testController.ConnectionTest<br>Parameters: sa, 1</td>
+<td><div><pre>com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host haile, port 123 has failed. Error: &quot;Connect timed out. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.&quot;.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:234)
+	at com.microsoft.sqlserver.jdbc.SQLServerException.ConvertConnectExceptionToSQLServerException(SQLServerException.java:285)
+	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2466)
+	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:672)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:2747)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:2418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2265)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC009_ConectFailed(ConnectionTest.java:129)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1989871442", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1989871442'><pre>com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host haile, port 123 has failed. Error: &quot;Connect timed out. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.&quot;.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:234)
+	at com.microsoft.sqlserver.jdbc.SQLServerException.ConvertConnectExceptionToSQLServerException(SQLServerException.java:285)
+	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2466)
+	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:672)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:2747)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:2418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2265)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC009_ConectFailed(ConnectionTest.java:129)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>15</td>
+<td>testController.ConnectionTest@19835e64</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getListAnswersTest_TC30_Success()'><b>getListAnswersTest_TC30_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getCauLietTest_TC22_ListEmty()'><b>getCauLietTest_TC22_ListEmty</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.createExamTest_TC01_Failed()'><b>createExamTest_TC01_Failed</b><br>Test class: testController.QuestionControllerTest</td>
+<td><div><pre>java.lang.Exception: Failed 5: create Question_Exam failedjava.lang.Exception: Failed 1: get list Questionjava.lang.NullPointerException: Cannot invoke &quot;java.sql.ResultSet.next()&quot; because &quot;&lt;local4&gt;&quot; is null
+	at testController.QuestionController.createExam(QuestionController.java:252)
+	at testController.QuestionControllerTest.createExamTest_TC01_Failed(QuestionControllerTest.java:66)
+	at testController.QuestionControllerTest_$$_jvst7c8_0._d3createExamTest_TC01_Failed(QuestionControllerTest_$$_jvst7c8_0.java)
+	at org.powermock.modules.testng.internal.PowerMockTestNGMethodHandler.invoke(PowerMockTestNGMethodHandler.java:50)
+	at testController.QuestionControllerTest_$$_jvst7c8_0.createExamTest_TC01_Failed(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace86178665", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace86178665'><pre>java.lang.Exception: Failed 5: create Question_Exam failedjava.lang.Exception: Failed 1: get list Questionjava.lang.NullPointerException: Cannot invoke &quot;java.sql.ResultSet.next()&quot; because &quot;&lt;local4&gt;&quot; is null
+	at testController.QuestionController.createExam(QuestionController.java:252)
+	at testController.QuestionControllerTest.createExamTest_TC01_Failed(QuestionControllerTest.java:66)
+	at testController.QuestionControllerTest_$$_jvst7c8_0._d3createExamTest_TC01_Failed(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.powermock.modules.testng.internal.PowerMockTestNGMethodHandler.invoke(PowerMockTestNGMethodHandler.java:50)
+	at testController.QuestionControllerTest_$$_jvst7c8_0.createExamTest_TC01_Failed(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getAnswerCauLietTest_TC09_Success()'><b>getAnswerCauLietTest_TC09_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getCauHoiDTbyDeThiIDTest_TC20_NoResult()'><b>getCauHoiDTbyDeThiIDTest_TC20_NoResult</b><br>Test class: testController.QuestionControllerTest</td>
+<td><div><pre>org.powermock.reflect.exceptions.TooManyMethodsFoundException: Several matching methods found, please specify the argument parameter types so that PowerMock can determine which method you&apos;re referring to.
+Matching methods in class testController.QuestionController$MockitoMock$101011985 were:
+void createExam( testModel.Dethi.class )
+testModel.Answer getAnswer( java.sql.ResultSet.class )
+
+	at org.powermock.api.mockito.PowerMockito.when(PowerMockito.java:390)
+	at testController.QuestionControllerTest.getCauHoiDTbyDeThiIDTest_TC20_NoResult(QuestionControllerTest.java:237)
+	at testController.QuestionControllerTest_$$_jvst7c8_0._d22getCauHoiDTbyDeThiIDTest_TC20_NoResult(QuestionControllerTest_$$_jvst7c8_0.java)
+	at org.powermock.modules.testng.internal.PowerMockTestNGMethodHandler.invoke(PowerMockTestNGMethodHandler.java:50)
+	at testController.QuestionControllerTest_$$_jvst7c8_0.getCauHoiDTbyDeThiIDTest_TC20_NoResult(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 36 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1251218116", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1251218116'><pre>org.powermock.reflect.exceptions.TooManyMethodsFoundException: Several matching methods found, please specify the argument parameter types so that PowerMock can determine which method you&apos;re referring to.
+Matching methods in class testController.QuestionController$MockitoMock$101011985 were:
+void createExam( testModel.Dethi.class )
+testModel.Answer getAnswer( java.sql.ResultSet.class )
+
+	at org.powermock.reflect.internal.WhiteboxImpl.throwExceptionWhenMultipleMethodMatchesFound(WhiteboxImpl.java:1689)
+	at org.powermock.reflect.internal.WhiteboxImpl.findMethodOrThrowException(WhiteboxImpl.java:901)
+	at org.powermock.reflect.internal.WhiteboxImpl.doInvokeMethod(WhiteboxImpl.java:822)
+	at org.powermock.reflect.internal.WhiteboxImpl.invokeMethod(WhiteboxImpl.java:655)
+	at org.powermock.reflect.Whitebox.invokeMethod(Whitebox.java:380)
+	at org.powermock.api.mockito.PowerMockito.when(PowerMockito.java:390)
+	at testController.QuestionControllerTest.getCauHoiDTbyDeThiIDTest_TC20_NoResult(QuestionControllerTest.java:237)
+	at testController.QuestionControllerTest_$$_jvst7c8_0._d22getCauHoiDTbyDeThiIDTest_TC20_NoResult(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.powermock.modules.testng.internal.PowerMockTestNGMethodHandler.invoke(PowerMockTestNGMethodHandler.java:50)
+	at testController.QuestionControllerTest_$$_jvst7c8_0.getCauHoiDTbyDeThiIDTest_TC20_NoResult(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getAnswerCauLietTest_TC11_Success()'><b>getAnswerCauLietTest_TC11_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.insertDapAnTest_TC46_NullParam()'><b>insertDapAnTest_TC46_NullParam</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.LoginControllerTest.TC01_getUserbyEmail_Success()'><b>TC01_getUserbyEmail_Success</b><br>Test class: testController.LoginControllerTest<br>Parameters: nhocyeuviai1995@gmail.com</td>
+<td></td>
+<td>0</td>
+<td>testController.LoginControllerTest@3f36b447</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getlistLoaiCauHoiTest_TC45_Success()'><b>getlistLoaiCauHoiTest_TC45_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.AddControllerTest.getcodeTest_TC02()'><b>getcodeTest_TC02</b><br>Test class: testController.AddControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.AddControllerTest@52c3cb31</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getCauLietTest_TC21_Success()'><b>getCauLietTest_TC21_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.updateQuestionExamTest_TC63_Success()'><b>updateQuestionExamTest_TC63_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getListAllDTbyEmailTest_TC27_Success()'><b>getListAllDTbyEmailTest_TC27_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.ConnectionTest.CDB_TC002_ConectFailed()'><b>CDB_TC002_ConectFailed</b><br>Test class: testController.ConnectionTest<br>Parameters: sa, 1</td>
+<td><div><pre>com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host :1433, port 1433 has failed. Error: &quot;:1433: invalid IPv6 address. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.&quot;.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:234)
+	at com.microsoft.sqlserver.jdbc.SQLServerException.ConvertConnectExceptionToSQLServerException(SQLServerException.java:285)
+	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2466)
+	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:672)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:2747)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:2418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2265)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC002_ConectFailed(ConnectionTest.java:38)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1079872128", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1079872128'><pre>com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host :1433, port 1433 has failed. Error: &quot;:1433: invalid IPv6 address. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.&quot;.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:234)
+	at com.microsoft.sqlserver.jdbc.SQLServerException.ConvertConnectExceptionToSQLServerException(SQLServerException.java:285)
+	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2466)
+	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:672)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:2747)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:2418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2265)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC002_ConectFailed(ConnectionTest.java:38)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>14</td>
+<td>testController.ConnectionTest@19835e64</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getKhaiNiemTest_TC25_NoResult()'><b>getKhaiNiemTest_TC25_NoResult</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.updateQuestionExamTest_TC64_Empty()'><b>updateQuestionExamTest_TC64_Empty</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.ConnectionTest.CDB_TC010_ConectFailed()'><b>CDB_TC010_ConectFailed</b><br>Test class: testController.ConnectionTest<br>Parameters: sa, 1</td>
+<td><div><pre>com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host abc, port 123 has failed. Error: &quot;abc. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.&quot;.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:234)
+	at com.microsoft.sqlserver.jdbc.SQLServerException.ConvertConnectExceptionToSQLServerException(SQLServerException.java:285)
+	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2466)
+	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:672)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:2747)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:2418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2265)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC010_ConectFailed(ConnectionTest.java:142)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace444402847", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace444402847'><pre>com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host abc, port 123 has failed. Error: &quot;abc. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.&quot;.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:234)
+	at com.microsoft.sqlserver.jdbc.SQLServerException.ConvertConnectExceptionToSQLServerException(SQLServerException.java:285)
+	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2466)
+	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:672)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:2747)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:2418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2265)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC010_ConectFailed(ConnectionTest.java:142)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>14</td>
+<td>testController.ConnectionTest@19835e64</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getListQuestionTest_TC39_Success()'><b>getListQuestionTest_TC39_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.insertDapAnTest_TC47_NullGiaiThich()'><b>insertDapAnTest_TC47_NullGiaiThich</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.updateDapAnTest_TC55_Success()'><b>updateDapAnTest_TC55_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getSaHinhTest_TC43_NoResult()'><b>getSaHinhTest_TC43_NoResult</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.createExamTest_TC03_Failed()'><b>createExamTest_TC03_Failed</b><br>Test class: testController.QuestionControllerTest</td>
+<td><div><pre>java.lang.Exception: Failed 5: create Question_Exam failedjava.lang.Exception: Failed 1: get list Questionjava.lang.NullPointerException: Cannot invoke &quot;java.sql.ResultSet.next()&quot; because &quot;&lt;local4&gt;&quot; is null
+	at testController.QuestionController.createExam(QuestionController.java:252)
+	at testController.QuestionControllerTest.createExamTest_TC03_Failed(QuestionControllerTest.java:89)
+	at testController.QuestionControllerTest_$$_jvst7c8_0._d4createExamTest_TC03_Failed(QuestionControllerTest_$$_jvst7c8_0.java)
+	at org.powermock.modules.testng.internal.PowerMockTestNGMethodHandler.invoke(PowerMockTestNGMethodHandler.java:50)
+	at testController.QuestionControllerTest_$$_jvst7c8_0.createExamTest_TC03_Failed(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1661349610", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1661349610'><pre>java.lang.Exception: Failed 5: create Question_Exam failedjava.lang.Exception: Failed 1: get list Questionjava.lang.NullPointerException: Cannot invoke &quot;java.sql.ResultSet.next()&quot; because &quot;&lt;local4&gt;&quot; is null
+	at testController.QuestionController.createExam(QuestionController.java:252)
+	at testController.QuestionControllerTest.createExamTest_TC03_Failed(QuestionControllerTest.java:89)
+	at testController.QuestionControllerTest_$$_jvst7c8_0._d4createExamTest_TC03_Failed(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.powermock.modules.testng.internal.PowerMockTestNGMethodHandler.invoke(PowerMockTestNGMethodHandler.java:50)
+	at testController.QuestionControllerTest_$$_jvst7c8_0.createExamTest_TC03_Failed(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getAnswerKhaiNiemTest_TC13_Success()'><b>getAnswerKhaiNiemTest_TC13_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getCauLietTest_TC23_NoReult()'><b>getCauLietTest_TC23_NoReult</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.AddControllerTest.adduserTest_TC01_Success()'><b>adduserTest_TC01_Success</b><br>Test class: testController.AddControllerTest<br>Parameters: nhocyeuviai1995@gmail.com, 1234</td>
+<td></td>
+<td>0</td>
+<td>testController.AddControllerTest@52c3cb31</td></tr>
+<tr>
+<td title='testController.ConnectionTest.CDB_TC007_ConectFailed()'><b>CDB_TC007_ConectFailed</b><br>Test class: testController.ConnectionTest<br>Parameters: sa, 1</td>
+<td><div><pre>com.microsoft.sqlserver.jdbc.SQLServerException: Cannot open database &quot;a&quot; requested by the login. The login failed. ClientConnectionId:f832e0f1-2abd-4cd7-beff-a3819bc565cc
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
+	at com.microsoft.sqlserver.jdbc.TDSTokenHandler.onEOF(tdsparser.java:283)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:129)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:37)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.sendLogon(SQLServerConnection.java:5333)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.logon(SQLServerConnection.java:4066)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection$LogonCommand.doExecute(SQLServerConnection.java:4004)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:3272)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:2768)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:2418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2265)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC007_ConectFailed(ConnectionTest.java:103)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1219681220", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1219681220'><pre>com.microsoft.sqlserver.jdbc.SQLServerException: Cannot open database &quot;a&quot; requested by the login. The login failed. ClientConnectionId:f832e0f1-2abd-4cd7-beff-a3819bc565cc
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
+	at com.microsoft.sqlserver.jdbc.TDSTokenHandler.onEOF(tdsparser.java:283)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:129)
+	at com.microsoft.sqlserver.jdbc.TDSParser.parse(tdsparser.java:37)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.sendLogon(SQLServerConnection.java:5333)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.logon(SQLServerConnection.java:4066)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection$LogonCommand.doExecute(SQLServerConnection.java:4004)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:3272)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:2768)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:2418)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2265)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1291)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:881)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at testController.ConnectionTest.CDB_TC007_ConectFailed(ConnectionTest.java:103)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.ConnectionTest@19835e64</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getListAnswersbyQuesstionIDTest_TC34_NoResult()'><b>getListAnswersbyQuesstionIDTest_TC34_NoResult</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getlistLoaiCauHoiTest_TC44_Success()'><b>getlistLoaiCauHoiTest_TC44_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getListAnswersTest_TC29_Success()'><b>getListAnswersTest_TC29_Success</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.getListAnswersTest_TC31_NoResult()'><b>getListAnswersTest_TC31_NoResult</b><br>Test class: testController.QuestionControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+<tr>
+<td title='testController.QuestionControllerTest.createExamTest_TC04_Failed()'><b>createExamTest_TC04_Failed</b><br>Test class: testController.QuestionControllerTest</td>
+<td><div><pre>java.lang.Exception: Failed 5: create Question_Exam failedjava.lang.Exception: Failed 1: get list Questionjava.lang.NullPointerException: Cannot invoke &quot;java.sql.ResultSet.next()&quot; because &quot;&lt;local4&gt;&quot; is null
+	at testController.QuestionController.createExam(QuestionController.java:252)
+	at testController.QuestionControllerTest.createExamTest_TC04_Failed(QuestionControllerTest.java:100)
+	at testController.QuestionControllerTest_$$_jvst7c8_0._d5createExamTest_TC04_Failed(QuestionControllerTest_$$_jvst7c8_0.java)
+	at org.powermock.modules.testng.internal.PowerMockTestNGMethodHandler.invoke(PowerMockTestNGMethodHandler.java:50)
+	at testController.QuestionControllerTest_$$_jvst7c8_0.createExamTest_TC04_Failed(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace363003357", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace363003357'><pre>java.lang.Exception: Failed 5: create Question_Exam failedjava.lang.Exception: Failed 1: get list Questionjava.lang.NullPointerException: Cannot invoke &quot;java.sql.ResultSet.next()&quot; because &quot;&lt;local4&gt;&quot; is null
+	at testController.QuestionController.createExam(QuestionController.java:252)
+	at testController.QuestionControllerTest.createExamTest_TC04_Failed(QuestionControllerTest.java:100)
+	at testController.QuestionControllerTest_$$_jvst7c8_0._d5createExamTest_TC04_Failed(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.powermock.modules.testng.internal.PowerMockTestNGMethodHandler.invoke(PowerMockTestNGMethodHandler.java:50)
+	at testController.QuestionControllerTest_$$_jvst7c8_0.createExamTest_TC04_Failed(QuestionControllerTest_$$_jvst7c8_0.java)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>testController.QuestionControllerTest_$$_jvst7c8_0@3703bf3c</td></tr>
+</table><p>
+</body>
+</html>

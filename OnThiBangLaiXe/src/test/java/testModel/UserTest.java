@@ -49,7 +49,7 @@ public class UserTest {
   @Test
   public void getUserTest_TC06() {
 	  String ep = "hailv";
-	  user.setRoles(ep);
+	  user.setUser(ep);
 	  assertEquals(user.getUser(), ep);
   }
 
@@ -69,6 +69,8 @@ public class UserTest {
 
   @Test
   public void setUserTest_TC09() {
-    throw new RuntimeException("Test not implemented");
+   String username = "hailv";
+   user.setUser(username);
+   assertEquals(user.getUser(), username);
   }
 }

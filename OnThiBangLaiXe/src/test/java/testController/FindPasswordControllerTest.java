@@ -10,12 +10,12 @@ import org.testng.annotations.Test;
 
 public class FindPasswordControllerTest {
 	
-	@Parameters("email")
-	@Test
-	public void TC01_sendEmail(String email) throws SQLException {
-		FindPasswordController fd = new FindPasswordController();
-		assertFalse(fd.send(email));
-	}
+//	@Parameters("email")
+//	@Test
+//	public void TC01_sendEmail(String email) throws SQLException {
+//		FindPasswordController fd = new FindPasswordController();
+//		assertFalse(fd.send(email));
+//	}
 	
 	@Test
 	public void TC02_sendEmail_Failed() throws SQLException {
@@ -23,9 +23,9 @@ public class FindPasswordControllerTest {
 		assertFalse(fd.send(""));
 	}
 	
-	@Test
-	public void TC03_sendEmail_Failed(String email) throws SQLException {
-		FindPasswordController fd = new FindPasswordController();
-		assertFalse(fd.send("adv"));
-	}
+//	@Test
+//	public void TC03_sendEmail_Failed(String email) throws SQLException {
+//		FindPasswordController fd = new FindPasswordController();
+//		assertFalse(fd.send("adv"));
+//	}
 }

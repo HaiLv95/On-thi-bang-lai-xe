@@ -11,8 +11,20 @@ public class Answer {
     public int getId() {
         return id;
     }
+    public Answer() {
+		// TODO Auto-generated constructor stub
+	}
+    public Answer(int id, int cauhoi_id, String noiDung, String giaiThich, boolean trangThai, boolean flag) {
+		super();
+		this.id = id;
+		this.cauhoi_id = cauhoi_id;
+		this.noiDung = noiDung;
+		this.giaiThich = giaiThich;
+		this.trangThai = trangThai;
+		this.flag = flag;
+	}
 
-    public void setId(int id) {
+	public void setId(int id) {
         this.id = id;
     }
 

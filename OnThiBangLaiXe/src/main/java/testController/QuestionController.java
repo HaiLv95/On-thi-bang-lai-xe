@@ -3,6 +3,9 @@ package testController;
 import java.util.ArrayList;
 import java.util.List;
 import testConnectSQL.ConnectSQL;
+
+import static org.testng.Assert.assertThrows;
+
 import java.sql.*;
 import java.util.Random;
 import java.util.logging.Level;
@@ -10,7 +13,10 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
+import net.sourceforge.htmlunit.corejs.javascript.ast.ThrowStatement;
 import testModel.Question;
+import testModel.User;
 import testModel.Answer;
 import testModel.CauHoi_DeThi;
 import testModel.Dethi;
@@ -63,8 +69,9 @@ public class QuestionController {
             getAnswer.setTrangThai(rs.getBoolean(3));
             getAnswer.setGiaiThich(rs.getString(4));
             getAnswer.setCauhoi_id(rs.getInt(5));
+            getAnswer.setFlag(rs.getBoolean(6));
         } catch (Exception e) {
-            throw new Exception("Failed 3: get answers failed ");
+            throw new Exception("Failed 3: get answers failed " + e);
         }
         return getAnswer;
     }
@@ -256,29 +263,35 @@ public class QuestionController {
             dethi.setTimer(rs.getInt(4));
             dethi.setLoaide_id(rs.getInt(5));
         } catch (Exception e) {
-            throw new Exception("Failed 6: get Exam failed");
+            throw new Exception("Failed 6: get Exam failed : " + e);
         }
         return dethi;
     }
 
-    public List<Dethi> getListAllDTbyEmail() throws Exception {
+    public List<Dethi> getListAllDTbyEmail(String email) throws Exception {
         String sql = "select * from dethi where email=?";
         List<Dethi> lstDethi = new ArrayList<>();
         try {
-            ResultSet rs = con.prepareExcuteQuery(sql, Run.user.getUser());
+            ResultSet rs = con.prepareExcuteQuery(sql, email);
             while (rs.next()) {
-                lstDethi.add(getDeThi(rs));
+            	 Dethi dethi = new Dethi();
+            	dethi.setId(rs.getInt(1));
+                dethi.setTrangThai(rs.getString(2));
+                dethi.setEmail(rs.getString(3));
+                dethi.setTimer(rs.getInt(4));
+                dethi.setLoaide_id(rs.getInt(5));
+                lstDethi.add(dethi);
             }
         } catch (Exception e) {
-            throw new Exception("Failed 7: get list All Exam failed ");
+            throw new Exception("Failed 7: get list All Exam failed " + e);
         }
         return lstDethi;
     }
 
-    public List<Dethi> getListDTbyEmail(int loaide) {
+    public List<Dethi> getListDTbyEmail(int loaide, String email) {
         List<Dethi> lst_DT = new ArrayList<>();
         try {
-            List<Dethi> lst_AllExam = getListAllDTbyEmail();
+            List<Dethi> lst_AllExam = getListAllDTbyEmail(email);
             boolean check = true;
         for (Dethi dethi : lst_AllExam) {
             if (dethi.getLoaide_id() == 2 || dethi.getLoaide_id() == 3 || dethi.getLoaide_id() == 4) {
@@ -306,7 +319,7 @@ public class QuestionController {
             for (Question question : lstKn) {
                 row += con.prepareUpdate(sqlInsertQuestion, question.getId(), idDeThiKn, -1, false);
             }
-            lst_AllExam = getListAllDTbyEmail();
+            lst_AllExam = getListAllDTbyEmail(Run.user.getUser());
         }
             for (Dethi dethi : lst_AllExam) {
                 if (dethi.getLoaide_id() == loaide) {
@@ -317,17 +330,6 @@ public class QuestionController {
             JOptionPane.showMessageDialog(null, "Failed get list Exam");
         }
         return lst_DT;
-    }
-
-    public void getCauHoibyIdDT(int id) throws Exception {
-        String sql = "select * from CAUHOI_DETHI where id_dethi=?";
-        List<CauHoi_DeThi> lstCauHoi_DeThi = new ArrayList<>();
-        try {
-            ResultSet rs = con.prepareExcuteQuery(sql, id);
-            lstCauHoi_DeThi.add(getCauHoi_DeThi(rs));
-        } catch (Exception e) {
-            throw new Exception("Failed 8: get list Question_Exam failed");
-        }
     }
 
     public CauHoi_DeThi getCauHoi_DeThi(ResultSet rs) throws Exception {
@@ -352,16 +354,16 @@ public class QuestionController {
                 lstCauHoi_DeThi.add(getCauHoi_DeThi(rs));
             }
         } catch (Exception e) {
-            throw new Exception("Failed get list Question exam by Exam_id");
+            throw new Exception("Failed get list Question exam by Exam_id : " + e);
         }
         return lstCauHoi_DeThi;
     }
 
-    public int updateExambyID(Dethi dethi) throws Exception {
+    public int updateExambyID(Dethi dethi, String email) throws Exception {
         String sql = "update dethi set trangthai=?, email=?, timer=?, id_loaide=? where id_dethi=?";
         int row = 0;
         try {
-            row = con.prepareUpdate(sql, dethi.getTrangThai(), Run.user.getUser(), dethi.getTimer(), dethi.getLoaide_id(), dethi.getId());
+            row = con.prepareUpdate(sql, dethi.getTrangThai(), email, dethi.getTimer(), dethi.getLoaide_id(), dethi.getId());
         } catch (Exception e) {
             throw new Exception("Failed update Exam");
         }
@@ -399,34 +401,34 @@ public class QuestionController {
             questionType.setID(rs.getInt(1));
             questionType.setTenLoai(rs.getString(2));
         } catch (Exception e) {
-            throw new Exception("Failed get question type");
+            throw new Exception("Failed get question type : " + e);
         }
         return questionType;
     }
 
-    public int deleteQuestion(int id) {
+    public int deleteQuestion(int id) throws Exception {
         int row = 0;
         String sql = "update cauhoi set trangthai = 0 where id_cauhoi=?";
         try {
             row = con.prepareUpdate(sql, id);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Delete question failed");
+        	 throw new Exception();
         }
         return row;
     }
 
-    public int updateQuesstion(Question question) {
+    public int updateQuesstion(Question question) throws Exception {
         int row = 0;
         String sql = "update cauhoi set noidung=?, hinh=?, id_loaicauhoi=? where id_cauhoi=?";
         try {
             row = con.prepareUpdate(sql, question.getNoiDung(), question.getHinh(), question.getLoaiCauHoi_id(), question.getId());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Update question failed" + e);
+        	 throw new Exception();
         }
         return row;
     }
 
-    public int insertQuestion(Question question) {
+    public int insertQuestion(Question question) throws Exception {
         int questionid = -1;
         String sql = "insert into cauhoi(noidung, hinh, id_loaicauhoi,trangthai) values(?,?,?,1)";
         Question qs = new Question();
@@ -434,29 +436,29 @@ public class QuestionController {
             questionid = con.insertObj(sql, question.getNoiDung(), question.getHinh(), question.getLoaiCauHoi_id());
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Insert question failed " + e);
+            throw new Exception();
         }
         return questionid;
     }
 
-    public int insertDapAn(Answer answer) {
+    public int insertDapAn(Answer answer) throws Exception {
         int row = 0;
         String sql = "insert into dapan(noidung, trangthai, giaithich, id_cauhoi, flag) values(?,?,?,?,1)";
         try {
             row = con.prepareUpdate(sql, answer.getNoiDung(), answer.isTrangThai(), answer.getGiaiThich(), answer.getCauhoi_id());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "insert Answer to Sql failed");
+            throw new Exception();
         }
         return row;
     }
 
-    public int updateDapAn(Answer answer) {
+    public int updateDapAn(Answer answer) throws Exception {
         int row = 0;
         String sql = "update dapan set noidung =?, trangthai=?,giaithich=?, flag=? where id_dapan = ?";
         try {
             row = con.prepareUpdate(sql, answer.getNoiDung(), answer.isTrangThai(), answer.getGiaiThich(), answer.isFlag(), answer.getId());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "update Answer to Sql failed");
+            throw new Exception();
         }
         return row;
     }

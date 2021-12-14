@@ -3,6 +3,7 @@ package testModel;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeTest;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.assertEquals;
 
@@ -59,7 +60,7 @@ public class QuestionTest {
 
   @Test
   public void isTrangThaiTest_TC07() {
-    assertTrue(question.isTrangThai());
+    assertFalse(question.isTrangThai());
   }
 
   @Test

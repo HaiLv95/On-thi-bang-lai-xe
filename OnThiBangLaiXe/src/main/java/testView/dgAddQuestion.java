@@ -243,7 +243,12 @@ public class dgAddQuestion extends java.awt.Dialog {
         btnXacNhan.setBorderPainted(false);
         btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXacNhanActionPerformed(evt);
+                try {
+					btnXacNhanActionPerformed(evt);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
         jPanel1.add(btnXacNhan);
@@ -371,7 +376,7 @@ public class dgAddQuestion extends java.awt.Dialog {
         dgQuestionList.dgQsList.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
-    private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
+    private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) throws Exception {//GEN-FIRST:event_btnXacNhanActionPerformed
         // TODO add your handling code here:
         if (index == 0) {
             AddQuestion();
@@ -437,7 +442,7 @@ public class dgAddQuestion extends java.awt.Dialog {
     }
 
     //thêm câu hỏi
-    public void AddQuestion() {
+    public void AddQuestion() throws Exception {
         if (!check()) {
             return;
         }
@@ -508,7 +513,7 @@ public class dgAddQuestion extends java.awt.Dialog {
     }
 
     //câp nhật câu hỏi
-    public void updateQs() {
+    public void updateQs() throws Exception {
         int rowQs = 0;
         question.setHinh(lblHinh.getName());
         question.setNoiDung(txtNoiDung.getText());

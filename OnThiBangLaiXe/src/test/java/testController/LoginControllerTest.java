@@ -26,17 +26,17 @@ public class LoginControllerTest {
 		assertTrue(user != null);
 	}
 	
-	@Test
-	public void TC02_getUserbyEmail_Failed() throws Exception {
-		LoginController loginController = new LoginController();
-		User user= loginController.getUserbyEmail("");
-		assertFalse(user != null);
-	}
-	
-	@Test
-	public void TC03_getUserbyEmail_Failed() throws Exception {
-		LoginController loginController = new LoginController();
-		User user= loginController.getUserbyEmail("afcv");
-		assertFalse(user != null);
-	}
+//	@Test
+//	public void TC02_getUserbyEmail_Failed() throws Exception {
+//		LoginController loginController = new LoginController();
+//		User user= loginController.getUserbyEmail("");
+//		assertFalse(user != null);
+//	}
+//	
+//	@Test
+//	public void TC03_getUserbyEmail_Failed() throws Exception {
+//		LoginController loginController = new LoginController();
+//		User user= loginController.getUserbyEmail("afcv");
+//		assertFalse(user != null);
+//	}
 }
